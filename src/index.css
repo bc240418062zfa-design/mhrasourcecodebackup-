@@ -1,0 +1,448 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-secondary-fixed: var(--sys-on-secondary-fixed);
+  --color-inverse-surface: var(--sys-inverse-surface);
+  --color-error: var(--sys-error);
+  --color-tertiary: var(--sys-tertiary);
+  --color-on-tertiary: var(--sys-on-tertiary);
+  --color-outline: var(--sys-outline);
+  --color-error-container: var(--sys-error-container);
+  --color-on-primary-fixed: var(--sys-on-primary-fixed);
+  --color-inverse-primary: var(--sys-inverse-primary);
+  --color-on-secondary-fixed-variant: var(--sys-on-secondary-fixed-variant);
+  --color-on-tertiary-fixed: var(--sys-on-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--sys-tertiary-fixed-dim);
+  --color-secondary: var(--sys-secondary);
+  --color-primary-container: var(--sys-primary-container);
+  --color-on-surface-variant: var(--sys-on-surface-variant);
+  --color-secondary-fixed: var(--sys-secondary-fixed);
+  --color-surface-container-low: var(--sys-surface-container-low);
+  --color-background: var(--sys-background);
+  --color-surface-tint: var(--sys-surface-tint);
+  --color-on-error-container: var(--sys-on-error-container);
+  --color-tertiary-container: var(--sys-tertiary-container);
+  --color-inverse-on-surface: var(--sys-inverse-on-surface);
+  --color-tertiary-fixed: var(--sys-tertiary-fixed);
+  --color-on-primary: var(--sys-on-primary);
+  --color-secondary-container: var(--sys-secondary-container);
+  --color-on-secondary: var(--sys-on-secondary);
+  --color-surface-dim: var(--sys-surface-dim);
+  --color-secondary-fixed-dim: var(--sys-secondary-fixed-dim);
+  --color-surface-variant: var(--sys-surface-variant);
+  --color-surface-container-highest: var(--sys-surface-container-highest);
+  --color-surface-container-lowest: var(--sys-surface-container-lowest);
+  --color-surface-container-high: var(--sys-surface-container-high);
+  --color-primary-fixed-dim: var(--sys-primary-fixed-dim);
+  --color-on-primary-fixed-variant: var(--sys-on-primary-fixed-variant);
+  --color-on-background: var(--sys-on-background);
+  --color-on-tertiary-fixed-variant: var(--sys-on-tertiary-fixed-variant);
+  --color-surface-container: var(--sys-surface-container);
+  --color-primary: var(--sys-primary);
+  --color-on-surface: var(--sys-on-surface);
+  --color-on-error: var(--sys-on-error);
+  --color-surface: var(--sys-surface);
+  --color-primary-fixed: var(--sys-primary-fixed);
+  --color-on-tertiary-container: var(--sys-on-tertiary-container);
+  --color-on-secondary-container: var(--sys-on-secondary-container);
+  --color-surface-bright: var(--sys-surface-bright);
+  --color-outline-variant: var(--sys-outline-variant);
+  --color-on-primary-container: var(--sys-on-primary-container);
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-mobile: 0.75rem;
+  --spacing-margin: 3rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+
+  --font-label-sm: 'JetBrains Mono', monospace;
+  --font-label-lg: 'JetBrains Mono', monospace;
+  --font-headline-sm: 'Space Grotesk', sans-serif;
+  --font-body-sm: 'Hanken Grotesk', sans-serif;
+  --font-headline-lg-mobile: 'Space Grotesk', sans-serif;
+  --font-headline-xl: 'Space Grotesk', sans-serif;
+  --font-headline-xl-mobile: 'Space Grotesk', sans-serif;
+  --font-body-lg: 'Hanken Grotesk', sans-serif;
+  --font-headline-md: 'Space Grotesk', sans-serif;
+  --font-label-md: 'JetBrains Mono', monospace;
+  --font-headline-lg: 'Space Grotesk', sans-serif;
+  --font-body-md: 'Hanken Grotesk', sans-serif;
+}
+
+:root,
+:root[data-theme="light"],
+:root[data-theme="titanium"],
+:root[data-theme="desert"] {
+  /* ==========================================================================
+     PRIMARY DEFAULT THEME: "TITANIUM DAYLIGHT" (Architectural Luxury White)
+     Clean, crisp executive daylight mode like Apple, Stripe, and Linear
+     ========================================================================== */
+  --sys-background: #f8fafc;
+  --sys-surface-container-lowest: #ffffff;
+  --sys-surface: #ffffff;
+  --sys-surface-container-low: #f8fafc;
+  --sys-surface-container: #f1f5f9;
+  --sys-surface-container-high: #ffffff;
+  --sys-surface-container-highest: #e2e8f0;
+  --sys-surface-dim: #e2e8f0;
+  --sys-surface-bright: #ffffff;
+  --sys-surface-variant: #e2e8f0;
+
+  /* High-legibility executive typography */
+  --sys-on-background: #0f172a;
+  --sys-on-surface: #0f172a;
+  --sys-on-surface-variant: #334155;
+  --sys-inverse-surface: #0f172a;
+  --sys-inverse-on-surface: #f8fafc;
+
+  /* Executive Deep Cobalt Primary */
+  --sys-primary: #0055ff;
+  --sys-primary-container: #0040c0;
+  --sys-on-primary: #ffffff;
+  --sys-on-primary-container: #eff6ff;
+  --sys-primary-fixed: #2563eb;
+  --sys-primary-fixed-dim: #1d4ed8;
+  --sys-on-primary-fixed: #ffffff;
+  --sys-on-primary-fixed-variant: #1e3a8a;
+  --sys-inverse-primary: #3b82f6;
+
+  /* Vibrant Sapphire / Sky Cyan Secondary */
+  --sys-secondary: #0284c7;
+  --sys-secondary-container: #0369a1;
+  --sys-on-secondary: #ffffff;
+  --sys-on-secondary-container: #f0f9ff;
+  --sys-secondary-fixed: #0ea5e9;
+  --sys-secondary-fixed-dim: #0284c7;
+  --sys-on-secondary-fixed: #ffffff;
+  --sys-on-secondary-fixed-variant: #075985;
+
+  /* Precision Forest Green */
+  --sys-tertiary: #059669;
+  --sys-tertiary-container: #064e3b;
+  --sys-on-tertiary: #ffffff;
+  --sys-on-tertiary-container: #ecfdf5;
+  --sys-tertiary-fixed: #10b981;
+  --sys-tertiary-fixed-dim: #059669;
+  --sys-on-tertiary-fixed: #ffffff;
+  --sys-on-tertiary-fixed-variant: #065f46;
+
+  /* Precision Crisp Slate Borders */
+  --sys-outline: #cbd5e1;
+  --sys-outline-variant: #e2e8f0;
+  --sys-surface-tint: #0055ff;
+
+  --sys-error: #dc2626;
+  --sys-error-container: #fee2e2;
+  --sys-on-error: #ffffff;
+  --sys-on-error-container: #7f1d1d;
+}
+
+:root[data-theme="cyber"],
+:root[data-theme="dark"],
+:root.dark {
+  /* ==========================================================================
+     ALTERNATIVE THEME: "OBSIDIAN CYBER" (Ultra-High Contrast Sovereign Dark)
+     Inspired by Linear, Vercel, Stripe & the official MIHORA 3D Royal Emblem
+     ========================================================================== */
+  --sys-background: #030712;
+  --sys-surface-container-lowest: #020611;
+  --sys-surface: #050b18;
+  --sys-surface-container-low: #081226;
+  --sys-surface-container: #0d1a36;
+  --sys-surface-container-high: #132448;
+  --sys-surface-container-highest: #1a2f5a;
+  --sys-surface-dim: #030712;
+  --sys-surface-bright: #1f376a;
+  --sys-surface-variant: #101e3d;
+
+  /* Typography - Ultra-crisp slate whites and silvers */
+  --sys-on-background: #f8fafc;
+  --sys-on-surface: #f8fafc;
+  --sys-on-surface-variant: #94a3b8;
+  --sys-inverse-surface: #f1f5f9;
+  --sys-inverse-on-surface: #090d16;
+
+  /* Primary Accent: Radiant Electric Royal Cobalt */
+  --sys-primary: #3b82f6;
+  --sys-primary-container: #1d4ed8;
+  --sys-on-primary: #ffffff;
+  --sys-on-primary-container: #dbeafe;
+  --sys-primary-fixed: #60a5fa;
+  --sys-primary-fixed-dim: #2563eb;
+  --sys-on-primary-fixed: #020617;
+  --sys-on-primary-fixed-variant: #1e40af;
+  --sys-inverse-primary: #0066ff;
+
+  /* Secondary Accent: Luminous Cyber Aqua / Neon Cyan */
+  --sys-secondary: #00f0ff;
+  --sys-secondary-container: #00d2ff;
+  --sys-on-secondary: #030712;
+  --sys-on-secondary-container: #041b26;
+  --sys-secondary-fixed: #38bdf8;
+  --sys-secondary-fixed-dim: #0284c7;
+  --sys-on-secondary-fixed: #020617;
+  --sys-on-secondary-fixed-variant: #075985;
+
+  /* Tertiary Accent: Precision Emerald (Telemetry & Security) */
+  --sys-tertiary: #10b981;
+  --sys-tertiary-container: #064e3b;
+  --sys-on-tertiary: #ffffff;
+  --sys-on-tertiary-container: #a7f3d0;
+  --sys-tertiary-fixed: #34d399;
+  --sys-tertiary-fixed-dim: #059669;
+  --sys-on-tertiary-fixed: #022c22;
+  --sys-on-tertiary-fixed-variant: #047857;
+
+  /* Precision Architectural Hairline Outlines */
+  --sys-outline: #1e293b;
+  --sys-outline-variant: #334155;
+  --sys-surface-tint: #3b82f6;
+
+  /* Error & Alerts */
+  --sys-error: #f87171;
+  --sys-error-container: #7f1d1d;
+  --sys-on-error: #ffffff;
+  --sys-on-error-container: #fecaca;
+}
+
+@utility text-label-sm { font-size: 10px; line-height: 14px; font-weight: 600; }
+@utility text-label-lg { font-size: 14px; line-height: 20px; font-weight: 500; }
+@utility text-headline-sm { font-size: 20px; line-height: 28px; font-weight: 600; }
+@utility text-body-sm { font-size: 13px; line-height: 20px; font-weight: 400; }
+@utility text-headline-lg-mobile { font-size: 28px; line-height: 36px; font-weight: 700; }
+@utility text-headline-xl { font-size: 56px; line-height: 64px; font-weight: 800; }
+@utility text-headline-xl-mobile { font-size: 36px; line-height: 44px; font-weight: 800; }
+@utility text-body-lg { font-size: 18px; line-height: 28px; font-weight: 400; }
+@utility text-headline-md { font-size: 28px; line-height: 36px; font-weight: 700; }
+@utility text-label-md { font-size: 12px; line-height: 16px; font-weight: 600; }
+@utility text-headline-lg { font-size: 40px; line-height: 48px; font-weight: 700; }
+@utility text-body-md { font-size: 15px; line-height: 24px; font-weight: 400; }
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes signalFlow {
+  from { stroke-dashoffset: 40; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseRadar {
+  0% { r: 6px; opacity: 0.9; stroke-width: 2px; }
+  50% { opacity: 0.5; }
+  100% { r: 48px; opacity: 0; stroke-width: 0.5px; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+@keyframes shimmerSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes livePulseBeacon {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@utility animate-signal-flow {
+  animation: signalFlow 1.8s linear infinite;
+}
+
+@utility animate-radar {
+  animation: radarSweep 6s linear infinite;
+}
+
+@utility animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+@utility animate-scanline {
+  animation: scanline 8s ease-in-out infinite;
+}
+
+@utility animate-live-beacon {
+  animation: livePulseBeacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Ultra-Crisp Architectural Visual FX */
+.bg-tech-grid {
+  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+:root[data-theme="light"] .bg-tech-grid,
+:root:not(.dark) .bg-tech-grid {
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(0, 240, 255, 0.18) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+:root[data-theme="light"] .bg-tech-dots,
+:root:not(.dark) .bg-tech-dots {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1.2px, transparent 1.2px);
+}
+
+.glass-panel {
+  background: rgba(13, 26, 54, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+:root[data-theme="light"] .glass-panel,
+:root:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(203, 213, 225, 0.7);
+}
+
+.glow-card {
+  position: relative;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme="light"] .glow-card,
+:root:not(.dark) .glow-card {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(203, 213, 225, 0.5);
+}
+
+:root[data-theme="light"] .glow-card:hover,
+:root:not(.dark) .glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 85, 255, 0.12), 0 0 0 1px rgba(0, 85, 255, 0.35);
+}
+
+:root.dark .glow-card,
+:root[data-theme="cyber"] .glow-card {
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.6);
+}
+
+:root.dark .glow-card:hover,
+:root[data-theme="cyber"] .glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 45px -10px rgba(0, 102, 255, 0.45), 0 0 1px 1px rgba(0, 240, 255, 0.45);
+}
+
+.luxury-card {
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.neon-border {
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+}
+
+:root[data-theme="light"] .neon-border,
+:root:not(.dark) .neon-border {
+  border: 1px solid rgba(0, 85, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 85, 255, 0.1);
+}
+
+/* SVG animated dash line utility */
+.flow-line {
+  stroke-dasharray: 6, 6;
+  animation: signalFlow 1.4s linear infinite;
+}
+
+.flow-line-reverse {
+  stroke-dasharray: 6, 6;
+  animation: signalFlow 1.4s linear infinite reverse;
+}
+
+/* Premium Gradient Button Utility */
+.btn-primary-gradient {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0055ff 0%, #00d2ff 100%);
+  color: #ffffff;
+  box-shadow: 0 0 28px rgba(0, 102, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-primary-gradient::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%);
+  animation: shimmerSlide 4.5s infinite;
+}
+
+.btn-primary-gradient:hover {
+  background: linear-gradient(135deg, #0066ff 0%, #00f0ff 100%);
+  box-shadow: 0 0 36px rgba(0, 240, 255, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}

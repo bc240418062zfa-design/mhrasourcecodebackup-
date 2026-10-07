@@ -1,0 +1,8 @@
+{
+  "name": "MIHORA.TECH",
+  "description": "MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal, engineers resilient sovereign digital systems, physical datacenter infrastructure, and 24/7 global telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
