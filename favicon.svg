@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <!-- Left Royal Electric Blue 3D Gradient -->
+    <linearGradient id="favLeftFacet" x1="60" y1="86" x2="200" y2="286" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0080FF"/>
+      <stop offset="50%" stop-color="#0055E5"/>
+      <stop offset="100%" stop-color="#0035A0"/>
+    </linearGradient>
+
+    <!-- Right Midnight Deep Navy 3D Gradient -->
+    <linearGradient id="favNavyFacet" x1="340" y1="86" x2="200" y2="286" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F4299"/>
+      <stop offset="55%" stop-color="#082559"/>
+      <stop offset="100%" stop-color="#04122C"/>
+    </linearGradient>
+
+    <!-- Electric Cyan/Blue Outer Glow for Dark & Light Tab Visibility -->
+    <filter id="favGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.5" result="nodeBlur" />
+      <feMerge>
+        <feMergeNode in="nodeBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- High-Contrast Subtle Glow Background for Universal Browser Tab Clarity -->
+  <g filter="url(#favGlow)" opacity="0.45">
+    <polygon points="60,86 200,246 150,291 20,136" fill="#0066FF" />
+    <polygon points="340,86 200,246 250,291 380,136" fill="#0066FF" />
+    <polygon points="20,136 60,86 60,306 20,266" fill="#0055FF" />
+    <polygon points="380,136 340,86 340,306 380,266" fill="#0055FF" />
+  </g>
+
+  <!-- --- MIHORA 3D GEOMETRIC M STRUCTURE (EXACT REAL BRAND LOGO) --- -->
+  <g id="mihora-m-structure">
+    <!-- Left Wing Facet (Bright Royal Electric Blue) -->
+    <polygon points="60,86 200,246 150,291 20,136" fill="url(#favLeftFacet)" />
+    
+    <!-- Left Vertical Deep Navy Pillar -->
+    <polygon points="20,136 60,86 60,306 20,266" fill="#061A3C" stroke="#0055FF" stroke-width="2" stroke-opacity="0.4" />
+
+    <!-- Left Center Inner Fold -->
+    <polygon points="150,291 200,246 200,314 150,291" fill="#003794" />
+
+    <!-- Right Wing Facet (Deep Ocean Midnight Blue) -->
+    <polygon points="340,86 200,246 250,291 380,136" fill="url(#favNavyFacet)" />
+
+    <!-- Right Vertical Dark Pillar with Subtle Highlighting for Dark Mode Tabs -->
+    <polygon points="380,136 340,86 340,306 380,266" fill="#020C1F" stroke="#0077FF" stroke-width="3" stroke-opacity="0.65" />
+    
+    <!-- Right Center Inner Fold -->
+    <polygon points="250,291 200,246 200,314 250,291" fill="#020917" />
+  </g>
+
+  <!-- --- CONSTELLATION NETWORK MESH (WHITE INTERCONNECTED DATA NODES) --- -->
+  <g id="mihora-constellation-network" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Fiber & Data Routing lines -->
+    <line x1="50" y1="191" x2="85" y2="174" opacity="0.95" />
+    <line x1="85" y1="174" x2="135" y2="211" opacity="0.95" />
+    <line x1="135" y1="211" x2="175" y2="256" opacity="0.95" />
+    <line x1="85" y1="174" x2="110" y2="251" opacity="0.85" />
+    <line x1="110" y1="251" x2="175" y2="256" opacity="0.9" />
+    <line x1="175" y1="256" x2="200" y2="214" opacity="0.95" />
+    <line x1="200" y1="214" x2="265" y2="174" opacity="0.95" />
+    <line x1="265" y1="174" x2="285" y2="251" opacity="0.9" />
+    <line x1="200" y1="214" x2="285" y2="251" opacity="0.95" />
+    <line x1="285" y1="251" x2="350" y2="191" opacity="0.95" />
+    <line x1="265" y1="174" x2="350" y2="191" opacity="0.85" />
+
+    <!-- Core Glowing White/Cyan Data Terminals -->
+    <circle cx="50" cy="191" r="7" fill="#FFFFFF" />
+    <circle cx="85" cy="174" r="8" fill="#FFFFFF" />
+    <circle cx="110" cy="251" r="7" fill="#FFFFFF" />
+    <circle cx="135" cy="211" r="8" fill="#FFFFFF" />
+    <circle cx="175" cy="256" r="9.5" fill="#FFFFFF" filter="url(#nodeGlow)" />
+    <circle cx="200" cy="214" r="9" fill="#FFFFFF" />
+    <circle cx="265" cy="174" r="9.5" fill="#FFFFFF" filter="url(#nodeGlow)" />
+    <circle cx="285" cy="251" r="8" fill="#FFFFFF" />
+    <circle cx="350" cy="191" r="7" fill="#FFFFFF" />
+  </g>
+</svg>

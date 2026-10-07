@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en" class="light" data-theme="light">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FRDMX9QZH8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FRDMX9QZH8');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('mihora-theme');
+          if (saved === 'cyber' || saved === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-theme', 'cyber');
+          } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- GitHub Pages Single Page App Redirect Decoder & Legacy Hash URL Upgrader -->
+    <script>
+      (function(l) {
+        // 1. Decode redirect from 404.html if served by GitHub Pages for deep routes
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+        // 2. Automatically upgrade legacy hash-based URLs (e.g. /#/services) into clean canonical paths
+        if (l.hash && l.hash.indexOf('#/') === 0) {
+          var cleanRoute = l.hash.substring(2);
+          if (cleanRoute) {
+            window.history.replaceState(null, null, '/' + cleanRoute + l.search);
+          }
+        }
+      }(window.location));
+    </script>
+
+    <!-- Primary SEO Meta Tags (Founders & Brand Heavy) -->
+    <meta name="google-site-verification" content="googlefb6d7fd888a3a4a2" />
+    <meta name="yandex-verification" content="010d67f377d240d4" />
+    <title>Live Infrastructure Telemetry & Status | MIHORA.TECH</title>
+    <meta name="title" content="Live Infrastructure Telemetry & Status | MIHORA.TECH" />
+    <meta name="description" content="Real-time telemetry, 99.999% SLA uptime metrics, optical DWDM health, and NOC alert feeds across London and Islamabad hubs." />
+    <meta name="keywords" content="sovereign engineering, datacenter infrastructure, MIHORA, MIHORA.TECH, M. Matti ul Hasnain, Omema Iqbal, founded by M. Matti ul Hasnain and Omema Iqbal, Matti ul Hasnain, Omema, physical datacenter, digital infrastructure, cloud architecture, Pakistan tech, systems engineering, site reliability engineering, network cabling, data center deployment, enterprise automation, 24/7 telemetry" />
+    <meta name="author" content="M. Matti ul Hasnain and Omema Iqbal (MIHORA.TECH Founders)" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="yandex" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="canonical" href="https://mihora.tech/status" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MIHORA.TECH" />
+    <meta property="og:url" content="https://mihora.tech/status" />
+    <meta property="og:title" content="Live Infrastructure Telemetry & Status | MIHORA.TECH" />
+    <meta property="og:description" content="Real-time telemetry, 99.999% SLA uptime metrics, optical DWDM health, and NOC alert feeds across London and Islamabad hubs." />
+    <meta property="og:image" content="https://mihora.tech/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MIHORA.TECH - Founded by M. Matti ul Hasnain and Omema Iqbal" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mihoratech" />
+    <meta name="twitter:creator" content="@mihoratech" />
+    <meta name="twitter:url" content="https://mihora.tech/status" />
+    <meta name="twitter:title" content="Live Infrastructure Telemetry & Status | MIHORA.TECH" />
+    <meta name="twitter:description" content="Real-time telemetry, 99.999% SLA uptime metrics, optical DWDM health, and NOC alert feeds across London and Islamabad hubs." />
+    <meta name="twitter:image" content="https://mihora.tech/og-image.svg" />
+
+    <!-- Favicon & Tab Bar Brand Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#050C1F" />
+    
+    <!-- Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org Structured Data (JSON-LD) with Explicit Founders Entity Graph for Google Knowledge Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://mihora.tech/#founder-hasnain",
+          "name": "M. Matti ul Hasnain",
+          "jobTitle": "Co-Founder & Principal Systems Architect",
+          "worksFor": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "sameAs": [
+            "https://mihora.tech/company",
+            "https://mihora.tech/docs",
+            "https://mihora.tech/faq"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://mihora.tech/#founder-omema",
+          "name": "Omema Iqbal",
+          "jobTitle": "Co-Founder & Operations Director",
+          "worksFor": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "sameAs": [
+            "https://mihora.tech/company",
+            "https://mihora.tech/docs",
+            "https://mihora.tech/faq"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://mihora.tech/#organization",
+          "name": "MIHORA.TECH",
+          "alternateName": ["MIHORA", "MIHORA TECH", "MIHORA.TECH (PRIVATE) LIMITED"],
+          "url": "https://mihora.tech",
+          "logo": "https://mihora.tech/mihora-logo.svg",
+          "image": "https://mihora.tech/og-image.svg",
+          "description": "MIHORA.TECH was founded by M. Matti ul Hasnain and Omema Iqbal to engineer sovereign digital systems, physical datacenter infrastructure, and 24/7 global telemetry operations.",
+          "founder": [
+            {
+              "@id": "https://mihora.tech/#founder-hasnain"
+            },
+            {
+              "@id": "https://mihora.tech/#founder-omema"
+            }
+          ],
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "M. Matti ul Hasnain",
+              "jobTitle": "Founder & Principal Systems Architect"
+            },
+            {
+              "@type": "Person",
+              "name": "Omema Iqbal",
+              "jobTitle": "Founder & Operations Director"
+            }
+          ],
+          "knowsAbout": [
+            "Digital Engineering",
+            "Physical Datacenter Infrastructure",
+            "Network Engineering",
+            "Fiber Optic Fusion Splicing",
+            "Site Reliability Engineering",
+            "SCADA Systems",
+            "Automation Pipelines",
+            "Cloud Systems Architecture"
+          ],
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "United Kingdom"
+            },
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "Islamabad",
+              "addressCountry": "Pakistan"
+            }
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "Executive Inquiries",
+              "email": "hr@mihora.tech",
+              "url": "https://mihora.tech/contact"
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "Engineering Architecture Dispatch",
+              "email": "dispatch@mihora.tech",
+              "url": "https://mihora.tech/contact"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://mihora.tech/#website",
+          "url": "https://mihora.tech",
+          "name": "MIHORA.TECH",
+          "publisher": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "description": "Sovereign Engineering & Global Systems Architecture. Founded by M. Matti ul Hasnain and Omema Iqbal."
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://mihora.tech/#service",
+          "name": "MIHORA.TECH Sovereign Engineering Services",
+          "provider": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "serviceType": [
+            "Digital Systems Engineering",
+            "Physical Infrastructure Deployment",
+            "Automation & Intelligence",
+            "Field Engineering & Fiber Verification",
+            "Managed Reliability & 24/7 SRE"
+          ],
+          "areaServed": "Global",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Engineering Capabilities",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Digital Engineering",
+                  "description": "Architected web, mobile, distributed backend microservices"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Physical Infrastructure",
+                  "description": "Server racks, SAN storage, cabling, enterprise switches, and fiber infrastructure"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Automation & Intelligence",
+                  "description": "Workflow orchestration, telemetry pipelines, and LLM tool routing"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mihora.tech/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is MIHORA.TECH and what does the company do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH is an international sovereign engineering organization specializing in end-to-end mission-critical digital systems, physical datacenter infrastructure, event-driven automation pipelines, and 24/7 managed site reliability engineering (SRE)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who founded MIHORA.TECH?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH was founded by M. Matti ul Hasnain (Co-Founder & Principal Systems Architect) and Omema Iqbal (Co-Founder & Operations Director)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is MIHORA.TECH located?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH operates dual command hubs located in London, United Kingdom and Islamabad, Pakistan, delivering 24/7 follow-the-sun continuous telemetry and sovereign datacenter engineering worldwide."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mihora.tech/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mihora.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sovereign Engineering",
+              "item": "https://mihora.tech/engineering"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Datacenter Infrastructure",
+              "item": "https://mihora.tech/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Founders & Company",
+              "item": "https://mihora.tech/company"
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://mihora.tech/#navigation",
+          "name": "Primary Site Navigation",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Home",
+              "description": "MIHORA.TECH official home - Sovereign engineering and digital infrastructure",
+              "url": "https://mihora.tech/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Engineering",
+              "description": "9-Layer sovereign stack, physical datacenter racks, and hardware integration",
+              "url": "https://mihora.tech/engineering"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Services",
+              "description": "Datacenter infrastructure, digital engineering, automation, and 24/7 SRE",
+              "url": "https://mihora.tech/services"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Solutions",
+              "description": "Mission-critical architectures, zero downtime failover, and sovereign compliance",
+              "url": "https://mihora.tech/solutions"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Industries",
+              "description": "Sovereign systems for banking, telecommunications, energy, and defense",
+              "url": "https://mihora.tech/industries"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Company & Founders",
+              "description": "Executive leadership: founders M. Matti ul Hasnain & Omema Iqbal, and dual hubs",
+              "url": "https://mihora.tech/company"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 7,
+              "name": "Insights",
+              "description": "Engineering papers, distributed systems benchmarks, and technical whitepapers",
+              "url": "https://mihora.tech/insights"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 8,
+              "name": "Documentation",
+              "description": "Technical architecture codex, datacenter hardware specs, and fiber standards",
+              "url": "https://mihora.tech/docs"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 9,
+              "name": "FAQ",
+              "description": "Knowledge base and official answers regarding MIHORA.TECH and leadership",
+              "url": "https://mihora.tech/faq"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 10,
+              "name": "Careers",
+              "description": "Engineering cadre careers across systems design, hardware, and site reliability",
+              "url": "https://mihora.tech/careers"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 11,
+              "name": "Contact",
+              "description": "Global command hubs in London (UK) and Islamabad (Pakistan) dispatch",
+              "url": "https://mihora.tech/contact"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 12,
+              "name": "Status",
+              "description": "Live infrastructure telemetry, 99.999% SLA uptime, PUE, and incident log",
+              "url": "https://mihora.tech/status"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 13,
+              "name": "Legal",
+              "description": "Sovereign compliance, data governance, SOC 2 / ISO 27001, and terms",
+              "url": "https://mihora.tech/legal"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- Clarity tracking code for https://mihora.tech/ -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ym99szo8qf");
+    </script>
+    <script type="module" crossorigin src="/assets/index-BFdwR1Hx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-6r0KJNHU.css">
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary-fixed">
+    <div id="root"></div>
+    
+    <noscript>
+      <div style="padding: 24px; font-family: sans-serif; max-width: 900px; margin: 0 auto; line-height: 1.6;">
+        <h1>MIHORA.TECH — Infrastructure Mission Control & Telemetry</h1>
+        <p><strong>Founded by M. Matti ul Hasnain &amp; Omema Iqbal</strong></p>
+        <p>Live health status, PUE, network jitter, and incident logs across London (UK) and Islamabad (PK) command clusters.</p>
+        <p><a href="https://mihora.tech/">Return to MIHORA.TECH Home</a> | <a href="mailto:hr@mihora.tech">hr@mihora.tech</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#090d16" />
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" stroke="#0052ea" stroke-width="1.5" stroke-opacity="0.4" />
+  <path d="M32 6L54 18V46L32 58L10 46V18L32 6Z" stroke="#00e5ff" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="2 3" />
+  <path d="M16 46V20L32 34L48 20V46" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M16 46V20L32 34L48 20V46" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="32,30 36,34 32,38 28,34" fill="#00e5ff" />
+  <circle cx="32" cy="34" r="1.5" fill="#ffffff" />
+  <circle cx="16" cy="20" r="2.5" fill="#00e5ff" />
+  <circle cx="48" cy="20" r="2.5" fill="#0052ea" />
+  <circle cx="16" cy="46" r="2" fill="#00e5ff" opacity="0.8" />
+  <circle cx="48" cy="46" r="2" fill="#0052ea" opacity="0.8" />
+</svg>

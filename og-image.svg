@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="50%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0d1424"/>
+    </linearGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#0052ea"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1b253b" stroke-width="1" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Decorative Circuit lines -->
+  <path d="M 100 120 L 300 120 L 380 200 L 1100 200" stroke="#00d2ff" stroke-width="1.5" stroke-opacity="0.25" fill="none"/>
+  <circle cx="380" cy="200" r="4" fill="#00d2ff" fill-opacity="0.6"/>
+  <path d="M 150 510 L 450 510 L 520 440 L 1050 440" stroke="#0052ea" stroke-width="1.5" stroke-opacity="0.3" fill="none"/>
+  <circle cx="520" cy="440" r="4" fill="#0052ea" fill-opacity="0.6"/>
+
+  <!-- Sovereign Geometric Logo Mark -->
+  <g transform="translate(100, 200)">
+    <rect width="130" height="130" rx="28" fill="#111827" stroke="url(#neon)" stroke-width="3"/>
+    <path d="M 32 94 V 38 L 65 68 L 98 38 V 94" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 32 94 V 38 L 65 68 L 98 38 V 94" stroke="#00d2ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="65,60 72,68 65,76 58,68" fill="#00d2ff"/>
+    <circle cx="65" cy="68" r="3" fill="#ffffff"/>
+    <circle cx="32" cy="38" r="5" fill="#00d2ff"/>
+    <circle cx="98" cy="38" r="5" fill="#0052ea"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="270" y="270" font-family="'Space Grotesk', system-ui, sans-serif" font-size="72" font-weight="800" fill="#ffffff" letter-spacing="-1">
+    MIHORA<tspan fill="#00d2ff">.TECH</tspan>
+  </text>
+  <text x="270" y="320" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="600" fill="#00d2ff" letter-spacing="4">
+    // SOVEREIGN ENGINEERING &amp; CLOUD ARCHITECTURE
+  </text>
+
+  <!-- Tagline & Capabilities -->
+  <text x="100" y="420" font-family="'Hanken Grotesk', system-ui, sans-serif" font-size="30" font-weight="400" fill="#e1e2ec" letter-spacing="0.5">
+    Technology Without Boundaries. Digital Systems. Physical Infrastructure. Global Delivery.
+  </text>
+
+  <!-- Meta Badges -->
+  <g transform="translate(100, 480)">
+    <rect width="200" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
+    <text x="100" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#a4c8ff" text-anchor="middle">
+      FULL-STACK SYSTEMS
+    </text>
+  </g>
+  <g transform="translate(320, 480)">
+    <rect width="220" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
+    <text x="110" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#a4c8ff" text-anchor="middle">
+      PHYSICAL INFRASTRUCTURE
+    </text>
+  </g>
+  <g transform="translate(560, 480)">
+    <rect width="240" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
+    <text x="120" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#00d2ff" text-anchor="middle">
+      24/7 GLOBAL TELEMETRY
+    </text>
+  </g>
+</svg>
