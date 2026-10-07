@@ -78,7 +78,7 @@
 :root[data-theme="titanium"],
 :root[data-theme="desert"] {
   /* ==========================================================================
-     PRIMARY DEFAULT THEME: "TITANIUM DAYLIGHT" (Architectural Luxury White)
+     PRIMARY DEFAULT THEME: "SOVEREIGN DAYLIGHT" (Architectural Luxury Titanium)
      Clean, crisp executive daylight mode like Apple, Stripe, and Linear
      ========================================================================== */
   --sys-background: #f8fafc;
@@ -93,24 +93,24 @@
   --sys-surface-variant: #e2e8f0;
 
   /* High-legibility executive typography */
-  --sys-on-background: #0f172a;
-  --sys-on-surface: #0f172a;
+  --sys-on-background: #090d16;
+  --sys-on-surface: #090d16;
   --sys-on-surface-variant: #334155;
-  --sys-inverse-surface: #0f172a;
+  --sys-inverse-surface: #090d16;
   --sys-inverse-on-surface: #f8fafc;
 
-  /* Executive Deep Cobalt Primary */
-  --sys-primary: #0055ff;
-  --sys-primary-container: #0040c0;
+  /* Executive Sovereign Royal Sapphire */
+  --sys-primary: #1d4ed8;
+  --sys-primary-container: #1e40af;
   --sys-on-primary: #ffffff;
   --sys-on-primary-container: #eff6ff;
   --sys-primary-fixed: #2563eb;
   --sys-primary-fixed-dim: #1d4ed8;
   --sys-on-primary-fixed: #ffffff;
-  --sys-on-primary-fixed-variant: #1e3a8a;
+  --sys-on-primary-fixed-variant: #172554;
   --sys-inverse-primary: #3b82f6;
 
-  /* Vibrant Sapphire / Sky Cyan Secondary */
+  /* Refined Cerulean Secondary */
   --sys-secondary: #0284c7;
   --sys-secondary-container: #0369a1;
   --sys-on-secondary: #ffffff;
@@ -120,7 +120,7 @@
   --sys-on-secondary-fixed: #ffffff;
   --sys-on-secondary-fixed-variant: #075985;
 
-  /* Precision Forest Green */
+  /* Precision Sovereign Emerald */
   --sys-tertiary: #059669;
   --sys-tertiary-container: #064e3b;
   --sys-on-tertiary: #ffffff;
@@ -133,7 +133,7 @@
   /* Precision Crisp Slate Borders */
   --sys-outline: #cbd5e1;
   --sys-outline-variant: #e2e8f0;
-  --sys-surface-tint: #0055ff;
+  --sys-surface-tint: #1d4ed8;
 
   --sys-error: #dc2626;
   --sys-error-container: #fee2e2;
@@ -145,28 +145,28 @@
 :root[data-theme="dark"],
 :root.dark {
   /* ==========================================================================
-     ALTERNATIVE THEME: "OBSIDIAN CYBER" (Ultra-High Contrast Sovereign Dark)
-     Inspired by Linear, Vercel, Stripe & the official MIHORA 3D Royal Emblem
+     ALTERNATIVE THEME: "OBSIDIAN SOVEREIGN" (Ultra-Luxury Deep Space Titanium)
+     Inspired by Linear, Vercel, Apple Pro & the official MIHORA 3D Royal Emblem
      ========================================================================== */
-  --sys-background: #030712;
-  --sys-surface-container-lowest: #020611;
-  --sys-surface: #050b18;
-  --sys-surface-container-low: #081226;
-  --sys-surface-container: #0d1a36;
-  --sys-surface-container-high: #132448;
-  --sys-surface-container-highest: #1a2f5a;
-  --sys-surface-dim: #030712;
-  --sys-surface-bright: #1f376a;
-  --sys-surface-variant: #101e3d;
+  --sys-background: #05070e;
+  --sys-surface-container-lowest: #030408;
+  --sys-surface: #080b14;
+  --sys-surface-container-low: #0c101c;
+  --sys-surface-container: #101626;
+  --sys-surface-container-high: #161e32;
+  --sys-surface-container-highest: #1d2740;
+  --sys-surface-dim: #05070e;
+  --sys-surface-bright: #222d48;
+  --sys-surface-variant: #12192b;
 
-  /* Typography - Ultra-crisp slate whites and silvers */
+  /* Typography - Ultra-crisp platinum and silver */
   --sys-on-background: #f8fafc;
   --sys-on-surface: #f8fafc;
   --sys-on-surface-variant: #94a3b8;
   --sys-inverse-surface: #f1f5f9;
-  --sys-inverse-on-surface: #090d16;
+  --sys-inverse-on-surface: #05070e;
 
-  /* Primary Accent: Radiant Electric Royal Cobalt */
+  /* Primary Accent: Radiant Sovereign Royal Cobalt */
   --sys-primary: #3b82f6;
   --sys-primary-container: #1d4ed8;
   --sys-on-primary: #ffffff;
@@ -175,19 +175,19 @@
   --sys-primary-fixed-dim: #2563eb;
   --sys-on-primary-fixed: #020617;
   --sys-on-primary-fixed-variant: #1e40af;
-  --sys-inverse-primary: #0066ff;
+  --sys-inverse-primary: #2563eb;
 
-  /* Secondary Accent: Luminous Cyber Aqua / Neon Cyan */
-  --sys-secondary: #00f0ff;
-  --sys-secondary-container: #00d2ff;
-  --sys-on-secondary: #030712;
-  --sys-on-secondary-container: #041b26;
-  --sys-secondary-fixed: #38bdf8;
-  --sys-secondary-fixed-dim: #0284c7;
-  --sys-on-secondary-fixed: #020617;
+  /* Secondary Accent: Celestial Sky Sapphire */
+  --sys-secondary: #38bdf8;
+  --sys-secondary-container: #0284c7;
+  --sys-on-secondary: #05070e;
+  --sys-on-secondary-container: #0c263c;
+  --sys-secondary-fixed: #7dd3fc;
+  --sys-secondary-fixed-dim: #38bdf8;
+  --sys-on-secondary-fixed: #030712;
   --sys-on-secondary-fixed-variant: #075985;
 
-  /* Tertiary Accent: Precision Emerald (Telemetry & Security) */
+  /* Tertiary Accent: Sovereign Precision Emerald */
   --sys-tertiary: #10b981;
   --sys-tertiary-container: #064e3b;
   --sys-on-tertiary: #ffffff;
@@ -198,8 +198,8 @@
   --sys-on-tertiary-fixed-variant: #047857;
 
   /* Precision Architectural Hairline Outlines */
-  --sys-outline: #1e293b;
-  --sys-outline-variant: #334155;
+  --sys-outline: rgba(255, 255, 255, 0.08);
+  --sys-outline-variant: rgba(56, 189, 248, 0.16);
   --sys-surface-tint: #3b82f6;
 
   /* Error & Alerts */
@@ -318,40 +318,41 @@
 
 /* Ultra-Crisp Architectural Visual FX */
 .bg-tech-grid {
-  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 :root[data-theme="light"] .bg-tech-grid,
 :root:not(.dark) .bg-tech-grid {
-  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
 }
 
 .bg-tech-dots {
-  background-image: radial-gradient(rgba(0, 240, 255, 0.18) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 :root[data-theme="light"] .bg-tech-dots,
 :root:not(.dark) .bg-tech-dots {
-  background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(2, 132, 199, 0.1) 1px, transparent 1px);
 }
 
 .glass-panel {
-  background: rgba(13, 26, 54, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(56, 189, 248, 0.18);
+  background: rgba(8, 11, 20, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 :root[data-theme="light"] .glass-panel,
 :root:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(203, 213, 225, 0.7);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.04);
 }
 
 .glow-card {
@@ -361,24 +362,24 @@
 
 :root[data-theme="light"] .glow-card,
 :root:not(.dark) .glow-card {
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(203, 213, 225, 0.5);
+  box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(226, 232, 240, 0.7);
 }
 
 :root[data-theme="light"] .glow-card:hover,
 :root:not(.dark) .glow-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(0, 85, 255, 0.12), 0 0 0 1px rgba(0, 85, 255, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(29, 78, 216, 0.09), 0 0 0 1px rgba(29, 78, 216, 0.25);
 }
 
 :root.dark .glow-card,
 :root[data-theme="cyber"] .glow-card {
-  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 16px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 :root.dark .glow-card:hover,
 :root[data-theme="cyber"] .glow-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 45px -10px rgba(0, 102, 255, 0.45), 0 0 1px 1px rgba(0, 240, 255, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -10px rgba(59, 130, 246, 0.22), 0 0 0 1px rgba(59, 130, 246, 0.35);
 }
 
 .luxury-card {
@@ -390,17 +391,18 @@
 .luxury-card:hover {
   border-color: var(--color-primary);
   transform: translateY(-3px);
+  box-shadow: 0 12px 30px -8px rgba(37, 99, 235, 0.12);
 }
 
 .neon-border {
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
 }
 
 :root[data-theme="light"] .neon-border,
 :root:not(.dark) .neon-border {
-  border: 1px solid rgba(0, 85, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 85, 255, 0.1);
+  border: 1px solid rgba(29, 78, 216, 0.22);
+  box-shadow: 0 4px 20px rgba(29, 78, 216, 0.08);
 }
 
 /* SVG animated dash line utility */
@@ -414,14 +416,14 @@
   animation: signalFlow 1.4s linear infinite reverse;
 }
 
-/* Premium Gradient Button Utility */
+/* Sovereign Luxury Gradient Button Utility */
 .btn-primary-gradient {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0055ff 0%, #00d2ff 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
   color: #ffffff;
-  box-shadow: 0 0 28px rgba(0, 102, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px -2px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary-gradient::after {
@@ -434,7 +436,7 @@
   background: linear-gradient(
     60deg,
     transparent 20%,
-    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.22) 50%,
     transparent 80%
   );
   transform: translateX(-100%);
@@ -442,7 +444,7 @@
 }
 
 .btn-primary-gradient:hover {
-  background: linear-gradient(135deg, #0066ff 0%, #00f0ff 100%);
-  box-shadow: 0 0 36px rgba(0, 240, 255, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #0284c7 100%);
+  box-shadow: 0 8px 26px -2px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
 }

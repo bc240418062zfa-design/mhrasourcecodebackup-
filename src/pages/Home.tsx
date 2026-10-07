@@ -481,37 +481,37 @@ export default function Home() {
                 <line className="flow-line stroke-secondary stroke-[1.5]" x1="580" x2="800" y1="240" y2="200" strokeDasharray="6,6"></line>
                 
                 {/* Moving Optical Light Pulses */}
-                <circle r="4" fill="#0055ff">
+                <circle r="4" fill="var(--color-primary)">
                   <animate attributeName="cx" values="480;580;480" dur="3.5s" repeatCount="indefinite" />
                   <animate attributeName="cy" values="170;240;170" dur="3.5s" repeatCount="indefinite" />
                 </circle>
-                <circle r="3" fill="#0284c7">
+                <circle r="3" fill="var(--color-secondary)">
                   <animate attributeName="cx" values="580;730;580" dur="4.8s" repeatCount="indefinite" />
                   <animate attributeName="cy" values="240;300;240" dur="4.8s" repeatCount="indefinite" />
                 </circle>
-                <circle r="3" fill="#0055ff">
+                <circle r="3" fill="var(--color-primary)">
                   <animate attributeName="cx" values="480;250;480" dur="5.2s" repeatCount="indefinite" />
                   <animate attributeName="cy" values="170;190;170" dur="5.2s" repeatCount="indefinite" />
                 </circle>
 
                 {/* Concentric Radar Pulse Rings - Pakistan Hub */}
-                <circle cx="580" cy="240" r="15" fill="none" stroke="#0055ff" strokeWidth="1.2">
+                <circle cx="580" cy="240" r="15" fill="none" stroke="var(--color-primary)" strokeWidth="1.2">
                   <animate attributeName="r" values="8;55;70" dur="2.8s" repeatCount="indefinite" />
                   <animate attributeName="opacity" values="0.8;0.2;0" dur="2.8s" repeatCount="indefinite" />
                 </circle>
-                <circle className="opacity-40" cx="580" cy="240" fill="none" r="45" stroke="#0055ff" strokeWidth="0.75"></circle>
+                <circle className="opacity-40" cx="580" cy="240" fill="none" r="45" stroke="var(--color-primary)" strokeWidth="0.75"></circle>
 
                 {/* Concentric Radar Pulse Rings - UK Hub */}
-                <circle cx="480" cy="170" r="12" fill="none" stroke="#0284c7" strokeWidth="1.2">
+                <circle cx="480" cy="170" r="12" fill="none" stroke="var(--color-secondary)" strokeWidth="1.2">
                   <animate attributeName="r" values="6;45;60" dur="3.2s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.8;0.2;0" dur="3.2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.8;0.2;0" dur="2.8s" repeatCount="indefinite" />
                 </circle>
-                <circle className="opacity-40" cx="480" cy="170" fill="none" r="38" stroke="#0284c7" strokeWidth="0.75"></circle>
+                <circle className="opacity-40" cx="480" cy="170" fill="none" r="38" stroke="var(--color-secondary)" strokeWidth="0.75"></circle>
                 
                 {/* UK Hub Node */}
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('LON')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle className="opacity-30 animate-ping" cx="480" cy="170" fill="#0055ff" r="14"></circle>
-                  <circle cx="480" cy="170" fill="#0055ff" r="8"></circle>
+                  <circle className="opacity-30 animate-ping" cx="480" cy="170" fill="var(--color-primary)" r="14"></circle>
+                  <circle cx="480" cy="170" fill="var(--color-primary)" r="8"></circle>
                   <circle cx="480" cy="170" fill="#ffffff" r="3.5"></circle>
                   <text fill="currentColor" className="text-primary font-bold" fontFamily="JetBrains Mono" fontSize="12" fontWeight="700" x="400" y="148">UK HUB: LONDON</text>
                   <text fill="currentColor" className="text-on-surface-variant opacity-80" fontFamily="JetBrains Mono" fontSize="9" x="400" y="160">51.5074° N, 0.1278° W</text>
@@ -519,8 +519,8 @@ export default function Home() {
 
                 {/* Pakistan Hub Node */}
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('HQ')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle className="opacity-30 animate-ping" cx="580" cy="240" fill="#0055ff" r="15"></circle>
-                  <circle cx="580" cy="240" fill="#0055ff" r="8.5"></circle>
+                  <circle className="opacity-30 animate-ping" cx="580" cy="240" fill="var(--color-primary)" r="15"></circle>
+                  <circle cx="580" cy="240" fill="var(--color-primary)" r="8.5"></circle>
                   <circle cx="580" cy="240" fill="#ffffff" r="3.5"></circle>
                   <text fill="currentColor" className="text-primary font-bold" fontFamily="JetBrains Mono" fontSize="12" fontWeight="700" x="596" y="235">PK HUB: ISLAMABAD</text>
                   <text fill="currentColor" className="text-on-surface-variant opacity-80" fontFamily="JetBrains Mono" fontSize="9" x="596" y="247">33.6844° N, 73.0479° E</text>
@@ -528,19 +528,19 @@ export default function Home() {
 
                 {/* Regional Gateways */}
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('DXB')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle cx="520" cy="280" fill="#0284c7" r="5.5"></circle>
+                  <circle cx="520" cy="280" fill="var(--color-secondary)" r="5.5"></circle>
                   <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="532" y="285">DUBAI (GCC)</text>
                 </g>
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('SIN')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle cx="730" cy="300" fill="#0284c7" r="5.5"></circle>
+                  <circle cx="730" cy="300" fill="var(--color-secondary)" r="5.5"></circle>
                   <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="742" y="305">SINGAPORE (APAC)</text>
                 </g>
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('NYC')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle cx="250" cy="190" fill="#0055ff" r="5.5"></circle>
+                  <circle cx="250" cy="190" fill="var(--color-primary)" r="5.5"></circle>
                   <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="170" y="180">NEW YORK (NA-E)</text>
                 </g>
                 <g className="cursor-pointer group" onClick={() => handleSelectNode('TYO')} onMouseEnter={() => playUiChime('hover')}>
-                  <circle cx="800" cy="200" fill="#0284c7" r="5.5"></circle>
+                  <circle cx="800" cy="200" fill="var(--color-secondary)" r="5.5"></circle>
                   <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="812" y="205">TOKYO (JP)</text>
                 </g>
               </svg>
