@@ -101,10 +101,14 @@
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <meta name="theme-color" content="#050C1F" />
     
-    <!-- Fonts Preconnect -->
+    <!-- Optimized Non-Render-Blocking Fonts Preconnect & Async Load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" />
+    </noscript>
 
     <!-- Schema.org Structured Data (JSON-LD) with Explicit Founders Entity Graph for Google Knowledge Graph -->
     <script type="application/ld+json">
@@ -430,8 +434,10 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "ym99szo8qf");
     </script>
-    <script type="module" crossorigin src="/assets/index-RcHhIoeV.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DiK1MjJV.css">
+    <script type="module" crossorigin src="/assets/index-BueyG5Ns.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-core-6daWBSg7.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-framework-HSwI2q0m.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BWgzeWto.css">
   </head>
   <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary-fixed">
     <div id="root"></div>
