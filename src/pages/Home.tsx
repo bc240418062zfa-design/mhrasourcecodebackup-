@@ -672,7 +672,7 @@ export default function Home() {
 
               <div className="flex items-center justify-between">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-primary/40 shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                  <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" className="w-full h-full object-cover" />
+                  <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col items-end">
                   <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
@@ -713,7 +713,7 @@ export default function Home() {
 
               <div className="flex items-center justify-between">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-secondary/40 shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                  <img src="/founder-omema.jpg" alt="Omema Iqbal" className="w-full h-full object-cover" />
+                  <img src="/founder-omema.jpg" alt="Omema Iqbal" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col items-end">
                   <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">

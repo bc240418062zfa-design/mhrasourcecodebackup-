@@ -676,9 +676,9 @@ Summary: ${article.summary}`;
               <div className="space-y-space-md pt-space-xs">
                 {activeArticle.sections.map((sec, idx) => (
                   <div key={idx} className="space-y-1.5">
-                    <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold">
+                    <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
                       {sec.heading}
-                    </h4>
+                    </h3>
                     <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                       {sec.body}
                     </p>

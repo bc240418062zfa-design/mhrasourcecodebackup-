@@ -66,7 +66,7 @@ export default function Company() {
               <div className="relative z-10 space-y-space-md">
                 <div className="flex items-center justify-between">
                   <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-secondary/40 shadow-[0_0_15px_rgba(0,210,255,0.2)] shrink-0">
-                    <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" className="w-full h-full object-cover" />
+                    <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Principal Architect
@@ -97,7 +97,7 @@ export default function Company() {
               <div className="relative z-10 space-y-space-md">
                 <div className="flex items-center justify-between">
                   <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-primary/40 shadow-[0_0_15px_rgba(0,102,255,0.2)] shrink-0">
-                    <img src="/founder-omema.jpg" alt="Omema Iqbal" className="w-full h-full object-cover" />
+                    <img src="/founder-omema.jpg" alt="Omema Iqbal" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Operations Director
@@ -128,9 +128,9 @@ export default function Company() {
             <div className="flex items-center gap-3 text-left">
               <Award className="text-secondary shrink-0" size={28} />
               <div>
-                <h4 className="font-headline-xs text-headline-xs font-bold text-on-surface uppercase">
+                <h3 className="font-headline-xs text-headline-xs font-bold text-on-surface uppercase">
                   Founded with Deterministic Governance
-                </h4>
+                </h3>
                 <p className="font-body-xs text-body-xs text-on-surface-variant">
                   Registered private enterprise delivering mission-critical technology solutions globally.
                 </p>

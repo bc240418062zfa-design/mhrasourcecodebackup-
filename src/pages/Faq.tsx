@@ -245,9 +245,9 @@ export default function Faq() {
               <Award size={16} />
               <span>Sovereign Executive Stewardship</span>
             </div>
-            <h4 className="font-headline-sm text-xl font-extrabold text-on-surface">
+            <h3 className="font-headline-sm text-xl font-extrabold text-on-surface">
               Need Direct Inquiries with Founders or Architectural Leadership?
-            </h4>
+            </h3>
             <p className="text-sm text-on-surface-variant max-w-xl">
               Connect with M. Matti ul Hasnain (Principal Architect) or Omema Iqbal (Operations Director) for sovereign datacenter deployments, enterprise RFPs, or technical governance.
             </p>

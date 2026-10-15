@@ -216,10 +216,11 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="font-label-sm text-label-sm uppercase font-mono text-on-surface-variant block">
+                      <label htmlFor="discipline-select" className="font-label-sm text-label-sm uppercase font-mono text-on-surface-variant block">
                         Primary Discipline
                       </label>
                       <select
+                        id="discipline-select"
                         name="discipline"
                         value={formData.discipline}
                         onChange={handleChange}
@@ -236,10 +237,11 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="font-label-sm text-label-sm uppercase font-mono text-on-surface-variant block">
+                    <label htmlFor="budget-select" className="font-label-sm text-label-sm uppercase font-mono text-on-surface-variant block">
                       Target Investment / Scope Scale
                     </label>
                     <select
+                      id="budget-select"
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}

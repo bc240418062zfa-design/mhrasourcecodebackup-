@@ -83,7 +83,11 @@ export function SEOHead({ title, description, keywords, canonicalPath }: SEOProp
   const finalDescription = description || config.description;
   const finalKeywords = keywords || config.keywords || 'MIHORA, MIHORA.TECH, M. Matti ul Hasnain, Omema Iqbal, sovereign engineering, digital infrastructure';
   const cleanPath = canonicalPath || currentPath;
-  const finalCanonical = `https://mihora.tech${cleanPath.startsWith('/') ? cleanPath : '/' + cleanPath}`;
+  let formattedPath = cleanPath.startsWith('/') ? cleanPath : '/' + cleanPath;
+  if (formattedPath !== '/' && !formattedPath.endsWith('/')) {
+    formattedPath += '/';
+  }
+  const finalCanonical = `https://mihora.tech${formattedPath}`;
 
   useEffect(() => {
     // 1. Update Document Title
