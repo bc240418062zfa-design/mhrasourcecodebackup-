@@ -279,8 +279,8 @@ export default function Docs() {
             <div className="space-y-3 pb-6 border-b border-outline/15">
               <div className="flex items-center gap-2 font-mono text-xs">
                 <span className="text-secondary uppercase font-bold">{activeChapter.category}</span>
-                <span className="text-outline/60">•</span>
-                <span className="text-on-surface-variant">{activeChapter.readTime} read</span>
+                <span className="text-on-surface-variant font-bold">•</span>
+                <span className="text-on-surface-variant font-semibold">{activeChapter.readTime} read</span>
               </div>
               <h2 className="font-headline-md text-2xl sm:text-3xl font-extrabold text-on-surface">
                 {activeChapter.title}

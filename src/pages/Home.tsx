@@ -357,7 +357,7 @@ export default function Home() {
               {/* Hub Detail Switch View */}
               <div className="p-2.5 rounded-xl bg-surface-container border border-outline/40 flex items-center justify-between">
                 <div>
-                  <div className="text-[10px] font-mono text-outline uppercase font-bold">
+                  <div className="text-[10px] font-mono text-on-surface-variant uppercase font-bold">
                     {activeHubView === 'ISB' ? 'COMMAND AUTHORITY' : 'EMEA HEADQUARTERS'}
                   </div>
                   <div className="text-xs font-bold text-on-surface">
@@ -377,25 +377,25 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-space-xs font-mono text-label-sm">
                 <div className="p-2.5 bg-surface-container rounded-lg border border-outline/30">
-                  <span className="text-outline block text-[10px]">NETWORK QUORUM</span>
+                  <span className="text-on-surface-variant block text-[10px] font-semibold">NETWORK QUORUM</span>
                   <span className="text-primary font-bold">99.998% UPTIME</span>
                 </div>
                 <div className="p-2.5 bg-surface-container rounded-lg border border-outline/30">
-                  <span className="text-outline block text-[10px]">DISPATCH PING</span>
+                  <span className="text-on-surface-variant block text-[10px] font-semibold">DISPATCH PING</span>
                   <span className="text-on-surface font-bold">{livePing} MS LIVE</span>
                 </div>
                 <div className="p-2.5 bg-surface-container rounded-lg border border-outline/30">
-                  <span className="text-outline block text-[10px]">OPTICAL PACKETS</span>
+                  <span className="text-on-surface-variant block text-[10px] font-semibold">OPTICAL PACKETS</span>
                   <span className="text-on-surface font-semibold">{livePackets.toLocaleString()}</span>
                 </div>
                 <div className="p-2.5 bg-surface-container rounded-lg border border-outline/30">
-                  <span className="text-outline block text-[10px]">ENCRYPTION LAYER</span>
+                  <span className="text-on-surface-variant block text-[10px] font-semibold">ENCRYPTION LAYER</span>
                   <span className="text-secondary font-bold">POST-QUANTUM</span>
                 </div>
               </div>
 
               <div className="space-y-1 pt-1">
-                <div className="flex justify-between text-[10px] font-mono text-outline">
+                <div className="flex justify-between text-[10px] font-mono text-on-surface-variant font-semibold">
                   <span>BACKBONE THROUGHPUT CAPACITY</span>
                   <span className="text-primary font-bold">{Math.round((livePing / 25) * 100)}% SATURATION</span>
                 </div>
@@ -678,7 +678,7 @@ export default function Home() {
                   <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Principal Architect
                   </span>
-                  <span className="text-[10px] font-mono text-outline mt-1">COMMAND: UK &amp; PK DUAL-HUB</span>
+                  <span className="text-[10px] font-mono text-on-surface-variant font-semibold mt-1">COMMAND: UK &amp; PK DUAL-HUB</span>
                 </div>
               </div>
 
@@ -719,7 +719,7 @@ export default function Home() {
                   <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Operations Director
                   </span>
-                  <span className="text-[10px] font-mono text-outline mt-1">DIRECTORATE: GLOBAL GOVERNANCE</span>
+                  <span className="text-[10px] font-mono text-on-surface-variant font-semibold mt-1">DIRECTORATE: GLOBAL GOVERNANCE</span>
                 </div>
               </div>
 

@@ -352,9 +352,9 @@ Summary: ${article.summary}`;
                   <span className="font-label-sm text-label-sm text-outline font-mono">PUB_ID: ARCH-2025-09</span>
                   <span className="text-secondary font-mono text-xs font-bold">• 14 MIN READ</span>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-on-surface font-extrabold uppercase pt-space-xs group-hover:text-primary transition-colors">
+                <h2 className="font-headline-md text-headline-md text-on-surface font-extrabold uppercase pt-space-xs group-hover:text-primary transition-colors">
                   Physical Layer Determinism in Distributed Micro-Datacenters
-                </h3>
+                </h2>
                 <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                   An exhaustive architectural evaluation of how thermal harmonic variances and structured optical cable bending radii degrade packet jitter in real-world high-frequency trading and algorithmic routing systems.
                 </p>
@@ -382,9 +382,9 @@ Summary: ${article.summary}`;
                   <div className="font-label-sm text-label-sm text-secondary font-mono font-bold">CASE STUDY // LOGISTICS</div>
                   <ArrowUpRight size={14} className="text-outline group-hover:text-primary transition-colors" />
                 </div>
-                <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                <h2 className="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
                   Sub-Second Barcode Processing on the Edge: 40 Distribution Centers
-                </h4>
+                </h2>
                 <p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
                   How deploying edge compute units reduced API server roundtrips by 92% across a national logistics grid.
                 </p>
@@ -401,9 +401,9 @@ Summary: ${article.summary}`;
                   <div className="font-label-sm text-label-sm text-secondary font-mono font-bold">CASE STUDY // CCTV &amp; FIBER</div>
                   <ArrowUpRight size={14} className="text-outline group-hover:text-primary transition-colors" />
                 </div>
-                <h4 className="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                <h2 className="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
                   Autonomous Surveillance Failover Under Intermittent Power Grids
-                </h4>
+                </h2>
                 <p className="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
                   Engineering hybrid solar-backed battery enclosures for perimeter sensors in extreme climate terrains.
                 </p>
