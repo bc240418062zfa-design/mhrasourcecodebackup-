@@ -7,17 +7,18 @@ const payload = JSON.stringify({
   keyLocation: 'https://mihora.tech/e4b3c2d1a0f9e8d7c6b5a49382716054.txt',
   urlList: [
     'https://mihora.tech/',
-    'https://mihora.tech/docs',
-    'https://mihora.tech/faq',
-    'https://mihora.tech/engineering',
-    'https://mihora.tech/services',
-    'https://mihora.tech/solutions',
-    'https://mihora.tech/industries',
-    'https://mihora.tech/company',
-    'https://mihora.tech/insights',
-    'https://mihora.tech/careers',
-    'https://mihora.tech/contact',
-    'https://mihora.tech/legal'
+    'https://mihora.tech/company/',
+    'https://mihora.tech/faq/',
+    'https://mihora.tech/docs/',
+    'https://mihora.tech/engineering/',
+    'https://mihora.tech/services/',
+    'https://mihora.tech/solutions/',
+    'https://mihora.tech/industries/',
+    'https://mihora.tech/insights/',
+    'https://mihora.tech/careers/',
+    'https://mihora.tech/contact/',
+    'https://mihora.tech/status/',
+    'https://mihora.tech/legal/'
   ]
 });
 

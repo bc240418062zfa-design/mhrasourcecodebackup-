@@ -27,6 +27,18 @@ const FAQ_DATA: FAQItem[] = [
     answer: 'MIHORA.TECH was founded by M. Matti ul Hasnain and Omema Iqbal. M. Matti ul Hasnain serves as Co-Founder & Principal Systems Architect, leading the 9-layer sovereign stack, datacenter hardware topology, optical fiber networking, and low-latency distributed microservices. Omema Iqbal serves as Co-Founder & Operations Director, directing global operations, corporate governance, multi-jurisdiction compliance frameworks, and international enterprise client delivery.'
   },
   {
+    id: 'who-is-matti-ul-hasnain',
+    category: 'Entity & Founders',
+    question: 'Who is M. Matti ul Hasnain (Matti ul Hasnain)?',
+    answer: 'M. Matti ul Hasnain (also known as Matti ul Hasnain, Muhammad Matti ul Hasnain, or Hasnain) is the Co-Founder & Principal Systems Architect of MIHORA.TECH. He leads the architecture of sovereign digital platforms, physical datacenter server deployments, core-alignment fusion fiber splicing, and distributed 24/7 site reliability engineering across the UK and Pakistan command hubs.'
+  },
+  {
+    id: 'who-is-omema-iqbal',
+    category: 'Entity & Founders',
+    question: 'Who is Omema Iqbal?',
+    answer: 'Omema Iqbal (also known as Omema) is the Co-Founder & Operations Director of MIHORA.TECH. She directs global dual-hub operations across London (UK) and Islamabad (Pakistan), international client engagement, ISO 27001 data compliance, and enterprise delivery frameworks.'
+  },
+  {
     id: 'where-is-mihora-located',
     category: 'Global Hubs',
     question: 'Where is MIHORA.TECH located and headquartered?',

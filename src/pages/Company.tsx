@@ -66,7 +66,7 @@ export default function Company() {
               <div className="relative z-10 space-y-space-md">
                 <div className="flex items-center justify-between">
                   <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-secondary/40 shadow-[0_0_15px_rgba(0,210,255,0.2)] shrink-0">
-                    <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                    <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain (Matti ul Hasnain) - Co-Founder & Principal Systems Architect of MIHORA.TECH" title="M. Matti ul Hasnain - MIHORA.TECH Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Principal Architect
@@ -81,7 +81,7 @@ export default function Company() {
                   </p>
                 </div>
                 <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Leading MIHORA.TECH&apos;s global engineering doctrine, sovereign systems infrastructure, hardware telemetry, and low-latency cloud architectures across Pakistan, the UK, and international operational theatres.
+                  <strong>M. Matti ul Hasnain</strong> (also known as <em>Matti ul Hasnain</em> or <em>Muhammad Matti ul Hasnain</em>) leads MIHORA.TECH&apos;s global engineering doctrine, sovereign systems infrastructure, datacenter hardware topologies, and low-latency cloud architectures across Pakistan, the UK, and international operational theatres.
                 </p>
                 <div className="pt-2 border-t border-outline/15 flex flex-wrap items-center gap-2">
                   <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Sovereign Systems</span>
@@ -97,7 +97,7 @@ export default function Company() {
               <div className="relative z-10 space-y-space-md">
                 <div className="flex items-center justify-between">
                   <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-primary/40 shadow-[0_0_15px_rgba(0,102,255,0.2)] shrink-0">
-                    <img src="/founder-omema.jpg" alt="Omema Iqbal" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                    <img src="/founder-omema.jpg" alt="Omema Iqbal (Omema) - Co-Founder & Operations Director of MIHORA.TECH" title="Omema Iqbal - MIHORA.TECH Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </div>
                   <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
                     Co-Founder &bull; Operations Director
@@ -112,7 +112,7 @@ export default function Company() {
                   </p>
                 </div>
                 <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Directing MIHORA.TECH&apos;s dual-hub operational governance, enterprise project alignment, multi-jurisdiction compliance, talent architecture, and cross-hemisphere delivery frameworks.
+                  <strong>Omema Iqbal</strong> (also known as <em>Omema</em>) directs MIHORA.TECH&apos;s dual-hub operational governance, enterprise project alignment, multi-jurisdiction compliance, international client delivery, and strategic organizational logistics.
                 </p>
                 <div className="pt-2 border-t border-outline/15 flex flex-wrap items-center gap-2">
                   <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Global Operations</span>

@@ -10,14 +10,14 @@ interface SEOProps {
 
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords?: string }> = {
   '/': {
-    title: 'MIHORA | Sovereign Engineering & Datacenter Infrastructure',
-    description: 'MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal, engineers resilient digital systems, physical server infrastructure, automation pipelines, and 24/7 global telemetry operations across Pakistan, UK, and worldwide.',
-    keywords: 'sovereign engineering, datacenter infrastructure, MIHORA, MIHORA.TECH, M. Matti ul Hasnain, Omema Iqbal, founded by M. Matti ul Hasnain and Omema Iqbal, Matti ul Hasnain, Omema, physical datacenter, digital infrastructure, cloud architecture',
+    title: 'MIHORA — Sovereign Engineering & Datacenter Infrastructure | Founded by M. Matti ul Hasnain & Omema Iqbal',
+    description: 'MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal, engineers resilient sovereign digital systems, physical datacenter infrastructure, automation pipelines, and 24/7 global telemetry operations across Pakistan, UK, and worldwide.',
+    keywords: 'MIHORA, MIHORA.TECH, MIHORA TECH, Mihora, Mihora Tech, Mihora Technologies, Mihora Company, MIHORA.TECH (PRIVATE) LIMITED, M. Matti ul Hasnain, Omema Iqbal, Matti ul Hasnain, Muhammad Matti ul Hasnain, Hasnain, Omema, founders of MIHORA, who founded MIHORA, sovereign engineering, datacenter infrastructure, physical server deployment, fiber optic fusion splicing, 24/7 telemetry operations, Pakistan tech, UK engineering, London Islamabad dual hub',
   },
   '/company': {
-    title: 'Leadership & Founders | M. Matti ul Hasnain & Omema Iqbal | MIHORA.TECH',
+    title: 'Company & Founders | M. Matti ul Hasnain & Omema Iqbal | MIHORA.TECH',
     description: 'Learn about MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal. Dual engineering hubs across London (UK) and Islamabad (Pakistan) delivering sovereign technology globally.',
-    keywords: 'M. Matti ul Hasnain, Omema Iqbal, MIHORA founders, founded by M. Matti ul Hasnain, Omema Iqbal MIHORA, MIHORA leadership, tech company Pakistan, sovereign systems, dual hub engineering',
+    keywords: 'M. Matti ul Hasnain, Omema Iqbal, Matti ul Hasnain, Muhammad Matti ul Hasnain, Hasnain, Omema, MIHORA founders, founders of MIHORA, who founded MIHORA, MIHORA leadership, MIHORA.TECH, MIHORA TECH, tech company Pakistan, sovereign systems, dual hub engineering',
   },
   '/engineering': {
     title: 'Sovereign Engineering & Datacenter Infrastructure | MIHORA.TECH',

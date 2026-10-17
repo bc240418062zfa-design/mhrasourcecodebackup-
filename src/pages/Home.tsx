@@ -668,7 +668,7 @@ export default function Home() {
 
               <div className="flex items-center justify-between">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-primary/40 shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                  <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain (Matti ul Hasnain) - Co-Founder of MIHORA.TECH" title="M. Matti ul Hasnain - MIHORA Co-Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col items-end">
                   <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
@@ -683,7 +683,7 @@ export default function Home() {
                   M. Matti ul Hasnain
                 </h3>
                 <p className="font-mono text-xs text-primary font-bold mt-0.5">
-                  SYSTEMS &amp; INFRASTRUCTURE ARCHITECTURE
+                  SYSTEMS &amp; INFRASTRUCTURE ARCHITECTURE // MATTI UL HASNAIN
                 </p>
               </div>
 
@@ -692,7 +692,7 @@ export default function Home() {
               </blockquote>
 
               <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Directs MIHORA.TECH&apos;s global engineering doctrine, mission-critical hardware deployments, high-throughput microservices, and 4-hour rapid field engineering operations.
+                Directs MIHORA.TECH&apos;s global engineering doctrine, mission-critical hardware deployments, high-throughput microservices, and 4-hour rapid field engineering operations across London and Islamabad.
               </p>
 
               <div className="pt-2 border-t border-outline/30 flex flex-wrap items-center gap-1.5">
@@ -709,7 +709,7 @@ export default function Home() {
 
               <div className="flex items-center justify-between">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-secondary/40 shadow-sm group-hover:scale-105 transition-transform shrink-0">
-                  <img src="/founder-omema.jpg" alt="Omema Iqbal" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <img src="/founder-omema.jpg" alt="Omema Iqbal (Omema) - Co-Founder of MIHORA.TECH" title="Omema Iqbal - MIHORA Co-Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex flex-col items-end">
                   <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">
@@ -724,7 +724,7 @@ export default function Home() {
                   Omema Iqbal
                 </h3>
                 <p className="font-mono text-xs text-secondary font-bold mt-0.5">
-                  ENTERPRISE STRATEGY &amp; GLOBAL OPERATIONS
+                  ENTERPRISE STRATEGY &amp; GLOBAL OPERATIONS // OMEMA
                 </p>
               </div>
 
@@ -733,7 +733,7 @@ export default function Home() {
               </blockquote>
 
               <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Directs MIHORA.TECH&apos;s dual-hub operational governance, multi-jurisdiction compliance alignment, enterprise client delivery frameworks, and strategic talent logistics.
+                Directs MIHORA.TECH&apos;s dual-hub operational governance, multi-jurisdiction compliance alignment, enterprise client delivery frameworks, and strategic talent logistics across the UK and Pakistan.
               </p>
 
               <div className="pt-2 border-t border-outline/30 flex flex-wrap items-center gap-1.5">
