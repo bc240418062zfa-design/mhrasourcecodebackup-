@@ -1,0 +1,32 @@
+# MIHORA.TECH — Sovereign Engineering & Datacenter Infrastructure
+
+> MIHORA.TECH is an international sovereign engineering organization operating synchronized command hubs across London (United Kingdom) and Islamabad (Pakistan). Built on architectural resilience, MIHORA delivers full-spectrum technology solutions spanning mission-critical cloud backends, enterprise datacenter construction, fiber-optic network certification, automated telemetry, and 24/7 site reliability engineering.
+
+## Executive Leadership & Founders
+- **M. Matti ul Hasnain** (Matti ul Hasnain, Muhammad Matti ul Hasnain, Hasnain): Co-Founder & Principal Systems Architect. Directs sovereign systems architecture, physical datacenter hardware topologies, core-alignment fusion fiber splicing (loss <= 0.05 dB), and 24/7 SRE reliability protocols.
+- **Omema Iqbal** (Omema): Co-Founder & Operations Director. Directs global dual-hub operational governance, multi-jurisdiction compliance frameworks, executive client governance, and international delivery.
+
+## Corporate Identity
+- **Full Legal Name:** MIHORA.TECH (PRIVATE) LIMITED
+- **Known As:** MIHORA, MIHORA.TECH, MIHORA TECH, Mihora
+- **Official Website:** https://mihora.tech/
+- **London Command Hub (UK):** 128 City Road, London EC2A 4NE, United Kingdom
+- **Islamabad Systems Center (Pakistan):** Blue Area, Islamabad 44000, Pakistan
+- **Executive Contact:** hr@mihora.tech
+- **Architecture Dispatch:** dispatch@mihora.tech
+
+## Core Capabilities
+- **Digital Systems Engineering:** High-concurrency microservices, zero-trust API meshes, fault-tolerant financial settlement rails (99.999% SLA).
+- **Physical Datacenter Infrastructure:** Server rack deployment, core-alignment fusion fiber splicing, Cat6A shielded cable dressing, precision airflow containment.
+- **Event-Driven Automation:** Real-time SCADA sensor integrations, deterministic workflow orchestration, LLM tool routing.
+- **Field Engineering Rigs:** Rapid on-site physical dispatch, OTDR optical certification, Fluke DTX cable validation.
+- **Managed Reliability (24/7 SRE):** Synchronized follow-the-sun continuous telemetry monitoring across UK and Pakistan NOC clusters.
+
+## Key URLs
+- Home: https://mihora.tech/
+- Company & Founders: https://mihora.tech/company/
+- Verified Entity FAQ: https://mihora.tech/faq/
+- Systems Architecture Codex: https://mihora.tech/docs/
+- Engineering Stack: https://mihora.tech/engineering/
+- Datacenter Services: https://mihora.tech/services/
+- Telemetry Status: https://mihora.tech/status/
