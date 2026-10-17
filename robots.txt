@@ -3,21 +3,47 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# Explicit Bot Allowances
+# Google Search & Google Images
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Microsoft Bing
 User-agent: bingbot
 Allow: /
 
 User-agent: msnbot
 Allow: /
 
+User-agent: BingPreview
+Allow: /
+
+# Yandex
 User-agent: Yandex
 Allow: /
 
 User-agent: YandexBot
 Allow: /
 
+# Privacy & International Engines
 User-agent: DuckDuckBot
 Allow: /
 
-# Sitemap location
+User-agent: Applebot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Host & Canonical Sitemap
+Host: mihora.tech
 Sitemap: https://mihora.tech/sitemap.xml
+
