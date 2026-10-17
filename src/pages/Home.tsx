@@ -271,15 +271,11 @@ export default function Home() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-8 space-y-space-md"
             >
-              {/* Prestigious Verified Dual-Hub Badge */}
+              {/* Prestigious Verified Founders & Dual-Hub Badge */}
               <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 bg-surface-container border border-outline rounded-full shadow-sm">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
                 <span className="font-label-sm text-label-sm uppercase tracking-widest text-primary font-mono font-bold">
-                  DUAL-HUB SOVEREIGN ARCHITECTURE
-                </span>
-                <span className="text-outline text-label-sm">|</span>
-                <span className="font-label-sm text-label-sm text-on-surface-variant font-mono">
-                  LONDON (UK) &bull; ISLAMABAD (PK)
+                  MIHORA.TECH &bull; FOUNDED BY M. MATTI UL HASNAIN &amp; OMEMA IQBAL
                 </span>
               </div>
 
