@@ -1,0 +1,22 @@
+{
+  "name": "MIHORA.TECH — Sovereign Engineering",
+  "short_name": "MIHORA",
+  "description": "MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal, engineers resilient sovereign digital systems, physical datacenter infrastructure, and 24/7 global telemetry.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050C1F",
+  "theme_color": "#050C1F",
+  "icons": [
+    {
+      "src": "/mihora-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
