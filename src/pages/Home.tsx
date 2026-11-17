@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowRight,
   Terminal,
-  Router,
   Bot,
   Server,
   Wrench,
@@ -19,6 +18,7 @@ import {
   Calculator,
   Scale,
   BookMarked,
+  Layers,
 } from 'lucide-react';
 import { playUiChime } from '../utils/audio';
 import { VISUAL_ASSETS } from '../assets/visuals';
@@ -32,6 +32,7 @@ import {
   SpotlightSurface,
   MagneticWrapper,
   InfiniteMarquee,
+  Tilt3DFrame,
 } from '../components/MotionPrimitives';
 
 interface NodeInfo {
@@ -43,6 +44,8 @@ interface NodeInfo {
   ping: number;
   hops: string[];
   role: string;
+  cx: number;
+  cy: number;
 }
 
 const nodeData: Record<string, NodeInfo> = {
@@ -55,6 +58,8 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 18.2,
     hops: ['UK-LON-01 (Subsea + Terrestrial)', 'FRA-DE-02 (Optical IXP)', 'DXB-UAE-01 (Gulf Transit)', 'PK-ISB-01 (Command Hub)'],
     role: 'Core Architecture & Telemetry',
+    cx: 590,
+    cy: 235,
   },
   LON: {
     code: 'Dual Core Hub · UK-LON-01',
@@ -65,6 +70,8 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 17.8,
     hops: ['PK-ISB-01 (Trans-Continental Fiber)', 'MRS-FR-01 (Marseille Gateway)', 'LDN-UK-01 (City Road Core)'],
     role: 'EMEA Headquarters & Strategy',
+    cx: 465,
+    cy: 155,
   },
   DXB: {
     code: 'Regional Transit · GCC-UAE-DXB',
@@ -75,6 +82,8 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 24.1,
     hops: ['PK-ISB-01 (Arabian Sea Optical Backbone)', 'DXB-UAE-01 (Gulf Transit)'],
     role: 'GCC Regional Dispatch',
+    cx: 530,
+    cy: 278,
   },
   SIN: {
     code: 'Optical Peering · APAC-SG-SIN',
@@ -85,6 +94,8 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 36.5,
     hops: ['PK-ISB-01 (Bay of Bengal Subsea)', 'SIN-SG1 (Peering Core)'],
     role: 'APAC Optical Peering',
+    cx: 735,
+    cy: 318,
   },
   NYC: {
     code: 'Gateway · NA-USA-NYC',
@@ -95,6 +106,8 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 68.2,
     hops: ['UK-LON-01 (Transatlantic Path)', 'NYC-US-EAST (Terminal)'],
     role: 'North America Transit',
+    cx: 235,
+    cy: 185,
   },
   TYO: {
     code: 'Satellite Node · APAC-JP-TYO',
@@ -105,8 +118,19 @@ const nodeData: Record<string, NodeInfo> = {
     ping: 72.4,
     hops: ['SIN-SG-01 (Trans-Pacific Fiber)', 'TYO-IXP (Edge Terminal)'],
     role: 'Industrial Vision Satellite',
+    cx: 825,
+    cy: 195,
   },
 };
+
+const MESH_ARCS = [
+  { id: 'lon-isb', d: 'M 465 155 Q 535 165 590 235', primary: true },
+  { id: 'isb-dxb', d: 'M 590 235 Q 565 270 530 278', primary: false },
+  { id: 'isb-sin', d: 'M 590 235 Q 675 245 735 318', primary: true },
+  { id: 'lon-nyc', d: 'M 465 155 Q 350 118 235 185', primary: true },
+  { id: 'sin-tyo', d: 'M 735 318 Q 795 270 825 195', primary: false },
+  { id: 'dxb-lon', d: 'M 530 278 Q 475 230 465 155', primary: false },
+];
 
 const MARQUEE_SPECS = [
   { label: 'Core Quorum Availability', metric: '99.999% SLA' },
@@ -264,7 +288,6 @@ export default function Home() {
   const [expandedStack, setExpandedStack] = useState<number | null>(9);
 
   const [livePing, setLivePing] = useState(18.2);
-  const [livePackets, setLivePackets] = useState(248190);
   const [activeHubView, setActiveHubView] = useState<'LON' | 'ISB'>('LON');
 
   const [isTracing, setIsTracing] = useState(false);
@@ -277,7 +300,6 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setLivePing(Number((17.4 + Math.random() * 1.6).toFixed(1)));
-      setLivePackets((prev) => prev + Math.floor(Math.random() * 14) + 5);
     }, 3000);
     return () => clearInterval(timer);
   }, []);
@@ -293,13 +315,13 @@ export default function Home() {
     setTraceStep(1);
     playUiChime('ping');
 
-    setTimeout(() => setTraceStep(2), 360);
-    setTimeout(() => setTraceStep(3), 720);
+    setTimeout(() => setTraceStep(2), 340);
+    setTimeout(() => setTraceStep(3), 680);
     setTimeout(() => {
       setTraceStep(4);
       setIsTracing(false);
       playUiChime('success');
-    }, 1080);
+    }, 1020);
   };
 
   const toggleStack = (index: number) => {
@@ -342,228 +364,312 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 01. EDITORIAL ARCHITECTURAL HERO */}
-      <section className="relative w-full overflow-hidden bg-surface-container-lowest pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-outline/20 bg-tech-grid">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-6">
+      {/* 01. CINEMA FULL-BLEED OBSIDIAN ARCHITECTURAL HERO */}
+      <section className="relative w-full min-h-[86vh] flex flex-col justify-between overflow-hidden obsidian-band obsidian-grid border-b border-white/10">
+        {/* Atmospheric Photography Layer + Directional Obsidian Scrims */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src={VISUAL_ASSETS.heroDatacenterHall}
+            alt=""
+            className="w-full h-full object-cover opacity-38 scale-[1.03]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050810] via-[#050810]/88 to-[#050810]/55" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-[#050810]/65" />
+        </div>
+
+        {/* Hero Centerpiece Typography & Editorial Split */}
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 lg:pt-24 lg:pb-16 flex-1 flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end w-full">
+            <div className="lg:col-span-8 space-y-6">
               <Reveal>
-                <div className="font-mono text-xs uppercase tracking-[0.16em] text-primary font-bold">
+                <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-400 font-semibold">
                   MIHORA.TECH · M. Matti ul Hasnain &amp; Omema Iqbal
                 </div>
               </Reveal>
 
-              <MaskTextReveal delay={0.04}>
-                <h1 className="font-headline font-extrabold text-4xl sm:text-5xl lg:text-[3.5rem] text-on-surface tracking-tight leading-[1.06]">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-[clamp(2.55rem,5.4vw,4.85rem)] text-white tracking-[-0.03em] leading-[1.03]">
                   Sovereign Engineering From Physical Glass to Distributed Cloud
                 </h1>
               </MaskTextReveal>
 
               <Reveal delay={0.14}>
-                <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-xl">
+                <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-light">
                   Operating synchronized command hubs in{' '}
-                  <strong className="text-on-surface font-semibold">London (UK)</strong> and{' '}
-                  <strong className="text-on-surface font-semibold">Islamabad (Pakistan)</strong>.
-                  One accountable team engineering custom software platforms, certified optical
-                  datacenters, industrial SCADA, and 24/7 operational custody.
+                  <strong className="text-white font-semibold">London (United Kingdom)</strong> and{' '}
+                  <strong className="text-white font-semibold">Islamabad (Pakistan)</strong>.
+                  One accountable team architecting custom software, OTDR-verified optical fiber networks, bare-metal datacenters, and 24/7 operational custody.
                 </p>
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-4 pt-3">
                   <MagneticWrapper>
                     <Link
                       to="/contact"
                       onClick={() => playUiChime('click')}
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
+                      className="inline-flex items-center gap-2.5 px-7 py-4 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
                     >
                       <span>Schedule Architecture Review</span>
                       <ArrowRight size={16} />
                     </Link>
                   </MagneticWrapper>
+
                   <Link
                     to="/our-story"
                     onClick={() => playUiChime('click')}
-                    className="inline-flex items-center gap-2 px-5 py-3.5 bg-surface-container-low hover:bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-xl text-sm transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-4 bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white font-semibold rounded-xl text-sm backdrop-blur-md transition-all cursor-pointer"
                   >
                     <span>Our Founding Story</span>
+                    <ArrowUpRight size={15} className="text-amber-400" />
                   </Link>
-                </div>
-              </Reveal>
-
-              {/* Quiet typographic telemetry ledger — zero nested card borders */}
-              <Reveal delay={0.26}>
-                <div className="pt-5 border-t border-outline/15 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="text-on-surface-variant uppercase">Watchdesk:</span>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setActiveHubView(activeHubView === 'LON' ? 'ISB' : 'LON');
-                        playUiChime('switch');
-                      }}
-                      className="font-bold text-primary hover:underline cursor-pointer"
-                    >
-                      {activeHubView === 'LON' ? 'UK-LON-01 (London)' : 'PK-ISB-01 (Islamabad)'}
-                    </button>
-                  </div>
-                  <div>
-                    <span className="text-on-surface-variant uppercase">Corridor RTT: </span>
-                    <span className="font-bold text-on-surface tabular-nums">{livePing} ms</span>
-                  </div>
-                  <div>
-                    <span className="text-on-surface-variant uppercase">Custody SLA: </span>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400 tabular-nums">
-                      99.999%
-                    </span>
-                  </div>
                 </div>
               </Reveal>
             </div>
 
-            {/* Dominant Hero Visual Frame — Pure Edge-to-Edge Editorial Photography */}
-            <div className="lg:col-span-6">
-              <Reveal direction="left" delay={0.08}>
-                <div className="relative rounded-2xl overflow-hidden border border-outline/25 shadow-2xl bg-surface-container-low">
-                  <ParallaxFrame offset={24} className="aspect-[16/11] w-full">
-                    <img
-                      src={VISUAL_ASSETS.heroDatacenterHall}
-                      alt="Tier IV enterprise datacenter hall constructed and operated by MIHORA.TECH"
-                      className="w-full h-full object-cover"
-                    />
-                  </ParallaxFrame>
-                  <div className="px-5 py-3.5 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline/15 flex items-center justify-between text-xs font-mono">
-                    <span className="text-on-surface font-semibold">
-                      Tier III/IV Bare-Metal &amp; Optical Spine
-                    </span>
-                    <Link
-                      to="/engineering"
-                      className="text-primary font-bold hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>Inspect 9-Layer Stack</span>
-                      <ArrowUpRight size={13} />
+            {/* Right Asymmetric Architectural Spec Callout */}
+            <div className="lg:col-span-4 hidden lg:block">
+              <Reveal direction="left" delay={0.18}>
+                <div className="border-t border-l border-white/20 pl-6 pt-5 pb-2 space-y-4">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-amber-400 font-semibold">
+                    Single-Contract Span
+                  </div>
+                  <p className="text-sm text-slate-300 leading-relaxed">
+                    Software fails where physical optics degrade. MIHORA eliminates multi-vendor finger pointing across all nine engineering layers.
+                  </p>
+                  <div className="pt-2 border-t border-white/15 flex items-center justify-between text-xs font-mono">
+                    <span className="text-slate-400">Stack Architecture</span>
+                    <Link to="/engineering" className="text-white font-bold hover:text-amber-400 inline-flex items-center gap-1 transition-colors">
+                      <span>9 Layers L01–L09</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
               </Reveal>
             </div>
           </div>
+        </div>
 
-          {/* Empirical Proof Strip */}
-          <StaggerGrid className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-            <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-6 h-full">
-                <Link to="/status" className="block space-y-1.5 cursor-pointer">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-                    Quorum Availability
-                  </div>
-                  <div className="font-headline text-3xl sm:text-4xl font-extrabold text-primary">
-                    <AnimatedCounter target={99.999} decimals={3} suffix="%" />
-                  </div>
-                  <div className="text-xs text-on-surface-variant">Synchronized dual-hub custody</div>
-                </Link>
-              </SpotlightSurface>
-            </StaggerItem>
+        {/* Bottom 4-Column Razor-Hairline Structural Dock (Zero Rounded White Cards) */}
+        <div className="relative z-10 w-full border-t border-white/15 bg-black/50 backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
+            <div className="px-6 py-5 flex flex-col justify-between gap-2">
+              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                <span>Watchdesk Corridor</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveHubView(activeHubView === 'LON' ? 'ISB' : 'LON');
+                    playUiChime('switch');
+                  }}
+                  className="text-amber-400 font-bold hover:underline cursor-pointer"
+                >
+                  Switch Hub
+                </button>
+              </div>
+              <div className="font-headline text-lg font-extrabold text-white">
+                {activeHubView === 'LON' ? 'UK-LON-01 · London' : 'PK-ISB-01 · Islamabad'}
+              </div>
+              <div className="font-mono text-xs text-slate-400">
+                Corridor RTT: <span className="text-white font-bold tabular-nums">{livePing} ms</span>
+              </div>
+            </div>
 
-            <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-6 h-full">
-                <Link to="/case-studies" className="block space-y-1.5 cursor-pointer">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-                    Certified Fiber Span
-                  </div>
-                  <div className="font-headline text-3xl sm:text-4xl font-extrabold text-primary">
-                    <AnimatedCounter target={250000} suffix="+ m" />
-                  </div>
-                  <div className="text-xs text-on-surface-variant">Bidirectional OTDR verified</div>
-                </Link>
-              </SpotlightSurface>
-            </StaggerItem>
+            <Link to="/status" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                Quorum Availability
+              </div>
+              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white">
+                <AnimatedCounter target={99.999} decimals={3} suffix="%" />
+              </div>
+              <div className="font-mono text-xs text-emerald-400">Synchronized Dual-Hub SRE</div>
+            </Link>
 
-            <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-6 h-full">
-                <Link to="/services/physical-infrastructure" className="block space-y-1.5 cursor-pointer">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-                    Production Racks
-                  </div>
-                  <div className="font-headline text-3xl sm:text-4xl font-extrabold text-primary">
-                    <AnimatedCounter target={1200} suffix="+" />
-                  </div>
-                  <div className="text-xs text-on-surface-variant">High-density 42U/48U estates</div>
-                </Link>
-              </SpotlightSurface>
-            </StaggerItem>
+            <Link to="/case-studies" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                Certified Fiber Span
+              </div>
+              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white">
+                <AnimatedCounter target={250000} suffix="+ m" />
+              </div>
+              <div className="font-mono text-xs text-slate-400">EXFO Bidirectional OTDR</div>
+            </Link>
 
-            <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-6 h-full">
-                <Link to="/tools" className="block space-y-1.5 cursor-pointer">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-                    Mean Fusion Splice Loss
-                  </div>
-                  <div className="font-headline text-3xl sm:text-4xl font-extrabold text-primary tabular-nums">
-                    &le; 0.03 dB
-                  </div>
-                  <div className="text-xs text-on-surface-variant">TIA-568-D Exceedance Standard</div>
-                </Link>
-              </SpotlightSurface>
-            </StaggerItem>
-          </StaggerGrid>
+            <Link to="/tools" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+                Mean Splice Loss
+              </div>
+              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-amber-400 tabular-nums">
+                &le; 0.03 dB
+              </div>
+              <div className="font-mono text-xs text-slate-400">TIA-568-D Exceedance Spec</div>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* 02. CONTINUOUS ARCHITECTURAL STANDARDS MARQUEE */}
       <InfiniteMarquee items={MARQUEE_SPECS} />
 
-      {/* 03. STICKY SCROLLYTELLING: FROM PHYSICAL GLASS TO DISTRIBUTED CONSENSUS */}
-      <section className="w-full bg-surface py-16 lg:py-24 border-b border-outline/20">
+      {/* 03. EDITORIAL ASYMMETRIC GALLERY: PHYSICAL-TO-CLOUD CUSTODY (IVORY GROUND) */}
+      <section className="w-full bg-surface py-20 lg:py-28 border-b border-outline/15">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-7 space-y-3">
+              <Reveal>
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-gold font-bold">
+                  Architectural Exhibition
+                </div>
+              </Reveal>
+              <MaskTextReveal>
+                <h2 className="font-headline text-3xl sm:text-5xl text-on-surface font-extrabold tracking-tight leading-[1.08]">
+                  Two Hemispheres. One Verifiable Chain of Custody.
+                </h2>
+              </MaskTextReveal>
+            </div>
+            <div className="lg:col-span-5">
+              <Reveal delay={0.1}>
+                <p className="text-base text-on-surface-variant leading-relaxed">
+                  Software agencies ignore thermal limits and fiber splice quality. Field cabling subcontractors ignore consensus protocols and zero-trust cryptography. MIHORA bridges both worlds inside one accountable studio.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* 3D Interactive Asymmetric Photography Spread */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+            <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+              <Tilt3DFrame maxTilt={4}>
+                <div className="rounded-2xl overflow-hidden border border-outline/20 shadow-2xl bg-surface-container-lowest">
+                  <ParallaxFrame offset={26} className="aspect-[16/10] w-full">
+                    <img
+                      src={VISUAL_ASSETS.sovereignCommandHub}
+                      alt="MIHORA.TECH global network operations watchdesk overlooking live optical telemetry"
+                      className="w-full h-full object-cover"
+                    />
+                  </ParallaxFrame>
+                </div>
+              </Tilt3DFrame>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-outline/15 border-y border-outline/15 py-5">
+                <div className="pr-0 sm:pr-6 pb-4 sm:pb-0 space-y-1">
+                  <div className="font-mono text-xs font-bold text-primary uppercase">
+                    Logical Architecture · L01–L05
+                  </div>
+                  <h3 className="font-headline text-lg font-bold text-on-surface">
+                    Distributed Go, Rust &amp; React Systems
+                  </h3>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">
+                    Zero-trust API meshes, Kafka streams, partitioned PostgreSQL, and sovereign private inference with full source transfer.
+                  </p>
+                </div>
+                <div className="pt-4 sm:pt-0 sm:pl-6 space-y-1">
+                  <div className="font-mono text-xs font-bold text-gold uppercase">
+                    Physical Execution · L06–L09
+                  </div>
+                  <h3 className="font-headline text-lg font-bold text-on-surface">
+                    Tier III/IV Racks &amp; Core-Alignment Glass
+                  </h3>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">
+                    2N redundant power distribution, cold-aisle containment at 1.14 PUE, and EXFO OTDR-verified single-mode optical fiber.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+              <Tilt3DFrame maxTilt={4}>
+                <div className="rounded-2xl overflow-hidden border border-outline/20 shadow-2xl bg-surface-container-lowest">
+                  <ParallaxFrame offset={20} className="aspect-[4/4.2] w-full">
+                    <img
+                      src={VISUAL_ASSETS.fieldEngineeringEdge}
+                      alt="Ruggedized industrial SCADA and NEMA field edge compute assembly"
+                      className="w-full h-full object-cover"
+                    />
+                  </ParallaxFrame>
+                </div>
+              </Tilt3DFrame>
+
+              <div className="flex items-center justify-between pt-2 border-t border-outline/15">
+                <div className="font-mono text-xs text-on-surface-variant">
+                  <span className="text-on-surface font-bold">1,200+ Production Racks</span> · 4h Regional Field SLA
+                </div>
+                <Link
+                  to="/services"
+                  onClick={() => playUiChime('click')}
+                  className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-primary hover:underline"
+                >
+                  <span>Explore 5 Divisions</span>
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 04. DEEP OBSIDIAN STICKY SCROLLYTELLING SPINE */}
+      <section className="w-full obsidian-band obsidian-grid py-20 lg:py-28 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="max-w-3xl space-y-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+          <div className="max-w-3xl space-y-3">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
               Four-Stage Sovereign Spine
             </span>
-            <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
-              From Physical Silicon to Continuous Operational Custody
-            </h2>
-            <p className="text-base text-on-surface-variant leading-relaxed">
-              Explore each physical and logical layer MIHORA unifies inside a single engineering chain.
+            <MaskTextReveal>
+              <h2 className="font-headline text-3xl sm:text-5xl text-white font-extrabold tracking-tight leading-tight">
+                From Physical Silicon to Continuous Operational Custody
+              </h2>
+            </MaskTextReveal>
+            <p className="text-base text-slate-300 leading-relaxed">
+              Step through each physical and logical layer MIHORA unifies inside a single engineering chain.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Interactive Stage Chapters */}
-            <div className="lg:col-span-6 space-y-4">
+            {/* Left Interactive Hairline Chapters */}
+            <div className="lg:col-span-6 divide-y divide-white/12 border-y border-white/12">
               {SCROLL_STAGES.map((stage, idx) => {
                 const isActive = activeScrollStage === idx;
                 return (
                   <motion.div
                     key={stage.id}
                     onViewportEnter={() => setActiveScrollStage(idx)}
-                    viewport={{ amount: 0.6 }}
+                    viewport={{ amount: 0.55 }}
                     onClick={() => {
                       setActiveScrollStage(idx);
                       playUiChime('click');
                     }}
                     className={clsx(
-                      'p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer space-y-3',
+                      'py-7 px-5 transition-all cursor-pointer space-y-3 relative',
                       isActive
-                        ? 'bg-surface-container-lowest border-primary shadow-md'
-                        : 'bg-surface-container-low/60 border-outline/20 opacity-80 hover:opacity-100'
+                        ? 'bg-white/[0.06] opacity-100'
+                        : 'opacity-55 hover:opacity-90'
                     )}
                   >
+                    {isActive && (
+                      <motion.div
+                        layoutId="spine-stage-indicator"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"
+                        transition={{ type: 'spring', stiffness: 360, damping: 32 }}
+                      />
+                    )}
                     <div className="flex items-center justify-between font-mono text-xs">
-                      <span className="text-primary font-bold">{stage.kicker}</span>
-                      <span className="text-on-surface-variant font-bold">0{idx + 1}</span>
+                      <span className={clsx('font-bold', isActive ? 'text-amber-400' : 'text-blue-400')}>
+                        {stage.kicker}
+                      </span>
+                      <span className="text-slate-400 font-bold">0{idx + 1}</span>
                     </div>
-                    <h3 className="font-headline text-xl sm:text-2xl font-bold text-on-surface leading-snug">
+                    <h3 className="font-headline text-xl sm:text-2xl font-bold text-white leading-snug">
                       {stage.title}
                     </h3>
-                    <p className="text-sm text-on-surface-variant leading-relaxed">{stage.body}</p>
-                    <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-outline/15">
-                      <span className="font-mono text-[11px] font-semibold text-on-surface">
+                    <p className="text-sm text-slate-300 leading-relaxed">{stage.body}</p>
+                    <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-white/10">
+                      <span className="font-mono text-[11px] font-semibold text-slate-300">
                         {stage.spec}
                       </span>
                       <Link
                         to={stage.link}
-                        className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+                        className="text-xs font-semibold text-amber-400 hover:underline inline-flex items-center gap-1"
                       >
                         <span>{stage.linkLabel}</span>
                         <ArrowRight size={12} />
@@ -574,30 +680,31 @@ export default function Home() {
               })}
             </div>
 
-            {/* Right Sticky Photographic Viewport */}
+            {/* Right Sticky Obsidian Photographic Viewport */}
             <div className="lg:col-span-6 lg:sticky lg:top-24">
-              <div className="rounded-2xl overflow-hidden border border-outline/25 bg-surface-container-lowest shadow-2xl">
+              <div className="rounded-2xl overflow-hidden border border-white/15 bg-[#090d18] shadow-2xl">
                 <div className="relative aspect-[16/11] w-full overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={SCROLL_STAGES[activeScrollStage].image}
                       src={SCROLL_STAGES[activeScrollStage].image}
                       alt={SCROLL_STAGES[activeScrollStage].alt}
-                      initial={{ opacity: 0, scale: 1.04 }}
+                      initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.98 }}
                       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="w-full h-full object-cover"
                     />
                   </AnimatePresence>
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090d18] to-transparent" />
                 </div>
 
-                <div className="p-6 space-y-2 border-t border-outline/15 bg-surface-container-lowest">
-                  <div className="flex items-center justify-between font-mono text-xs text-primary font-bold">
+                <div className="p-6 space-y-2 border-t border-white/10 bg-[#090d18]">
+                  <div className="flex items-center justify-between font-mono text-xs text-amber-400 font-bold">
                     <span>{SCROLL_STAGES[activeScrollStage].kicker}</span>
                     <span>Stage {SCROLL_STAGES[activeScrollStage].num} / 04</span>
                   </div>
-                  <div className="font-headline text-lg font-bold text-on-surface">
+                  <div className="font-headline text-lg font-bold text-white">
                     {SCROLL_STAGES[activeScrollStage].title}
                   </div>
                 </div>
@@ -607,15 +714,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04. INTERACTIVE GLOBAL TOPOLOGY & PACKET ROUTE TRACER */}
-      <section className="w-full bg-surface-container-lowest py-16 lg:py-24 border-b border-outline/20">
+      {/* 05. UPGRADED GLOBAL OPTICAL MESH WITH CURVED BEZIER ARCS (OBSIDIAN BAND) */}
+      <section className="w-full bg-[#04070e] text-slate-100 py-20 lg:py-28 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1.5">
-              <span className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+            <div className="space-y-2">
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
                 Live Intercontinental Optical Mesh
               </span>
-              <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
+              <h2 className="font-headline text-3xl sm:text-4xl text-white font-extrabold tracking-tight">
                 Global Telemetry Mesh &amp; Packet Route Tracer
               </h2>
             </div>
@@ -629,8 +736,8 @@ export default function Home() {
                   className={clsx(
                     'px-3 py-1.5 rounded-lg border transition-all cursor-pointer font-bold',
                     activeNodeId === id
-                      ? 'bg-primary text-white border-primary shadow-sm'
-                      : 'bg-surface-container-low text-on-surface-variant hover:text-on-surface border-outline/25'
+                      ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-sm'
+                      : 'bg-white/[0.04] text-slate-300 hover:text-white border-white/15'
                   )}
                 >
                   {id}
@@ -641,7 +748,7 @@ export default function Home() {
                 type="button"
                 onClick={() => runFiberTrace()}
                 disabled={isTracing}
-                className="px-3.5 py-1.5 rounded-lg bg-emerald-600/12 text-emerald-700 dark:text-emerald-400 border border-emerald-600/30 hover:bg-emerald-600/20 font-bold transition-all flex items-center gap-1.5 cursor-pointer ml-1"
+                className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white border border-blue-400/40 font-bold transition-all flex items-center gap-1.5 cursor-pointer ml-1"
               >
                 <Play size={12} className={isTracing ? 'animate-spin' : ''} />
                 <span>{isTracing ? 'Tracing...' : 'Trace Route'}</span>
@@ -650,69 +757,128 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <div className="relative w-full h-[380px] md:h-[460px] bg-surface-container-low rounded-2xl overflow-hidden flex items-center justify-center border border-outline/25 shadow-lg">
+            <div className="relative w-full h-[400px] md:h-[490px] bg-[#080d1a] obsidian-grid rounded-2xl overflow-hidden flex items-center justify-center border border-white/15 shadow-2xl">
               <svg className="w-full h-full relative z-10" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 500">
-                <g className="opacity-20" stroke="currentColor" strokeDasharray="4,4" strokeWidth="1.2">
-                  <line x1="580" x2="520" y1="240" y2="280" />
-                  <line x1="580" x2="730" y1="240" y2="300" />
-                  <line x1="480" x2="250" y1="170" y2="190" />
-                  <line x1="580" x2="250" y1="240" y2="190" />
-                  <line x1="580" x2="800" y1="240" y2="200" />
-                  <line x1="480" x2="580" y1="170" y2="240" />
+                <defs>
+                  <linearGradient id="arcPrimaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.9" />
+                    <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.95" />
+                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.9" />
+                  </linearGradient>
+                </defs>
+
+                {/* Faint latitude / longitude graticules */}
+                <g stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none">
+                  <line x1="0" y1="125" x2="1000" y2="125" />
+                  <line x1="0" y1="250" x2="1000" y2="250" />
+                  <line x1="0" y1="375" x2="1000" y2="375" />
+                  <line x1="250" y1="0" x2="250" y2="500" />
+                  <line x1="500" y1="0" x2="500" y2="500" />
+                  <line x1="750" y1="0" x2="750" y2="500" />
                 </g>
 
-                <line className="flow-line stroke-primary stroke-[2.5]" x1="480" x2="580" y1="170" y2="240" strokeDasharray="8,8" />
-                <line className="flow-line-reverse stroke-secondary stroke-[2]" x1="580" x2="520" y1="240" y2="280" strokeDasharray="6,6" />
-                <line className="flow-line stroke-secondary stroke-[2]" x1="580" x2="730" y1="240" y2="300" strokeDasharray="6,6" />
-                <line className="flow-line-reverse stroke-primary stroke-[2]" x1="480" x2="250" y1="170" y2="190" strokeDasharray="6,6" />
-                <line className="flow-line stroke-secondary stroke-[1.5]" x1="580" x2="800" y1="240" y2="200" strokeDasharray="6,6" />
+                {/* Curved Great-Circle Optical Paths */}
+                {MESH_ARCS.map((arc) => (
+                  <g key={arc.id}>
+                    <path
+                      d={arc.d}
+                      fill="none"
+                      stroke="rgba(148, 163, 184, 0.2)"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d={arc.d}
+                      fill="none"
+                      stroke={arc.primary ? 'url(#arcPrimaryGrad)' : '#38bdf8'}
+                      strokeWidth={arc.primary ? 2.4 : 1.75}
+                      className={arc.primary ? 'flow-line' : 'flow-line-reverse'}
+                    />
+                  </g>
+                ))}
 
-                <g className="cursor-pointer" onClick={() => handleSelectNode('LON')}>
-                  <circle cx="480" cy="170" fill="var(--color-primary)" r="9" />
-                  <circle cx="480" cy="170" fill="#ffffff" r="3.5" />
-                  <text fill="currentColor" className="text-primary font-bold" fontFamily="JetBrains Mono" fontSize="12" fontWeight="700" x="395" y="146">
-                    UK HUB: LONDON
-                  </text>
-                  <text fill="currentColor" className="text-on-surface-variant" fontFamily="JetBrains Mono" fontSize="9" x="395" y="159">
-                    51.5074° N, 0.1278° W
-                  </text>
-                </g>
+                {/* Interactive Optical Nodes */}
+                {Object.entries(nodeData).map(([id, node]) => {
+                  const isSelected = activeNodeId === id;
+                  const isDualCore = id === 'LON' || id === 'HQ';
+                  return (
+                    <g
+                      key={id}
+                      className="cursor-pointer"
+                      onClick={() => handleSelectNode(id)}
+                    >
+                      {isSelected && (
+                        <>
+                          <circle
+                            cx={node.cx}
+                            cy={node.cy}
+                            r="20"
+                            fill="none"
+                            stroke="#f59e0b"
+                            strokeWidth="1.25"
+                            opacity="0.7"
+                          />
+                          <circle
+                            cx={node.cx}
+                            cy={node.cy}
+                            r="28"
+                            fill="none"
+                            stroke="#3b82f6"
+                            strokeWidth="1"
+                            opacity="0.35"
+                          />
+                        </>
+                      )}
+                      <circle
+                        cx={node.cx}
+                        cy={node.cy}
+                        r={isDualCore ? 9 : 6.5}
+                        fill={isSelected ? '#f59e0b' : isDualCore ? '#3b82f6' : '#38bdf8'}
+                      />
+                      <circle cx={node.cx} cy={node.cy} r={isDualCore ? 3.5 : 2.5} fill="#ffffff" />
 
-                <g className="cursor-pointer" onClick={() => handleSelectNode('HQ')}>
-                  <circle cx="580" cy="240" fill="var(--color-primary)" r="9" />
-                  <circle cx="580" cy="240" fill="#ffffff" r="3.5" />
-                  <text fill="currentColor" className="text-primary font-bold" fontFamily="JetBrains Mono" fontSize="12" fontWeight="700" x="598" y="235">
-                    PK HUB: ISLAMABAD
-                  </text>
-                  <text fill="currentColor" className="text-on-surface-variant" fontFamily="JetBrains Mono" fontSize="9" x="598" y="248">
-                    33.6844° N, 73.0479° E
-                  </text>
-                </g>
-
-                <g className="cursor-pointer" onClick={() => handleSelectNode('DXB')}>
-                  <circle cx="520" cy="280" fill="var(--color-secondary)" r="6" />
-                  <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="532" y="285">
-                    DUBAI (GCC)
-                  </text>
-                </g>
-                <g className="cursor-pointer" onClick={() => handleSelectNode('SIN')}>
-                  <circle cx="730" cy="300" fill="var(--color-secondary)" r="6" />
-                  <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="742" y="305">
-                    SINGAPORE (APAC)
-                  </text>
-                </g>
-                <g className="cursor-pointer" onClick={() => handleSelectNode('NYC')}>
-                  <circle cx="250" cy="190" fill="var(--color-primary)" r="6" />
-                  <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="165" y="180">
-                    NEW YORK (NA)
-                  </text>
-                </g>
-                <g className="cursor-pointer" onClick={() => handleSelectNode('TYO')}>
-                  <circle cx="800" cy="200" fill="var(--color-secondary)" r="6" />
-                  <text fill="currentColor" className="text-on-surface" fontFamily="JetBrains Mono" fontSize="10" x="812" y="205">
-                    TOKYO (JP)
-                  </text>
-                </g>
+                      {id === 'LON' && (
+                        <>
+                          <text fill="#f8fafc" fontFamily="JetBrains Mono" fontSize="11.5" fontWeight="700" x="352" y="132">
+                            UK HUB: LONDON
+                          </text>
+                          <text fill="#94a3b8" fontFamily="JetBrains Mono" fontSize="9" x="352" y="144">
+                            51.5074° N, 0.1278° W
+                          </text>
+                        </>
+                      )}
+                      {id === 'HQ' && (
+                        <>
+                          <text fill="#f8fafc" fontFamily="JetBrains Mono" fontSize="11.5" fontWeight="700" x="608" y="232">
+                            PK HUB: ISLAMABAD
+                          </text>
+                          <text fill="#94a3b8" fontFamily="JetBrains Mono" fontSize="9" x="608" y="244">
+                            33.6844° N, 73.0479° E
+                          </text>
+                        </>
+                      )}
+                      {id === 'DXB' && (
+                        <text fill="#cbd5e1" fontFamily="JetBrains Mono" fontSize="10" x="455" y="302">
+                          DUBAI (GCC)
+                        </text>
+                      )}
+                      {id === 'SIN' && (
+                        <text fill="#cbd5e1" fontFamily="JetBrains Mono" fontSize="10" x="748" y="324">
+                          SINGAPORE (APAC)
+                        </text>
+                      )}
+                      {id === 'NYC' && (
+                        <text fill="#cbd5e1" fontFamily="JetBrains Mono" fontSize="10" x="148" y="176">
+                          NEW YORK (NA)
+                        </text>
+                      )}
+                      {id === 'TYO' && (
+                        <text fill="#cbd5e1" fontFamily="JetBrains Mono" fontSize="10" x="838" y="200">
+                          TOKYO (JP)
+                        </text>
+                      )}
+                    </g>
+                  );
+                })}
               </svg>
 
               <AnimatePresence mode="wait">
@@ -722,15 +888,15 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.22 }}
-                  className="absolute bottom-4 left-4 right-4 md:right-auto md:w-[26rem] bg-surface-container-lowest/95 backdrop-blur-md p-5 rounded-xl border border-outline/30 shadow-xl"
+                  className="absolute bottom-4 left-4 right-4 md:right-auto md:w-[27rem] bg-[#060912]/92 backdrop-blur-xl p-5 rounded-xl border border-white/15 shadow-2xl"
                 >
                   <div className="flex items-center justify-between pb-1">
-                    <span className="font-mono text-xs text-primary font-semibold">{activeNode.code}</span>
-                    <span className="font-mono text-xs font-bold text-primary tabular-nums">{activeNode.ping} ms</span>
+                    <span className="font-mono text-xs text-amber-400 font-semibold">{activeNode.code}</span>
+                    <span className="font-mono text-xs font-bold text-white tabular-nums">{activeNode.ping} ms</span>
                   </div>
-                  <div className="font-headline text-base text-on-surface font-bold">{activeNode.title}</div>
-                  <p className="text-xs text-on-surface-variant mt-1 leading-relaxed">{activeNode.desc}</p>
-                  <div className="mt-3 pt-2.5 border-t border-outline/15 text-[11px] font-mono text-on-surface">
+                  <div className="font-headline text-base text-white font-bold">{activeNode.title}</div>
+                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{activeNode.desc}</p>
+                  <div className="mt-3 pt-2.5 border-t border-white/10 text-[11px] font-mono text-slate-300">
                     {activeNode.hops.join(' → ')}
                   </div>
                 </motion.div>
@@ -739,27 +905,27 @@ export default function Home() {
           </Reveal>
 
           {isTracing && (
-            <div className="p-3 rounded-xl bg-surface-container border border-primary/30 font-mono text-xs flex items-center justify-between">
-              <span className="text-primary font-semibold">
+            <div className="p-3.5 rounded-xl bg-white/[0.04] border border-amber-400/35 font-mono text-xs flex items-center justify-between">
+              <span className="text-amber-400 font-semibold">
                 Executing optical trace to {activeNodeId} ({activeNode.title})...
               </span>
-              <span className="text-on-surface-variant tabular-nums">Hop {traceStep} / 4</span>
+              <span className="text-slate-300 tabular-nums">Hop {traceStep} / 4</span>
             </div>
           )}
         </div>
       </section>
 
-      {/* 05. EXECUTIVE FOUNDERS & DUAL-HUB STEWARDSHIP */}
-      <section className="w-full bg-surface py-16 lg:py-24 border-b border-outline/20">
+      {/* 06. EXECUTIVE FOUNDERS & DUAL-HUB STEWARDSHIP (EDITORIAL IVORY SPREAD) */}
+      <section className="w-full bg-surface py-20 lg:py-28 border-b border-outline/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2 max-w-2xl">
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-gold font-bold">
                 <Users size={14} />
                 <span>Founding Leadership</span>
               </div>
               <MaskTextReveal>
-                <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
+                <h2 className="font-headline text-3xl sm:text-5xl text-on-surface font-extrabold tracking-tight">
                   Co-Founded by M. Matti ul Hasnain &amp; Omema Iqbal
                 </h2>
               </MaskTextReveal>
@@ -768,102 +934,139 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex items-center gap-4 shrink-0">
+            <div className="flex items-center gap-5 shrink-0 font-mono text-xs">
               <Link
                 to="/company"
                 onClick={() => playUiChime('click')}
-                className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1.5"
+                className="font-bold text-primary hover:underline inline-flex items-center gap-1.5"
               >
                 <span>Executive Bios</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={14} />
               </Link>
               <Link
                 to="/our-story"
                 onClick={() => playUiChime('click')}
-                className="text-sm font-semibold text-on-surface-variant hover:text-on-surface"
+                className="font-bold text-on-surface-variant hover:text-on-surface"
               >
                 Our Story →
+              </Link>
+              <Link
+                to="/press"
+                onClick={() => playUiChime('click')}
+                className="font-bold text-on-surface-variant hover:text-on-surface"
+              >
+                Press Kit →
               </Link>
             </div>
           </div>
 
           <StaggerGrid className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-7 sm:p-8 h-full flex flex-col justify-between space-y-6">
-                <div className="space-y-5">
-                  <div className="flex items-center gap-5">
-                    <img
-                      src="/founder-matti.jpg"
-                      alt="M. Matti ul Hasnain, Co-Founder and Principal Systems Architect at MIHORA.TECH"
-                      width={80}
-                      height={80}
-                      loading="lazy"
-                      className="w-20 h-20 rounded-2xl object-cover border border-outline/25 shrink-0"
-                    />
-                    <div>
-                      <div className="font-mono text-xs text-primary font-bold">
-                        Co-Founder &amp; Principal Systems Architect
-                      </div>
-                      <h3 className="font-headline text-2xl font-extrabold text-on-surface mt-0.5">
-                        M. Matti ul Hasnain
-                      </h3>
-                      <div className="font-mono text-xs text-on-surface-variant mt-0.5">
-                        Systems &amp; Optical Architecture · UK &amp; PK Hubs
-                      </div>
-                    </div>
+              <SpotlightSurface className="surface-card rounded-2xl overflow-hidden h-full flex flex-col justify-between">
+                <div className="h-36 w-full overflow-hidden relative border-b border-outline/15">
+                  <img
+                    src={VISUAL_ASSETS.islamabadEngineeringHub}
+                    alt="MIHORA Islamabad Blue Area core architecture hub"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                  <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
+                    PK-ISB-01 · Core Systems Authority
                   </div>
-
-                  <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-primary leading-relaxed">
-                    &ldquo;We founded MIHORA to eliminate the brittle gap between abstract software code and physical reality. We architect sovereign backends, and our engineers splice and certify the optical plant.&rdquo;
-                  </blockquote>
-
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
-                    Leads MIHORA&apos;s 9-layer technology architecture, high-concurrency Go and TypeScript platforms, bare-metal Tier III/IV datacenters, OTDR-verified fiber rings, and field break-fix operations.
-                  </p>
                 </div>
 
-                <div className="pt-4 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
-                  Sovereign Cloud · Datacenter Physics · Zero-Trust HSM · Optical Backbones
+                <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-5">
+                      <img
+                        src="/founder-matti.jpg"
+                        alt="M. Matti ul Hasnain, Co-Founder and Principal Systems Architect at MIHORA.TECH"
+                        width={84}
+                        height={84}
+                        loading="lazy"
+                        className="w-20 h-20 rounded-xl object-cover border border-outline/25 shrink-0"
+                      />
+                      <div>
+                        <div className="font-mono text-xs text-primary font-bold">
+                          Co-Founder &amp; Principal Systems Architect
+                        </div>
+                        <h3 className="font-headline text-2xl font-extrabold text-on-surface mt-0.5">
+                          M. Matti ul Hasnain
+                        </h3>
+                        <div className="font-mono text-xs text-on-surface-variant mt-0.5">
+                          Systems &amp; Optical Architecture · UK &amp; PK Hubs
+                        </div>
+                      </div>
+                    </div>
+
+                    <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-gold leading-relaxed">
+                      &ldquo;We founded MIHORA to eliminate the brittle gap between abstract software code and physical reality. We architect sovereign backends, and our engineers splice and certify the optical plant.&rdquo;
+                    </blockquote>
+
+                    <p className="text-sm text-on-surface-variant leading-relaxed">
+                      Leads MIHORA&apos;s 9-layer technology architecture, high-concurrency Go and TypeScript platforms, bare-metal Tier III/IV datacenters, OTDR-verified fiber rings, and field break-fix operations.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
+                    Sovereign Cloud · Datacenter Physics · Zero-Trust HSM · Optical Backbones
+                  </div>
                 </div>
               </SpotlightSurface>
             </StaggerItem>
 
             <StaggerItem>
-              <SpotlightSurface className="surface-card rounded-2xl p-7 sm:p-8 h-full flex flex-col justify-between space-y-6">
-                <div className="space-y-5">
-                  <div className="flex items-center gap-5">
-                    <img
-                      src="/founder-omema.jpg"
-                      alt="Omema Iqbal, Co-Founder and Operations Director at MIHORA.TECH"
-                      width={80}
-                      height={80}
-                      loading="lazy"
-                      className="w-20 h-20 rounded-2xl object-cover border border-outline/25 shrink-0"
-                    />
-                    <div>
-                      <div className="font-mono text-xs text-primary font-bold">
-                        Co-Founder &amp; Operations Director
-                      </div>
-                      <h3 className="font-headline text-2xl font-extrabold text-on-surface mt-0.5">
-                        Omema Iqbal
-                      </h3>
-                      <div className="font-mono text-xs text-on-surface-variant mt-0.5">
-                        Enterprise Strategy &amp; Dual-Hub Governance
-                      </div>
-                    </div>
+              <SpotlightSurface className="surface-card rounded-2xl overflow-hidden h-full flex flex-col justify-between">
+                <div className="h-36 w-full overflow-hidden relative border-b border-outline/15">
+                  <img
+                    src={VISUAL_ASSETS.londonCommandStudio}
+                    alt="MIHORA London EMEA headquarters on City Road"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+                  <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
+                    UK-LON-01 · EMEA Executive Governance
                   </div>
-
-                  <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-primary leading-relaxed">
-                    &ldquo;Resilient engineering is only as reliable as the operational governance behind it. Our dual-hub model guarantees deterministic SLA execution across jurisdictions.&rdquo;
-                  </blockquote>
-
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
-                    Directs international delivery orchestration across London and Islamabad command hubs, ISO 27001 / UK-GDPR regulatory alignment, strategic carrier partnerships, and 24/7 watchdesk staffing.
-                  </p>
                 </div>
 
-                <div className="pt-4 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
-                  Dual-Hub Governance · ISO 27001 Alignment · Enterprise Alliances · 24/7 Delivery
+                <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                  <div className="space-y-5">
+                    <div className="flex items-center gap-5">
+                      <img
+                        src="/founder-omema.jpg"
+                        alt="Omema Iqbal, Co-Founder and Operations Director at MIHORA.TECH"
+                        width={84}
+                        height={84}
+                        loading="lazy"
+                        className="w-20 h-20 rounded-xl object-cover border border-outline/25 shrink-0"
+                      />
+                      <div>
+                        <div className="font-mono text-xs text-primary font-bold">
+                          Co-Founder &amp; Operations Director
+                        </div>
+                        <h3 className="font-headline text-2xl font-extrabold text-on-surface mt-0.5">
+                          Omema Iqbal
+                        </h3>
+                        <div className="font-mono text-xs text-on-surface-variant mt-0.5">
+                          Enterprise Strategy &amp; Dual-Hub Governance
+                        </div>
+                      </div>
+                    </div>
+
+                    <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-gold leading-relaxed">
+                      &ldquo;Resilient engineering is only as reliable as the operational governance behind it. Our dual-hub model guarantees deterministic SLA execution across jurisdictions.&rdquo;
+                    </blockquote>
+
+                    <p className="text-sm text-on-surface-variant leading-relaxed">
+                      Directs international delivery orchestration across London and Islamabad command hubs, ISO 27001 / UK-GDPR regulatory alignment, strategic carrier partnerships, and 24/7 watchdesk staffing.
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
+                    Dual-Hub Governance · ISO 27001 Alignment · Enterprise Alliances · 24/7 Delivery
+                  </div>
                 </div>
               </SpotlightSurface>
             </StaggerItem>
@@ -871,12 +1074,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06. INTERACTIVE SERVICE DIVISIONS EXPLORER WITH ANIMATED INDICATOR */}
-      <section className="w-full bg-surface-container-lowest py-16 lg:py-24 border-b border-outline/20">
+      {/* 07. INTERACTIVE SERVICE DIVISIONS EXPLORER WITH ANIMATED INDICATOR */}
+      <section className="w-full bg-surface-container-lowest py-20 lg:py-24 border-b border-outline/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-1.5">
-              <span className="text-xs uppercase tracking-widest text-primary font-mono font-semibold">
+              <span className="text-xs uppercase tracking-[0.2em] text-gold font-mono font-bold">
                 Five Integrated Divisions
               </span>
               <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
@@ -893,7 +1096,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Animated Tab Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 bg-surface-container-low p-1.5 rounded-xl border border-outline/20">
             {serviceTabs.map((div, idx) => {
               const selected = activeServiceIdx === idx;
@@ -914,7 +1116,7 @@ export default function Home() {
                     <motion.span
                       layoutId="home-division-pill"
                       transition={{ type: 'spring', stiffness: 360, damping: 32 }}
-                      className="absolute inset-0 bg-primary rounded-lg shadow-sm"
+                      className="absolute inset-0 bg-[#0b1224] dark:bg-primary rounded-lg shadow-sm"
                     />
                   )}
                   <span className="relative z-10">{div.shortTitle}</span>
@@ -967,34 +1169,34 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5 bg-surface-container-low border border-outline/20 p-6 rounded-xl space-y-5 font-mono text-xs">
-                  <div className="flex items-center justify-between text-on-surface-variant">
+                <div className="lg:col-span-5 obsidian-band border border-white/15 p-6 rounded-xl space-y-5 font-mono text-xs text-slate-200">
+                  <div className="flex items-center justify-between text-slate-400">
                     <span className="font-semibold">Division Telemetry Profile</span>
-                    <span className="text-primary font-bold">Active Custody</span>
+                    <span className="text-amber-400 font-bold">Active Custody</span>
                   </div>
                   <div className="space-y-4">
                     <div>
                       <div className="flex justify-between text-[11px] mb-1.5">
-                        <span className="text-on-surface-variant">Automation &amp; Verification</span>
-                        <span className="text-primary font-bold tabular-nums">{activeService.bar1}</span>
+                        <span className="text-slate-300">Automation &amp; Verification</span>
+                        <span className="text-amber-400 font-bold tabular-nums">{activeService.bar1}</span>
                       </div>
-                      <div className="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
-                        <div className="h-full bg-primary transition-all duration-500" style={{ width: activeService.bar1 }} />
+                      <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full bg-amber-400 transition-all duration-500" style={{ width: activeService.bar1 }} />
                       </div>
                     </div>
                     <div>
                       <div className="flex justify-between text-[11px] mb-1.5">
-                        <span className="text-on-surface-variant">Redundancy Compliance</span>
-                        <span className="text-primary font-bold tabular-nums">{activeService.bar2}</span>
+                        <span className="text-slate-300">Redundancy Compliance</span>
+                        <span className="text-blue-400 font-bold tabular-nums">{activeService.bar2}</span>
                       </div>
-                      <div className="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
-                        <div className="h-full bg-secondary transition-all duration-500" style={{ width: activeService.bar2 }} />
+                      <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-500 transition-all duration-500" style={{ width: activeService.bar2 }} />
                       </div>
                     </div>
                   </div>
-                  <div className="pt-3 border-t border-outline/15 flex items-center justify-between text-[11px] text-on-surface-variant">
+                  <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
                     <span>Dual-Hub Custody</span>
-                    <span className="text-on-surface font-semibold">London + Islamabad</span>
+                    <span className="text-white font-semibold">London + Islamabad</span>
                   </div>
                 </div>
               </motion.div>
@@ -1003,11 +1205,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 07. INTERACTIVE SCOPE & SLA CONFIGURATOR */}
-      <section id="configurator" className="w-full bg-surface py-16 lg:py-24 border-b border-outline/20">
+      {/* 08. INTERACTIVE SCOPE & SLA CONFIGURATOR */}
+      <section id="configurator" className="w-full bg-surface py-20 lg:py-24 border-b border-outline/15">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-primary font-semibold uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-gold font-bold uppercase tracking-[0.2em]">
               <Sliders size={14} />
               <span>Architecture Configurator</span>
             </div>
@@ -1119,40 +1321,40 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 surface-card p-6 sm:p-7 rounded-2xl border-primary/30 shadow-lg space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-outline/20">
-                <span className="font-mono text-xs font-bold text-primary uppercase">
+            <div className="lg:col-span-5 obsidian-band p-6 sm:p-7 rounded-2xl border border-white/15 shadow-2xl space-y-5 text-slate-200">
+              <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                <span className="font-mono text-xs font-bold text-amber-400 uppercase">
                   Recommended Reference Spec
                 </span>
-                <span className="font-mono text-[11px] text-on-surface-variant">Sovereign Baseline</span>
+                <span className="font-mono text-[11px] text-slate-400">Sovereign Baseline</span>
               </div>
 
-              <dl className="divide-y divide-outline/15 font-mono">
+              <dl className="divide-y divide-white/10 font-mono">
                 <div className="py-2.5">
-                  <dt className="text-[10px] text-on-surface-variant uppercase font-semibold">
+                  <dt className="text-[10px] text-slate-400 uppercase font-semibold">
                     Target Latency Profile
                   </dt>
-                  <dd className="text-base font-bold text-primary mt-0.5">{configSpecs.latency}</dd>
+                  <dd className="text-base font-bold text-amber-400 mt-0.5">{configSpecs.latency}</dd>
                 </div>
                 <div className="py-2.5">
-                  <dt className="text-[10px] text-on-surface-variant uppercase font-semibold">
+                  <dt className="text-[10px] text-slate-400 uppercase font-semibold">
                     Reliability Target
                   </dt>
-                  <dd className="text-sm font-bold text-on-surface mt-0.5">{configSpecs.uptime}</dd>
+                  <dd className="text-sm font-bold text-white mt-0.5">{configSpecs.uptime}</dd>
                 </div>
                 <div className="py-2.5">
-                  <dt className="text-[10px] text-on-surface-variant uppercase font-semibold">
+                  <dt className="text-[10px] text-slate-400 uppercase font-semibold">
                     Primary Architecture Stack
                   </dt>
-                  <dd className="text-xs font-semibold text-on-surface mt-0.5 leading-relaxed">
+                  <dd className="text-xs font-semibold text-slate-200 mt-0.5 leading-relaxed">
                     {configSpecs.stack}
                   </dd>
                 </div>
                 <div className="py-2.5">
-                  <dt className="text-[10px] text-on-surface-variant uppercase font-semibold">
+                  <dt className="text-[10px] text-slate-400 uppercase font-semibold">
                     Execution &amp; Handover
                   </dt>
-                  <dd className="text-xs text-on-surface-variant mt-0.5">{configSpecs.turnaround}</dd>
+                  <dd className="text-xs text-slate-300 mt-0.5">{configSpecs.turnaround}</dd>
                 </div>
               </dl>
 
@@ -1169,14 +1371,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 08. UNIFIED 9-LAYER STACK & ENGINEERING WORKBENCH LINKS */}
-      <section className="w-full bg-surface-container-lowest py-16 lg:py-24 border-b border-outline/20">
+      {/* 09. UNIFIED 9-LAYER STACK & ENGINEERING WORKBENCH LINKS */}
+      <section className="w-full bg-surface-container-lowest py-20 lg:py-24 border-b border-outline/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-7 space-y-4">
               <div className="space-y-1.5">
-                <span className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
-                  Unified 9-Layer Topology
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-gold font-bold flex items-center gap-2">
+                  <Layers size={14} />
+                  <span>Unified 9-Layer Topology</span>
                 </span>
                 <h2 className="font-headline text-3xl text-on-surface font-extrabold tracking-tight">
                   One Stack From Optical Fiber to Cloud UI
@@ -1245,7 +1448,7 @@ export default function Home() {
                     <div
                       key={layer.id}
                       onClick={() => toggleStack(layer.id)}
-                      className="py-3.5 px-2 cursor-pointer transition-colors hover:bg-surface-container-low/50"
+                      className="py-3.5 px-2 cursor-pointer transition-colors hover:bg-surface-container-low/60"
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3">
@@ -1269,7 +1472,7 @@ export default function Home() {
                           >
                             <div className="pt-2.5 pl-9 space-y-1 text-sm text-on-surface-variant">
                               <p>{layer.desc}</p>
-                              <div className="font-mono text-xs text-primary font-semibold">{layer.spec}</div>
+                              <div className="font-mono text-xs text-gold font-semibold">{layer.spec}</div>
                             </div>
                           </motion.div>
                         )}
@@ -1281,49 +1484,51 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
-              <div className="surface-card rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src={VISUAL_ASSETS.fiberOpticsHardware}
-                  alt="Certified high-density optical fiber patch array and QSFP transceivers"
-                  className="w-full aspect-[4/3] object-cover"
-                  loading="lazy"
-                />
-                <div className="p-6 space-y-3">
-                  <div className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
-                    Physical Verification Standard
-                  </div>
-                  <h3 className="font-headline text-xl font-bold text-on-surface">
-                    Zero Assumptions. Verified at Every Span.
-                  </h3>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
-                    Software fails when physical transport degrades. Every datacenter deployment and structured fiber installation ships with signed bidirectional OTDR trace records.
-                  </p>
-                  <div className="pt-2 flex flex-wrap gap-4">
-                    <Link
-                      to="/engineering"
-                      className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
-                    >
-                      <span>Explore 9-Layer Stack</span>
-                      <ArrowRight size={13} />
-                    </Link>
-                    <Link
-                      to="/tools"
-                      className="text-xs font-semibold text-on-surface-variant hover:text-on-surface"
-                    >
-                      Optical Link Loss Calculator →
-                    </Link>
+              <Tilt3DFrame maxTilt={4}>
+                <div className="surface-card rounded-2xl overflow-hidden shadow-lg">
+                  <img
+                    src={VISUAL_ASSETS.fiberOpticsHardware}
+                    alt="Certified high-density optical fiber patch array and QSFP transceivers"
+                    className="w-full aspect-[4/3] object-cover"
+                    loading="lazy"
+                  />
+                  <div className="p-6 space-y-3">
+                    <div className="font-mono text-xs uppercase tracking-wider text-gold font-bold">
+                      Physical Verification Standard
+                    </div>
+                    <h3 className="font-headline text-xl font-bold text-on-surface">
+                      Zero Assumptions. Verified at Every Span.
+                    </h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">
+                      Software fails when physical transport degrades. Every datacenter deployment and structured fiber installation ships with signed bidirectional OTDR trace records.
+                    </p>
+                    <div className="pt-2 flex flex-wrap gap-4">
+                      <Link
+                        to="/engineering"
+                        className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>Explore 9-Layer Stack</span>
+                        <ArrowRight size={13} />
+                      </Link>
+                      <Link
+                        to="/tools"
+                        className="text-xs font-semibold text-on-surface-variant hover:text-on-surface"
+                      >
+                        Optical Link Loss Calculator →
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Tilt3DFrame>
             </div>
           </div>
 
-          {/* Open Engineering Tools & Decision Links */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+          {/* Open Engineering Workbench Hairline Trio */}
+          <div className="grid grid-cols-1 md:grid-cols-3 border border-outline/20 divide-y md:divide-y-0 md:divide-x divide-outline/20 rounded-2xl overflow-hidden bg-surface-container-low/40">
             <Link
               to="/tools"
               onClick={() => playUiChime('click')}
-              className="surface-card p-6 rounded-2xl space-y-2 group cursor-pointer"
+              className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
               <div className="flex items-center justify-between text-primary">
                 <Calculator size={18} />
@@ -1340,7 +1545,7 @@ export default function Home() {
             <Link
               to="/compare"
               onClick={() => playUiChime('click')}
-              className="surface-card p-6 rounded-2xl space-y-2 group cursor-pointer"
+              className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
               <div className="flex items-center justify-between text-primary">
                 <Scale size={18} />
@@ -1357,7 +1562,7 @@ export default function Home() {
             <Link
               to="/glossary"
               onClick={() => playUiChime('click')}
-              className="surface-card p-6 rounded-2xl space-y-2 group cursor-pointer"
+              className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
               <div className="flex items-center justify-between text-primary">
                 <BookMarked size={18} />
@@ -1374,12 +1579,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09. AEO VERIFIED QUESTIONS & FINAL CTA */}
+      {/* 10. AEO VERIFIED QUESTIONS & FINAL OBSIDIAN ATELIER CTA */}
       <section className="w-full bg-surface py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-surface-container-low border border-outline/20 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-primary font-semibold">
+              <div className="flex items-center gap-2 text-xs font-mono text-gold font-bold">
                 <HelpCircle size={14} />
                 <span>Entity Verification</span>
               </div>
@@ -1392,7 +1597,7 @@ export default function Home() {
             </div>
 
             <div className="p-6 rounded-2xl bg-surface-container-low border border-outline/20 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-primary font-semibold">
+              <div className="flex items-center gap-2 text-xs font-mono text-gold font-bold">
                 <ShieldCheck size={14} />
                 <span>Custody Model</span>
               </div>
@@ -1405,7 +1610,7 @@ export default function Home() {
             </div>
 
             <div className="p-6 rounded-2xl bg-surface-container-low border border-outline/20 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono text-primary font-semibold">
+              <div className="flex items-center gap-2 text-xs font-mono text-gold font-bold">
                 <Server size={14} />
                 <span>Global Engagement</span>
               </div>
@@ -1421,14 +1626,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="surface-card p-8 sm:p-12 rounded-2xl text-center space-y-5 max-w-4xl mx-auto">
-            <div className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+          <div className="obsidian-band obsidian-grid p-8 sm:p-14 rounded-2xl border border-white/15 text-center space-y-5 max-w-5xl mx-auto shadow-2xl">
+            <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-400 font-semibold">
               Direct Engineering Engagement
             </div>
-            <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
+            <h2 className="font-headline text-3xl sm:text-5xl text-white font-extrabold tracking-tight">
               Tell Us What You&apos;re Building
             </h2>
-            <p className="text-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
               Digital systems, Tier III/IV datacenter builds, private automation pipelines, or 24/7 managed SRE across London, Islamabad, and international corridors.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1445,9 +1650,9 @@ export default function Home() {
               <a
                 href="mailto:hr@mihora.tech?subject=MIHORA%20Architecture%20Inquiry"
                 onClick={() => playUiChime('click')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-surface-container-low border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-xl text-sm transition-all cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-xl text-sm transition-all cursor-pointer"
               >
-                <Mail size={15} className="text-primary" />
+                <Mail size={15} className="text-amber-400" />
                 <span>hr@mihora.tech</span>
               </a>
             </div>

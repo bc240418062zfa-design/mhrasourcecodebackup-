@@ -13,7 +13,7 @@ import { playUiChime } from '../utils/audio';
 import { VISUAL_ASSETS } from '../assets/visuals';
 import { SERVICE_DIVISIONS } from '../data/servicesData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { Reveal, StaggerGrid, StaggerItem, AnimatedCounter } from '../components/MotionPrimitives';
+import { Reveal, StaggerGrid, StaggerItem, AnimatedCounter, MaskTextReveal, SpotlightSurface, Tilt3DFrame } from '../components/MotionPrimitives';
 
 interface ServiceNode {
   id: string;
@@ -311,41 +311,41 @@ Source: https://mihora.tech/services`;
   return (
     <div className="flex flex-col w-full">
       {/* Header */}
-      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <Breadcrumbs items={[{ label: 'Services' }]} />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8 space-y-4">
               <Reveal>
-                <div className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
                   Capability Directory · 5 Engineering Divisions
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
                   Engineering Services Spanning Code, Silicon &amp; Physical Terrain
                 </h1>
-              </Reveal>
+              </MaskTextReveal>
               <Reveal delay={0.1}>
-                <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
                   Explore MIHORA.TECH&apos;s 29 registered technical capabilities across 5 specialized divisions—or open any division page for full architecture matrices and SLA commitments.
                 </p>
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 bg-surface-container-low p-5 rounded-2xl border border-outline/25 space-y-2.5 text-xs font-mono">
+            <div className="lg:col-span-4 bg-white/[0.04] p-5 rounded-2xl border border-white/15 space-y-2.5 text-xs font-mono backdrop-blur-md">
               <div className="flex justify-between">
-                <span className="text-on-surface-variant">Registered Capabilities</span>
-                <span className="font-bold text-on-surface">29 Verified Specs</span>
+                <span className="text-slate-400">Registered Capabilities</span>
+                <span className="font-bold text-white">29 Verified Specs</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-on-surface-variant">Operating Hubs</span>
-                <span className="font-bold text-on-surface">London + Islamabad</span>
+                <span className="text-slate-400">Operating Hubs</span>
+                <span className="font-bold text-white">London + Islamabad</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-on-surface-variant">Service Objective</span>
-                <span className="font-bold text-primary">99.999% Availability</span>
+                <span className="text-slate-400">Service Objective</span>
+                <span className="font-bold text-amber-400">99.999% Availability</span>
               </div>
             </div>
           </div>
@@ -437,44 +437,46 @@ Source: https://mihora.tech/services`;
                       const visible = activeIntent === 'ALL' || node.intents.includes(activeIntent);
                       return (
                         <StaggerItem key={node.id}>
-                          <button
-                            type="button"
-                            disabled={!visible}
-                            onClick={() => visible && handleOpenNodeSpec(node)}
-                            className={clsx(
-                              'w-full text-left bg-surface-container-lowest p-5 rounded-xl space-y-3 transition-all border border-outline/20 h-full flex flex-col justify-between group',
-                              visible
-                                ? 'hover:border-primary/50 hover:shadow-md cursor-pointer'
-                                : 'opacity-30 grayscale cursor-not-allowed'
-                            )}
-                          >
-                            <div className="space-y-2.5">
-                              <div className="flex justify-between items-center">
-                                <span className="font-mono text-xs text-primary font-bold">
-                                  Spec {node.id}
-                                </span>
-                                <div className="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary border border-outline/20">
-                                  <node.icon size={16} />
-                                </div>
-                              </div>
-                              <h3 className="font-headline text-base font-bold text-on-surface group-hover:text-primary transition-colors">
-                                {node.name}
-                              </h3>
-                              <p className="text-xs text-on-surface-variant leading-relaxed">
-                                {node.desc}
-                              </p>
-                            </div>
-
-                            <div className="pt-3 flex items-center justify-between border-t border-outline/15 font-mono text-[11px] w-full">
-                              <span className="text-on-surface-variant">{node.tags[0]}</span>
-                              {visible && (
-                                <span className="text-primary font-semibold inline-flex items-center gap-1">
-                                  <span>Inspect</span>
-                                  <ArrowRight size={12} />
-                                </span>
+                          <SpotlightSurface className="h-full rounded-xl">
+                            <button
+                              type="button"
+                              disabled={!visible}
+                              onClick={() => visible && handleOpenNodeSpec(node)}
+                              className={clsx(
+                                'w-full text-left bg-surface-container-lowest p-5 rounded-xl space-y-3 transition-all border border-outline/20 h-full flex flex-col justify-between group',
+                                visible
+                                  ? 'hover:border-primary/50 hover:shadow-md cursor-pointer'
+                                  : 'opacity-30 grayscale cursor-not-allowed'
                               )}
-                            </div>
-                          </button>
+                            >
+                              <div className="space-y-2.5">
+                                <div className="flex justify-between items-center">
+                                  <span className="font-mono text-xs text-primary font-bold">
+                                    Spec {node.id}
+                                  </span>
+                                  <div className="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary border border-outline/20">
+                                    <node.icon size={16} />
+                                  </div>
+                                </div>
+                                <h3 className="font-headline text-base font-bold text-on-surface group-hover:text-primary transition-colors">
+                                  {node.name}
+                                </h3>
+                                <p className="text-xs text-on-surface-variant leading-relaxed">
+                                  {node.desc}
+                                </p>
+                              </div>
+
+                              <div className="pt-3 flex items-center justify-between border-t border-outline/15 font-mono text-[11px] w-full">
+                                <span className="text-on-surface-variant">{node.tags[0]}</span>
+                                {visible && (
+                                  <span className="text-primary font-semibold inline-flex items-center gap-1">
+                                    <span>Inspect</span>
+                                    <ArrowRight size={12} />
+                                  </span>
+                                )}
+                              </div>
+                            </button>
+                          </SpotlightSurface>
                         </StaggerItem>
                       );
                     })}
@@ -612,23 +614,25 @@ Source: https://mihora.tech/services`;
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden shadow-lg bg-surface-container-lowest border border-outline/25">
-            <img
-              className="w-full h-80 lg:h-96 object-cover"
-              alt="Optical switch rack termination certified by MIHORA.TECH"
-              src={VISUAL_ASSETS.fiberOpticsHardware}
-              loading="lazy"
-            />
-            <div className="p-4 flex items-center justify-between text-xs border-t border-outline/20">
-              <div>
-                <div className="font-semibold text-on-surface">TIA-568-D &amp; Bidirectional OTDR Certified</div>
-                <div className="text-on-surface-variant font-mono mt-0.5">48U Hot-Aisle Containment · 100G/400G Uplinks</div>
+          <Tilt3DFrame maxTilt={4}>
+            <div className="rounded-2xl overflow-hidden shadow-lg bg-surface-container-lowest border border-outline/25">
+              <img
+                className="w-full h-80 lg:h-96 object-cover"
+                alt="Optical switch rack termination certified by MIHORA.TECH"
+                src={VISUAL_ASSETS.fiberOpticsHardware}
+                loading="lazy"
+              />
+              <div className="p-4 flex items-center justify-between text-xs border-t border-outline/20">
+                <div>
+                  <div className="font-semibold text-on-surface">TIA-568-D &amp; Bidirectional OTDR Certified</div>
+                  <div className="text-on-surface-variant font-mono mt-0.5">48U Hot-Aisle Containment · 100G/400G Uplinks</div>
+                </div>
+                <Link to="/case-studies" className="font-semibold text-primary hover:underline">
+                  Case studies →
+                </Link>
               </div>
-              <Link to="/case-studies" className="font-semibold text-primary hover:underline">
-                Case studies →
-              </Link>
             </div>
-          </div>
+          </Tilt3DFrame>
         </div>
       </section>
     </div>

@@ -387,12 +387,12 @@ export default function Layout() {
               onClick={() => setMobileMenuOpen(false)}
               aria-label="MIHORA.TECH Home"
             >
-              <BrandLogo className="h-8 sm:h-9 w-auto aspect-[368/236] group-hover:scale-105 transition-transform shrink-0" />
+              <BrandLogo className="h-8 sm:h-9 w-auto aspect-[5/4] group-hover:scale-105 transition-transform shrink-0" />
               <div className="flex items-baseline tracking-tight">
                 <span className="font-bold text-xl sm:text-2xl text-on-surface tracking-tight font-headline leading-none">
                   MIHORA
                 </span>
-                <span className="text-xs sm:text-sm font-extrabold text-primary tracking-widest ml-1 leading-none">
+                <span className="text-xs sm:text-sm font-extrabold text-gold tracking-[0.18em] ml-1 leading-none">
                   .TECH
                 </span>
               </div>
@@ -478,7 +478,7 @@ export default function Layout() {
 
               <Link
                 to="/contact"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-white text-xs font-semibold shadow-sm transition-all active:scale-95 shrink-0 cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg btn-primary-gradient text-xs font-semibold transition-all active:scale-95 shrink-0 cursor-pointer"
               >
                 <span>Contact Us</span>
                 <ArrowRight size={13} />
@@ -864,45 +864,43 @@ export default function Layout() {
         </AnimatePresence>
       </main>
 
-      {/* Authoritative 5-Column Enterprise Footer */}
-      <footer className="w-full bg-surface-container-lowest border-t border-outline/20 py-14 text-on-surface mt-auto">
+      {/* Authoritative 5-Column Obsidian Atelier Footer */}
+      <footer className="w-full obsidian-band obsidian-grid border-t border-white/10 py-16 text-slate-100 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 pb-8 border-b border-outline/15">
-            <div className="space-y-2 max-w-2xl">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 pb-10 border-b border-white/10">
+            <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-3">
-                <BrandLogo className="h-9 w-auto aspect-[368/236] shrink-0" />
+                <BrandLogo className="h-9 w-auto aspect-[5/4] shrink-0" />
                 <div className="flex items-baseline tracking-tight">
-                  <span className="font-headline font-extrabold text-xl tracking-tight text-on-surface leading-none">
+                  <span className="font-headline font-extrabold text-xl tracking-tight text-white leading-none">
                     MIHORA
                   </span>
-                  <span className="text-xs font-extrabold text-primary tracking-widest ml-1 leading-none">
+                  <span className="text-xs font-extrabold text-amber-400 tracking-[0.2em] ml-1 leading-none">
                     .TECH
                   </span>
                 </div>
               </div>
-              <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">
+              <p className="text-xs font-mono uppercase tracking-[0.18em] text-amber-400 font-semibold">
                 Sovereign Digital Systems &amp; Physical Infrastructure
               </p>
-              <p className="text-sm text-on-surface-variant leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed">
                 Operating synchronized engineering command hubs in London (UK) and Islamabad (Pakistan) with global physical field and 24/7 SRE delivery.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono bg-surface-container-low border border-outline/20 px-4 py-3 rounded-xl">
-              <div>
-                <span className="text-on-surface-variant">London (UK): </span>
-                <span className="font-bold text-on-surface">{timeLondon || '00:00:00'}</span>
-                <span className="text-on-surface-variant ml-1">UTC+0</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10 text-xs font-mono bg-white/[0.03] border border-white/10">
+              <div className="px-4 py-3">
+                <span className="text-slate-400">London (UK): </span>
+                <span className="font-bold text-white tabular-nums">{timeLondon || '00:00:00'}</span>
+                <span className="text-slate-500 ml-1">UTC+0</span>
               </div>
-              <span className="text-outline/40">|</span>
-              <div>
-                <span className="text-on-surface-variant">Islamabad (PK): </span>
-                <span className="font-bold text-on-surface">{timeIslamabad || '05:00:00'}</span>
-                <span className="text-on-surface-variant ml-1">UTC+5</span>
+              <div className="px-4 py-3">
+                <span className="text-slate-400">Islamabad (PK): </span>
+                <span className="font-bold text-white tabular-nums">{timeIslamabad || '05:00:00'}</span>
+                <span className="text-slate-500 ml-1">UTC+5</span>
               </div>
-              <span className="text-outline/40">|</span>
-              <div>
-                <a href="mailto:hr@mihora.tech" className="text-primary font-semibold hover:underline">
+              <div className="px-4 py-3 flex items-center">
+                <a href="mailto:hr@mihora.tech" className="text-amber-400 font-semibold hover:underline">
                   hr@mihora.tech
                 </a>
               </div>
@@ -911,79 +909,79 @@ export default function Layout() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <div className="space-y-3">
-              <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                 Service Divisions
               </div>
-              <ul className="space-y-2 text-sm text-on-surface-variant">
-                <li><Link to="/services" className="hover:text-on-surface transition-colors">All 5 Divisions</Link></li>
-                <li><Link to="/services/digital-engineering" className="hover:text-on-surface transition-colors">Digital Engineering</Link></li>
-                <li><Link to="/services/automation-intelligence" className="hover:text-on-surface transition-colors">Automation &amp; AI</Link></li>
-                <li><Link to="/services/physical-infrastructure" className="hover:text-on-surface transition-colors">Physical Infrastructure</Link></li>
-                <li><Link to="/services/field-engineering" className="hover:text-on-surface transition-colors">Field Engineering</Link></li>
-                <li><Link to="/services/managed-sre" className="hover:text-on-surface transition-colors">24/7 Managed SRE</Link></li>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/services" className="hover:text-white transition-colors">All 5 Divisions</Link></li>
+                <li><Link to="/services/digital-engineering" className="hover:text-white transition-colors">Digital Engineering</Link></li>
+                <li><Link to="/services/automation-intelligence" className="hover:text-white transition-colors">Automation &amp; AI</Link></li>
+                <li><Link to="/services/physical-infrastructure" className="hover:text-white transition-colors">Physical Infrastructure</Link></li>
+                <li><Link to="/services/field-engineering" className="hover:text-white transition-colors">Field Engineering</Link></li>
+                <li><Link to="/services/managed-sre" className="hover:text-white transition-colors">24/7 Managed SRE</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                 Solutions &amp; Proof
               </div>
-              <ul className="space-y-2 text-sm text-on-surface-variant">
-                <li><Link to="/solutions" className="hover:text-on-surface transition-colors">Enterprise Solutions</Link></li>
-                <li><Link to="/how-it-works" className="hover:text-on-surface transition-colors">How It Works (5 Phases)</Link></li>
-                <li><Link to="/case-studies" className="hover:text-on-surface transition-colors">Case Studies &amp; Benchmarks</Link></li>
-                <li><Link to="/compare" className="hover:text-on-surface transition-colors">Sovereign vs. Cloud Matrix</Link></li>
-                <li><Link to="/industries" className="hover:text-on-surface transition-colors">Industries Served</Link></li>
-                <li><Link to="/solutions#sovereign-rfp-builder" className="text-primary font-medium hover:underline">RFP Specifier Tool</Link></li>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/solutions" className="hover:text-white transition-colors">Enterprise Solutions</Link></li>
+                <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works (5 Phases)</Link></li>
+                <li><Link to="/case-studies" className="hover:text-white transition-colors">Case Studies &amp; Benchmarks</Link></li>
+                <li><Link to="/compare" className="hover:text-white transition-colors">Sovereign vs. Cloud Matrix</Link></li>
+                <li><Link to="/industries" className="hover:text-white transition-colors">Industries Served</Link></li>
+                <li><Link to="/solutions#sovereign-rfp-builder" className="text-blue-400 font-medium hover:underline">RFP Specifier Tool</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                 Architecture &amp; Tools
               </div>
-              <ul className="space-y-2 text-sm text-on-surface-variant">
-                <li><Link to="/engineering" className="hover:text-on-surface transition-colors">9-Layer Stack</Link></li>
-                <li><Link to="/security" className="hover:text-on-surface transition-colors">Zero-Trust Security Center</Link></li>
-                <li><Link to="/tools" className="text-primary font-medium hover:underline">SLA &amp; Optical Calculators</Link></li>
-                <li><Link to="/glossary" className="hover:text-on-surface transition-colors">Engineering Glossary</Link></li>
-                <li><Link to="/resources" className="hover:text-on-surface transition-colors">Knowledge Hub &amp; Standards</Link></li>
-                <li><Link to="/docs" className="hover:text-on-surface transition-colors">Technical Docs Codex</Link></li>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/engineering" className="hover:text-white transition-colors">9-Layer Stack</Link></li>
+                <li><Link to="/security" className="hover:text-white transition-colors">Zero-Trust Security Center</Link></li>
+                <li><Link to="/tools" className="text-blue-400 font-medium hover:underline">SLA &amp; Optical Calculators</Link></li>
+                <li><Link to="/glossary" className="hover:text-white transition-colors">Engineering Glossary</Link></li>
+                <li><Link to="/resources" className="hover:text-white transition-colors">Knowledge Hub &amp; Standards</Link></li>
+                <li><Link to="/docs" className="hover:text-white transition-colors">Technical Docs Codex</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
-              <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                 Company &amp; Trust
               </div>
-              <ul className="space-y-2 text-sm text-on-surface-variant">
-                <li><Link to="/company" className="hover:text-on-surface transition-colors">Company &amp; Founders</Link></li>
-                <li><Link to="/our-story" className="hover:text-on-surface transition-colors">Our Founding Story</Link></li>
-                <li><Link to="/partnerships" className="hover:text-on-surface transition-colors">Strategic Partnerships</Link></li>
-                <li><Link to="/press" className="hover:text-on-surface transition-colors">Press Kit &amp; Citations</Link></li>
-                <li><Link to="/careers" className="hover:text-on-surface transition-colors">Engineering Careers</Link></li>
-                <li><Link to="/faq" className="hover:text-on-surface transition-colors">Verified Entity FAQ</Link></li>
-                <li><Link to="/status" className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">System Status (99.999%)</Link></li>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li><Link to="/company" className="hover:text-white transition-colors">Company &amp; Founders</Link></li>
+                <li><Link to="/our-story" className="hover:text-white transition-colors">Our Founding Story</Link></li>
+                <li><Link to="/partnerships" className="hover:text-white transition-colors">Strategic Partnerships</Link></li>
+                <li><Link to="/press" className="hover:text-white transition-colors">Press Kit &amp; Citations</Link></li>
+                <li><Link to="/careers" className="hover:text-white transition-colors">Engineering Careers</Link></li>
+                <li><Link to="/faq" className="hover:text-white transition-colors">Verified Entity FAQ</Link></li>
+                <li><Link to="/status" className="text-emerald-400 font-medium hover:underline">System Status (99.999%)</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3 col-span-2 md:col-span-1">
-              <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
+              <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                 Direct Hubs &amp; Dispatch
               </div>
-              <div className="space-y-2.5 text-sm text-on-surface-variant">
+              <div className="space-y-2.5 text-sm text-slate-400">
                 <div>
-                  <div className="font-semibold text-on-surface text-xs">London, United Kingdom</div>
+                  <div className="font-semibold text-white text-xs">London, United Kingdom</div>
                   <div className="text-xs">128 City Road, EC2A 2NX</div>
                 </div>
                 <div>
-                  <div className="font-semibold text-on-surface text-xs">Islamabad, Pakistan</div>
+                  <div className="font-semibold text-white text-xs">Islamabad, Pakistan</div>
                   <div className="text-xs">Blue Area, Islamabad 44000</div>
                 </div>
                 <div className="pt-1">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:underline"
                   >
                     <span>Schedule Architecture Review</span>
                     <ArrowRight size={12} />
@@ -993,18 +991,18 @@ export default function Layout() {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-outline/15 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-5 text-center md:text-left">
               <span>© {new Date().getFullYear()} MIHORA.TECH (PRIVATE) LIMITED. All rights reserved.</span>
-              <span className="font-mono font-semibold text-on-surface uppercase tracking-wider text-[11px]">
+              <span className="font-mono font-semibold text-white uppercase tracking-wider text-[11px]">
                 Co-Founded by M. Matti ul Hasnain &amp; Omema Iqbal
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-5">
-              <Link to="/privacy" className="hover:text-on-surface transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-on-surface transition-colors">Terms of Service</Link>
-              <Link to="/disclaimer" className="hover:text-on-surface transition-colors">Disclaimer</Link>
-              <Link to="/legal" className="hover:text-on-surface transition-colors">Security &amp; Compliance</Link>
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link>
+              <Link to="/legal" className="hover:text-white transition-colors">Security &amp; Compliance</Link>
             </div>
           </div>
         </div>

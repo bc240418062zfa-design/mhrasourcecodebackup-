@@ -407,3 +407,48 @@ export const InfiniteMarquee: React.FC<InfiniteMarqueeProps> = ({ items, classNa
     </div>
   );
 };
+
+/* 10. 3D Pointer Perspective Interactive Frame */
+interface Tilt3DFrameProps {
+  children: React.ReactNode;
+  className?: string;
+  maxTilt?: number;
+}
+
+export const Tilt3DFrame: React.FC<Tilt3DFrameProps> = ({
+  children,
+  className = '',
+  maxTilt = 5,
+}) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ rx: -py * maxTilt * 2, ry: px * maxTilt * 2 });
+  };
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <div style={{ perspective: 1100 }} className={className}>
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => setTilt({ rx: 0, ry: 0 })}
+        animate={{ rotateX: tilt.rx, rotateY: tilt.ry }}
+        transition={{ type: 'spring', stiffness: 220, damping: 24, mass: 0.6 }}
+        className="w-full h-full will-change-transform"
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
+

@@ -9,7 +9,7 @@ import {
 import { SubseaCableExplorer } from '../components/SubseaCableExplorer';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { VISUAL_ASSETS } from '../assets/visuals';
-import { Reveal, StaggerGrid, StaggerItem, AnimatedCounter } from '../components/MotionPrimitives';
+import { Reveal, StaggerGrid, StaggerItem, AnimatedCounter, MaskTextReveal, Tilt3DFrame } from '../components/MotionPrimitives';
 
 interface LayerSpec {
   code: string;
@@ -141,43 +141,43 @@ export default function Engineering() {
   return (
     <div className="flex flex-col w-full">
       {/* Header */}
-      <section id="architecture" className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20">
+      <section id="architecture" className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8 scroll-mt-20">
         <div className="max-w-7xl mx-auto space-y-8">
           <Breadcrumbs items={[{ label: 'Engineering' }]} />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
             <div className="lg:col-span-8 space-y-4">
               <Reveal>
-                <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
                   <SlidersHorizontal size={14} />
                   <span>Sovereign Engineering &amp; Physical Architecture</span>
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
                   Where Digital Code Meets Physical Reality
                 </h1>
-              </Reveal>
+              </MaskTextReveal>
               <Reveal delay={0.1}>
-                <p className="text-base sm:text-lg text-on-surface-variant max-w-3xl leading-relaxed">
+                <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed">
                   Software vendors frequently ignore hardware bottlenecks, while cabling contractors rarely understand microservice resilience. MIHORA.TECH bridges both domains through an integrated 9-layer architecture spanning optical fiber to cloud APIs.
                 </p>
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 bg-surface-container-low p-5 rounded-2xl border border-outline/25 space-y-3">
+            <div className="lg:col-span-4 bg-white/[0.04] p-5 rounded-2xl border border-white/15 space-y-3 backdrop-blur-md">
               <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-primary font-bold uppercase">Stack Architecture</span>
-                <span className="text-on-surface-variant">London &amp; Islamabad</span>
+                <span className="text-amber-400 font-bold uppercase">Stack Architecture</span>
+                <span className="text-slate-400">London &amp; Islamabad</span>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-surface-container-lowest p-3.5 rounded-xl border border-outline/15">
-                  <div className="text-[11px] font-mono text-on-surface-variant uppercase">Stack Span</div>
-                  <div className="font-headline text-2xl font-extrabold text-on-surface mt-0.5">09 Layers</div>
+              <div className="grid grid-cols-2 divide-x divide-white/15 border border-white/15 bg-black/30 rounded-xl overflow-hidden">
+                <div className="p-3.5">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase">Stack Span</div>
+                  <div className="font-headline text-2xl font-extrabold text-white mt-0.5">09 Layers</div>
                 </div>
-                <div className="bg-surface-container-lowest p-3.5 rounded-xl border border-outline/15">
-                  <div className="text-[11px] font-mono text-on-surface-variant uppercase">Target SLA</div>
-                  <div className="font-headline text-2xl font-extrabold text-primary mt-0.5">
+                <div className="p-3.5">
+                  <div className="text-[11px] font-mono text-slate-400 uppercase">Target SLA</div>
+                  <div className="font-headline text-2xl font-extrabold text-amber-400 mt-0.5">
                     <AnimatedCounter target={99.999} decimals={3} suffix="%" />
                   </div>
                 </div>
@@ -372,25 +372,27 @@ export default function Engineering() {
               },
             ].map((item) => (
               <StaggerItem key={item.title}>
-                <div className="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline/25 flex flex-col h-full group">
-                  <div className="h-52 overflow-hidden">
-                    <img
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      alt={item.alt}
-                      src={item.img}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">
-                    <div className="space-y-1.5">
-                      <h3 className="font-headline text-lg text-on-surface font-bold">{item.title}</h3>
-                      <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
+                <Tilt3DFrame maxTilt={4} className="h-full">
+                  <div className="surface-card rounded-2xl overflow-hidden flex flex-col h-full group">
+                    <div className="h-52 overflow-hidden">
+                      <img
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt={item.alt}
+                        src={item.img}
+                        loading="lazy"
+                      />
                     </div>
-                    <div className="pt-3 border-t border-outline/15 font-mono text-xs text-primary font-semibold">
-                      {item.spec}
+                    <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">
+                      <div className="space-y-1.5">
+                        <h3 className="font-headline text-lg text-on-surface font-bold">{item.title}</h3>
+                        <p className="text-sm text-on-surface-variant leading-relaxed">{item.desc}</p>
+                      </div>
+                      <div className="pt-3 border-t border-outline/15 font-mono text-xs text-gold font-bold">
+                        {item.spec}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Tilt3DFrame>
               </StaggerItem>
             ))}
           </StaggerGrid>

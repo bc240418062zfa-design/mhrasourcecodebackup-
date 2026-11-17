@@ -3,7 +3,7 @@ import {
   Factory, Hospital, Store, GraduationCap, Server, Building, Globe, ArrowRight, CheckCircle2
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
+import { Reveal, StaggerGrid, StaggerItem, MaskTextReveal, SpotlightSurface } from '../components/MotionPrimitives';
 
 const INDUSTRY_SECTORS = [
   {
@@ -110,23 +110,23 @@ export default function Industries() {
   return (
     <div className="flex flex-col w-full">
       {/* Header */}
-      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <Breadcrumbs items={[{ label: 'Industries' }]} />
           <div className="max-w-3xl space-y-4">
             <Reveal>
-              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
                 <Globe size={14} />
                 <span>Mission-Critical Industry Verticals</span>
               </div>
             </Reveal>
-            <Reveal delay={0.05}>
-              <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+            <MaskTextReveal delay={0.05}>
+              <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
                 Engineered for Regulated, Uptime-Critical Industries
               </h1>
-            </Reveal>
+            </MaskTextReveal>
             <Reveal delay={0.1}>
-              <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
                 From sovereign financial settlement and national energy grids to automated cold-chain warehouses, MIHORA.TECH adapts hardware containment and distributed software to strict sector rules.
               </p>
             </Reveal>
@@ -142,47 +142,49 @@ export default function Industries() {
               const Icon = ind.icon;
               return (
                 <StaggerItem key={ind.id}>
-                  <article
-                    id={ind.id}
-                    className="scroll-mt-24 bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 flex flex-col justify-between space-y-6 h-full hover:border-primary/40 transition-colors"
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                          <Icon size={22} />
-                        </div>
-                        <span className="font-mono text-xs text-primary font-semibold">{ind.code}</span>
-                      </div>
-
-                      <div className="space-y-1">
-                        <h2 className="font-headline text-xl font-bold text-on-surface">{ind.title}</h2>
-                        <div className="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">
-                          {ind.compliance}
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-on-surface-variant leading-relaxed">{ind.desc}</p>
-
-                      <div className="space-y-2 pt-2 border-t border-outline/15">
-                        {ind.highlights.map((h) => (
-                          <div key={h} className="flex items-start gap-2 text-xs text-on-surface">
-                            <CheckCircle2 size={14} className="text-primary mt-0.5 shrink-0" />
-                            <span>{h}</span>
+                  <SpotlightSurface className="h-full rounded-2xl">
+                    <article
+                      id={ind.id}
+                      className="scroll-mt-24 surface-card p-7 rounded-2xl flex flex-col justify-between space-y-6 h-full"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                            <Icon size={22} />
                           </div>
-                        ))}
-                      </div>
-                    </div>
+                          <span className="font-mono text-xs text-gold font-bold">{ind.code}</span>
+                        </div>
 
-                    <div className="pt-3 border-t border-outline/15 flex items-center justify-between text-xs font-semibold">
-                      <Link to={ind.servicePath} className="text-primary hover:underline inline-flex items-center gap-1">
-                        <span>{ind.serviceLabel}</span>
-                        <ArrowRight size={13} />
-                      </Link>
-                      <Link to="/case-studies" className="text-on-surface-variant hover:text-on-surface">
-                        Benchmarks →
-                      </Link>
-                    </div>
-                  </article>
+                        <div className="space-y-1">
+                          <h2 className="font-headline text-xl font-bold text-on-surface">{ind.title}</h2>
+                          <div className="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">
+                            {ind.compliance}
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-on-surface-variant leading-relaxed">{ind.desc}</p>
+
+                        <div className="space-y-2 pt-2 border-t border-outline/15">
+                          {ind.highlights.map((h) => (
+                            <div key={h} className="flex items-start gap-2 text-xs text-on-surface">
+                              <CheckCircle2 size={14} className="text-primary mt-0.5 shrink-0" />
+                              <span>{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-3 border-t border-outline/15 flex items-center justify-between text-xs font-semibold">
+                        <Link to={ind.servicePath} className="text-primary hover:underline inline-flex items-center gap-1">
+                          <span>{ind.serviceLabel}</span>
+                          <ArrowRight size={13} />
+                        </Link>
+                        <Link to="/case-studies" className="text-on-surface-variant hover:text-on-surface">
+                          Benchmarks →
+                        </Link>
+                      </div>
+                    </article>
+                  </SpotlightSurface>
                 </StaggerItem>
               );
             })}
