@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en" class="light" data-theme="light">
+  <head>
+    <!-- Google tag (gtag.js) deferred for optimal Lighthouse performance -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FRDMX9QZH8');
+
+      window.addEventListener('load', function() {
+        var gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FRDMX9QZH8';
+        document.head.appendChild(gaScript);
+      });
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('mihora-theme');
+          if (saved === 'cyber' || saved === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-theme', 'cyber');
+          } else {
+            document.documentElement.classList.add('light');
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- GitHub Pages Single Page App Redirect Decoder & Legacy Hash URL Upgrader -->
+    <script>
+      (function(l) {
+        // 1. Decode redirect from 404.html if served by GitHub Pages for deep routes
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+        // 2. Automatically upgrade legacy hash-based URLs (e.g. /#/services) into clean canonical paths
+        if (l.hash && l.hash.indexOf('#/') === 0) {
+          var cleanRoute = l.hash.substring(2);
+          if (cleanRoute) {
+            window.history.replaceState(null, null, '/' + cleanRoute + l.search);
+          }
+        }
+      }(window.location));
+    </script>
+
+    <!-- Primary SEO Meta Tags (Founders & Brand Heavy) -->
+    <meta name="google-site-verification" content="googlefb6d7fd888a3a4a2" />
+    <meta name="yandex-verification" content="010d67f377d240d4" />
+    <title>Engineering & Security Disclaimer | MIHORA.TECH</title>
+    <meta name="title" content="Engineering & Security Disclaimer | MIHORA.TECH" />
+    <meta name="description" content="Scope boundaries, operational liability disclosures, and technical benchmark caveats governing MIHORA.TECH infrastructure documentation." />
+    <meta name="keywords" content="MIHORA disclaimer, engineering benchmark caveats, scope disclosure" />
+    <meta name="author" content="M. Matti ul Hasnain and Omema Iqbal (MIHORA.TECH Founders)" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="yandex" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="3 days" />
+    <link rel="canonical" href="https://mihora.tech/disclaimer/" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MIHORA.TECH" />
+    <meta property="og:url" content="https://mihora.tech/disclaimer/" />
+    <meta property="og:title" content="Engineering & Security Disclaimer | MIHORA.TECH" />
+    <meta property="og:description" content="Scope boundaries, operational liability disclosures, and technical benchmark caveats governing MIHORA.TECH infrastructure documentation." />
+    <meta property="og:image" content="https://mihora.tech/og-image.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MIHORA.TECH - Founded by M. Matti ul Hasnain and Omema Iqbal" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mihora_tech" />
+    <meta name="twitter:creator" content="@mihora_tech" />
+    <meta name="twitter:url" content="https://mihora.tech/disclaimer/" />
+    <meta name="twitter:title" content="Engineering & Security Disclaimer | MIHORA.TECH" />
+    <meta name="twitter:description" content="Scope boundaries, operational liability disclosures, and technical benchmark caveats governing MIHORA.TECH infrastructure documentation." />
+    <meta name="twitter:image" content="https://mihora.tech/og-image.svg" />
+
+    <!-- Favicon & Tab Bar Brand Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#050C1F" />
+    
+    <!-- Optimized Non-Render-Blocking Fonts Preconnect & Async Load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    </noscript>
+
+    <!-- Schema.org Structured Data (JSON-LD) with Explicit Founders Entity Graph for Google Knowledge Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://mihora.tech/#founder-hasnain",
+          "name": "M. Matti ul Hasnain",
+          "alternateName": [
+            "Matti ul Hasnain",
+            "Muhammad Matti ul Hasnain",
+            "Matti Hasnain",
+            "Hasnain",
+            "Matti"
+          ],
+          "jobTitle": "Co-Founder & Principal Systems Architect",
+          "image": "https://mihora.tech/founder-matti.jpg",
+          "disambiguatingDescription": "Co-Founder and Principal Systems Architect of MIHORA.TECH, specializing in sovereign computing, datacenter infrastructure, and distributed systems.",
+          "worksFor": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "knowsAbout": [
+            "Sovereign Systems Engineering",
+            "Datacenter Infrastructure",
+            "Optical Fiber Fusion Splicing",
+            "Site Reliability Engineering",
+            "Distributed Systems Architecture",
+            "SCADA Telemetry"
+          ],
+          "sameAs": [
+            "https://mihora.tech/company/",
+            "https://mihora.tech/docs/",
+            "https://mihora.tech/faq/"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://mihora.tech/#founder-omema",
+          "name": "Omema Iqbal",
+          "alternateName": [
+            "Omema Iqbal",
+            "Omama Iqbal",
+            "Umema Iqbal",
+            "Omema"
+          ],
+          "jobTitle": "Co-Founder & Operations Director",
+          "image": "https://mihora.tech/founder-omema.jpg",
+          "disambiguatingDescription": "Co-Founder and Operations Director of MIHORA.TECH, leading global dual-hub governance, enterprise operations, and international delivery.",
+          "worksFor": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "knowsAbout": [
+            "Global Technology Operations",
+            "Enterprise Governance",
+            "Sovereign Compliance",
+            "Dual-Hub Operational Strategy",
+            "International Client Delivery"
+          ],
+          "sameAs": [
+            "https://mihora.tech/company/",
+            "https://mihora.tech/docs/",
+            "https://mihora.tech/faq/"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://mihora.tech/#organization",
+          "name": "MIHORA.TECH",
+          "alternateName": [
+            "MIHORA",
+            "MIHORA TECH",
+            "MIHORA.TECH (PRIVATE) LIMITED",
+            "Mihora Company",
+            "Mihora Pakistan",
+            "Mihora UK",
+            "Mihora Tech"
+          ],
+          "url": "https://mihora.tech",
+          "logo": "https://mihora.tech/mihora-logo.svg",
+          "image": "https://mihora.tech/og-image.svg",
+          "description": "MIHORA.TECH was founded by M. Matti ul Hasnain and Omema Iqbal to engineer sovereign digital systems, physical datacenter infrastructure, and 24/7 global telemetry operations.",
+          "founder": [
+            {
+              "@id": "https://mihora.tech/#founder-hasnain"
+            },
+            {
+              "@id": "https://mihora.tech/#founder-omema"
+            }
+          ],
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "M. Matti ul Hasnain",
+              "alternateName": "Matti ul Hasnain",
+              "jobTitle": "Co-Founder & Principal Systems Architect"
+            },
+            {
+              "@type": "Person",
+              "name": "Omema Iqbal",
+              "alternateName": "Omema",
+              "jobTitle": "Co-Founder & Operations Director"
+            }
+          ],
+          "knowsAbout": [
+            "Digital Engineering",
+            "Physical Datacenter Infrastructure",
+            "Network Engineering",
+            "Fiber Optic Fusion Splicing",
+            "Site Reliability Engineering",
+            "SCADA Systems",
+            "Automation Pipelines",
+            "Cloud Systems Architecture"
+          ],
+          "address": [
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "London",
+              "addressCountry": "United Kingdom"
+            },
+            {
+              "@type": "PostalAddress",
+              "addressLocality": "Islamabad",
+              "addressCountry": "Pakistan"
+            }
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "Executive Inquiries",
+              "email": "hr@mihora.tech",
+              "url": "https://mihora.tech/contact"
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "Engineering Architecture Dispatch",
+              "email": "dispatch@mihora.tech",
+              "url": "https://mihora.tech/contact"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://mihora.tech/#website",
+          "url": "https://mihora.tech",
+          "name": "MIHORA.TECH",
+          "publisher": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "description": "Sovereign Engineering & Global Systems Architecture. Founded by M. Matti ul Hasnain and Omema Iqbal."
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://mihora.tech/#service",
+          "name": "MIHORA.TECH Sovereign Engineering Services",
+          "provider": {
+            "@id": "https://mihora.tech/#organization"
+          },
+          "serviceType": [
+            "Digital Systems Engineering",
+            "Physical Infrastructure Deployment",
+            "Automation & Intelligence",
+            "Field Engineering & Fiber Verification",
+            "Managed Reliability & 24/7 SRE"
+          ],
+          "areaServed": "Global",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Engineering Capabilities",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Digital Engineering",
+                  "description": "Architected web, mobile, distributed backend microservices"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Physical Infrastructure",
+                  "description": "Server racks, SAN storage, cabling, enterprise switches, and fiber infrastructure"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Automation & Intelligence",
+                  "description": "Workflow orchestration, telemetry pipelines, and LLM tool routing"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mihora.tech/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is MIHORA.TECH and what does the company do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH is an international sovereign engineering organization specializing in end-to-end mission-critical digital systems, physical datacenter infrastructure, event-driven automation pipelines, and 24/7 managed site reliability engineering (SRE)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who founded MIHORA.TECH?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH was founded by M. Matti ul Hasnain (Co-Founder & Principal Systems Architect) and Omema Iqbal (Co-Founder & Operations Director)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is M. Matti ul Hasnain (Matti ul Hasnain)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "M. Matti ul Hasnain (also known as Matti ul Hasnain, Muhammad Matti ul Hasnain, or Hasnain) is the Co-Founder & Principal Systems Architect of MIHORA.TECH, leading the 9-layer sovereign stack, physical datacenter hardware, fusion fiber splicing, and distributed systems."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is Omema Iqbal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Omema Iqbal (also known as Omema) is the Co-Founder & Operations Director of MIHORA.TECH, directing global operations, dual UK-Pakistan command hubs, ISO 27001 compliance, and international client delivery."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is MIHORA.TECH located?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "MIHORA.TECH operates dual command hubs located in London, United Kingdom and Islamabad, Pakistan, delivering 24/7 follow-the-sun continuous telemetry and sovereign datacenter engineering worldwide."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mihora.tech/#breadcrumbs",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mihora.tech/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sovereign Engineering",
+              "item": "https://mihora.tech/engineering"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Datacenter Infrastructure",
+              "item": "https://mihora.tech/services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Founders & Company",
+              "item": "https://mihora.tech/company"
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://mihora.tech/#navigation",
+          "name": "Primary Site Navigation",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Home",
+              "description": "MIHORA.TECH official home - Sovereign engineering and digital infrastructure",
+              "url": "https://mihora.tech/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Engineering",
+              "description": "9-Layer sovereign stack, physical datacenter racks, and hardware integration",
+              "url": "https://mihora.tech/engineering"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Services",
+              "description": "Datacenter infrastructure, digital engineering, automation, and 24/7 SRE",
+              "url": "https://mihora.tech/services"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Solutions",
+              "description": "Mission-critical architectures, zero downtime failover, and sovereign compliance",
+              "url": "https://mihora.tech/solutions"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "Industries",
+              "description": "Sovereign systems for banking, telecommunications, energy, and defense",
+              "url": "https://mihora.tech/industries"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Company & Founders",
+              "description": "Executive leadership: founders M. Matti ul Hasnain & Omema Iqbal, and dual hubs",
+              "url": "https://mihora.tech/company"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 7,
+              "name": "Insights",
+              "description": "Engineering papers, distributed systems benchmarks, and technical whitepapers",
+              "url": "https://mihora.tech/insights"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 8,
+              "name": "Documentation",
+              "description": "Technical architecture codex, datacenter hardware specs, and fiber standards",
+              "url": "https://mihora.tech/docs"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 9,
+              "name": "FAQ",
+              "description": "Knowledge base and official answers regarding MIHORA.TECH and leadership",
+              "url": "https://mihora.tech/faq"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 10,
+              "name": "Careers",
+              "description": "Engineering cadre careers across systems design, hardware, and site reliability",
+              "url": "https://mihora.tech/careers"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 11,
+              "name": "Contact",
+              "description": "Global command hubs in London (UK) and Islamabad (Pakistan) dispatch",
+              "url": "https://mihora.tech/contact"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 12,
+              "name": "Status",
+              "description": "Live infrastructure telemetry, 99.999% SLA uptime, PUE, and incident log",
+              "url": "https://mihora.tech/status"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 13,
+              "name": "Legal",
+              "description": "Sovereign compliance, data governance, SOC 2 / ISO 27001, and terms",
+              "url": "https://mihora.tech/legal"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <!-- Clarity tracking code for https://mihora.tech/ -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ym99szo8qf");
+    </script>
+    <script type="module" crossorigin src="/assets/index-qbVyZEEB.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-core-6daWBSg7.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-framework-mio541S1.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-lXt4abrb.css">
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased selection:bg-secondary selection:text-on-secondary-fixed">
+    <div id="root">
+    <div id="prerender-shell" style="min-height: 100vh; display: flex; flex-direction: column; background: #ffffff;">
+      
+    <header style="border-bottom: 1px solid rgba(226, 232, 240, 0.9); background: #ffffff; padding: 14px 24px; position: sticky; top: 0; z-index: 50;">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+          <img src="/mihora-logo.svg" alt="MIHORA.TECH" width="130" height="34" style="height: 32px; width: auto;" />
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1d4ed8; font-weight: 700; letter-spacing: 0.08em;">SOVEREIGN SYSTEMS</span>
+        </a>
+        <nav style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <a href="/services/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Services</a> <a href="/engineering/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Engineering</a> <a href="/solutions/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Solutions</a> <a href="/how-it-works/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">How It Works</a> <a href="/case-studies/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Case Studies</a> <a href="/resources/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Resources</a> <a href="/company/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Company & Founders</a> <a href="/faq/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">FAQ</a> <a href="/contact/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Contact</a> <a href="/status/" style="color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; padding: 4px 8px;">Status (99.999%)</a>
+          <a href="/contact/" style="background: #1d4ed8; color: #ffffff; text-decoration: none; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; padding: 7px 14px; border-radius: 8px; letter-spacing: 0.04em;">Initiate Brief</a>
+        </nav>
+      </div>
+    </header>
+      <main style="flex: 1;">
+        
+    <div style="max-width: 1000px; margin: 0 auto; padding: 40px 24px; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0f172a; line-height: 1.7;">
+      <div style="color: #1d4ed8; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+        Technical Disclosures
+      </div>
+      <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 38px; font-weight: 800; color: #0f172a; line-height: 1.15; margin: 0 0 16px;">
+        Engineering & Architectural Disclaimer
+      </h1>
+      <p style="font-size: 18px; color: #334155; line-height: 1.65; margin: 0 0 28px;">
+        Published latency, attenuation, and PUE measurements represent verified field baselines achieved under specified environmental and hardware conditions.
+      </p>
+      
+    <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 12px; padding: 24px; margin: 32px 0;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1d4ed8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">
+        Executive Stewardship · Dual-Hub Governance
+      </div>
+      <h3 style="font-size: 20px; color: #0f172a; margin: 0 0 12px; font-weight: 800;">
+        MIHORA.TECH &mdash; Founded by M. Matti ul Hasnain &amp; Omema Iqbal
+      </h3>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0 0 16px;">
+        MIHORA was founded by <strong>M. Matti ul Hasnain</strong> (also known as <em>Matti ul Hasnain</em> or <em>Hasnain</em>, Co-Founder &amp; Principal Systems Architect) and <strong>Omema Iqbal</strong> (also known as <em>Omema</em>, Co-Founder &amp; Operations Director). Operating synchronized sovereign engineering command centers in London (United Kingdom) and Islamabad (Pakistan), MIHORA guarantees uninterrupted 24/7 mission-critical operations worldwide.
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="/company/" style="display: inline-block; background: #1d4ed8; color: #ffffff; text-decoration: none; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 6px;">Read Founders' Biography &rarr;</a>
+        <a href="/faq/" style="display: inline-block; background: #ffffff; color: #1d4ed8; border: 1px solid #cbd5e1; text-decoration: none; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 6px;">Verified Entity FAQ</a>
+      </div>
+    </div>
+      
+    </div>
+      </main>
+      
+    <footer style="border-top: 1px solid rgba(226, 232, 240, 0.9); background: #f8fafc; padding: 48px 24px 32px; margin-top: 64px; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid #e2e8f0;">
+          <div>
+            <img src="/mihora-logo.svg" alt="MIHORA.TECH" width="140" height="36" style="height: 34px; width: auto; margin-bottom: 12px;" />
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 12px;">
+              <strong>MIHORA.TECH</strong> is an international sovereign engineering authority operating synchronized command hubs across London (United Kingdom) and Islamabad (Pakistan).
+            </p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1d4ed8; font-weight: 700; margin: 0;">
+              FOUNDED BY M. MATTI UL HASNAIN &amp; OMEMA IQBAL
+            </p>
+          </div>
+          <div>
+            <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Command Hubs</h4>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 8px;">
+              <strong>London Command (UK):</strong> 128 City Road, London EC2A 4NE, United Kingdom
+            </p>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+              <strong>Islamabad Systems (PK):</strong> Blue Area, Islamabad 44000, Pakistan
+            </p>
+          </div>
+          <div>
+            <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Executive Leadership</h4>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 8px;">
+              <a href="/company/" style="color: #1d4ed8; text-decoration: underline; font-weight: 600;">M. Matti ul Hasnain</a><br />
+              <span style="font-size: 12px; color: #64748b;">Co-Founder &amp; Principal Systems Architect</span>
+            </p>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+              <a href="/company/" style="color: #1d4ed8; text-decoration: underline; font-weight: 600;">Omema Iqbal</a><br />
+              <span style="font-size: 12px; color: #64748b;">Co-Founder &amp; Operations Director</span>
+            </p>
+          </div>
+          <div>
+            <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Direct Dispatch</h4>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 6px;">
+              Email: <a href="mailto:hr@mihora.tech" style="color: #1d4ed8; font-weight: 600;">hr@mihora.tech</a>
+            </p>
+            <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 6px;">
+              Architecture: <a href="mailto:dispatch@mihora.tech" style="color: #1d4ed8; font-weight: 600;">dispatch@mihora.tech</a>
+            </p>
+            <p style="font-size: 12px; color: #059669; font-family: 'JetBrains Mono', monospace; font-weight: 700; margin: 8px 0 0;">
+              99.999% SLA Uptime Verified
+            </p>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 24px; font-size: 12px; color: #64748b;">
+          <div>
+            &copy; 2026 MIHORA.TECH (PRIVATE) LIMITED. ALL RIGHTS RESERVED.
+          </div>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/privacy/" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
+            <a href="/terms/" style="color: #64748b; text-decoration: none;">Terms of Service</a>
+            <a href="/disclaimer/" style="color: #64748b; text-decoration: none;">Disclaimer</a>
+            <a href="/legal/" style="color: #64748b; text-decoration: none;">ISO 27001 Governance</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div></div>
+        </header>
+
+        <!-- Main Body -->
+        <main style="flex: 1; max-width: 1200px; margin: 0 auto; padding: 48px 24px; width: 100%; box-sizing: border-box;">
+          <!-- Hero Section -->
+          <section style="margin-bottom: 56px;">
+            <div style="font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #1d4ed8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">
+              MIHORA.TECH &bull; Founded by M. Matti ul Hasnain &amp; Omema Iqbal
+            </div>
+
+            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 44px; font-weight: 800; color: #0f172a; line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.02em;">
+              MIHORA &mdash; Sovereign Engineering &amp; Datacenter Infrastructure
+            </h1>
+
+            <p style="font-size: 20px; color: #1d4ed8; font-weight: 600; margin: 0 0 20px; line-height: 1.5;">
+              Technology Without Boundaries. Digital Systems &bull; Physical Datacenter Infrastructure &bull; 24/7 Global Telemetry Operations
+            </p>
+
+            <p style="font-size: 16px; color: #334155; line-height: 1.8; max-width: 900px; margin: 0 0 28px;">
+              <strong>MIHORA.TECH</strong> was founded by <strong>M. Matti ul Hasnain</strong> (Co-Founder &amp; Principal Systems Architect) and <strong>Omema Iqbal</strong> (Co-Founder &amp; Operations Director) to unite mission-critical software engineering with real-world physical datacenter infrastructure. Operating synchronized dual command centers in <strong>London (United Kingdom)</strong> and <strong>Islamabad (Pakistan)</strong>, MIHORA engineers resilient digital platforms, physical server racks, optical fiber trunks, and continuous 24/7 SRE telemetry across five continents.
+            </p>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+              <a href="/contact/" style="background: #1d4ed8; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 8px;">Initiate Architectural Brief &rarr;</a>
+              <a href="/company/" style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; text-decoration: none; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 8px;">Explore Company Leadership</a>
+              <a href="/faq/" style="background: #ffffff; color: #1d4ed8; border: 1px solid #1d4ed8; text-decoration: none; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 8px;">Verified Entity FAQ</a>
+            </div>
+          </section>
+
+          <!-- Executive Leadership Section -->
+          <section style="margin-bottom: 56px; border-top: 1px solid #e2e8f0; padding-top: 48px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1d4ed8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+              Executive Stewardship &bull; Co-Founders
+            </div>
+            <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 12px;">
+              Founded by M. Matti ul Hasnain &amp; Omema Iqbal
+            </h2>
+            <p style="font-size: 15px; color: #475569; max-width: 800px; line-height: 1.6; margin: 0 0 32px;">
+              MIHORA.TECH was founded on an uncompromising principle: modern enterprise technology cannot survive when cloud software is disconnected from low-level physical datacenter physics.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px;">
+              <!-- Founder 1 -->
+              <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 28px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                  <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain (Matti ul Hasnain) - Co-Founder & Principal Systems Architect of MIHORA.TECH" title="M. Matti ul Hasnain - MIHORA Co-Founder" width="72" height="72" style="width: 72px; height: 72px; border-radius: 12px; object-fit: cover;" />
+                  <div>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1d4ed8; font-weight: 700;">CO-FOUNDER</span>
+                    <h3 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 4px 0 2px;">M. Matti ul Hasnain</h3>
+                    <p style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #64748b; margin: 0;">PRINCIPAL SYSTEMS ARCHITECT</p>
+                  </div>
+                </div>
+                <blockquote style="font-size: 13px; font-style: italic; color: #1d4ed8; border-left: 2px solid #1d4ed8; padding-left: 12px; margin: 0 0 16px;">
+                  &ldquo;We founded MIHORA to eliminate the dangerous divide between abstract software and physical reality. We architect the sovereign cloud, and we personally certify the copper.&rdquo;
+                </blockquote>
+                <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0 0 16px;">
+                  <strong>M. Matti ul Hasnain</strong> (also known as <em>Matti ul Hasnain</em>, <em>Muhammad Matti ul Hasnain</em>, or <em>Hasnain</em>) directs MIHORA.TECH's global engineering doctrine, sovereign systems infrastructure, physical server rack deployments, optical fiber fusion splicing, and 24/7 site reliability engineering across the UK and Pakistan command hubs.
+                </p>
+                <div style="font-size: 12px; color: #475569; background: #f8fafc; padding: 10px 14px; border-radius: 8px;">
+                  <a href="/company/" style="color: #1d4ed8; text-decoration: underline; font-weight: 700;">Read M. Matti ul Hasnain's Biography &rarr;</a>
+                </div>
+              </div>
+
+              <!-- Founder 2 -->
+              <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 16px; padding: 28px;">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                  <img src="/founder-omema.jpg" alt="Omema Iqbal (Omema) - Co-Founder & Operations Director of MIHORA.TECH" title="Omema Iqbal - MIHORA Co-Founder" width="72" height="72" style="width: 72px; height: 72px; border-radius: 12px; object-fit: cover;" />
+                  <div>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #0284c7; font-weight: 700;">CO-FOUNDER</span>
+                    <h3 style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 4px 0 2px;">Omema Iqbal</h3>
+                    <p style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #64748b; margin: 0;">OPERATIONS DIRECTOR</p>
+                  </div>
+                </div>
+                <blockquote style="font-size: 13px; font-style: italic; color: #0284c7; border-left: 2px solid #0284c7; padding-left: 12px; margin: 0 0 16px;">
+                  &ldquo;Global technology architecture is only as dependable as the operational discipline governing it. Our dual-hub framework guarantees deterministic SLA delivery across international borders.&rdquo;
+                </blockquote>
+                <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0 0 16px;">
+                  <strong>Omema Iqbal</strong> (also known as <em>Omema</em>) directs MIHORA.TECH's dual-hub operational governance, multi-jurisdiction compliance alignment, enterprise client delivery frameworks, and strategic organizational logistics across London and Islamabad.
+                </p>
+                <div style="font-size: 12px; color: #475569; background: #f8fafc; padding: 10px 14px; border-radius: 8px;">
+                  <a href="/company/" style="color: #0284c7; text-decoration: underline; font-weight: 700;">Read Omema Iqbal's Biography &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- The 9-Layer Sovereign Technology Stack -->
+          <section style="margin-bottom: 56px; border-top: 1px solid #e2e8f0; padding-top: 48px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1d4ed8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+              Full-Spectrum Computational Strata
+            </div>
+            <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 16px;">
+              The MIHORA 9-Layer Sovereign Stack
+            </h2>
+            <p style="font-size: 15px; color: #334155; line-height: 1.7; max-width: 900px; margin: 0 0 24px;">
+              MIHORA operates with vertical custody across all computational strata: Layer 9 Software &amp; Digital Platforms (TypeScript, Go, React), Layer 8 APIs &amp; Micro-Mesh Services (gRPC, Kafka, Redis), Layer 7 Autonomous Intelligence &amp; Workflows (computer vision, automated dispatch pipelines), Layer 6 Operating Systems &amp; Virtualization (Debian, Red Hat, Proxmox VE), Layer 5 Network Routing &amp; SD-WAN Fabrics (BGP, OSPF, WireGuard mesh), Layer 4 Physical Servers &amp; SAN Storage (NVMe SAN fabrics, IPMI lights-out), Layer 3 Structured Cabling &amp; PDU Distribution (fusion fiber splicing loss ≤ 0.05 dB, shielded Cat6A dressing), Layer 2 Physical Facilities &amp; Surveillance (CCTV NVR arrays, biometric containment), and Layer 1 Kinetic Field Dispatch (hands-on engineering trucks, emergency break-fix).
+            </p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="/engineering/" style="color: #1d4ed8; font-weight: 700; text-decoration: underline;">Deep Dive into 9-Layer Engineering &rarr;</a>
+              <span style="color: #cbd5e1;">&bull;</span>
+              <a href="/docs/" style="color: #1d4ed8; font-weight: 700; text-decoration: underline;">Architecture Codex Documentation &rarr;</a>
+            </div>
+          </section>
+
+          <!-- Core Disciplines -->
+          <section style="margin-bottom: 56px; border-top: 1px solid #e2e8f0; padding-top: 48px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1d4ed8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+              Core Engineering Divisions
+            </div>
+            <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 24px;">
+              Sovereign Engineering Capabilities
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                <h4 style="font-size: 16px; font-weight: 800; color: #1d4ed8; margin: 0 0 8px;">1. Digital Systems Engineering</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">Distributed microservices, zero-trust enterprise API meshes, high-concurrency database clusters, and fault-tolerant financial settlement rails engineered for 99.999% availability.</p>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                <h4 style="font-size: 16px; font-weight: 800; color: #1d4ed8; margin: 0 0 8px;">2. Physical Datacenter Infrastructure</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">Tier-grade server rack deployment, core-alignment fusion fiber splicing with optical loss below 0.05 dB, shielded Cat6A cable dressing, and precision airflow-managed server containment.</p>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                <h4 style="font-size: 16px; font-weight: 800; color: #1d4ed8; margin: 0 0 8px;">3. Event-Driven Automation</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">Deterministic workflow engines, real-time SCADA sensor integrations, machine learning telemetry bridges, and autonomous infrastructure remediation protocols.</p>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                <h4 style="font-size: 16px; font-weight: 800; color: #1d4ed8; margin: 0 0 8px;">4. Managed Reliability (24/7 SRE)</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">Follow-the-sun site reliability telemetry monitoring active networks, database query latency, server thermals, and anomaly detection continuously from UK and Pakistan NOC hubs.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Dual Command Hubs -->
+          <section style="margin-bottom: 56px; border-top: 1px solid #e2e8f0; padding-top: 48px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1d4ed8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+              Dual-Hub Global Reach
+            </div>
+            <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: #0f172a; margin: 0 0 16px;">
+              Global Command Hubs: London &amp; Islamabad
+            </h2>
+            <p style="font-size: 15px; color: #334155; line-height: 1.7; margin: 0 0 24px;">
+              Through synchronized dual command centers in London (UK) and Islamabad (Pakistan), MIHORA maintains continuous operational custody over mission-critical client infrastructure across Europe, the Middle East, North America, and Asia.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+              <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px;">
+                <strong style="font-size: 16px; color: #1d4ed8;">United Kingdom Hub (London)</strong>
+                <p style="font-size: 13px; color: #475569; margin: 6px 0 0;">128 City Road, London EC2A 4NE &bull; EMEA Headquarters, Strategic Client Governance, ISO 27001 Compliance</p>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px;">
+                <strong style="font-size: 16px; color: #1d4ed8;">Pakistan Systems Labs (Islamabad)</strong>
+                <p style="font-size: 13px; color: #475569; margin: 6px 0 0;">Blue Area, Islamabad 44000 &bull; Core Systems Algorithms, 24/7 NOC Telemetry, Hardware Rig Simulation Labs</p>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <!-- Footer -->
+        <footer style="border-top: 1px solid rgba(226, 232, 240, 0.9); background: #f8fafc; padding: 48px 24px 32px; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+          <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid #e2e8f0;">
+              <div>
+                <img src="/mihora-logo.svg" alt="MIHORA.TECH" width="140" height="36" style="height: 34px; width: auto; margin-bottom: 12px;" />
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 12px;">
+                  <strong>MIHORA.TECH</strong> is an international sovereign engineering organization operating synchronized command hubs across London (United Kingdom) and Islamabad (Pakistan).
+                </p>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1d4ed8; font-weight: 700; margin: 0;">
+                  FOUNDED BY M. MATTI UL HASNAIN &amp; OMEMA IQBAL
+                </p>
+              </div>
+              <div>
+                <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Command Hubs</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 8px;">
+                  <strong>London Command (UK):</strong> 128 City Road, London EC2A 4NE, United Kingdom
+                </p>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+                  <strong>Islamabad Systems (PK):</strong> Blue Area, Islamabad 44000, Pakistan
+                </p>
+              </div>
+              <div>
+                <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Executive Leadership</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 8px;">
+                  <a href="/company/" style="color: #1d4ed8; text-decoration: underline; font-weight: 600;">M. Matti ul Hasnain</a><br />
+                  <span style="font-size: 12px; color: #64748b;">Co-Founder &amp; Principal Systems Architect</span>
+                </p>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0;">
+                  <a href="/company/" style="color: #1d4ed8; text-decoration: underline; font-weight: 600;">Omema Iqbal</a><br />
+                  <span style="font-size: 12px; color: #64748b;">Co-Founder &amp; Operations Director</span>
+                </p>
+              </div>
+              <div>
+                <h4 style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #1d4ed8; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Direct Dispatch</h4>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 6px;">
+                  Email: <a href="mailto:hr@mihora.tech" style="color: #1d4ed8; font-weight: 600;">hr@mihora.tech</a>
+                </p>
+                <p style="font-size: 13px; color: #475569; line-height: 1.6; margin: 0 0 6px;">
+                  Architecture: <a href="mailto:dispatch@mihora.tech" style="color: #1d4ed8; font-weight: 600;">dispatch@mihora.tech</a>
+                </p>
+                <p style="font-size: 12px; color: #059669; font-family: 'JetBrains Mono', monospace; font-weight: 700; margin: 8px 0 0;">
+                  99.999% SLA Uptime Verified
+                </p>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 24px; font-size: 12px; color: #64748b;">
+              <div>
+                &copy; 2026 MIHORA.TECH (PRIVATE) LIMITED. ALL RIGHTS RESERVED.
+              </div>
+              <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="/privacy/" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
+                <a href="/terms/" style="color: #64748b; text-decoration: none;">Terms of Service</a>
+                <a href="/disclaimer/" style="color: #64748b; text-decoration: none;">Disclaimer</a>
+                <a href="/legal/" style="color: #64748b; text-decoration: none;">ISO 27001 Governance</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <noscript>
+      <div style="padding: 24px; font-family: sans-serif; text-align: center;">
+        <p>JavaScript is disabled. View <a href="https://mihora.tech/company/">MIHORA Leadership &amp; Company Overview</a> or email <a href="mailto:hr@mihora.tech">hr@mihora.tech</a>.</p>
+      </div>
+    </noscript>
+  </body>
+</html>
