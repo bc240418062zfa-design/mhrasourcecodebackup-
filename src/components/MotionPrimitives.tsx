@@ -50,12 +50,11 @@ export const MaskTextReveal: React.FC<MaskTextRevealProps> = ({
   return (
     <div className={`overflow-hidden ${className}`}>
       <motion.div
-        initial={{ y: '105%', opacity: 0.15 }}
-        whileInView={{ y: '0%', opacity: 1 }}
-        viewport={{ once: true, amount: 0.15 }}
+        initial={{ y: '100%', opacity: 0 }}
+        animate={{ y: '0%', opacity: 1 }}
         transition={{
-          duration: 0.72,
-          delay,
+          duration: 0.62,
+          delay: Math.min(delay, 0.15),
           ease: [0.16, 1, 0.3, 1],
         }}
       >
@@ -82,10 +81,10 @@ export const Reveal: React.FC<RevealProps> = ({
   const shouldReduceMotion = useReducedMotion();
 
   const offsets = {
-    up: { y: 22, x: 0 },
-    down: { y: -22, x: 0 },
-    left: { x: 28, y: 0 },
-    right: { x: -28, y: 0 },
+    up: { y: 18, x: 0 },
+    down: { y: -18, x: 0 },
+    left: { x: 22, y: 0 },
+    right: { x: -22, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -95,10 +94,10 @@ export const Reveal: React.FC<RevealProps> = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.985, ...offsets[direction] }}
+      initial={{ opacity: 0, scale: 0.99, ...offsets[direction] }}
       whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.62, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, amount: 0.02 }}
+      transition={{ duration: 0.52, delay: Math.min(delay, 0.25), ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}

@@ -200,7 +200,7 @@ const MOBILE_NAV_LINKS = [
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [theme, setTheme] = useState<'cyber' | 'light'>('light');
+  const [theme, setTheme] = useState<'cyber' | 'light'>('cyber');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -241,16 +241,16 @@ export default function Layout() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('mihora-theme');
-    if (savedTheme === 'cyber' || savedTheme === 'dark') {
-      setTheme('cyber');
-      document.documentElement.setAttribute('data-theme', 'cyber');
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
+    if (savedTheme === 'light') {
       setTheme('light');
       document.documentElement.setAttribute('data-theme', 'light');
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
+    } else {
+      setTheme('cyber');
+      document.documentElement.setAttribute('data-theme', 'cyber');
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     }
   }, []);
 

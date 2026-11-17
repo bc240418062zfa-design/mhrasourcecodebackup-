@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {
-  ShieldCheck, CheckCircle2, Clock, RefreshCw
+  ShieldCheck, CheckCircle2, Clock, RefreshCw, Activity, Radio
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { playUiChime } from '../utils/audio';
+import { Reveal, MaskTextReveal } from '../components/MotionPrimitives';
 
 interface SystemNode {
   id: string;
@@ -126,27 +127,33 @@ export default function Status() {
       <SEOHead canonicalPath="/status" />
 
       {/* Top Banner Status Bar */}
-      <section className="w-full bg-surface-container-low border-b border-outline/20 px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="max-w-7xl mx-auto space-y-6">
           <Breadcrumbs items={[{ label: 'Infrastructure Status' }]} />
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider">
-                <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                <span>All Sovereign Systems Operational</span>
-              </div>
-              <h1 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
-                Infrastructure &amp; Mission Control Status
-              </h1>
-              <p className="text-sm sm:text-base text-on-surface-variant max-w-3xl">
-                Operational status, network latency benchmarks, and 90-day SLA performance across MIHORA’s dual command hubs in London (UK) and Islamabad (Pakistan).
-              </p>
+            <div className="space-y-3">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 text-emerald-400 font-mono text-xs font-semibold uppercase tracking-wider">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                  <span>All Sovereign Nodes Operational · Zero Incidents Active</span>
+                </div>
+              </Reveal>
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline text-3xl sm:text-5xl text-white font-extrabold tracking-tight leading-[1.08]">
+                  Mission Control &amp; Telemetry Status
+                </h1>
+              </MaskTextReveal>
+              <Reveal delay={0.1}>
+                <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+                  Real-time operational status, network latency benchmarks, and 90-day SLA telemetry across MIHORA’s dual command hubs in London (UK) and Islamabad (Pakistan).
+                </p>
+              </Reveal>
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
-              <div className="px-3.5 py-2 rounded-lg bg-surface-container border border-outline/25 font-mono text-xs text-on-surface-variant flex items-center gap-2">
-                <Clock size={14} className="text-primary" />
+              <div className="px-3.5 py-2 rounded-lg bg-black/40 border border-white/15 font-mono text-xs text-slate-300 flex items-center gap-2">
+                <Clock size={14} className="text-amber-400" />
                 <span>Checked: {lastRefreshed}</span>
               </div>
 
@@ -155,7 +162,7 @@ export default function Status() {
                 type="button"
                 onClick={refreshTelemetry}
                 disabled={refreshing}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white font-mono text-xs font-semibold rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer disabled:opacity-50"
+                className="inline-flex items-center gap-2 px-4 py-2 btn-primary-gradient text-white font-mono text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer disabled:opacity-50"
               >
                 <RefreshCw size={14} className={refreshing ? 'animate-spin' : ''} />
                 <span>{refreshing ? 'Querying...' : 'Refresh Probes'}</span>
@@ -164,29 +171,29 @@ export default function Status() {
           </div>
 
           {/* Real-time KPI Quick Ticker */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2 font-mono">
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">Aggregate Uptime</div>
-              <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">99.999%</div>
-              <div className="text-[10px] text-on-surface-variant">SLA Compliant</div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-4 font-mono">
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">Aggregate Uptime</div>
+              <div className="text-lg font-extrabold text-emerald-400 tabular-nums">99.999%</div>
+              <div className="text-[10px] text-slate-400">SLA Compliant</div>
             </div>
 
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">LON - ISB RTT</div>
-              <div className="text-lg font-extrabold text-primary">{telemetryValues.transContinentalLatency} ms</div>
-              <div className="text-[10px] text-on-surface-variant">Protected Terrestrial</div>
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">LON - ISB RTT</div>
+              <div className="text-lg font-extrabold text-sky-400 tabular-nums">{telemetryValues.transContinentalLatency} ms</div>
+              <div className="text-[10px] text-slate-400">Protected Terrestrial</div>
             </div>
 
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">Optical Jitter</div>
-              <div className="text-lg font-extrabold text-secondary">{telemetryValues.jitterMs} ms</div>
-              <div className="text-[10px] text-on-surface-variant">DWDM PAM4 Coherent</div>
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">Optical Jitter</div>
+              <div className="text-lg font-extrabold text-amber-400 tabular-nums">{telemetryValues.jitterMs} ms</div>
+              <div className="text-[10px] text-slate-400">DWDM PAM4 Coherent</div>
             </div>
 
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">Datacenter PUE</div>
-              <div className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">{telemetryValues.pueIndex}</div>
-              <div className="text-[10px] text-on-surface-variant">Cold Aisle Contained</div>
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">Datacenter PUE</div>
+              <div className="text-lg font-extrabold text-emerald-400 tabular-nums">{telemetryValues.pueIndex}</div>
+              <div className="text-[10px] text-slate-400">Cold Aisle Contained</div>
             </div>
 
             <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">

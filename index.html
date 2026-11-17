@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="light" data-theme="light">
+<html lang="en" class="dark" data-theme="cyber">
   <head>
     <!-- Google tag (gtag.js) deferred for optimal Lighthouse performance -->
     <script>
@@ -23,14 +23,14 @@
       (function() {
         try {
           var saved = localStorage.getItem('mihora-theme');
-          if (saved === 'cyber' || saved === 'dark') {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-            document.documentElement.setAttribute('data-theme', 'cyber');
-          } else {
+          if (saved === 'light') {
             document.documentElement.classList.add('light');
             document.documentElement.classList.remove('dark');
             document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-theme', 'cyber');
           }
         } catch(e) {}
       })();
