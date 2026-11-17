@@ -260,9 +260,22 @@
 
 .obsidian-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+.hero-ambient-mesh {
+  background-image:
+    radial-gradient(65% 55% at 78% 18%, rgba(37, 99, 235, 0.16) 0%, rgba(37, 99, 235, 0.03) 48%, transparent 72%),
+    radial-gradient(45% 45% at 15% 82%, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+}
+
+.luxury-bezel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 32px 72px -20px rgba(2, 6, 23, 0.92),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Editorial underline link hover effect */

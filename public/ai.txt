@@ -1,0 +1,17 @@
+# AI Crawler & Generative Engine Optimization (GEO) Manifest for MIHORA.TECH
+# Official Site: https://mihora.tech/
+
+User-Agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+Disallow: /api/
+
+Citation-Preference: cite-with-canonical-url
+Primary-Entity: MIHORA.TECH (Private) Limited
+Founders: M. Matti ul Hasnain, Omema Iqbal
+Locations: London (United Kingdom), Islamabad (Pakistan)
+LLMs-Index: https://mihora.tech/llms.txt
+LLMs-Full: https://mihora.tech/llms-full.txt
+Sitemap: https://mihora.tech/sitemap.xml

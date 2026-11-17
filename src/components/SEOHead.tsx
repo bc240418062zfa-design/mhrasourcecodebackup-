@@ -6,153 +6,178 @@ interface SEOProps {
   description?: string;
   keywords?: string;
   canonicalPath?: string;
+  ogType?: 'website' | 'article';
   schemaData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const ROUTE_SEO: Record<string, { title: string; description: string; keywords?: string }> = {
+const ROUTE_SEO: Record<string, { label: string; title: string; description: string; keywords?: string }> = {
   '/': {
-    title: 'MIHORA.TECH — Sovereign Engineering & Datacenter Infrastructure | Founded by M. Matti ul Hasnain & Omema Iqbal',
-    description: 'MIHORA.TECH, founded by M. Matti ul Hasnain and Omema Iqbal, engineers sovereign digital systems, physical datacenter infrastructure, automation pipelines, and 24/7 SRE operations across London (UK) and Islamabad (Pakistan).',
-    keywords: 'MIHORA, MIHORA.TECH, M. Matti ul Hasnain, Omema Iqbal, sovereign engineering, datacenter infrastructure, fiber optic fusion splicing, 24/7 telemetry, London Islamabad dual hub',
+    label: 'Home',
+    title: 'MIHORA.TECH — Sovereign Engineering & Datacenter Systems',
+    description: 'Co-founded by M. Matti ul Hasnain & Omema Iqbal across London & Islamabad. Custom software platforms, OTDR-verified optical fiber, and 24/7 SRE.',
+    keywords: 'MIHORA, MIHORA.TECH, M. Matti ul Hasnain, Omema Iqbal, sovereign engineering, datacenter infrastructure, fiber optic fusion splicing, London Islamabad',
   },
   '/company': {
-    title: 'Company & Founders | M. Matti ul Hasnain & Omema Iqbal | MIHORA.TECH',
-    description: 'Learn about MIHORA.TECH, co-founded by M. Matti ul Hasnain (Principal Systems Architect) and Omema Iqbal (Operations Director). Dual engineering command hubs in London and Islamabad.',
-    keywords: 'M. Matti ul Hasnain, Omema Iqbal, MIHORA founders, MIHORA leadership, MIHORA.TECH, dual hub engineering, London Islamabad',
+    label: 'Company & Founders',
+    title: 'Company & Founders | M. Matti ul Hasnain & Omema Iqbal',
+    description: 'About MIHORA.TECH, co-founded by M. Matti ul Hasnain (Principal Systems Architect) and Omema Iqbal (Operations Director) in London & Islamabad.',
+    keywords: 'M. Matti ul Hasnain, Omema Iqbal, MIHORA founders, MIHORA leadership, MIHORA.TECH, London Islamabad',
   },
   '/our-story': {
-    title: 'Our Story | Founding Thesis & Dual-Hub Continuity | MIHORA.TECH',
-    description: 'Discover why M. Matti ul Hasnain and Omema Iqbal founded MIHORA.TECH to eliminate fragile handoffs across software platforms and physical datacenter optics.',
-    keywords: 'MIHORA story, M. Matti ul Hasnain, Omema Iqbal, London Islamabad command hubs, sovereign systems thesis',
+    label: 'Our Story',
+    title: 'Our Story | Founding Thesis & Dual-Hub Continuity | MIHORA',
+    description: 'Why M. Matti ul Hasnain and Omema Iqbal founded MIHORA.TECH to unify software platforms, physical datacenter optics, and 24/7 SRE custody.',
   },
   '/security': {
-    title: 'Zero-Trust Security, HSM Custody & ISO 27001 Architecture | MIHORA.TECH',
-    description: 'Explore client-owned FIPS 140-3 HSM key custody, optical SCADA data diodes, TPM 2.0 attestation, ISO 27001 alignment, and UK-GDPR residency governance.',
-    keywords: 'MIHORA security, FIPS 140-3 HSM custody, optical data diode, ISO 27001, UK GDPR sovereign infrastructure',
+    label: 'Security & Trust Center',
+    title: 'Zero-Trust Security, HSM Custody & ISO 27001 | MIHORA.TECH',
+    description: 'Client-owned FIPS 140-3 HSM key custody, optical SCADA data diodes, TPM 2.0 attestation, ISO 27001 controls, and UK-GDPR governance.',
   },
   '/tools': {
-    title: 'Engineering Calculators: SLA Downtime, Optical Loss & TCO | MIHORA.TECH',
-    description: 'Interactive technical calculators for 99.999% SLA downtime budgets, TIA-568-D single-mode fiber attenuation, and 5-year sovereign infrastructure vs cloud TCO.',
-    keywords: 'SLA downtime calculator, optical fiber loss calculator, TIA-568-D link budget, sovereign TCO calculator',
+    label: 'Engineering Calculators',
+    title: 'SLA Downtime, Optical Fiber Loss & TCO Calculators | MIHORA',
+    description: 'Interactive engineering tools for 99.999% SLA downtime budgets, TIA-568-D OS2 optical link attenuation, and 5-year sovereign cloud TCO.',
   },
   '/glossary': {
-    title: 'Sovereign Systems & Optical Infrastructure Glossary | MIHORA.TECH',
-    description: 'Searchable engineering glossary defining OTDR testing, OS2 single-mode fiber, EVPN-VXLAN, optical data diodes, 2N power, and sovereign custody.',
-    keywords: 'OTDR glossary, OS2 single-mode fiber definition, EVPN-VXLAN, optical data diode, sovereign custody',
+    label: 'Engineering Glossary',
+    title: 'Sovereign Systems & Optical Fiber Glossary | MIHORA.TECH',
+    description: 'Authoritative engineering definitions for OTDR testing, OS2 single-mode fiber, EVPN-VXLAN, optical data diodes, 2N power, and sovereign custody.',
   },
   '/compare': {
-    title: 'Architecture Comparison: Sovereign Custody vs. Hyperscale Cloud | MIHORA.TECH',
-    description: 'Direct technical trade-off comparison evaluating MIHORA Full-Span Sovereign Custody against hyperscale public cloud lock-in and fragmented agencies.',
-    keywords: 'sovereign infrastructure vs public cloud, cloud repatriation comparison, full-span engineering custody',
+    label: 'Architecture Comparison',
+    title: 'Sovereign Custody vs. Hyperscale Cloud Matrix | MIHORA.TECH',
+    description: 'Technical comparison matrix weighing MIHORA full-span engineering custody against hyperscale public cloud lock-in and fragmented agencies.',
   },
   '/press': {
-    title: 'Press Kit, Verified Factsheet & Technical Citations | MIHORA.TECH',
-    description: 'Canonical corporate boilerplate, founder biographies for M. Matti ul Hasnain and Omema Iqbal, SVG marks, and copyable technical citations.',
-    keywords: 'MIHORA press kit, MIHORA corporate factsheet, M. Matti ul Hasnain bio, Omema Iqbal bio',
+    label: 'Press Kit',
+    title: 'Press Kit, Verified Factsheet & Citations | MIHORA.TECH',
+    description: 'Canonical boilerplate, founder biographies for M. Matti ul Hasnain & Omema Iqbal, SVG marks, and BibTeX technical monograph citations.',
   },
   '/engineering': {
-    title: '9-Layer Sovereign Engineering Stack & Hardware Architecture | MIHORA.TECH',
-    description: 'Explore the 9-Layer MIHORA Sovereign Engineering Stack spanning bare-metal silicon, optical DWDM backbones, EVPN-VXLAN networking, SCADA edge gateways, and autonomous SRE.',
-    keywords: '9-layer stack, sovereign engineering, datacenter architecture, SCADA telemetry, subsea cable routes, MIHORA engineering',
+    label: 'Engineering Stack',
+    title: '9-Layer Sovereign Engineering Stack & Hardware | MIHORA.TECH',
+    description: 'Explore MIHORA’s 9-Layer Sovereign Stack spanning bare-metal silicon, OS2 optical backbones, EVPN-VXLAN fabrics, SCADA diodes, and 24/7 SRE.',
   },
   '/services': {
-    title: 'Engineering & Datacenter Infrastructure Services | MIHORA.TECH',
-    description: 'Five integrated divisions: Digital Systems Engineering, Automation & Intelligence, Physical Datacenter Infrastructure, Field Engineering Rigs, and 24/7 Managed SRE.',
-    keywords: 'datacenter infrastructure, sovereign engineering services, server racks, fiber splicing, managed SRE, field engineering',
+    label: 'Services',
+    title: 'Engineering & Datacenter Infrastructure Services | MIHORA',
+    description: 'Five integrated divisions: Digital Engineering, Automation & AI, Physical Datacenters, Field Engineering Rigs, and 24/7 Managed SRE.',
   },
   '/services/digital-engineering': {
-    title: 'Digital Systems Engineering & Sovereign Cloud Platforms | MIHORA.TECH',
-    description: 'High-concurrency Go/TypeScript microservices, partitioned databases, and zero-trust cryptographic API meshes engineered with full source sovereignty.',
+    label: 'Digital Systems Engineering',
+    title: 'Digital Systems Engineering & Sovereign Cloud | MIHORA.TECH',
+    description: 'High-concurrency Go & TypeScript microservices, partitioned PostgreSQL, and zero-trust API meshes built with 100% client source ownership.',
   },
   '/services/automation-intelligence': {
-    title: 'Automation & Applied Intelligence | SCADA & Private AI | MIHORA.TECH',
-    description: 'Deterministic event-driven Kafka workflows, optically isolated SCADA edge bridges, and air-gapped on-premise inference architectures.',
+    label: 'Automation & Intelligence',
+    title: 'Automation & Applied Intelligence | SCADA & AI | MIHORA',
+    description: 'Deterministic Kafka/Temporal orchestration, optically isolated industrial SCADA bridges, and air-gapped on-premise inference systems.',
   },
   '/services/physical-infrastructure': {
-    title: 'Physical Datacenter Infrastructure & Optical Fiber Backbones | MIHORA.TECH',
-    description: 'Tier III/IV server rack deployments, core-alignment optical fiber splicing (<=0.03 dB), EVPN-VXLAN spine-leaf fabrics, and 2N power topology.',
+    label: 'Physical Infrastructure',
+    title: 'Physical Datacenter Racks & Optical Fiber | MIHORA.TECH',
+    description: 'Tier III/IV 42U server racks, core-alignment optical fiber splicing (<=0.03 dB), EVPN-VXLAN spine-leaf fabrics, and 2N power topology.',
   },
   '/services/field-engineering': {
-    title: 'Tactical Field Engineering & 4-Hour Emergency Dispatch | MIHORA.TECH',
-    description: 'Certified on-site engineering teams with Fujikura fusion splicers, Fluke DSX-8000 certifiers, industrial surveillance, and 4-hour emergency SLA dispatch.',
+    label: 'Field Engineering',
+    title: 'Tactical Field Engineering & 4-Hour Dispatch | MIHORA.TECH',
+    description: 'Certified on-site engineering teams with Fujikura fusion splicers, EXFO OTDRs, Fluke DSX-8000 analyzers, and 4-hour emergency SLA dispatch.',
   },
   '/services/managed-sre': {
-    title: '24/7 Managed Technology & Follow-the-Sun SRE | MIHORA.TECH',
-    description: 'Continuous NOC/SOC observability rotating across London and Islamabad hubs with sub-15-minute P1 incident containment and 99.999% availability SLAs.',
+    label: '24/7 Managed SRE',
+    title: '24/7 Managed SRE & Follow-the-Sun Telemetry | MIHORA.TECH',
+    description: 'Continuous NOC/SOC observability rotating across London and Islamabad hubs with <15m P1 containment and 99.999% uptime SLAs.',
   },
   '/solutions': {
-    title: 'Enterprise Sovereign Solutions & RFP Specifier | MIHORA.TECH',
-    description: 'Operational bottleneck diagnostics, 6 core architectural pillars, and the interactive Sovereign Infrastructure RFP Specifier.',
+    label: 'Enterprise Solutions',
+    title: 'Enterprise Sovereign Solutions & RFP Specifier | MIHORA',
+    description: 'Operational bottleneck diagnostics, 6 core architectural pillars, and interactive Sovereign Infrastructure RFP Builder.',
   },
   '/how-it-works': {
-    title: 'How It Works — 5-Phase Sovereign Engineering Methodology | MIHORA.TECH',
-    description: 'Discover how MIHORA.TECH designs, fabricates, certifies, cuts over, and operates mission-critical digital and physical systems with zero downtime.',
+    label: 'How It Works',
+    title: 'How It Works — 5-Phase Engineering Methodology | MIHORA',
+    description: 'Discover how MIHORA.TECH designs, builds, certifies with OTDR, cuts over without downtime, and operates sovereign systems 24/7.',
   },
   '/case-studies': {
-    title: 'Enterprise Case Studies & Field Deployment Benchmarks | MIHORA.TECH',
-    description: 'Verified post-deployment architectures and quantitative telemetry across banking RTGS repatriation, 1,400 km DWDM fiber restoration, and grid SCADA security.',
+    label: 'Case Studies',
+    title: 'Enterprise Case Studies & Field Benchmarks | MIHORA.TECH',
+    description: 'Verified deployment metrics across sovereign banking RTGS repatriation, 1,200-site SD-WAN rollouts, and industrial SCADA isolation.',
   },
   '/industries': {
+    label: 'Industries Served',
     title: 'Industries & Mission-Critical Sectors Served | MIHORA.TECH',
-    description: 'Sovereign digital and physical infrastructure for Financial Settlement, Healthcare Diagnostics, Logistics Edge Networks, Energy SCADA, Telecom, and Enterprise SaaS.',
+    description: 'Sovereign digital and physical infrastructure for Financial Settlement, Healthcare Diagnostics, Energy Grids, Logistics, Telecom, and SaaS.',
   },
   '/insights': {
-    title: 'Engineering Papers, Research & Industry Dispatches | MIHORA.TECH',
-    description: 'Technical whitepapers, empirical optical and kernel benchmarks, and Google Search-grounded infrastructure intelligence from MIHORA R&D Labs.',
+    label: 'Insights & Research',
+    title: 'Engineering Papers & Field Insights | MIHORA.TECH',
+    description: 'Technical whitepapers, empirical optical jitter benchmarks, and live Google Search-grounded infrastructure intelligence from MIHORA Labs.',
   },
   '/resources': {
-    title: 'Engineering Knowledge Hub & Open Standards Reference | MIHORA.TECH',
-    description: 'Centralized technical reference: optical splice budgets, Uptime Tier math, Systems Architecture Codex, interactive tools, and whitepaper citations.',
+    label: 'Resources Hub',
+    title: 'Engineering Knowledge Hub & Open Standards | MIHORA.TECH',
+    description: 'Reference tables for TIA-568-D fiber attenuation, Uptime Tier downtime math, Architecture Codex, and sovereign sizing calculators.',
   },
   '/partnerships': {
-    title: 'Strategic Partnerships, Carrier Peering & Colocation Alliances | MIHORA.TECH',
-    description: 'Collaborate with MIHORA.TECH on carrier interconnectivity, sovereign colocation deployments, hardware integrations, and enterprise delivery alliances.',
+    label: 'Partnerships',
+    title: 'Strategic Partnerships, Peering & Colocation | MIHORA.TECH',
+    description: 'Partner with MIHORA.TECH on Tier-1 carrier BGP peering, sovereign colocation suites, hardware OEM integrations, and enterprise delivery.',
   },
   '/careers': {
-    title: 'Engineering Careers & Global Relocation | MIHORA.TECH',
-    description: 'Join MIHORA.TECH as a distributed systems engineer, physical datacenter specialist, automation architect, or 24/7 SRE operator across UK and Pakistan hubs.',
+    label: 'Careers',
+    title: 'Engineering Careers & UK/Pakistan Relocation | MIHORA.TECH',
+    description: 'Join MIHORA.TECH as a distributed systems engineer, field fiber specialist, automation architect, or 24/7 SRE operator.',
   },
   '/contact': {
-    title: 'Contact & Architectural Dispatch | London & Islamabad Hubs | MIHORA.TECH',
-    description: 'Schedule an architectural consultation or initiate urgent engineering dispatch directly with MIHORA.TECH command centers in London and Islamabad.',
+    label: 'Contact & Dispatch',
+    title: 'Contact & Architectural Dispatch | London & Islamabad',
+    description: 'Schedule an architectural consultation or initiate urgent dispatch directly with MIHORA.TECH hubs in London and Islamabad.',
   },
   '/docs': {
-    title: 'Systems Architecture Codex & Technical Documentation | MIHORA.TECH',
-    description: 'Official engineering documentation covering the 9-Layer Sovereign Stack, fiber splice tolerances, SCADA Modbus bridges, and dual-hub quorum specs.',
+    label: 'Technical Docs',
+    title: 'Systems Architecture Codex & Technical Docs | MIHORA.TECH',
+    description: 'Official MIHORA.TECH engineering documentation: 9-Layer Sovereign Stack, optical splice tolerances, and dual-hub quorum schemas.',
   },
   '/faq': {
+    label: 'Verified Entity FAQ',
     title: 'Verified Entity FAQ & Knowledge Base | MIHORA.TECH',
-    description: 'Direct answers regarding MIHORA.TECH, founders M. Matti ul Hasnain and Omema Iqbal, London and Islamabad hubs, physical hardware capabilities, and SLAs.',
+    description: 'Direct answers on MIHORA.TECH, founders M. Matti ul Hasnain & Omema Iqbal, London & Islamabad hubs, physical infrastructure, and SLAs.',
   },
   '/status': {
-    title: 'Live Infrastructure Telemetry & System Status (99.999% SLA) | MIHORA.TECH',
-    description: 'Real-time operational telemetry, 90-day uptime records, London-Islamabad corridor RTT, and maintenance journal for MIHORA.TECH core systems.',
+    label: 'System Status',
+    title: 'Live Infrastructure Status (99.999% SLA) | MIHORA.TECH',
+    description: 'Real-time operational telemetry, 90-day uptime records, London-Islamabad corridor latency, and incident journal for MIHORA.TECH.',
   },
   '/legal': {
-    title: 'Legal Governance, Security Protocols & ISO Compliance | MIHORA.TECH',
-    description: 'Corporate governance, data sovereignty frameworks, ISO 27001 security controls, privacy, terms of service, and engineering disclaimers.',
+    label: 'Legal & Compliance',
+    title: 'Legal Governance, Security & ISO Compliance | MIHORA.TECH',
+    description: 'Corporate governance, UK-GDPR / EU-GDPR sovereignty frameworks, ISO 27001 controls, privacy, and engineering terms.',
   },
   '/privacy': {
-    title: 'Privacy Policy & Sovereign Data Handling | MIHORA.TECH',
-    description: 'MIHORA.TECH privacy policy detailing zero-leakage telemetry governance, GDPR/UK-GDPR alignment, and jurisdictional data custody.',
+    label: 'Privacy Policy',
+    title: 'Privacy Policy & Sovereign Data Custody | MIHORA.TECH',
+    description: 'MIHORA.TECH privacy policy detailing zero-leakage telemetry governance, UK/EU GDPR alignment, and client cryptographic custody.',
   },
   '/terms': {
-    title: 'Terms of Service & Engineering Engagement Terms | MIHORA.TECH',
-    description: 'Standard terms governing use of MIHORA.TECH web platforms, engineering consultation, intellectual property custody, and SLA deliverables.',
+    label: 'Terms of Service',
+    title: 'Terms of Service & IP Ownership Terms | MIHORA.TECH',
+    description: 'Master commercial terms governing MIHORA.TECH platforms, source IP custody, 99.999% SLA schedules, and engineering consultations.',
   },
   '/disclaimer': {
-    title: 'Technical Disclaimer & Architectural Disclosure | MIHORA.TECH',
-    description: 'Scope and warranty boundaries for published technical specifications, reference schematics, and infrastructure advisory materials.',
+    label: 'Technical Disclaimer',
+    title: 'Technical Disclaimer & Benchmark Scope | MIHORA.TECH',
+    description: 'Scope and warranty boundaries governing published optical specifications, latency measurements, and reference diagrams.',
   },
 };
 
-export function SEOHead({ title, description, keywords, canonicalPath, schemaData }: SEOProps) {
+export function SEOHead({ title, description, keywords, canonicalPath, ogType = 'website', schemaData }: SEOProps) {
   const location = useLocation();
   const currentPath = location.pathname;
   const normalizedPath = currentPath.length > 1 && currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
   const config = ROUTE_SEO[normalizedPath] || {
-    title: 'MIHORA.TECH — Sovereign Engineering & Datacenter Infrastructure',
-    description: 'Founded by M. Matti ul Hasnain and Omema Iqbal. Digital systems engineering, physical datacenter infrastructure, and 24/7 telemetry across London and Islamabad.',
+    label: 'Engineering',
+    title: 'MIHORA.TECH — Sovereign Engineering & Datacenter Systems',
+    description: 'Co-founded by M. Matti ul Hasnain and Omema Iqbal. Custom digital systems, physical datacenter infrastructure, and 24/7 telemetry across London and Islamabad.',
   };
 
   const finalTitle = title || config.title;
@@ -186,13 +211,16 @@ export function SEOHead({ title, description, keywords, canonicalPath, schemaDat
     setMeta('meta[name="description"]', 'name', 'description', finalDescription);
     setMeta('meta[name="keywords"]', 'name', 'keywords', finalKeywords);
 
+    setMeta('meta[property="og:type"]', 'property', 'og:type', ogType);
     setMeta('meta[property="og:title"]', 'property', 'og:title', finalTitle);
     setMeta('meta[property="og:description"]', 'property', 'og:description', finalDescription);
     setMeta('meta[property="og:url"]', 'property', 'og:url', finalCanonical);
+    setMeta('meta[property="og:image"]', 'property', 'og:image', 'https://mihora.tech/og-image.jpg');
 
     setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', finalTitle);
     setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', finalDescription);
     setMeta('meta[name="twitter:url"]', 'name', 'twitter:url', finalCanonical);
+    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', 'https://mihora.tech/og-image.jpg');
 
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
@@ -202,7 +230,6 @@ export function SEOHead({ title, description, keywords, canonicalPath, schemaDat
     }
     canonical.href = finalCanonical;
 
-    // Route-specific WebPage + custom JSON-LD
     const routeScriptId = 'mihora-route-jsonld';
     const prev = document.getElementById(routeScriptId);
     if (prev) prev.remove();
@@ -218,11 +245,53 @@ export function SEOHead({ title, description, keywords, canonicalPath, schemaDat
       about: { '@id': 'https://mihora.tech/#organization' },
     };
 
-    const payload = schemaData
+    const breadcrumbItems: Record<string, unknown>[] = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://mihora.tech/',
+      },
+    ];
+    if (formattedPath !== '/') {
+      const segments = formattedPath.replace(/^\/|\/$/g, '').split('/');
+      if (segments.length > 1 && segments[0] === 'services') {
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Services',
+          item: 'https://mihora.tech/services/',
+        });
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          position: 3,
+          name: config.label,
+          item: finalCanonical,
+        });
+      } else {
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          position: 2,
+          name: config.label,
+          item: finalCanonical,
+        });
+      }
+    }
+
+    const breadcrumbSchema: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      '@id': `${finalCanonical}#breadcrumb`,
+      itemListElement: breadcrumbItems,
+    };
+
+    const extraSchemas = schemaData
       ? Array.isArray(schemaData)
-        ? [basePageSchema, ...schemaData]
-        : [basePageSchema, schemaData]
-      : basePageSchema;
+        ? schemaData
+        : [schemaData]
+      : [];
+
+    const payload = [basePageSchema, breadcrumbSchema, ...extraSchemas];
 
     const script = document.createElement('script');
     script.id = routeScriptId;
@@ -234,7 +303,7 @@ export function SEOHead({ title, description, keywords, canonicalPath, schemaDat
       const cleanup = document.getElementById(routeScriptId);
       if (cleanup) cleanup.remove();
     };
-  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, schemaData]);
+  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, ogType, schemaData, formattedPath, config.label]);
 
   return null;
 }

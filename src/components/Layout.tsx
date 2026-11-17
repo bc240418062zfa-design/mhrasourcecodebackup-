@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import {
   Menu, X, Search, ArrowRight, Sun, Moon, Bot, Zap,
-  Volume2, VolumeX, ChevronDown, Layers, BookOpen, HelpCircle,
+  ChevronDown, Layers, BookOpen, HelpCircle,
   FileText, Building, Activity, Server, Cpu, Briefcase, Workflow,
   Compass, Handshake, ShieldCheck
 } from 'lucide-react';
@@ -12,7 +12,6 @@ import { BrandLogo } from './BrandLogo';
 import { SEOHead } from './SEOHead';
 import { ScrollProgressBar } from './MotionPrimitives';
 import { queryAIEngine, type AIResponse } from './AIEngine';
-import { isSoundEnabled, toggleSound, subscribeSoundChange } from '../utils/audio';
 
 interface SearchItem {
   title: string;
@@ -210,23 +209,9 @@ export default function Layout() {
   const [isAiProcessing, setIsAiProcessing] = useState(false);
   const [timeLondon, setTimeLondon] = useState('');
   const [timeIslamabad, setTimeIslamabad] = useState('');
-  const [soundOn, setSoundOn] = useState(false);
 
   const navContainerRef = useRef<HTMLDivElement>(null);
   const closeTimeoutRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    setSoundOn(isSoundEnabled());
-    const unsubscribe = subscribeSoundChange((enabled) => {
-      setSoundOn(enabled);
-    });
-    return unsubscribe;
-  }, []);
-
-  const handleToggleSound = () => {
-    const next = toggleSound();
-    setSoundOn(next);
-  };
 
   useEffect(() => {
     const updateClocks = () => {
@@ -432,11 +417,11 @@ export default function Layout() {
               })}
             </nav>
 
-            {/* Zone 3: Utilities & Primary Conversion CTA */}
-            <div className="flex items-center gap-2 shrink-0">
+            {/* Zone 3: Clean Utilities & Primary Conversion CTA */}
+            <div className="flex items-center gap-2.5 shrink-0">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-surface-container/70 hover:bg-surface-container border border-outline/25 hover:border-primary/40 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer text-xs"
+                className="flex items-center gap-2 px-3 py-1.5 bg-surface-container/75 hover:bg-surface-container border border-outline/25 hover:border-primary/40 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer text-xs whitespace-nowrap"
                 type="button"
                 aria-label="Search site architecture and documentation"
               >
@@ -450,7 +435,7 @@ export default function Layout() {
               <button
                 id="theme-toggle-header-btn"
                 onClick={toggleTheme}
-                className="p-2 bg-surface-container/70 hover:bg-surface-container border border-outline/25 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer"
+                className="p-2 bg-surface-container/75 hover:bg-surface-container border border-outline/25 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer shrink-0"
                 type="button"
                 aria-label={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} mode`}
                 title={`Theme: ${theme === 'light' ? 'Daylight' : 'Obsidian'}`}
@@ -462,23 +447,9 @@ export default function Layout() {
                 )}
               </button>
 
-              <button
-                onClick={handleToggleSound}
-                className="hidden sm:flex p-2 bg-surface-container/70 hover:bg-surface-container border border-outline/25 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer"
-                type="button"
-                aria-label={soundOn ? 'Mute UI audio cues' : 'Enable subtle UI audio cues'}
-                title={soundOn ? 'UI Audio: On' : 'UI Audio: Muted'}
-              >
-                {soundOn ? (
-                  <Volume2 size={15} className="text-primary shrink-0" />
-                ) : (
-                  <VolumeX size={15} className="text-on-surface-variant shrink-0" />
-                )}
-              </button>
-
               <Link
                 to="/contact"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg btn-primary-gradient text-xs font-semibold transition-all active:scale-95 shrink-0 cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg btn-primary-gradient text-xs font-semibold transition-all active:scale-95 shrink-0 cursor-pointer whitespace-nowrap"
               >
                 <span>Contact Us</span>
                 <ArrowRight size={13} />

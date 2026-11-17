@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { motion, AnimatePresence } from 'motion/react';
@@ -287,8 +287,8 @@ export default function Home() {
   const [activeScrollStage, setActiveScrollStage] = useState(0);
   const [expandedStack, setExpandedStack] = useState<number | null>(9);
 
-  const [livePing, setLivePing] = useState(18.2);
   const [activeHubView, setActiveHubView] = useState<'LON' | 'ISB'>('LON');
+  const corridorRtt = activeHubView === 'LON' ? '17.8' : '18.2';
 
   const [isTracing, setIsTracing] = useState(false);
   const [traceStep, setTraceStep] = useState(0);
@@ -296,13 +296,6 @@ export default function Home() {
   const [configDomain, setConfigDomain] = useState<'software' | 'hardware' | 'ai' | 'field'>('software');
   const [configRegion, setConfigRegion] = useState<'uk' | 'pak' | 'gcc' | 'global'>('global');
   const [configSla, setConfigSla] = useState<'emergency' | 'noc' | 'cluster'>('cluster');
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setLivePing(Number((17.4 + Math.random() * 1.6).toFixed(1)));
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleSelectNode = (nodeId: string) => {
     playUiChime('click');
@@ -364,51 +357,39 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      {/* 01. CINEMA FULL-BLEED OBSIDIAN ARCHITECTURAL HERO */}
-      <section className="relative w-full min-h-[86vh] flex flex-col justify-between overflow-hidden obsidian-band obsidian-grid border-b border-white/10">
-        {/* Atmospheric Photography Layer + Directional Obsidian Scrims */}
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          <img
-            src={VISUAL_ASSETS.heroDatacenterHall}
-            alt=""
-            className="w-full h-full object-cover opacity-38 scale-[1.03]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050810] via-[#050810]/88 to-[#050810]/55" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-[#050810]/65" />
-        </div>
-
-        {/* Hero Centerpiece Typography & Editorial Split */}
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 lg:pt-24 lg:pb-16 flex-1 flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end w-full">
-            <div className="lg:col-span-8 space-y-6">
+      {/* 01. LUMINOUS OBSIDIAN SOVEREIGN ATELIER HERO */}
+      <section className="relative w-full min-h-[84vh] flex flex-col justify-between overflow-hidden obsidian-band obsidian-grid hero-ambient-mesh border-b border-white/10">
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12 lg:pt-20 lg:pb-16 flex-1 flex items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center w-full">
+            {/* Left Typographic Hero Hierarchy */}
+            <div className="lg:col-span-7 space-y-6">
               <Reveal>
                 <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-400 font-semibold">
-                  MIHORA.TECH · M. Matti ul Hasnain &amp; Omema Iqbal
+                  MIHORA.TECH &middot; M. Matti ul Hasnain &amp; Omema Iqbal
                 </div>
               </Reveal>
 
-              <MaskTextReveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-[clamp(2.55rem,5.4vw,4.85rem)] text-white tracking-[-0.03em] leading-[1.03]">
+              <MaskTextReveal delay={0.04}>
+                <h1 className="font-headline font-extrabold text-[clamp(2.35rem,4.6vw,4.25rem)] text-white tracking-[-0.03em] leading-[1.05]">
                   Sovereign Engineering From Physical Glass to Distributed Cloud
                 </h1>
               </MaskTextReveal>
 
-              <Reveal delay={0.14}>
-                <p className="text-base sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-light">
+              <Reveal delay={0.12}>
+                <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
                   Operating synchronized command hubs in{' '}
                   <strong className="text-white font-semibold">London (United Kingdom)</strong> and{' '}
-                  <strong className="text-white font-semibold">Islamabad (Pakistan)</strong>.
-                  One accountable team architecting custom software, OTDR-verified optical fiber networks, bare-metal datacenters, and 24/7 operational custody.
+                  <strong className="text-white font-semibold">Islamabad (Pakistan)</strong>. One accountable team architecting custom software, OTDR-verified optical fiber networks, bare-metal datacenters, and 24/7 operational custody.
                 </p>
               </Reveal>
 
-              <Reveal delay={0.2}>
-                <div className="flex flex-wrap items-center gap-4 pt-3">
+              <Reveal delay={0.18}>
+                <div className="flex flex-wrap items-center gap-4 pt-2">
                   <MagneticWrapper>
                     <Link
                       to="/contact"
                       onClick={() => playUiChime('click')}
-                      className="inline-flex items-center gap-2.5 px-7 py-4 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
+                      className="inline-flex items-center gap-2.5 px-7 py-3.5 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
                     >
                       <span>Schedule Architecture Review</span>
                       <ArrowRight size={16} />
@@ -416,44 +397,79 @@ export default function Home() {
                   </MagneticWrapper>
 
                   <Link
-                    to="/our-story"
+                    to="/engineering"
                     onClick={() => playUiChime('click')}
-                    className="inline-flex items-center gap-2 px-6 py-4 bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white font-semibold rounded-xl text-sm backdrop-blur-md transition-all cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white font-semibold rounded-xl text-sm backdrop-blur-md transition-all cursor-pointer"
                   >
-                    <span>Our Founding Story</span>
+                    <span>Explore 9-Layer Stack</span>
                     <ArrowUpRight size={15} className="text-amber-400" />
                   </Link>
                 </div>
               </Reveal>
             </div>
 
-            {/* Right Asymmetric Architectural Spec Callout */}
-            <div className="lg:col-span-4 hidden lg:block">
-              <Reveal direction="left" delay={0.18}>
-                <div className="border-t border-l border-white/20 pl-6 pt-5 pb-2 space-y-4">
-                  <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-amber-400 font-semibold">
-                    Single-Contract Span
+            {/* Right Framed Studio Showcase Visual + Architectural Ledger */}
+            <div className="lg:col-span-5">
+              <Reveal direction="left" delay={0.14}>
+                <Tilt3DFrame maxTilt={3.5}>
+                  <div className="luxury-bezel rounded-2xl overflow-hidden bg-[#080d18]">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <img
+                        src={VISUAL_ASSETS.heroDatacenterHall}
+                        alt="MIHORA.TECH sovereign enterprise server hall and optical fiber rack infrastructure"
+                        className="w-full h-full object-cover brightness-110 contrast-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#080d18] via-[#080d18]/20 to-transparent" />
+                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2 font-mono text-[11px]">
+                        <span className="text-amber-400 font-semibold uppercase tracking-wider">
+                          UK-LON-01 &harr; PK-ISB-01
+                        </span>
+                        <span className="text-slate-200 font-semibold tabular-nums">
+                          18.2 ms Optical Backbone
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="p-5 sm:p-6 space-y-4 border-t border-white/10">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-amber-400 font-bold">
+                          Single-Contract Span
+                        </span>
+                        <Link
+                          to="/our-story"
+                          className="font-mono text-xs text-blue-400 hover:text-white inline-flex items-center gap-1 transition-colors"
+                        >
+                          <span>Our Story</span>
+                          <ArrowUpRight size={13} />
+                        </Link>
+                      </div>
+
+                      <dl className="divide-y divide-white/10 text-xs font-mono">
+                        <div className="py-2 flex items-center justify-between gap-4">
+                          <dt className="text-slate-400">Architecture Scope</dt>
+                          <dd className="text-white font-semibold">Layers L01–L09 Unified</dd>
+                        </div>
+                        <div className="py-2 flex items-center justify-between gap-4">
+                          <dt className="text-slate-400">Optical Certification</dt>
+                          <dd className="text-emerald-400 font-semibold tabular-nums">&le; 0.03 dB Splice Mean</dd>
+                        </div>
+                        <div className="py-2 flex items-center justify-between gap-4">
+                          <dt className="text-slate-400">Cryptographic Custody</dt>
+                          <dd className="text-white font-semibold">Client-Owned FIPS 140-3 HSM</dd>
+                        </div>
+                      </dl>
+                    </div>
                   </div>
-                  <p className="text-sm text-slate-300 leading-relaxed">
-                    Software fails where physical optics degrade. MIHORA eliminates multi-vendor finger pointing across all nine engineering layers.
-                  </p>
-                  <div className="pt-2 border-t border-white/15 flex items-center justify-between text-xs font-mono">
-                    <span className="text-slate-400">Stack Architecture</span>
-                    <Link to="/engineering" className="text-white font-bold hover:text-amber-400 inline-flex items-center gap-1 transition-colors">
-                      <span>9 Layers L01–L09</span>
-                      <ArrowRight size={13} />
-                    </Link>
-                  </div>
-                </div>
+                </Tilt3DFrame>
               </Reveal>
             </div>
           </div>
         </div>
 
-        {/* Bottom 4-Column Razor-Hairline Structural Dock (Zero Rounded White Cards) */}
-        <div className="relative z-10 w-full border-t border-white/15 bg-black/50 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/15">
-            <div className="px-6 py-5 flex flex-col justify-between gap-2">
+        {/* Bottom 4-Column Hairline Proof Telemetry Dock */}
+        <div className="relative z-10 w-full border-t border-white/12 bg-[#04060c]/85 backdrop-blur-xl">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/12">
+            <div className="px-6 py-4 flex flex-col justify-between gap-1.5">
               <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 <span>Watchdesk Corridor</span>
                 <button
@@ -467,35 +483,35 @@ export default function Home() {
                   Switch Hub
                 </button>
               </div>
-              <div className="font-headline text-lg font-extrabold text-white">
+              <div className="font-headline text-base sm:text-lg font-extrabold text-white">
                 {activeHubView === 'LON' ? 'UK-LON-01 · London' : 'PK-ISB-01 · Islamabad'}
               </div>
               <div className="font-mono text-xs text-slate-400">
-                Corridor RTT: <span className="text-white font-bold tabular-nums">{livePing} ms</span>
+                Corridor RTT: <span className="text-white font-bold tabular-nums">{corridorRtt} ms</span>
               </div>
             </div>
 
-            <Link to="/status" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/status" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Quorum Availability
               </div>
-              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white">
+              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white tabular-nums">
                 <AnimatedCounter target={99.999} decimals={3} suffix="%" />
               </div>
               <div className="font-mono text-xs text-emerald-400">Synchronized Dual-Hub SRE</div>
             </Link>
 
-            <Link to="/case-studies" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/case-studies" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Certified Fiber Span
               </div>
-              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white">
+              <div className="font-headline text-2xl sm:text-3xl font-extrabold text-white tabular-nums">
                 <AnimatedCounter target={250000} suffix="+ m" />
               </div>
               <div className="font-mono text-xs text-slate-400">EXFO Bidirectional OTDR</div>
             </Link>
 
-            <Link to="/tools" className="px-6 py-5 flex flex-col justify-between gap-2 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/tools" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Mean Splice Loss
               </div>
@@ -640,24 +656,26 @@ export default function Home() {
                       playUiChime('click');
                     }}
                     className={clsx(
-                      'py-7 px-5 transition-all cursor-pointer space-y-3 relative',
+                      'py-7 px-6 transition-all cursor-pointer space-y-3 rounded-xl border',
                       isActive
-                        ? 'bg-white/[0.06] opacity-100'
-                        : 'opacity-55 hover:opacity-90'
+                        ? 'bg-white/[0.06] border-amber-400/40 opacity-100 shadow-lg'
+                        : 'border-transparent opacity-60 hover:opacity-90'
                     )}
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="spine-stage-indicator"
-                        className="absolute left-0 top-0 bottom-0 w-1 bg-amber-400"
-                        transition={{ type: 'spring', stiffness: 360, damping: 32 }}
-                      />
-                    )}
                     <div className="flex items-center justify-between font-mono text-xs">
                       <span className={clsx('font-bold', isActive ? 'text-amber-400' : 'text-blue-400')}>
                         {stage.kicker}
                       </span>
-                      <span className="text-slate-400 font-bold">0{idx + 1}</span>
+                      <span
+                        className={clsx(
+                          'w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold border transition-colors',
+                          isActive
+                            ? 'border-amber-400 bg-amber-400/15 text-amber-300'
+                            : 'border-white/15 text-slate-400'
+                        )}
+                      >
+                        0{idx + 1}
+                      </span>
                     </div>
                     <h3 className="font-headline text-xl sm:text-2xl font-bold text-white leading-snug">
                       {stage.title}
@@ -767,8 +785,30 @@ export default function Home() {
                   </linearGradient>
                 </defs>
 
+                {/* Stylized Geometric Continental Silhouette Grid Layer */}
+                <g fill="rgba(30, 58, 138, 0.16)" stroke="rgba(96, 165, 250, 0.22)" strokeWidth="1" strokeLinejoin="round">
+                  {/* North America */}
+                  <path d="M 95 105 L 220 95 L 295 135 L 265 180 L 238 205 L 195 238 L 165 232 L 132 195 L 105 152 Z" />
+                  {/* South America */}
+                  <path d="M 218 258 L 285 268 L 315 322 L 282 405 L 246 425 L 228 360 L 210 295 Z" />
+                  {/* UK & Western/Northern Europe */}
+                  <path d="M 438 110 L 502 92 L 548 115 L 540 165 L 495 182 L 452 178 L 442 152 Z" />
+                  {/* Africa */}
+                  <path d="M 442 205 L 522 208 L 545 255 L 528 340 L 490 385 L 456 325 L 428 265 Z" />
+                  {/* Middle East & South Asia Corridor */}
+                  <path d="M 526 196 L 605 188 L 635 235 L 608 282 L 568 272 L 535 282 L 515 240 Z" />
+                  {/* Eurasia, Central Asia & East Asia */}
+                  <path d="M 548 112 L 735 95 L 840 128 L 812 185 L 748 228 L 652 248 L 608 192 Z" />
+                  {/* Japan Arch */}
+                  <path d="M 815 170 L 842 185 L 832 212 L 806 202 Z" />
+                  {/* Maritime SE Asia & Singapore Corridor */}
+                  <path d="M 702 275 L 758 292 L 752 332 L 705 325 Z" />
+                  {/* Oceania */}
+                  <path d="M 768 355 L 858 358 L 866 418 L 780 422 L 762 385 Z" />
+                </g>
+
                 {/* Faint latitude / longitude graticules */}
-                <g stroke="rgba(255,255,255,0.05)" strokeWidth="1" fill="none">
+                <g stroke="rgba(255,255,255,0.045)" strokeWidth="1" fill="none">
                   <line x1="0" y1="125" x2="1000" y2="125" />
                   <line x1="0" y1="250" x2="1000" y2="250" />
                   <line x1="0" y1="375" x2="1000" y2="375" />
@@ -1000,8 +1040,13 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-gold leading-relaxed">
-                      &ldquo;We founded MIHORA to eliminate the brittle gap between abstract software code and physical reality. We architect sovereign backends, and our engineers splice and certify the optical plant.&rdquo;
+                    <blockquote className="text-sm sm:text-base text-on-surface leading-relaxed relative pt-1">
+                      <span className="font-headline text-2xl font-extrabold text-gold leading-none mr-1.5" aria-hidden="true">
+                        &ldquo;
+                      </span>
+                      <span className="italic">
+                        We founded MIHORA to eliminate the brittle gap between abstract software code and physical reality. We architect sovereign backends, and our engineers splice and certify the optical plant.&rdquo;
+                      </span>
                     </blockquote>
 
                     <p className="text-sm text-on-surface-variant leading-relaxed">
@@ -1055,8 +1100,13 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <blockquote className="text-sm sm:text-base text-on-surface italic pl-4 border-l-2 border-gold leading-relaxed">
-                      &ldquo;Resilient engineering is only as reliable as the operational governance behind it. Our dual-hub model guarantees deterministic SLA execution across jurisdictions.&rdquo;
+                    <blockquote className="text-sm sm:text-base text-on-surface leading-relaxed relative pt-1">
+                      <span className="font-headline text-2xl font-extrabold text-gold leading-none mr-1.5" aria-hidden="true">
+                        &ldquo;
+                      </span>
+                      <span className="italic">
+                        Resilient engineering is only as reliable as the operational governance behind it. Our dual-hub model guarantees deterministic SLA execution across jurisdictions.&rdquo;
+                      </span>
                     </blockquote>
 
                     <p className="text-sm text-on-surface-variant leading-relaxed">
@@ -1579,9 +1629,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. AEO VERIFIED QUESTIONS & FINAL OBSIDIAN ATELIER CTA */}
+      {/* 10. AEO ARCHITECTURE COMPARISON MATRIX, VERIFIED Q&A & OBSIDIAN CTA */}
       <section className="w-full bg-surface py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          <div className="space-y-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="space-y-1.5">
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-gold font-bold">
+                  AEO Architectural Benchmark Matrix
+                </div>
+                <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight">
+                  Why Enterprises Choose Full-Span Sovereign Custody
+                </h2>
+              </div>
+              <Link
+                to="/compare"
+                className="font-mono text-xs font-bold text-primary hover:underline inline-flex items-center gap-1.5 shrink-0"
+              >
+                <span>Open Detailed Trade-Off Matrix</span>
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            <div className="overflow-x-auto surface-card rounded-2xl">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b border-outline/20 bg-surface-container-low font-mono text-xs uppercase tracking-wider text-on-surface-variant">
+                    <th className="py-4 px-5">Engineering Criterion</th>
+                    <th className="py-4 px-5 text-primary font-bold">MIHORA.TECH Sovereign Stack</th>
+                    <th className="py-4 px-5">Hyperscale Public Cloud</th>
+                    <th className="py-4 px-5">Fragmented Agencies</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-outline/15">
+                  <tr>
+                    <td className="py-3.5 px-5 font-semibold text-on-surface">Accountability Span</td>
+                    <td className="py-3.5 px-5 text-on-surface font-medium">Unified L01 Fiber to L09 Cloud</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Shared black-box infrastructure</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Software only; finger-pointing</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 px-5 font-semibold text-on-surface">Optical Plant Certification</td>
+                    <td className="py-3.5 px-5 text-emerald-500 font-mono font-bold tabular-nums">&le; 0.03 dB EXFO OTDR Signed</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">None disclosed to tenants</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Outsourced sub-contractors</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 px-5 font-semibold text-on-surface">Cryptographic Key Custody</td>
+                    <td className="py-3.5 px-5 text-on-surface font-medium">100% Client FIPS 140-3 HSM</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Provider-managed KMS defaults</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Ad-hoc cloud credentials</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 px-5 font-semibold text-on-surface">24/7 Operations &amp; Field SLA</td>
+                    <td className="py-3.5 px-5 text-amber-500 font-mono font-bold">London + Islamabad (99.999%)</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">No physical premises dispatch</td>
+                    <td className="py-3.5 px-5 text-on-surface-variant">Business-hours ticket queues</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 rounded-2xl bg-surface-container-low border border-outline/20 space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono text-gold font-bold">

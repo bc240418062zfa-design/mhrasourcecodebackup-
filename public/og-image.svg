@@ -1,70 +1,71 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#050811"/>
-      <stop offset="50%" stop-color="#090d16"/>
-      <stop offset="100%" stop-color="#0d1424"/>
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="55%" stop-color="#080d1a"/>
+      <stop offset="100%" stop-color="#0d1629"/>
     </linearGradient>
-    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#00d2ff"/>
-      <stop offset="100%" stop-color="#0052ea"/>
+    <radialGradient id="glow" cx="85%" cy="20%" r="55%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#05070c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mLeft" x1="60" y1="60" x2="250" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="45%" stop-color="#0047C4"/>
+      <stop offset="100%" stop-color="#051838"/>
     </linearGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1b253b" stroke-width="1" stroke-opacity="0.4"/>
+    <linearGradient id="mRight" x1="440" y1="60" x2="250" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0052E0"/>
+      <stop offset="55%" stop-color="#052456"/>
+      <stop offset="100%" stop-color="#020E24"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="1"/>
     </pattern>
   </defs>
 
-  <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
   <rect width="1200" height="630" fill="url(#grid)"/>
 
-  <!-- Decorative Circuit lines -->
-  <path d="M 100 120 L 300 120 L 380 200 L 1100 200" stroke="#00d2ff" stroke-width="1.5" stroke-opacity="0.25" fill="none"/>
-  <circle cx="380" cy="200" r="4" fill="#00d2ff" fill-opacity="0.6"/>
-  <path d="M 150 510 L 450 510 L 520 440 L 1050 440" stroke="#0052ea" stroke-width="1.5" stroke-opacity="0.3" fill="none"/>
-  <circle cx="520" cy="440" r="4" fill="#0052ea" fill-opacity="0.6"/>
-
-  <!-- Sovereign Geometric Logo Mark -->
-  <g transform="translate(100, 200)">
-    <rect width="130" height="130" rx="28" fill="#111827" stroke="url(#neon)" stroke-width="3"/>
-    <path d="M 32 94 V 38 L 65 68 L 98 38 V 94" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 32 94 V 38 L 65 68 L 98 38 V 94" stroke="#00d2ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <polygon points="65,60 72,68 65,76 58,68" fill="#00d2ff"/>
-    <circle cx="65" cy="68" r="3" fill="#ffffff"/>
-    <circle cx="32" cy="38" r="5" fill="#00d2ff"/>
-    <circle cx="98" cy="38" r="5" fill="#0052ea"/>
+  <!-- Official MIHORA Faceted M Mark -->
+  <g transform="translate(86, 118) scale(0.42)">
+    <path d="M 120 70 L 250 260 L 195 295 L 120 185 L 120 300 L 70 250 L 70 70 Z" fill="url(#mLeft)"/>
+    <path d="M 380 70 L 250 260 L 305 295 L 380 185 L 380 300 L 430 250 L 430 70 Z" fill="url(#mRight)"/>
+    <path d="M 120 70 L 250 260 L 195 295 L 70 120 Z" fill="#005BFF" opacity="0.9"/>
+    <path d="M 70 120 L 120 185 L 120 300 L 70 250 Z" fill="#061A3A"/>
+    <path d="M 380 70 L 250 260 L 305 295 L 430 120 Z" fill="#0041C4" opacity="0.85"/>
+    <path d="M 430 120 L 380 185 L 380 300 L 430 250 Z" fill="#031126"/>
+    <g stroke="#E2F1FF" stroke-width="3" stroke-linecap="round">
+      <line x1="105" y1="185" x2="145" y2="170"/>
+      <line x1="145" y1="170" x2="190" y2="205"/>
+      <line x1="190" y1="205" x2="225" y2="250"/>
+      <line x1="225" y1="250" x2="250" y2="205"/>
+      <line x1="250" y1="205" x2="310" y2="170"/>
+      <line x1="310" y1="170" x2="395" y2="185"/>
+      <circle cx="145" cy="170" r="6" fill="#FFFFFF"/>
+      <circle cx="225" cy="250" r="7" fill="#FFFFFF"/>
+      <circle cx="250" cy="205" r="6" fill="#FFFFFF"/>
+      <circle cx="310" cy="170" r="6" fill="#FFFFFF"/>
+    </g>
   </g>
 
-  <!-- Typography -->
-  <text x="270" y="270" font-family="'Space Grotesk', system-ui, sans-serif" font-size="72" font-weight="800" fill="#ffffff" letter-spacing="-1">
-    MIHORA<tspan fill="#00d2ff">.TECH</tspan>
+  <text x="305" y="210" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-1.5">
+    MIHORA<tspan fill="#f59e0b" font-size="40">.TECH</tspan>
   </text>
-  <text x="270" y="320" font-family="'JetBrains Mono', monospace" font-size="22" font-weight="600" fill="#00d2ff" letter-spacing="4">
-    // SOVEREIGN ENGINEERING &amp; CLOUD ARCHITECTURE
+  <text x="305" y="254" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="600" fill="#f59e0b" letter-spacing="3.5">
+    SOVEREIGN ENGINEERING · PHYSICAL TO CLOUD
   </text>
 
-  <!-- Tagline & Capabilities -->
-  <text x="100" y="420" font-family="'Hanken Grotesk', system-ui, sans-serif" font-size="30" font-weight="400" fill="#e1e2ec" letter-spacing="0.5">
-    Technology Without Boundaries. Digital Systems. Physical Infrastructure. Global Delivery.
+  <text x="96" y="370" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="34" font-weight="700" fill="#f8fafc">
+    Software Platforms · Optical Fiber Backbones · 24/7 SRE
+  </text>
+  <text x="96" y="420" font-family="'DM Sans', system-ui, sans-serif" font-size="22" font-weight="400" fill="#94a3b8">
+    Founded by M. Matti ul Hasnain &amp; Omema Iqbal · Command Hubs in London &amp; Islamabad
   </text>
 
-  <!-- Meta Badges -->
-  <g transform="translate(100, 480)">
-    <rect width="200" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
-    <text x="100" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#a4c8ff" text-anchor="middle">
-      FULL-STACK SYSTEMS
-    </text>
-  </g>
-  <g transform="translate(320, 480)">
-    <rect width="220" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
-    <text x="110" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#a4c8ff" text-anchor="middle">
-      PHYSICAL INFRASTRUCTURE
-    </text>
-  </g>
-  <g transform="translate(560, 480)">
-    <rect width="240" height="42" rx="21" fill="#171f33" stroke="#25324d" stroke-width="1.5"/>
-    <text x="120" y="26" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#00d2ff" text-anchor="middle">
-      24/7 GLOBAL TELEMETRY
-    </text>
-  </g>
+  <line x1="96" y1="490" x2="1104" y2="490" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+  <text x="96" y="540" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="600" fill="#38bdf8">
+    99.999% QUORUM SLA   ·   ≤ 0.03 dB SPLICE LOSS   ·   4H FIELD DISPATCH   ·   HTTPS://MIHORA.TECH
+  </text>
 </svg>
