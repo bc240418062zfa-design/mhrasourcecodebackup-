@@ -1,0 +1,19 @@
+# /.well-known/llms.txt — Canonical Discovery Mirror for MIHORA.TECH
+# Primary index: https://mihora.tech/llms.txt
+# Complete Markdown corpus: https://mihora.tech/llms-full.txt
+
+# MIHORA.TECH — Sovereign Engineering & Datacenter Infrastructure
+
+> Official machine-readable index for MIHORA.TECH (Private) Limited, co-founded by M. Matti ul Hasnain and Omema Iqbal, operating dual command hubs in London (United Kingdom) and Islamabad (Pakistan).
+
+## Full Documentation & Knowledge Endpoints
+- [Primary LLMs Index](https://mihora.tech/llms.txt)
+- [Full Technical & Entity Corpus](https://mihora.tech/llms-full.txt)
+- [XML Sitemap (30 Routes)](https://mihora.tech/sitemap.xml)
+- [Company & Founders](https://mihora.tech/company/)
+- [Services Directory](https://mihora.tech/services/)
+- [9-Layer Sovereign Engineering Stack](https://mihora.tech/engineering/)
+- [Security & Zero-Trust HSM Center](https://mihora.tech/security/)
+- [Verified Entity FAQ](https://mihora.tech/faq/)
+- [Press Kit & Verified Factsheet](https://mihora.tech/press/)
+- [Contact & Dispatch](https://mihora.tech/contact/)

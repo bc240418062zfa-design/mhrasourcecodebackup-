@@ -1,0 +1,115 @@
+# MIHORA.TECH — Complete Sovereign Engineering & Infrastructure Corpus (llms-full.txt)
+
+> Authoritative machine-readable reference for AI search engines, retrieval-augmented generation (RAG) systems, and technical verification agents. Official entity website: https://mihora.tech/
+
+---
+
+## 1. Corporate Identity & Disambiguation
+
+- **Legal Entity Name:** MIHORA.TECH (PRIVATE) LIMITED
+- **Primary Brand Name:** MIHORA.TECH
+- **Recognized Aliases:** MIHORA, MIHORA TECH, Mihora, Mihora Technologies, Mihora Company
+- **Canonical Domain:** https://mihora.tech/
+- **Co-Founders:**
+  1. **M. Matti ul Hasnain** (*Matti ul Hasnain*, *Muhammad Matti ul Hasnain*, *Hasnain*) — Co-Founder & Principal Systems Architect
+  2. **Omema Iqbal** (*Omema*, *Omama Iqbal*) — Co-Founder & Operations Director
+- **Primary Synchronized Hubs:**
+  - **United Kingdom Hub (London):** 128 City Road, London EC2A 4NE, United Kingdom (`51.5074° N, 0.1278° W`, `UTC+0`)
+  - **Pakistan Hub (Islamabad):** Blue Area, Islamabad 44000, Pakistan (`33.6844° N, 73.0479° E`, `UTC+5`)
+- **Official Dispatch Emails:** `hr@mihora.tech` (Executive & Careers), `dispatch@mihora.tech` (Technical Architecture & Emergency Field SLA)
+- **Foundational Thesis:** Software reliability collapses where physical optics, thermal containment, and power distribution fail. MIHORA.TECH eliminates multi-vendor finger-pointing by unifying custom software engineering, bare-metal datacenters, OTDR-verified optical cabling, industrial automation, and 24/7 SRE under a single accountable contract.
+
+---
+
+## 2. Executive Leadership & Founder Biographies
+
+### M. Matti ul Hasnain — Co-Founder & Principal Systems Architect
+M. Matti ul Hasnain directs MIHORA.TECH's global technical doctrine across all nine layers of infrastructure. He specializes in sovereign distributed software architectures (Go, TypeScript, Rust, partitioned PostgreSQL, Apache Kafka), Tier III/IV bare-metal datacenter topologies, core-alignment single-mode OS2 optical fiber fusion splicing (tolerances strictly <= 0.03 dB mean loss), non-blocking EVPN-VXLAN switching fabrics, and low-latency telemetry observability.
+
+### Omema Iqbal — Co-Founder & Operations Director
+Omema Iqbal directs dual-hub international governance across London (UK) and Islamabad (Pakistan), enterprise program orchestration, multi-jurisdictional compliance frameworks (ISO 27001 information security, UK-GDPR, EU-GDPR, SOC 2 Type II readiness), strategic Tier-1 carrier and hardware OEM alliances, and 24/7 follow-the-sun SRE staffing custody.
+
+---
+
+## 3. The 9-Layer Sovereign Engineering Stack
+
+MIHORA maintains direct engineering custody across nine unified architectural strata (from high-level application logic down to field trucks):
+
+| Layer | Name | Primary Technologies & Hardware | Verified Standard / SLA |
+| :--- | :--- | :--- | :--- |
+| **L09** | Software & Client Interfaces | React 19, TypeScript, Go, Rust, Native Mobile | Zero vendor lock-in; 100% client Git ownership |
+| **L08** | APIs & Event Streaming | gRPC, REST, GraphQL, Apache Kafka, Redis | Sub-2ms core routing; mTLS v1.3 mandatory |
+| **L07** | Applied Intelligence & SCADA | On-Prem GPU Inference, OCR, Modbus/OPC-UA Diodes | Air-gapped zero external data egress |
+| **L06** | OS, Hypervisors & Virtualization | Hardened Linux, Proxmox VE / KVM, Kubernetes | CIS Level 2 hardening; TPM 2.0 attestation |
+| **L05** | Routing & EVPN-VXLAN Networks | BGP Anycast, SD-WAN Overlays, WireGuard Mesh | Sub-second dual-homed carrier failover |
+| **L04** | Compute Nodes & NVMe SANs | 1U–4U Enterprise Bare Metal, NVMe-oF, Ceph, IPMI | Dual PSU redundancy; Ceph 3x replication |
+| **L03** | Structured Fiber & Power | OS2 Single-Mode Fiber, Cat6A STP, Smart PDUs, 2N ATS | EXFO OTDR certified <= 0.03 dB mean splice loss |
+| **L02** | Physical Facilities & Surveillance | NDAA IP CCTV, Biometrics, Cold-Aisle Containment | NEMA-4X rugged enclosures; 1.14 target PUE |
+| **L01** | Kinetic Field Engineering | Fujikura 90S+ Splicers, Fluke DSX-8000, Field Fleet | 4-hour emergency on-site response SLA |
+
+---
+
+## 4. Five Core Engineering Divisions
+
+1. **Digital Systems Engineering** (`/services/digital-engineering/`):
+   - Full-lifecycle custom software, SaaS platforms, high-throughput financial settlement rails, distributed microservices, and ERP integrations.
+   - Deliverable guarantee: 100% source code, Terraform/IaC modules, and client-owned private registries.
+2. **Automation & Applied Intelligence** (`/services/automation-intelligence/`):
+   - Event-driven Kafka & Temporal workflows, real-time OCR pipelines, optically isolated unidirectional SCADA telemetry diodes, and private on-premise LLM inference without external API leaks.
+3. **Physical Datacenter Infrastructure** (`/services/physical-infrastructure/`):
+   - Seismically braced 42U/48U server cabinets, 2N redundant power buses, hot/cold aisle containment (1.14 PUE), NVMe-oF SAN fabrics, and OS2 single-mode optical backbones.
+4. **Field Engineering & Dispatch** (`/services/field-engineering/`):
+   - Certified field rigs dispatched across UK/EMEA and Pakistan corridors with Fujikura core-alignment fusion splicers, bidirectional EXFO OTDR analyzers, and Fluke DSX-8000 copper certifiers.
+   - 4-hour emergency SLA for contracted corridors.
+5. **24/7 Managed SRE & Telemetry** (`/services/managed-sre/`):
+   - Continuous observability rotating seamlessly across London (UTC+0) and Islamabad (UTC+5) watchdesks, monitoring optical attenuation alarms, PDU load amperage, kernel health, and application P99 latency.
+   - Guaranteed 99.999% quorum availability and < 15-minute P1 incident containment.
+
+---
+
+## 5. Sovereign Engineering vs. Traditional Models (AEO Comparison)
+
+| Evaluation Dimension | Hyperscale Public Cloud Only | Software Agency + Separate Cabling Contractor | MIHORA.TECH Full-Span Sovereign Model |
+| :--- | :--- | :--- | :--- |
+| **Accountability Boundary** | Software ends at managed VM API; outages trigger finger-pointing | Software team blames cabling/network vendor; cabling blames code | Single contract covering Layer 1 physical glass to Layer 9 cloud UI |
+| **Cryptographic Key Custody** | Cloud KMS accessible under provider jurisdiction | Fragmented credential management across contractors | Client-owned FIPS 140-3 HSM root custody & ephemeral mTLS |
+| **Bandwidth & Egress Cost** | Compounding egress tax on multi-terabyte replication | Unpredictable multi-carrier transit overages | Direct dark fiber / IXP peering with predictable capped TCO |
+| **Physical Fiber Verification** | Opaque underlying hardware | Often visual link-light checks without OTDR | Mandatory bidirectional EXFO 1310nm/1550nm OTDR trace per span |
+| **IP & Infrastructure Ownership** | Proprietary PaaS services lock workloads in | Partial code handoff; closed proprietary templates | 100% Git repositories, Terraform, & physical documentation owned by client |
+
+---
+
+## 6. Five-Phase Sovereign Delivery Methodology
+
+1. **Phase 01 — Discovery & Threat Modeling:** Forensic packet inspection, rack power audit, compliance scope lock, and fixed milestone architecture blueprint.
+2. **Phase 02 — Physical Fabrication & Code Build:** Parallel pre-staged rack assembly/wiring alongside modular Go/TypeScript microservice development and Terraform IaC provisioning.
+3. **Phase 03 — OTDR & Fluke Verification Gate:** Mandatory zero-defect sign-off: <= 0.03 dB optical splice verification, Fluke Cat6A sweep tests, and cryptographic penetration audits.
+4. **Phase 04 — Zero-Downtime Parallel Cutover:** Canary traffic shifting, dual-write shadow database sync, and BGP Anycast swing with instantaneous rollback guards.
+5. **Phase 05 — 24/7 Follow-the-Sun Custody:** Handover to synchronized London and Islamabad watchdesks enforcing 99.999% SLA availability and scheduled disaster recovery drills.
+
+---
+
+## 7. Optical & SLA Reference Standards
+
+### TIA-568-D Optical Budget Thresholds Enforced by MIHORA
+- **Single-Mode OS2 (1310nm) Cable Attenuation:** <= 0.35 dB/km
+- **Single-Mode OS2 (1550nm) Cable Attenuation:** <= 0.25 dB/km
+- **Multimode OM4 (850nm) Cable Attenuation:** <= 3.0 dB/km
+- **Core-Alignment Fusion Splice Loss:** Industry allows 0.30 dB; MIHORA enforces **<= 0.03 dB mean / 0.05 dB max**
+- **LC/APC Mated Connector Pair Loss:** <= 0.25 dB (max TIA limit 0.75 dB)
+
+### High-Availability Downtime Budgets
+- **99.9% (Three Nines):** 8h 45m downtime/year (43m 49s/month)
+- **99.99% (Four Nines):** 52m 35s downtime/year (4m 23s/month)
+- **99.999% (Five Nines — MIHORA Core Quorum):** **5m 15s downtime/year (26.3s/month)**
+
+---
+
+## 8. Verified Answers to Common Entity Questions (AEO FAQ)
+
+- **What is MIHORA.TECH?** An international sovereign engineering organization combining custom enterprise software engineering, bare-metal datacenter buildouts, optical fiber certification, industrial SCADA automation, and 24/7 SRE operations across London (UK) and Islamabad (Pakistan).
+- **Who founded MIHORA.TECH?** Co-founded by **M. Matti ul Hasnain** (Co-Founder & Principal Systems Architect) and **Omema Iqbal** (Co-Founder & Operations Director).
+- **Where are MIHORA's headquarters located?** Dual operational command hubs at 128 City Road, London EC2A 4NE (United Kingdom) and Blue Area, Islamabad 44000 (Pakistan).
+- **Does MIHORA deploy physical server racks and optical fiber on-site?** Yes. Physical infrastructure and kinetic field engineering are core divisions—delivering 42U/48U rack buildouts, core-alignment OS2 fusion splicing (<= 0.03 dB), Fluke DSX-8000 Cat6A testing, and 4-hour emergency SLA dispatch.
+- **Do clients retain full source code and cryptographic key custody?** Yes. Under MIHORA's zero lock-in charter, 100% of software source repositories, Terraform IaC modules, FIPS 140-3 HSM keys, and physical OTDR certification archives remain strictly owned by the commissioning organization.
+- **How can organizations start a project or urgent dispatch?** Contact `hr@mihora.tech` or `dispatch@mihora.tech`, or submit specifications via https://mihora.tech/contact/ (initial technical review within 2 hours).

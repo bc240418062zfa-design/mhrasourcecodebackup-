@@ -212,6 +212,7 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
+    const fs = await import("fs");
     const distPath = import_path.default.join(process.cwd(), "dist");
     app.use(import_express.default.static(distPath, {
       maxAge: "1y",
@@ -219,14 +220,26 @@ async function startServer() {
       setHeaders: (res, filePath) => {
         if (filePath.endsWith(".html")) {
           res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
-        } else if (filePath.match(/\.(js|css|woff2|png|jpg|jpeg|svg|webp|ico|json)$/)) {
+        } else if (filePath.endsWith(".txt") || filePath.endsWith("security.txt")) {
+          res.setHeader("Content-Type", "text/plain; charset=utf-8");
+          res.setHeader("Cache-Control", "public, max-age=3600");
+        } else if (filePath.endsWith(".xml")) {
+          res.setHeader("Content-Type", "application/xml; charset=utf-8");
+          res.setHeader("Cache-Control", "public, max-age=3600");
+        } else if (filePath.match(/\.(js|css|woff2|png|jpg|jpeg|svg|webp|ico|json|webmanifest)$/)) {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
         }
       }
     }));
     app.get("*", (req, res) => {
+      const cleanReqPath = req.path.replace(/^\/+|\/+$/g, "");
+      const routeHtml = cleanReqPath ? import_path.default.join(distPath, cleanReqPath, "index.html") : import_path.default.join(distPath, "index.html");
       res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
-      res.sendFile(import_path.default.join(distPath, "index.html"));
+      if (fs.existsSync(routeHtml)) {
+        res.sendFile(routeHtml);
+      } else {
+        res.sendFile(import_path.default.join(distPath, "index.html"));
+      }
     });
   }
   app.listen(PORT, "0.0.0.0", () => {
