@@ -1,1 +1,0 @@
-const e="/assets/hero_datacenter_hall_1794895612050-BPXaV99f.jpg",s="/assets/fiber_optics_hardware_1794895612330-GNeQIXm4.jpg",a="/assets/sovereign_command_hub_1794895613080-CQGt_RuR.jpg",n="/assets/field_engineering_edge_1794895613931-BY9RXgGm.jpg",t={heroDatacenterHall:e,fiberOpticsHardware:s,sovereignCommandHub:a,fieldEngineeringEdge:n};export{t as V};
