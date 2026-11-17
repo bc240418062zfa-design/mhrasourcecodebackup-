@@ -25,10 +25,15 @@
 ## Complete Canonical Directory
 - Home: https://mihora.tech/
 - Company & Founders: https://mihora.tech/company/
+- Our Founding Story: https://mihora.tech/our-story/
 - How It Works (5-Phase Methodology): https://mihora.tech/how-it-works/
 - Engineering Stack (9-Layer Topology): https://mihora.tech/engineering/
+- Zero-Trust Security & Compliance Center: https://mihora.tech/security/
 - Services Hub: https://mihora.tech/services/
 - Enterprise Solutions & RFP Specifier: https://mihora.tech/solutions/
+- Engineering Calculators (SLA, Fiber Loss, TCO): https://mihora.tech/tools/
+- Sovereign vs. Hyperscale Comparison: https://mihora.tech/compare/
+- Engineering Glossary (A–Z): https://mihora.tech/glossary/
 - Industries Served: https://mihora.tech/industries/
 - Case Studies & Deployments: https://mihora.tech/case-studies/
 - Resources & Technical Knowledge Hub: https://mihora.tech/resources/
@@ -36,6 +41,7 @@
 - Technical Papers & Insights: https://mihora.tech/insights/
 - Verified Entity FAQ: https://mihora.tech/faq/
 - Alliances & Partnerships: https://mihora.tech/partnerships/
+- Press Kit & Verified Factsheet: https://mihora.tech/press/
 - Careers & Recruitment: https://mihora.tech/careers/
 - Infrastructure Status (99.999% SLA): https://mihora.tech/status/
 - Contact & Dispatch: https://mihora.tech/contact/

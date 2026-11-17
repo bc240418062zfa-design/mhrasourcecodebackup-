@@ -468,6 +468,72 @@ const routes = [
       'Engineering & Architectural Disclaimer',
       'Published latency, attenuation, and PUE measurements represent verified field baselines achieved under specified environmental and hardware conditions.'
     )
+  },
+  {
+    path: 'our-story',
+    title: 'Our Story | Founding Doctrine & Dual-Hub Continuity | MIHORA.TECH',
+    description: 'Discover why M. Matti ul Hasnain and Omema Iqbal co-founded MIHORA.TECH to unify distributed software engineering, physical datacenter hardware, and 24/7 operations across London and Islamabad.',
+    keywords: 'MIHORA story, M. Matti ul Hasnain, Omema Iqbal, London Islamabad engineering hubs',
+    renderContent: () => wrapPage(
+      'Founding Thesis · MIHORA.TECH',
+      'Engineered Because Critical Infrastructure Deserves One Accountable Spine',
+      'Co-founded by M. Matti ul Hasnain and Omema Iqbal across London (UK) and Islamabad (Pakistan) to eliminate the accountability gap between cloud software and optical hardware.'
+    )
+  },
+  {
+    path: 'security',
+    title: 'Zero-Trust Security, HSM Custody & ISO 27001 Architecture | MIHORA.TECH',
+    description: 'Explore client-owned FIPS 140-3 HSM key custody, optical SCADA data diodes, TPM 2.0 measured boot attestation, ISO 27001 alignment, and UK-GDPR governance.',
+    keywords: 'MIHORA security, FIPS 140-3 HSM, optical SCADA diode, ISO 27001, UK-GDPR',
+    renderContent: () => wrapPage(
+      'Sovereign Trust & Security Center',
+      'Zero-Trust Security Built From Silicon Cabinets to TLS Keys',
+      'Client-owned cryptographic root key custody, unidirectional optical SCADA bridges, TPM 2.0 attested Linux kernels, and ISO 27001 / UK-GDPR containment.'
+    )
+  },
+  {
+    path: 'tools',
+    title: 'Engineering Calculators: SLA Downtime, Optical Loss & TCO | MIHORA.TECH',
+    description: 'Interactive technical calculators for enterprise engineering teams: compute 99.999% SLA downtime budgets, TIA-568-D optical fiber link attenuation, and 5-year sovereign infrastructure TCO.',
+    keywords: 'SLA downtime calculator, optical fiber attenuation calculator, TIA-568-D, sovereign TCO',
+    renderContent: () => wrapPage(
+      'Open Engineering Workbench',
+      'Sovereign Infrastructure & Optical Budget Calculators',
+      'Quantitative diagnostic tools for sizing 99.999% SLA downtime budgets, single-mode OS2 fiber link attenuation, and 5-year sovereign custody economics.'
+    )
+  },
+  {
+    path: 'glossary',
+    title: 'Sovereign Systems & Optical Infrastructure Glossary | MIHORA.TECH',
+    description: 'Searchable engineering glossary defining OTDR certification, OS2 single-mode fiber, EVPN-VXLAN, optical data diodes, 2N redundancy, and sovereign systems custody.',
+    keywords: 'OTDR definition, OS2 single-mode fiber, EVPN-VXLAN, optical data diode, 2N power',
+    renderContent: () => wrapPage(
+      'Technical Reference Lexicon',
+      'Engineering, Optical Fiber & Sovereign Custody Glossary',
+      'Authoritative definitions across physical optical transport physics, distributed software consensus, cryptographic custody, and follow-the-sun SRE.'
+    )
+  },
+  {
+    path: 'compare',
+    title: 'Architecture Comparison: Sovereign Custody vs. Hyperscale Cloud | MIHORA.TECH',
+    description: 'Direct technical comparison matrix evaluating MIHORA Full-Span Sovereign Custody against hyperscale public cloud lock-in and fragmented agencies.',
+    keywords: 'sovereign infrastructure vs cloud, full-span engineering comparison, cloud repatriation',
+    renderContent: () => wrapPage(
+      'Decision & Trade-Off Matrix',
+      'Sovereign Full-Span Engineering vs. Hyperscale & Fragmented Vendors',
+      'Objective evaluation across accountability scope, cryptographic key custody, physical OTDR certification, bandwidth egress economics, and 24/7 operational response.'
+    )
+  },
+  {
+    path: 'press',
+    title: 'Press Kit, Verified Factsheet & Technical Citations | MIHORA.TECH',
+    description: 'Canonical corporate boilerplate, founder biographies for M. Matti ul Hasnain and Omema Iqbal, SVG marks, and copyable technical citations for press and industry directories.',
+    keywords: 'MIHORA press kit, MIHORA factsheet, M. Matti ul Hasnain bio, Omema Iqbal bio',
+    renderContent: () => wrapPage(
+      'Press, Media & Directory Reference',
+      'Verified Entity Factsheet, Brand Assets & Reference Citations',
+      'Official corporate profile, vector marks, verified London and Islamabad office records, and citable BibTeX technical monographs.'
+    )
   }
 ];
 

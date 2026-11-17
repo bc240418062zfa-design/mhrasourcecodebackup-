@@ -20,6 +20,36 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords?:
     description: 'Learn about MIHORA.TECH, co-founded by M. Matti ul Hasnain (Principal Systems Architect) and Omema Iqbal (Operations Director). Dual engineering command hubs in London and Islamabad.',
     keywords: 'M. Matti ul Hasnain, Omema Iqbal, MIHORA founders, MIHORA leadership, MIHORA.TECH, dual hub engineering, London Islamabad',
   },
+  '/our-story': {
+    title: 'Our Story | Founding Thesis & Dual-Hub Continuity | MIHORA.TECH',
+    description: 'Discover why M. Matti ul Hasnain and Omema Iqbal founded MIHORA.TECH to eliminate fragile handoffs across software platforms and physical datacenter optics.',
+    keywords: 'MIHORA story, M. Matti ul Hasnain, Omema Iqbal, London Islamabad command hubs, sovereign systems thesis',
+  },
+  '/security': {
+    title: 'Zero-Trust Security, HSM Custody & ISO 27001 Architecture | MIHORA.TECH',
+    description: 'Explore client-owned FIPS 140-3 HSM key custody, optical SCADA data diodes, TPM 2.0 attestation, ISO 27001 alignment, and UK-GDPR residency governance.',
+    keywords: 'MIHORA security, FIPS 140-3 HSM custody, optical data diode, ISO 27001, UK GDPR sovereign infrastructure',
+  },
+  '/tools': {
+    title: 'Engineering Calculators: SLA Downtime, Optical Loss & TCO | MIHORA.TECH',
+    description: 'Interactive technical calculators for 99.999% SLA downtime budgets, TIA-568-D single-mode fiber attenuation, and 5-year sovereign infrastructure vs cloud TCO.',
+    keywords: 'SLA downtime calculator, optical fiber loss calculator, TIA-568-D link budget, sovereign TCO calculator',
+  },
+  '/glossary': {
+    title: 'Sovereign Systems & Optical Infrastructure Glossary | MIHORA.TECH',
+    description: 'Searchable engineering glossary defining OTDR testing, OS2 single-mode fiber, EVPN-VXLAN, optical data diodes, 2N power, and sovereign custody.',
+    keywords: 'OTDR glossary, OS2 single-mode fiber definition, EVPN-VXLAN, optical data diode, sovereign custody',
+  },
+  '/compare': {
+    title: 'Architecture Comparison: Sovereign Custody vs. Hyperscale Cloud | MIHORA.TECH',
+    description: 'Direct technical trade-off comparison evaluating MIHORA Full-Span Sovereign Custody against hyperscale public cloud lock-in and fragmented agencies.',
+    keywords: 'sovereign infrastructure vs public cloud, cloud repatriation comparison, full-span engineering custody',
+  },
+  '/press': {
+    title: 'Press Kit, Verified Factsheet & Technical Citations | MIHORA.TECH',
+    description: 'Canonical corporate boilerplate, founder biographies for M. Matti ul Hasnain and Omema Iqbal, SVG marks, and copyable technical citations.',
+    keywords: 'MIHORA press kit, MIHORA corporate factsheet, M. Matti ul Hasnain bio, Omema Iqbal bio',
+  },
   '/engineering': {
     title: '9-Layer Sovereign Engineering Stack & Hardware Architecture | MIHORA.TECH',
     description: 'Explore the 9-Layer MIHORA Sovereign Engineering Stack spanning bare-metal silicon, optical DWDM backbones, EVPN-VXLAN networking, SCADA edge gateways, and autonomous SRE.',

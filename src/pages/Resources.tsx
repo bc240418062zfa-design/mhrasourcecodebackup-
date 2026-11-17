@@ -293,6 +293,24 @@ export default function Resources() {
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">
               <Link
+                to="/tools"
+                className="px-4 py-2 rounded-lg bg-surface-container border border-outline/30 text-xs font-semibold text-on-surface hover:border-primary/50"
+              >
+                SLA &amp; Fiber Calculators
+              </Link>
+              <Link
+                to="/glossary"
+                className="px-4 py-2 rounded-lg bg-surface-container border border-outline/30 text-xs font-semibold text-on-surface hover:border-primary/50"
+              >
+                Engineering Glossary
+              </Link>
+              <Link
+                to="/compare"
+                className="px-4 py-2 rounded-lg bg-surface-container border border-outline/30 text-xs font-semibold text-on-surface hover:border-primary/50"
+              >
+                Custody Comparison
+              </Link>
+              <Link
                 to="/faq"
                 className="px-4 py-2 rounded-lg bg-surface-container border border-outline/30 text-xs font-semibold text-on-surface hover:border-primary/50"
               >
@@ -300,7 +318,7 @@ export default function Resources() {
               </Link>
               <Link
                 to="/contact"
-                className="px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary/90 inline-flex items-center gap-1"
+                className="px-4 py-2 rounded-lg btn-primary-gradient text-xs font-semibold inline-flex items-center gap-1"
               >
                 <span>Consult Engineering</span>
                 <ArrowRight size={13} />

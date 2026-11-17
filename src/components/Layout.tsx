@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import clsx from 'clsx';
 import { BrandLogo } from './BrandLogo';
 import { SEOHead } from './SEOHead';
+import { ScrollProgressBar } from './MotionPrimitives';
 import { queryAIEngine, type AIResponse } from './AIEngine';
 import { isSoundEnabled, toggleSound, subscribeSoundChange } from '../utils/audio';
 
@@ -41,6 +42,12 @@ const SEARCH_CATALOG: SearchItem[] = [
   { title: 'Infrastructure Status & Telemetry', category: 'Status', path: '/status', description: 'Live 99.999% operational record, PUE metrics, and dual-hub corridor latency' },
   { title: 'Join Engineering (Careers)', category: 'Careers', path: '/careers', description: 'Open systems architecture, SRE, and field engineering roles in UK & Pakistan' },
   { title: 'Contact & Direct Dispatch', category: 'Contact', path: '/contact', description: 'Engage London or Islamabad architecture teams or initiate urgent field dispatch' },
+  { title: 'Our Story & Founding Thesis', category: 'Company', path: '/our-story', description: 'Origin story of M. Matti ul Hasnain & Omema Iqbal uniting glass optics and cloud architecture' },
+  { title: 'Zero-Trust Security & Compliance Center', category: 'Security', path: '/security', description: 'FIPS 140-3 HSM key custody, optical SCADA diodes, ISO 27001 & UK-GDPR governance' },
+  { title: 'SLA, Optical Fiber & TCO Calculators', category: 'Tools', path: '/tools', description: 'Interactive downtime budget, TIA-568-D link attenuation, and 5-year TCO estimators' },
+  { title: 'Engineering & Optical Glossary', category: 'Resources', path: '/glossary', description: 'Searchable definitions covering OTDR, OS2 fiber, EVPN-VXLAN, and sovereign custody' },
+  { title: 'Sovereign vs. Hyperscale Cloud Comparison', category: 'Compare', path: '/compare', description: 'Decision matrix evaluating custody, bandwidth egress, and reliability models' },
+  { title: 'Press Kit & Verified Factsheet', category: 'Company', path: '/press', description: 'Official brand assets, executive biographies, and copyable BibTeX citations' },
   { title: 'Privacy Policy & GDPR Governance', category: 'Legal', path: '/privacy', description: 'Zero-leakage telemetry rules, UK-GDPR compliance, and jurisdictional data sovereignty' },
   { title: 'Terms of Service & IP Custody', category: 'Legal', path: '/terms', description: 'Standard terms governing platform use, SLA accountability, and full source ownership' },
   { title: 'Technical Disclaimer & Legal Portal', category: 'Legal', path: '/disclaimer', description: 'Engineering specification scope, ISO 27001 controls, and disclosure protocols' },
@@ -113,7 +120,9 @@ const NAV_GROUPS: NavGroup[] = [
     primaryPath: '/engineering',
     items: [
       { label: '9-Layer Architecture Stack', desc: 'Interactive blueprint from silicon to operational edge', path: '/engineering#architecture' },
+      { label: 'Zero-Trust Security Center', desc: 'HSM key custody, optical SCADA diodes & ISO 27001', path: '/security', badge: 'Security' },
       { label: 'Subsea & Terrestrial Fiber Explorer', desc: 'PEACE, SMW5, and sovereign dark fiber ring paths', path: '/engineering#subsea-cable-explorer' },
+      { label: 'Sovereign vs. Cloud Comparison', desc: 'Architecture trade-off & egress economics matrix', path: '/compare' },
       { label: 'Live Infrastructure Status', desc: '99.999% SLA history, corridor RTT & hub telemetry', path: '/status', badge: '99.999%' },
     ],
     featured: {
@@ -129,8 +138,10 @@ const NAV_GROUPS: NavGroup[] = [
     label: 'Company',
     primaryPath: '/company',
     items: [
-      { label: 'About MIHORA & Founders', desc: 'M. Matti ul Hasnain & Omema Iqbal · Dual-Hub Leadership', path: '/company' },
+      { label: 'Company & Founders', desc: 'M. Matti ul Hasnain & Omema Iqbal · Dual-Hub Leadership', path: '/company' },
+      { label: 'Our Story & Founding Thesis', desc: 'How London & Islamabad became one unified spine', path: '/our-story', badge: 'Story' },
       { label: 'Strategic Partnerships', desc: 'Carrier peering, sovereign colocation & hardware OEMs', path: '/partnerships' },
+      { label: 'Press Kit & Citations', desc: 'Official vector marks, entity bio & technical references', path: '/press' },
       { label: 'Engineering Careers', desc: 'Open technical positions & UK/Pakistan relocation', path: '/careers' },
     ],
     featured: {
@@ -146,7 +157,9 @@ const NAV_GROUPS: NavGroup[] = [
     label: 'Resources',
     primaryPath: '/resources',
     items: [
+      { label: 'SLA, Fiber & TCO Calculators', desc: 'Interactive downtime, OS2 loss & TCO estimators', path: '/tools', badge: 'Interactive' },
       { label: 'Knowledge Hub & Standards', desc: 'Optical loss tables, Tier SLA math & architecture references', path: '/resources' },
+      { label: 'Engineering Glossary (A–Z)', desc: 'Authoritative definitions for OTDR, EVPN & HSM terms', path: '/glossary' },
       { label: 'Technical Documentation Codex', desc: 'Complete engineering specs, kernel rules & runbooks', path: '/docs' },
       { label: 'Research Papers & Insights', desc: 'Peer-reviewed systems monographs & grounded intelligence', path: '/insights' },
       { label: 'Verified Entity FAQ', desc: 'Direct answers on MIHORA, founders, security & SLAs', path: '/faq' },
@@ -154,9 +167,9 @@ const NAV_GROUPS: NavGroup[] = [
     featured: {
       kicker: 'Open Reference',
       title: 'Technical Standards Without Marketing Fluff',
-      detail: 'Review our exact optical attenuation thresholds, downtime math, and verified deployment benchmarks.',
-      ctaLabel: 'Open Knowledge Hub',
-      ctaPath: '/resources',
+      detail: 'Run optical loss math, inspect SLA downtime budgets, and review verified deployment benchmarks.',
+      ctaLabel: 'Open Calculators',
+      ctaPath: '/tools',
     },
   },
 ];
@@ -167,12 +180,18 @@ const MOBILE_NAV_LINKS = [
   { label: 'How It Works', path: '/how-it-works', icon: Workflow, desc: '5-phase sovereign engineering methodology' },
   { label: 'Enterprise Case Studies', path: '/case-studies', icon: Compass, desc: 'Verified RTGS, 800G DWDM & SCADA builds' },
   { label: 'Engineering & 9-Layer Stack', path: '/engineering', icon: Cpu, desc: 'Silicon-to-cloud stack & subsea fiber explorer' },
+  { label: 'Zero-Trust Security Center', path: '/security', icon: ShieldCheck, desc: 'HSM key custody, SCADA diodes & ISO 27001' },
+  { label: 'Engineering Calculators', path: '/tools', icon: Zap, desc: 'SLA downtime, OS2 fiber loss & 5-year TCO tools' },
+  { label: 'Sovereign vs. Cloud Compare', path: '/compare', icon: Compass, desc: 'Custody & egress economics matrix' },
   { label: 'Industries Served', path: '/industries', icon: ShieldCheck, desc: 'Finance, Healthcare, Energy & Logistics' },
   { label: 'Knowledge Hub & Resources', path: '/resources', icon: BookOpen, desc: 'TIA-568-D standards, SLA math & whitepapers' },
+  { label: 'Engineering Glossary', path: '/glossary', icon: BookOpen, desc: 'Searchable systems & optical terminology' },
   { label: 'Technical Docs Codex', path: '/docs', icon: FileText, desc: 'Specifications, hardware tolerances & runbooks' },
   { label: 'Insights & Research', path: '/insights', icon: FileText, desc: 'Whitepapers & grounded industry news' },
   { label: 'Company & Founders', path: '/company', icon: Building, desc: 'M. Matti ul Hasnain, Omema Iqbal & global hubs' },
+  { label: 'Our Story', path: '/our-story', icon: Building, desc: 'Founding doctrine & synchronized hubs' },
   { label: 'Strategic Partnerships', path: '/partnerships', icon: Handshake, desc: 'Carrier peering & colocation alliances' },
+  { label: 'Press Kit & Citations', path: '/press', icon: FileText, desc: 'Media boilerplate, marks & BibTeX references' },
   { label: 'Infrastructure Status', path: '/status', icon: Activity, desc: 'Live 99.999% SLA & dual-hub telemetry' },
   { label: 'Verified Entity FAQ', path: '/faq', icon: HelpCircle, desc: 'Direct answers & corporate governance' },
   { label: 'Careers at MIHORA', path: '/careers', icon: Briefcase, desc: 'Engineering roles across UK & Pakistan' },
@@ -343,6 +362,7 @@ export default function Layout() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-surface text-on-surface">
       <SEOHead />
+      <ScrollProgressBar />
 
       {/* WCAG Accessibility Skip Link */}
       <a
@@ -356,7 +376,7 @@ export default function Layout() {
       <header
         ref={navContainerRef}
         onMouseLeave={handleNavLeave}
-        className="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-outline/20 transition-colors"
+        className="fixed top-0 left-0 w-full z-50 bg-surface/92 backdrop-blur-xl border-b border-outline/20 transition-colors"
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="h-16 flex items-center justify-between gap-4">
@@ -378,7 +398,7 @@ export default function Layout() {
               </div>
             </Link>
 
-            {/* Zone 2: Clean 5-Group Primary Navigation */}
+            {/* Zone 2: Clean Editorial 5-Group Primary Navigation */}
             <nav aria-label="Primary Navigation" className="hidden lg:flex items-center gap-1">
               {NAV_GROUPS.map((group) => {
                 const active = isGroupActive(group);
@@ -393,11 +413,12 @@ export default function Layout() {
                       type="button"
                       onClick={() => setActiveMegaMenu(open ? null : group.id)}
                       aria-expanded={open}
+                      data-active={active || open}
                       className={clsx(
-                        'flex items-center gap-1.5 text-sm font-medium transition-colors px-3 py-2 rounded-lg whitespace-nowrap cursor-pointer',
+                        'nav-link-underline flex items-center gap-1.5 text-sm font-medium transition-colors px-3.5 py-2 whitespace-nowrap cursor-pointer',
                         active || open
-                          ? 'text-primary bg-primary/8 font-semibold'
-                          : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container/60'
+                          ? 'text-primary font-semibold'
+                          : 'text-on-surface-variant hover:text-on-surface'
                       )}
                     >
                       <span>{group.label}</span>
@@ -911,6 +932,7 @@ export default function Layout() {
                 <li><Link to="/solutions" className="hover:text-on-surface transition-colors">Enterprise Solutions</Link></li>
                 <li><Link to="/how-it-works" className="hover:text-on-surface transition-colors">How It Works (5 Phases)</Link></li>
                 <li><Link to="/case-studies" className="hover:text-on-surface transition-colors">Case Studies &amp; Benchmarks</Link></li>
+                <li><Link to="/compare" className="hover:text-on-surface transition-colors">Sovereign vs. Cloud Matrix</Link></li>
                 <li><Link to="/industries" className="hover:text-on-surface transition-colors">Industries Served</Link></li>
                 <li><Link to="/solutions#sovereign-rfp-builder" className="text-primary font-medium hover:underline">RFP Specifier Tool</Link></li>
               </ul>
@@ -918,14 +940,15 @@ export default function Layout() {
 
             <div className="space-y-3">
               <div className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-                Architecture &amp; Docs
+                Architecture &amp; Tools
               </div>
               <ul className="space-y-2 text-sm text-on-surface-variant">
                 <li><Link to="/engineering" className="hover:text-on-surface transition-colors">9-Layer Stack</Link></li>
-                <li><Link to="/engineering#subsea-cable-explorer" className="hover:text-on-surface transition-colors">Subsea Fiber Explorer</Link></li>
+                <li><Link to="/security" className="hover:text-on-surface transition-colors">Zero-Trust Security Center</Link></li>
+                <li><Link to="/tools" className="text-primary font-medium hover:underline">SLA &amp; Optical Calculators</Link></li>
+                <li><Link to="/glossary" className="hover:text-on-surface transition-colors">Engineering Glossary</Link></li>
                 <li><Link to="/resources" className="hover:text-on-surface transition-colors">Knowledge Hub &amp; Standards</Link></li>
                 <li><Link to="/docs" className="hover:text-on-surface transition-colors">Technical Docs Codex</Link></li>
-                <li><Link to="/insights" className="hover:text-on-surface transition-colors">Whitepapers &amp; Insights</Link></li>
               </ul>
             </div>
 
@@ -935,7 +958,9 @@ export default function Layout() {
               </div>
               <ul className="space-y-2 text-sm text-on-surface-variant">
                 <li><Link to="/company" className="hover:text-on-surface transition-colors">Company &amp; Founders</Link></li>
+                <li><Link to="/our-story" className="hover:text-on-surface transition-colors">Our Founding Story</Link></li>
                 <li><Link to="/partnerships" className="hover:text-on-surface transition-colors">Strategic Partnerships</Link></li>
+                <li><Link to="/press" className="hover:text-on-surface transition-colors">Press Kit &amp; Citations</Link></li>
                 <li><Link to="/careers" className="hover:text-on-surface transition-colors">Engineering Careers</Link></li>
                 <li><Link to="/faq" className="hover:text-on-surface transition-colors">Verified Entity FAQ</Link></li>
                 <li><Link to="/status" className="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">System Status (99.999%)</Link></li>

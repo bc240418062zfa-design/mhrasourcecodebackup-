@@ -252,6 +252,25 @@ export default function Company() {
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <Link
+              to="/our-story"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <span>Read Our Founding Story</span>
+            </Link>
+            <Link
+              to="/security"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <ShieldCheck size={14} className="text-primary" />
+              <span>Zero-Trust Security Center</span>
+            </Link>
+            <Link
+              to="/press"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <span>Press Kit &amp; Citations</span>
+            </Link>
+            <Link
               to="/partnerships"
               className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
@@ -267,7 +286,7 @@ export default function Company() {
             </Link>
             <Link
               to="/how-it-works"
-              className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+              className="px-5 py-2.5 btn-primary-gradient text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
               <span>How We Deliver</span>
               <ArrowRight size={14} />

@@ -215,6 +215,40 @@ const KNOWLEDGE_BASE: Array<{
       },
       telemetryCode: '[VERIFIED] · OFFICIAL ENTITY KNOWLEDGE BASE'
     }
+  },
+  {
+    keywords: ['security', 'zero trust', 'hsm', 'iso', 'gdpr', 'diode', 'encryption', 'compliance'],
+    response: {
+      summary:
+        'MIHORA Security enforces zero-trust isolation across every layer: biometric cabinet access, FIPS 140-3 client-owned HSM key custody, TPM 2.0 measured boot, unidirectional optical SCADA diodes, and ISO 27001 / UK-GDPR residency governance.',
+      architecturePoints: [
+        '100% client cryptographic custody of root TLS, Git repos, and Terraform infrastructure state.',
+        'Unidirectional optical diodes isolate critical telemetry zones from inbound IP attacks.',
+        'Air-gapped on-premise LLM inference guarantees zero proprietary data egress.'
+      ],
+      recommendedAction: {
+        label: 'Inspect Zero-Trust Security Center',
+        path: '/security'
+      },
+      telemetryCode: '[VERIFIED] · ZERO-TRUST SECURITY & COMPLIANCE CENTER'
+    }
+  },
+  {
+    keywords: ['calculator', 'tool', 'tools', 'sla math', 'loss budget', 'tco', 'compare', 'vs cloud'],
+    response: {
+      summary:
+        'The MIHORA Engineering Workbench provides live interactive calculators for 99.999% SLA downtime budgets, TIA-568-D optical fiber link attenuation, and 5-year sovereign hardware vs. hyperscale cloud egress TCO.',
+      architecturePoints: [
+        'Compute permitted annual/monthly minutes and outage risk down to 99.999%.',
+        'Estimate total optical dB budgets at 1310nm/1550nm across splices and connectors.',
+        'Evaluate trade-offs across custody models on our Sovereign vs. Hyperscale Comparison guide.'
+      ],
+      recommendedAction: {
+        label: 'Open Engineering Calculators',
+        path: '/tools'
+      },
+      telemetryCode: '[VERIFIED] · OPEN ENGINEERING WORKBENCH & CALCULATORS'
+    }
   }
 ];
 

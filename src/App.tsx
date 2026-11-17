@@ -15,6 +15,12 @@ const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Resources = lazy(() => import('./pages/Resources'));
 const Partnerships = lazy(() => import('./pages/Partnerships'));
 const Company = lazy(() => import('./pages/Company'));
+const OurStory = lazy(() => import('./pages/OurStory'));
+const Security = lazy(() => import('./pages/Security'));
+const Tools = lazy(() => import('./pages/Tools'));
+const Glossary = lazy(() => import('./pages/Glossary'));
+const Compare = lazy(() => import('./pages/Compare'));
+const Press = lazy(() => import('./pages/Press'));
 const Insights = lazy(() => import('./pages/Insights'));
 const Careers = lazy(() => import('./pages/Careers'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -38,7 +44,6 @@ function RouteLoadingFallback() {
 function LegacyHashRedirect() {
   const navigate = useNavigate();
   useEffect(() => {
-    // Automatically convert legacy hash routes (e.g. /#/careers or /#/services) into clean canonical paths
     if (typeof window !== 'undefined' && window.location.hash && window.location.hash.startsWith('#/')) {
       const cleanPath = window.location.hash.slice(2);
       if (cleanPath) {
@@ -106,6 +111,12 @@ export default function App() {
               <Route path="resources" element={<Resources />} />
               <Route path="partnerships" element={<Partnerships />} />
               <Route path="company" element={<Company />} />
+              <Route path="our-story" element={<OurStory />} />
+              <Route path="security" element={<Security />} />
+              <Route path="tools" element={<Tools />} />
+              <Route path="glossary" element={<Glossary />} />
+              <Route path="compare" element={<Compare />} />
+              <Route path="press" element={<Press />} />
               <Route path="insights" element={<Insights />} />
               <Route path="careers" element={<Careers />} />
               <Route path="contact" element={<Contact />} />

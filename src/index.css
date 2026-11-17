@@ -62,6 +62,7 @@
 
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-headline: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   --font-label-sm: 'JetBrains Mono', monospace;
@@ -82,12 +83,12 @@
 :root[data-theme="light"],
 :root[data-theme="titanium"],
 :root[data-theme="desert"] {
-  /* Sovereign Executive Daylight: High-contrast slate typography on crisp alabaster & pure white surfaces */
-  --sys-background: #f8fafc;
+  /* Sovereign Editorial Daylight: Crisp architectural alabaster, pure gallery white & deep cobalt ink */
+  --sys-background: #f7f9fc;
   --sys-surface-container-lowest: #ffffff;
   --sys-surface: #ffffff;
-  --sys-surface-container-low: #f8fafc;
-  --sys-surface-container: #f1f5f9;
+  --sys-surface-container-low: #f4f7fb;
+  --sys-surface-container: #edf2f8;
   --sys-surface-container-high: #ffffff;
   --sys-surface-container-highest: #e2e8f0;
   --sys-surface-dim: #e2e8f0;
@@ -97,18 +98,18 @@
   --sys-on-background: #0b1120;
   --sys-on-surface: #0b1120;
   --sys-on-surface-variant: #475569;
-  --sys-inverse-surface: #0b1120;
+  --sys-inverse-surface: #090e1a;
   --sys-inverse-on-surface: #f8fafc;
 
   --sys-primary: #1d4ed8;
-  --sys-primary-container: #1e40af;
+  --sys-primary-container: #1e3a8a;
   --sys-on-primary: #ffffff;
   --sys-on-primary-container: #eff6ff;
   --sys-primary-fixed: #2563eb;
   --sys-primary-fixed-dim: #1d4ed8;
   --sys-on-primary-fixed: #ffffff;
   --sys-on-primary-fixed-variant: #172554;
-  --sys-inverse-primary: #3b82f6;
+  --sys-inverse-primary: #60a5fa;
 
   --sys-secondary: #0369a1;
   --sys-secondary-container: #0284c7;
@@ -128,8 +129,8 @@
   --sys-on-tertiary-fixed: #ffffff;
   --sys-on-tertiary-fixed-variant: #065f46;
 
-  --sys-outline: #cbd5e1;
-  --sys-outline-variant: #e2e8f0;
+  --sys-outline: rgba(15, 23, 42, 0.12);
+  --sys-outline-variant: rgba(15, 23, 42, 0.08);
   --sys-surface-tint: #1d4ed8;
 
   --sys-error: #dc2626;
@@ -141,23 +142,23 @@
 :root[data-theme="cyber"],
 :root[data-theme="dark"],
 :root.dark {
-  /* Obsidian Sovereign Dark: Deep slate-obsidian canvas with crisp sapphire & platinum hierarchy */
-  --sys-background: #060912;
-  --sys-surface-container-lowest: #04060c;
-  --sys-surface: #090e1a;
-  --sys-surface-container-low: #0e1525;
-  --sys-surface-container: #131c30;
-  --sys-surface-container-high: #19243d;
-  --sys-surface-container-highest: #202e4d;
-  --sys-surface-dim: #060912;
-  --sys-surface-bright: #253456;
+  /* Obsidian Sovereign Dark: Deep ink obsidian surfaces, brushed steel framing, crisp sapphire accent */
+  --sys-background: #060911;
+  --sys-surface-container-lowest: #04060b;
+  --sys-surface: #090e19;
+  --sys-surface-container-low: #0e1524;
+  --sys-surface-container: #131d31;
+  --sys-surface-container-high: #19253e;
+  --sys-surface-container-highest: #202f4e;
+  --sys-surface-dim: #050810;
+  --sys-surface-bright: #253659;
   --sys-surface-variant: #141d31;
 
   --sys-on-background: #f8fafc;
   --sys-on-surface: #f8fafc;
   --sys-on-surface-variant: #94a3b8;
   --sys-inverse-surface: #f8fafc;
-  --sys-inverse-on-surface: #060912;
+  --sys-inverse-on-surface: #060911;
 
   --sys-primary: #3b82f6;
   --sys-primary-container: #2563eb;
@@ -167,11 +168,11 @@
   --sys-primary-fixed-dim: #2563eb;
   --sys-on-primary-fixed: #020617;
   --sys-on-primary-fixed-variant: #1e40af;
-  --sys-inverse-primary: #2563eb;
+  --sys-inverse-primary: #1d4ed8;
 
   --sys-secondary: #38bdf8;
   --sys-secondary-container: #0284c7;
-  --sys-on-secondary: #04060c;
+  --sys-on-secondary: #04060b;
   --sys-on-secondary-container: #0c263c;
   --sys-secondary-fixed: #7dd3fc;
   --sys-secondary-fixed-dim: #38bdf8;
@@ -188,7 +189,7 @@
   --sys-on-tertiary-fixed-variant: #047857;
 
   --sys-outline: rgba(148, 163, 184, 0.16);
-  --sys-outline-variant: rgba(56, 189, 248, 0.18);
+  --sys-outline-variant: rgba(56, 189, 248, 0.15);
   --sys-surface-tint: #3b82f6;
 
   --sys-error: #f87171;
@@ -223,10 +224,13 @@
     overscroll-behavior: none;
     background-color: var(--sys-background);
     color: var(--sys-on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.25s ease, color 0.25s ease;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    text-wrap: balance;
   }
   main > :first-child {
     margin-top: 0 !important;
@@ -240,10 +244,31 @@
   }
 }
 
-/* Custom subtle animations (compositor-safe) */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+/* Editorial underline link hover effect */
+.nav-link-underline {
+  position: relative;
+}
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.25rem;
+  height: 1.5px;
+  background-color: var(--sys-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link-underline:hover::after,
+.nav-link-underline[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Compositor-only architectural animations */
+@keyframes marqueeSlide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes signalFlow {
@@ -256,8 +281,15 @@
   50% { transform: translateY(-4px); }
 }
 
-@utility animate-marquee {
-  animation: marquee 32s linear infinite;
+.animate-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeSlide 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .animate-marquee-track {
+  animation-play-state: paused;
 }
 
 @utility animate-signal-flow {
@@ -272,7 +304,7 @@
 .bg-tech-grid {
   background-image: linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-  background-size: 36px 36px;
+  background-size: 40px 40px;
 }
 
 :root[data-theme="light"] .bg-tech-grid,
@@ -288,39 +320,25 @@
 
 :root[data-theme="light"] .bg-tech-dots,
 :root:not(.dark) .bg-tech-dots {
-  background-image: radial-gradient(rgba(3, 105, 161, 0.1) 1px, transparent 1px);
-}
-
-.glass-panel {
-  background: rgba(9, 14, 26, 0.85);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
-}
-
-:root[data-theme="light"] .glass-panel,
-:root:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 2px 16px -4px rgba(15, 23, 42, 0.04);
+  background-image: radial-gradient(rgba(3, 105, 161, 0.09) 1px, transparent 1px);
 }
 
 .surface-card {
   background-color: var(--sys-surface-container-lowest);
   border: 1px solid var(--sys-outline);
-  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+  transition: border-color 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .surface-card:hover {
   border-color: var(--sys-primary);
-  box-shadow: 0 12px 28px -10px rgba(29, 78, 216, 0.12);
+  box-shadow: 0 16px 36px -14px rgba(15, 23, 42, 0.12);
 }
 
 :root.dark .surface-card:hover,
 :root[data-theme="cyber"] .surface-card:hover {
-  box-shadow: 0 14px 32px -10px rgba(59, 130, 246, 0.18);
+  box-shadow: 0 18px 40px -12px rgba(2, 6, 23, 0.72), 0 0 0 1px rgba(59, 130, 246, 0.22);
 }
 
 .flow-line {
@@ -338,13 +356,13 @@
   overflow: hidden;
   background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 65%, #0284c7 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px -2px rgba(29, 78, 216, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 16px -2px rgba(29, 78, 216, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease;
 }
 
 .btn-primary-gradient:hover {
   filter: brightness(1.06);
-  box-shadow: 0 8px 22px -2px rgba(29, 78, 216, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 26px -4px rgba(29, 78, 216, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
 }
 
@@ -352,6 +370,9 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .animate-marquee-track {
+    animation: none;
   }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

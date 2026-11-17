@@ -27,6 +27,12 @@ const urlList = [
   'https://mihora.tech/privacy/',
   'https://mihora.tech/terms/',
   'https://mihora.tech/disclaimer/',
+  'https://mihora.tech/our-story/',
+  'https://mihora.tech/security/',
+  'https://mihora.tech/tools/',
+  'https://mihora.tech/glossary/',
+  'https://mihora.tech/compare/',
+  'https://mihora.tech/press/',
 ];
 
 const payload = JSON.stringify({
