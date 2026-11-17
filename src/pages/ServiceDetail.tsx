@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowRight, CheckCircle2, ChevronDown, Clock, ShieldCheck, Globe, ArrowUpRight, Layers
 } from 'lucide-react';
 import { getServiceBySlug, SERVICE_DIVISIONS, ICON_MAP } from '../data/servicesData';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
-import { Reveal, StaggerGrid, StaggerItem, ParallaxFrame } from '../components/MotionPrimitives';
+import {
+  Reveal,
+  MaskTextReveal,
+  SpotlightSurface,
+  Tilt3DFrame,
+  StaggerGrid,
+  StaggerItem,
+  ParallaxFrame,
+} from '../components/MotionPrimitives';
 import { playUiChime } from '../utils/audio';
 
 export default function ServiceDetail() {
@@ -55,9 +64,9 @@ export default function ServiceDetail() {
         schemaData={serviceSchema}
       />
 
-      {/* Asymmetric Division Hero */}
-      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-8">
+      {/* Obsidian Cinema Division Hero */}
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-10">
           <Breadcrumbs
             items={[
               { label: 'Services', path: '/services' },
@@ -68,65 +77,67 @@ export default function ServiceDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
               <Reveal>
-                <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-                  <DivisionIcon size={16} />
+                <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.2em] text-amber-400 font-semibold">
+                  <DivisionIcon size={15} />
                   <span>Division {service.num} · {service.shortTitle}</span>
                 </div>
               </Reveal>
 
-              <Reveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-[1.08]">
                   {service.name}
                 </h1>
-              </Reveal>
+              </MaskTextReveal>
 
               <Reveal delay={0.1}>
-                <p className="text-lg sm:text-xl text-on-surface font-medium leading-relaxed">
+                <p className="text-lg sm:text-xl text-slate-200 font-medium leading-relaxed">
                   {service.tagline}
                 </p>
-                <p className="text-base text-on-surface-variant leading-relaxed mt-3">
+                <p className="text-base text-slate-300 leading-relaxed mt-3 max-w-2xl">
                   {service.overview}
                 </p>
               </Reveal>
 
               <Reveal delay={0.15}>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                  <div className="p-4 rounded-xl bg-surface-container-low border border-outline/20">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
-                      <Clock size={12} className="text-primary" />
+                <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/15 border border-white/15 bg-black/35 rounded-xl overflow-hidden">
+                  <div className="p-4">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                      <Clock size={12} className="text-amber-400" />
                       <span>Target SLA</span>
                     </div>
-                    <div className="text-sm font-bold text-on-surface mt-1">{service.responseSla}</div>
+                    <div className="text-sm font-bold text-white mt-1">{service.responseSla}</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-surface-container-low border border-outline/20">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
-                      <ShieldCheck size={12} className="text-primary" />
+                  <div className="p-4">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                      <ShieldCheck size={12} className="text-emerald-400" />
                       <span>Reliability</span>
                     </div>
-                    <div className="text-sm font-bold text-on-surface mt-1">{service.availabilityTarget}</div>
+                    <div className="text-sm font-bold text-white mt-1">{service.availabilityTarget}</div>
                   </div>
-                  <div className="p-4 rounded-xl bg-surface-container-low border border-outline/20">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
-                      <Globe size={12} className="text-primary" />
+                  <div className="p-4">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                      <Globe size={12} className="text-blue-400" />
                       <span>Delivery Hubs</span>
                     </div>
-                    <div className="text-sm font-bold text-on-surface mt-1">{service.deliveryHubs}</div>
+                    <div className="text-sm font-bold text-white mt-1">{service.deliveryHubs}</div>
                   </div>
                 </div>
               </Reveal>
 
               <Reveal delay={0.2}>
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-4 pt-1">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg text-sm shadow-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>Scope This Division</span>
                     <ArrowRight size={16} />
                   </Link>
                   <Link
                     to="/how-it-works"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>See 5-Phase Delivery</span>
                   </Link>
@@ -135,37 +146,39 @@ export default function ServiceDetail() {
             </div>
 
             <div className="lg:col-span-5">
-              <Reveal direction="left">
-                <div className="rounded-2xl overflow-hidden border border-outline/25 bg-surface-container-low shadow-xl">
-                  <ParallaxFrame offset={20} className="aspect-[4/3] w-full">
+              <Tilt3DFrame maxTilt={4}>
+                <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/50 shadow-2xl">
+                  <ParallaxFrame offset={18} className="aspect-[4/3] w-full">
                     <img
                       src={service.heroImage}
                       alt={service.heroAlt}
                       className="w-full h-full object-cover"
                     />
                   </ParallaxFrame>
-                  <div className="p-4 border-t border-outline/20 bg-surface-container-lowest flex flex-wrap gap-2 text-[11px] font-mono text-on-surface-variant">
-                    {service.techStack.map((tech) => (
-                      <span key={tech} className="text-on-surface font-semibold">
+                  <div className="p-4 border-t border-white/10 bg-black/60 flex flex-wrap gap-2 text-[11px] font-mono text-slate-300">
+                    {service.techStack.map((tech, idx) => (
+                      <span key={tech} className="text-white font-semibold">
                         {tech}
-                        <span className="text-outline/50 ml-2 last:hidden">·</span>
+                        {idx < service.techStack.length - 1 && (
+                          <span className="text-slate-500 ml-2">·</span>
+                        )}
                       </span>
                     ))}
                   </div>
                 </div>
-              </Reveal>
+              </Tilt3DFrame>
             </div>
           </div>
         </div>
       </section>
 
       {/* Benchmarks Strip */}
-      <section className="w-full bg-surface py-12 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface py-14 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-7xl mx-auto">
           <StaggerGrid className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {service.benchmarks.map((b) => (
               <StaggerItem key={b.label}>
-                <div className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 space-y-2 h-full">
+                <SpotlightSurface className="surface-card p-6 rounded-2xl space-y-2 h-full">
                   <div className="text-xs font-mono uppercase tracking-widest text-on-surface-variant">
                     {b.label}
                   </div>
@@ -173,7 +186,7 @@ export default function ServiceDetail() {
                     {b.value}
                   </div>
                   <p className="text-sm text-on-surface-variant">{b.note}</p>
-                </div>
+                </SpotlightSurface>
               </StaggerItem>
             ))}
           </StaggerGrid>
@@ -181,7 +194,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Core Architectural Deliverables */}
-      <section className="w-full bg-surface-container-low py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface-container-low py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-7xl mx-auto space-y-10">
           <Reveal>
             <div className="max-w-3xl space-y-2">
@@ -197,13 +210,13 @@ export default function ServiceDetail() {
           <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {service.deliverables.map((item) => (
               <StaggerItem key={item.title}>
-                <div className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 hover:border-primary/40 transition-colors h-full space-y-3">
+                <SpotlightSurface className="surface-card p-6 sm:p-7 rounded-2xl h-full space-y-3">
                   <div className="flex items-start gap-3">
                     <CheckCircle2 size={20} className="text-primary mt-0.5 shrink-0" />
                     <h3 className="font-headline text-lg font-bold text-on-surface">{item.title}</h3>
                   </div>
                   <p className="text-sm text-on-surface-variant leading-relaxed pl-8">{item.detail}</p>
-                </div>
+                </SpotlightSurface>
               </StaggerItem>
             ))}
           </StaggerGrid>
@@ -211,7 +224,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Vendor vs MIHORA Comparison Matrix */}
-      <section className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-5xl mx-auto space-y-8">
           <Reveal>
             <div className="space-y-2">
@@ -225,7 +238,7 @@ export default function ServiceDetail() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="overflow-x-auto rounded-2xl border border-outline/25 bg-surface-container-lowest">
+            <div className="overflow-x-auto rounded-2xl border border-outline/25 bg-surface-container-lowest shadow-sm">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-outline/20 bg-surface-container-low text-xs font-mono uppercase tracking-wider text-on-surface-variant">
@@ -250,7 +263,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Division AEO FAQs */}
-      <section className="w-full bg-surface-container-low py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface-container-low py-16 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-4xl mx-auto space-y-8">
           <Reveal>
             <div className="space-y-2">
@@ -269,7 +282,7 @@ export default function ServiceDetail() {
               return (
                 <div
                   key={faq.question}
-                  className="rounded-xl border border-outline/25 bg-surface-container-lowest overflow-hidden"
+                  className="surface-card rounded-xl overflow-hidden"
                 >
                   <button
                     type="button"
@@ -278,6 +291,7 @@ export default function ServiceDetail() {
                       setOpenFaq(isOpen ? null : idx);
                     }}
                     className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-surface-container/40 transition-colors"
+                    aria-expanded={isOpen}
                   >
                     <h3 className="font-headline text-base font-bold text-on-surface">{faq.question}</h3>
                     <ChevronDown
@@ -285,11 +299,21 @@ export default function ServiceDetail() {
                       className={`text-primary shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-sm text-on-surface-variant leading-relaxed border-t border-outline/10">
-                      {faq.answer}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-5 pt-2 text-sm text-on-surface-variant leading-relaxed border-t border-outline/10">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
@@ -298,14 +322,14 @@ export default function ServiceDetail() {
       </section>
 
       {/* Connected Divisions & Internal Architecture Links */}
-      <section className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-surface py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div className="space-y-1">
               <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
                 Integrated Divisions
               </div>
-              <h2 className="font-headline text-2xl font-extrabold text-on-surface">
+              <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface">
                 Related Engineering Capabilities &amp; Resources
               </h2>
             </div>
@@ -322,26 +346,29 @@ export default function ServiceDetail() {
                 <Link
                   key={rel.slug}
                   to={`/services/${rel.slug}`}
-                  className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 hover:border-primary/50 transition-all group space-y-3 cursor-pointer"
+                  className="surface-card p-6 rounded-2xl transition-all group space-y-3 cursor-pointer flex flex-col justify-between"
                 >
-                  <div className="flex items-center justify-between text-xs font-mono text-primary font-semibold">
-                    <span className="flex items-center gap-2">
-                      <RelIcon size={15} />
-                      <span>Division {rel.num}</span>
-                    </span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-xs font-mono text-primary font-semibold">
+                      <span className="flex items-center gap-2">
+                        <RelIcon size={15} />
+                        <span>Division {rel.num}</span>
+                      </span>
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <h3 className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
+                      {rel.name}
+                    </h3>
+                    <p className="text-sm text-on-surface-variant leading-relaxed">{rel.tagline}</p>
                   </div>
-                  <h3 className="font-headline text-lg font-bold text-on-surface group-hover:text-primary transition-colors">
-                    {rel.name}
-                  </h3>
-                  <p className="text-sm text-on-surface-variant leading-relaxed">{rel.tagline}</p>
+                  <span className="text-xs font-semibold text-primary pt-1">Inspect Division →</span>
                 </Link>
               );
             })}
 
             <Link
               to="/case-studies"
-              className="p-6 rounded-2xl bg-surface-container-low border border-outline/25 hover:border-primary/50 transition-all group space-y-3 cursor-pointer flex flex-col justify-between"
+              className="surface-card p-6 rounded-2xl transition-all group space-y-3 cursor-pointer flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono text-primary font-semibold">

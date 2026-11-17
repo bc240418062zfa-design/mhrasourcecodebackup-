@@ -387,7 +387,7 @@ export default function Layout() {
               onClick={() => setMobileMenuOpen(false)}
               aria-label="MIHORA.TECH Home"
             >
-              <BrandLogo className="h-8 sm:h-9 w-auto aspect-[5/4] group-hover:scale-105 transition-transform shrink-0" />
+              <BrandLogo className="h-8 sm:h-9 w-auto aspect-[3/2] group-hover:scale-105 transition-transform shrink-0" />
               <div className="flex items-baseline tracking-tight">
                 <span className="font-bold text-xl sm:text-2xl text-on-surface tracking-tight font-headline leading-none">
                   MIHORA
@@ -870,7 +870,7 @@ export default function Layout() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 pb-10 border-b border-white/10">
             <div className="space-y-3 max-w-2xl">
               <div className="flex items-center gap-3">
-                <BrandLogo className="h-9 w-auto aspect-[5/4] shrink-0" />
+                <BrandLogo className="h-9 w-auto aspect-[3/2] shrink-0" />
                 <div className="flex items-baseline tracking-tight">
                   <span className="font-headline font-extrabold text-xl tracking-tight text-white leading-none">
                     MIHORA

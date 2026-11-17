@@ -2,8 +2,17 @@ import { Link } from 'react-router-dom';
 import { Globe, Server, Cpu, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
-import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
+import {
+  Reveal,
+  MaskTextReveal,
+  Tilt3DFrame,
+  SpotlightSurface,
+  StaggerGrid,
+  StaggerItem,
+  ParallaxFrame,
+} from '../components/MotionPrimitives';
 import { VISUAL_ASSETS } from '../assets/visuals';
+import { playUiChime } from '../utils/audio';
 
 const ALLIANCE_TRACKS = [
   {
@@ -57,9 +66,9 @@ export default function Partnerships() {
     <div className="flex flex-col w-full">
       <SEOHead canonicalPath="/partnerships" />
 
-      {/* Hero */}
-      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-6">
+      {/* Obsidian Hero */}
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-8">
           <Breadcrumbs
             items={[
               { label: 'Company', path: '/company' },
@@ -67,20 +76,20 @@ export default function Partnerships() {
             ]}
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7 space-y-5">
               <Reveal>
-                <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
+                <div className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 font-semibold">
                   Infrastructure &amp; Ecosystem Alliances
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-[1.08]">
                   Strategic Carrier, Colocation &amp; Hardware Partnerships
                 </h1>
-              </Reveal>
+              </MaskTextReveal>
               <Reveal delay={0.1}>
-                <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
                   Directed by Co-Founders M. Matti ul Hasnain and Omema Iqbal, MIHORA.TECH builds direct technical alliances with optical carriers, sovereign colocation operators, OEM manufacturers, and enterprise transformation consultancies across London, Europe, the Middle East, and South Asia.
                 </p>
               </Reveal>
@@ -88,14 +97,16 @@ export default function Partnerships() {
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>Propose Technical Alliance</span>
                     <ArrowRight size={16} />
                   </Link>
                   <Link
                     to="/company"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>Company Leadership</span>
                   </Link>
@@ -104,29 +115,31 @@ export default function Partnerships() {
             </div>
 
             <div className="lg:col-span-5">
-              <Reveal direction="left">
-                <div className="rounded-2xl overflow-hidden border border-outline/25 bg-surface-container-low shadow-lg">
-                  <img
-                    src={VISUAL_ASSETS.sovereignCommandHub}
-                    alt="MIHORA.TECH systems command operations center coordinating international partner deployments"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
+              <Tilt3DFrame maxTilt={4}>
+                <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/40 shadow-2xl">
+                  <ParallaxFrame offset={18} className="aspect-[4/3] w-full">
+                    <img
+                      src={VISUAL_ASSETS.sovereignCommandHub}
+                      alt="MIHORA.TECH systems command operations center coordinating international partner deployments"
+                      className="w-full h-full object-cover"
+                    />
+                  </ParallaxFrame>
                 </div>
-              </Reveal>
+              </Tilt3DFrame>
             </div>
           </div>
         </div>
       </section>
 
       {/* Alliance Tracks */}
-      <section className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-7xl mx-auto space-y-10">
           <Reveal>
             <div className="space-y-2 max-w-3xl">
               <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
                 Collaboration Tracks
               </div>
-              <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface">
+              <h2 className="font-headline text-2xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
                 Four Ways Infrastructure Partners Work With MIHORA.TECH
               </h2>
             </div>
@@ -137,7 +150,7 @@ export default function Partnerships() {
               const Icon = track.icon;
               return (
                 <StaggerItem key={track.title}>
-                  <div className="p-7 rounded-2xl bg-surface-container-lowest border border-outline/25 space-y-4 h-full flex flex-col justify-between">
+                  <SpotlightSurface className="surface-card p-7 sm:p-8 rounded-2xl space-y-5 h-full flex flex-col justify-between">
                     <div className="space-y-3">
                       <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                         <Icon size={22} />
@@ -153,7 +166,7 @@ export default function Partnerships() {
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </SpotlightSurface>
                 </StaggerItem>
               );
             })}
@@ -161,30 +174,36 @@ export default function Partnerships() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="w-full bg-surface-container-low py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-5">
-          <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface">
-            Initiate a Peering, Colocation, or OEM Qualification Review
-          </h2>
-          <p className="text-base text-on-surface-variant max-w-2xl mx-auto">
-            Connect directly with our London and Islamabad partner operations teams at{' '}
-            <a href="mailto:hr@mihora.tech" className="text-primary font-semibold hover:underline">
-              hr@mihora.tech
-            </a>{' '}
-            or submit project parameters through our dispatch desk.
-          </p>
+      {/* Obsidian Partner CTA */}
+      <section className="w-full obsidian-band obsidian-grid py-16 lg:py-22 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <Reveal>
+            <h2 className="font-headline text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Initiate a Peering, Colocation, or OEM Qualification Review
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-base text-slate-300 max-w-2xl mx-auto">
+              Connect directly with our London and Islamabad partner operations teams at{' '}
+              <a href="mailto:hr@mihora.tech" className="text-amber-400 font-semibold hover:underline">
+                hr@mihora.tech
+              </a>{' '}
+              or submit project parameters through our dispatch desk.
+            </p>
+          </Reveal>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg text-sm inline-flex items-center gap-2"
+              onClick={() => playUiChime('click')}
+              className="px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm inline-flex items-center gap-2"
             >
               <span>Contact Partner Desk</span>
               <ArrowRight size={16} />
             </Link>
             <Link
               to="/engineering#subsea-cable-explorer"
-              className="px-6 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-lg text-sm"
+              onClick={() => playUiChime('click')}
+              className="px-6 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-colors"
             >
               Inspect Subsea Optical Routes
             </Link>

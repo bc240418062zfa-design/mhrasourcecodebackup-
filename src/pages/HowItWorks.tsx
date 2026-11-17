@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Compass, Layers, Cpu, ShieldCheck, Activity, ArrowRight, CheckCircle2, FileCode2
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
-import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
+import {
+  Reveal,
+  MaskTextReveal,
+  Tilt3DFrame,
+  SpotlightSurface,
+  StaggerGrid,
+  StaggerItem,
+  ParallaxFrame,
+} from '../components/MotionPrimitives';
 import { VISUAL_ASSETS } from '../assets/visuals';
 import { playUiChime } from '../utils/audio';
 
@@ -116,24 +124,24 @@ export default function HowItWorks() {
     <div className="flex flex-col w-full">
       <SEOHead canonicalPath="/how-it-works" schemaData={howToSchema} />
 
-      {/* Header */}
-      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-6">
+      {/* Obsidian Header */}
+      <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-8">
           <Breadcrumbs items={[{ label: 'How It Works' }]} />
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7 space-y-5">
               <Reveal>
-                <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
+                <div className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 font-semibold">
                   Sovereign Delivery Methodology
                 </div>
               </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-[1.08]">
                   How MIHORA.TECH Engineers &amp; Ships Without Fragile Handoffs
                 </h1>
-              </Reveal>
+              </MaskTextReveal>
               <Reveal delay={0.1}>
-                <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
                   Traditional IT projects fail at the boundary between cabling contractors, cloud integrators, and support vendors. Our 5-phase methodology unifies physical optics, bare-metal servers, software platforms, and 24/7 operations inside a single engineering chain.
                 </p>
               </Reveal>
@@ -141,14 +149,16 @@ export default function HowItWorks() {
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link
                     to="/solutions#sovereign-rfp-builder"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>Generate Architecture BOM</span>
                     <ArrowRight size={16} />
                   </Link>
                   <Link
                     to="/case-studies"
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface font-semibold rounded-lg text-sm transition-all cursor-pointer"
+                    onClick={() => playUiChime('click')}
+                    className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
                     <span>Review Completed Missions</span>
                   </Link>
@@ -157,28 +167,30 @@ export default function HowItWorks() {
             </div>
 
             <div className="lg:col-span-5">
-              <Reveal direction="left">
-                <div className="rounded-2xl overflow-hidden border border-outline/25 bg-surface-container-low shadow-lg">
-                  <img
-                    src={VISUAL_ASSETS.fiberOpticsHardware}
-                    alt="Certified fiber optic switches and structured cabling installed during phase three of MIHORA delivery"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
+              <Tilt3DFrame maxTilt={4}>
+                <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/40 shadow-2xl">
+                  <ParallaxFrame offset={18} className="aspect-[4/3] w-full">
+                    <img
+                      src={VISUAL_ASSETS.fiberOpticsHardware}
+                      alt="Certified fiber optic switches and structured cabling installed during phase three of MIHORA delivery"
+                      className="w-full h-full object-cover"
+                    />
+                  </ParallaxFrame>
                 </div>
-              </Reveal>
+              </Tilt3DFrame>
             </div>
           </div>
         </div>
       </section>
 
       {/* Interactive 5-Phase Stepper */}
-      <section className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+      <section className="w-full bg-surface py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
         <div className="max-w-7xl mx-auto space-y-10">
           <div className="space-y-2 max-w-3xl">
             <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
               Interactive Phase Explorer
             </div>
-            <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight">
+            <h2 className="font-headline text-2xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
               Five Verified Gates From Discovery to Continuous Custody
             </h2>
           </div>
@@ -199,17 +211,17 @@ export default function HowItWorks() {
                     className={`w-full text-left p-4 rounded-xl border transition-all relative cursor-pointer ${
                       selected
                         ? 'bg-surface-container-lowest border-primary shadow-md'
-                        : 'bg-surface-container-low/60 border-outline/20 hover:border-outline/40'
+                        : 'bg-surface-container-low/60 border-outline/20 hover:border-outline/40 hover:bg-surface-container-low'
                     }`}
                   >
                     {selected && (
                       <motion.div
                         layoutId="how-it-works-indicator"
-                        className="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r"
+                        className="absolute inset-0 rounded-xl border-2 border-primary pointer-events-none"
                         transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                       />
                     )}
-                    <div className="flex items-center justify-between pl-2">
+                    <div className="flex items-center justify-between gap-3">
                       <div className="space-y-0.5">
                         <div className="text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">
                           Phase {phase.step} · {phase.duration}
@@ -220,7 +232,7 @@ export default function HowItWorks() {
                       </div>
                       <ArrowRight
                         size={16}
-                        className={selected ? 'text-primary shrink-0' : 'text-outline/50 shrink-0'}
+                        className={selected ? 'text-primary shrink-0 translate-x-0.5 transition-transform' : 'text-outline/50 shrink-0'}
                       />
                     </div>
                   </button>
@@ -230,67 +242,77 @@ export default function HowItWorks() {
 
             {/* Active Phase Details */}
             <div className="lg:col-span-7">
-              <div className="p-7 sm:p-8 rounded-2xl bg-surface-container-lowest border border-outline/25 shadow-sm space-y-6">
-                <div className="flex items-start justify-between gap-4 pb-5 border-b border-outline/15">
-                  <div className="space-y-1">
-                    <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-                      Phase {current.step} Specification · {current.duration}
-                    </div>
-                    <h3 className="font-headline text-2xl font-extrabold text-on-surface">
-                      {current.title}
-                    </h3>
-                  </div>
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-                    <PhaseIcon size={24} />
-                  </div>
-                </div>
-
-                <p className="text-base text-on-surface-variant leading-relaxed">{current.summary}</p>
-
-                <div className="space-y-3">
-                  <div className="text-xs font-mono uppercase tracking-wider text-on-surface-variant font-semibold">
-                    Concrete Deliverables
-                  </div>
-                  <div className="space-y-2.5">
-                    {current.deliverables.map((item) => (
-                      <div key={item} className="flex items-start gap-2.5 text-sm text-on-surface">
-                        <CheckCircle2 size={17} className="text-primary mt-0.5 shrink-0" />
-                        <span>{item}</span>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.step}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="surface-card p-7 sm:p-9 rounded-2xl space-y-6"
+                >
+                  <div className="flex items-start justify-between gap-4 pb-5 border-b border-outline/15">
+                    <div className="space-y-1">
+                      <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
+                        Phase {current.step} Specification · {current.duration}
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-outline/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-                      Sign-Off Gate
+                      <h3 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface">
+                        {current.title}
+                      </h3>
                     </div>
-                    <div className="text-sm font-bold text-on-surface">{current.verificationGate}</div>
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+                      <PhaseIcon size={24} />
+                    </div>
                   </div>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary/90 transition-all cursor-pointer shrink-0"
-                  >
-                    <span>Initiate Phase 01 Audit</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
+
+                  <p className="text-base text-on-surface-variant leading-relaxed">{current.summary}</p>
+
+                  <div className="space-y-3">
+                    <div className="text-xs font-mono uppercase tracking-wider text-on-surface-variant font-semibold">
+                      Concrete Deliverables
+                    </div>
+                    <div className="space-y-2.5">
+                      {current.deliverables.map((item) => (
+                        <div key={item} className="flex items-start gap-2.5 text-sm text-on-surface">
+                          <CheckCircle2 size={17} className="text-primary mt-0.5 shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-5 border-t border-outline/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
+                        Sign-Off Gate
+                      </div>
+                      <div className="text-sm font-bold text-on-surface">{current.verificationGate}</div>
+                    </div>
+                    <Link
+                      to="/contact"
+                      onClick={() => playUiChime('click')}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 btn-primary-gradient text-xs font-semibold rounded-lg transition-all cursor-pointer shrink-0"
+                    >
+                      <span>Initiate Phase 01 Audit</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>
       </section>
 
       {/* Why Sovereign Methodology Matters */}
-      <section className="w-full bg-surface-container-low py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-8">
+      <section className="w-full bg-surface-container-low py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-10">
           <Reveal>
             <div className="space-y-2 max-w-3xl">
               <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
                 Architectural Guarantees
               </div>
-              <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-on-surface">
+              <h2 className="font-headline text-2xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
                 Built Into Every Contract by Default
               </h2>
             </div>
@@ -298,31 +320,31 @@ export default function HowItWorks() {
 
           <StaggerGrid className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StaggerItem>
-              <div className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 space-y-3 h-full">
-                <FileCode2 size={22} className="text-primary" />
-                <h3 className="font-headline text-lg font-bold text-on-surface">Full Source &amp; IaC Custody</h3>
+              <SpotlightSurface className="surface-card p-7 rounded-2xl space-y-3 h-full">
+                <FileCode2 size={24} className="text-primary" />
+                <h3 className="font-headline text-xl font-bold text-on-surface">Full Source &amp; IaC Custody</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
                   Every Terraform module, network config, and microservice repository transfers directly to your organization upon sign-off.
                 </p>
-              </div>
+              </SpotlightSurface>
             </StaggerItem>
             <StaggerItem>
-              <div className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 space-y-3 h-full">
-                <ShieldCheck size={22} className="text-primary" />
-                <h3 className="font-headline text-lg font-bold text-on-surface">Quantitative Certification</h3>
+              <SpotlightSurface className="surface-card p-7 rounded-2xl space-y-3 h-full">
+                <ShieldCheck size={24} className="text-primary" />
+                <h3 className="font-headline text-xl font-bold text-on-surface">Quantitative Certification</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
                   We never mark a cabling span or service complete without signed OTDR dB trace files and load-tested P99 tail telemetry.
                 </p>
-              </div>
+              </SpotlightSurface>
             </StaggerItem>
             <StaggerItem>
-              <div className="p-6 rounded-2xl bg-surface-container-lowest border border-outline/20 space-y-3 h-full">
-                <Activity size={22} className="text-primary" />
-                <h3 className="font-headline text-lg font-bold text-on-surface">London + Islamabad Continuity</h3>
+              <SpotlightSurface className="surface-card p-7 rounded-2xl space-y-3 h-full">
+                <Activity size={24} className="text-primary" />
+                <h3 className="font-headline text-xl font-bold text-on-surface">London + Islamabad Continuity</h3>
                 <p className="text-sm text-on-surface-variant leading-relaxed">
                   Two independent engineering timezones collaborate directly on complex transitions so deployments proceed smoothly around the clock.
                 </p>
-              </div>
+              </SpotlightSurface>
             </StaggerItem>
           </StaggerGrid>
         </div>
