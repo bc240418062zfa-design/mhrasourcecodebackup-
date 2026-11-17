@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-on-secondary-fixed: var(--sys-on-secondary-fixed);
@@ -59,28 +60,29 @@
   --spacing-space-lg: 1.5rem;
   --spacing-space-xl: 2.5rem;
 
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
   --font-label-sm: 'JetBrains Mono', monospace;
-  --font-label-lg: 'JetBrains Mono', monospace;
-  --font-headline-sm: 'Space Grotesk', sans-serif;
-  --font-body-sm: 'Hanken Grotesk', sans-serif;
-  --font-headline-lg-mobile: 'Space Grotesk', sans-serif;
-  --font-headline-xl: 'Space Grotesk', sans-serif;
-  --font-headline-xl-mobile: 'Space Grotesk', sans-serif;
-  --font-body-lg: 'Hanken Grotesk', sans-serif;
-  --font-headline-md: 'Space Grotesk', sans-serif;
-  --font-label-md: 'JetBrains Mono', monospace;
-  --font-headline-lg: 'Space Grotesk', sans-serif;
-  --font-body-md: 'Hanken Grotesk', sans-serif;
+  --font-label-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-sm: 'Plus Jakarta Sans', sans-serif;
+  --font-body-sm: 'DM Sans', sans-serif;
+  --font-headline-lg-mobile: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-xl: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-xl-mobile: 'Plus Jakarta Sans', sans-serif;
+  --font-body-lg: 'DM Sans', sans-serif;
+  --font-headline-md: 'Plus Jakarta Sans', sans-serif;
+  --font-label-md: 'Plus Jakarta Sans', sans-serif;
+  --font-headline-lg: 'Plus Jakarta Sans', sans-serif;
+  --font-body-md: 'DM Sans', sans-serif;
 }
 
 :root,
 :root[data-theme="light"],
 :root[data-theme="titanium"],
 :root[data-theme="desert"] {
-  /* ==========================================================================
-     PRIMARY DEFAULT THEME: "SOVEREIGN DAYLIGHT" (Architectural Luxury Titanium)
-     Clean, crisp executive daylight mode like Apple, Stripe, and Linear
-     ========================================================================== */
+  /* Sovereign Executive Daylight: High-contrast slate typography on crisp alabaster & pure white surfaces */
   --sys-background: #f8fafc;
   --sys-surface-container-lowest: #ffffff;
   --sys-surface: #ffffff;
@@ -92,14 +94,12 @@
   --sys-surface-bright: #ffffff;
   --sys-surface-variant: #e2e8f0;
 
-  /* High-legibility executive typography */
-  --sys-on-background: #090d16;
-  --sys-on-surface: #090d16;
-  --sys-on-surface-variant: #334155;
-  --sys-inverse-surface: #090d16;
+  --sys-on-background: #0b1120;
+  --sys-on-surface: #0b1120;
+  --sys-on-surface-variant: #475569;
+  --sys-inverse-surface: #0b1120;
   --sys-inverse-on-surface: #f8fafc;
 
-  /* Executive Sovereign Royal Sapphire */
   --sys-primary: #1d4ed8;
   --sys-primary-container: #1e40af;
   --sys-on-primary: #ffffff;
@@ -110,9 +110,8 @@
   --sys-on-primary-fixed-variant: #172554;
   --sys-inverse-primary: #3b82f6;
 
-  /* Refined Cerulean Secondary */
-  --sys-secondary: #0284c7;
-  --sys-secondary-container: #0369a1;
+  --sys-secondary: #0369a1;
+  --sys-secondary-container: #0284c7;
   --sys-on-secondary: #ffffff;
   --sys-on-secondary-container: #f0f9ff;
   --sys-secondary-fixed: #0ea5e9;
@@ -120,8 +119,7 @@
   --sys-on-secondary-fixed: #ffffff;
   --sys-on-secondary-fixed-variant: #075985;
 
-  /* Precision Sovereign Emerald */
-  --sys-tertiary: #059669;
+  --sys-tertiary: #047857;
   --sys-tertiary-container: #064e3b;
   --sys-on-tertiary: #ffffff;
   --sys-on-tertiary-container: #ecfdf5;
@@ -130,7 +128,6 @@
   --sys-on-tertiary-fixed: #ffffff;
   --sys-on-tertiary-fixed-variant: #065f46;
 
-  /* Precision Crisp Slate Borders */
   --sys-outline: #cbd5e1;
   --sys-outline-variant: #e2e8f0;
   --sys-surface-tint: #1d4ed8;
@@ -144,31 +141,26 @@
 :root[data-theme="cyber"],
 :root[data-theme="dark"],
 :root.dark {
-  /* ==========================================================================
-     ALTERNATIVE THEME: "OBSIDIAN SOVEREIGN" (Ultra-Luxury Deep Space Titanium)
-     Inspired by Linear, Vercel, Apple Pro & the official MIHORA 3D Royal Emblem
-     ========================================================================== */
-  --sys-background: #05070e;
-  --sys-surface-container-lowest: #030408;
-  --sys-surface: #080b14;
-  --sys-surface-container-low: #0c101c;
-  --sys-surface-container: #101626;
-  --sys-surface-container-high: #161e32;
-  --sys-surface-container-highest: #1d2740;
-  --sys-surface-dim: #05070e;
-  --sys-surface-bright: #222d48;
-  --sys-surface-variant: #12192b;
+  /* Obsidian Sovereign Dark: Deep slate-obsidian canvas with crisp sapphire & platinum hierarchy */
+  --sys-background: #060912;
+  --sys-surface-container-lowest: #04060c;
+  --sys-surface: #090e1a;
+  --sys-surface-container-low: #0e1525;
+  --sys-surface-container: #131c30;
+  --sys-surface-container-high: #19243d;
+  --sys-surface-container-highest: #202e4d;
+  --sys-surface-dim: #060912;
+  --sys-surface-bright: #253456;
+  --sys-surface-variant: #141d31;
 
-  /* Typography - Ultra-crisp platinum and silver */
   --sys-on-background: #f8fafc;
   --sys-on-surface: #f8fafc;
   --sys-on-surface-variant: #94a3b8;
-  --sys-inverse-surface: #f1f5f9;
-  --sys-inverse-on-surface: #05070e;
+  --sys-inverse-surface: #f8fafc;
+  --sys-inverse-on-surface: #060912;
 
-  /* Primary Accent: Radiant Sovereign Royal Cobalt */
   --sys-primary: #3b82f6;
-  --sys-primary-container: #1d4ed8;
+  --sys-primary-container: #2563eb;
   --sys-on-primary: #ffffff;
   --sys-on-primary-container: #dbeafe;
   --sys-primary-fixed: #60a5fa;
@@ -177,17 +169,15 @@
   --sys-on-primary-fixed-variant: #1e40af;
   --sys-inverse-primary: #2563eb;
 
-  /* Secondary Accent: Celestial Sky Sapphire */
   --sys-secondary: #38bdf8;
   --sys-secondary-container: #0284c7;
-  --sys-on-secondary: #05070e;
+  --sys-on-secondary: #04060c;
   --sys-on-secondary-container: #0c263c;
   --sys-secondary-fixed: #7dd3fc;
   --sys-secondary-fixed-dim: #38bdf8;
   --sys-on-secondary-fixed: #030712;
   --sys-on-secondary-fixed-variant: #075985;
 
-  /* Tertiary Accent: Sovereign Precision Emerald */
   --sys-tertiary: #10b981;
   --sys-tertiary-container: #064e3b;
   --sys-on-tertiary: #ffffff;
@@ -197,39 +187,46 @@
   --sys-on-tertiary-fixed: #022c22;
   --sys-on-tertiary-fixed-variant: #047857;
 
-  /* Precision Architectural Hairline Outlines */
-  --sys-outline: rgba(255, 255, 255, 0.08);
-  --sys-outline-variant: rgba(56, 189, 248, 0.16);
+  --sys-outline: rgba(148, 163, 184, 0.16);
+  --sys-outline-variant: rgba(56, 189, 248, 0.18);
   --sys-surface-tint: #3b82f6;
 
-  /* Error & Alerts */
   --sys-error: #f87171;
   --sys-error-container: #7f1d1d;
   --sys-on-error: #ffffff;
   --sys-on-error-container: #fecaca;
 }
 
-@utility text-label-sm { font-size: 10px; line-height: 14px; font-weight: 600; }
-@utility text-label-lg { font-size: 14px; line-height: 20px; font-weight: 500; }
-@utility text-headline-sm { font-size: 20px; line-height: 28px; font-weight: 600; }
-@utility text-body-sm { font-size: 13px; line-height: 20px; font-weight: 400; }
-@utility text-headline-lg-mobile { font-size: 28px; line-height: 36px; font-weight: 700; }
-@utility text-headline-xl { font-size: 56px; line-height: 64px; font-weight: 800; }
-@utility text-headline-xl-mobile { font-size: 36px; line-height: 44px; font-weight: 800; }
-@utility text-body-lg { font-size: 18px; line-height: 28px; font-weight: 400; }
-@utility text-headline-md { font-size: 28px; line-height: 36px; font-weight: 700; }
-@utility text-label-md { font-size: 12px; line-height: 16px; font-weight: 600; }
-@utility text-headline-lg { font-size: 40px; line-height: 48px; font-weight: 700; }
-@utility text-body-md { font-size: 15px; line-height: 24px; font-weight: 400; }
+@utility text-label-sm { font-size: 11px; line-height: 16px; font-weight: 600; }
+@utility text-label-lg { font-size: 14px; line-height: 20px; font-weight: 600; }
+@utility text-headline-sm { font-size: 20px; line-height: 28px; font-weight: 700; }
+@utility text-body-sm { font-size: 14px; line-height: 21px; font-weight: 400; }
+@utility text-headline-lg-mobile { font-size: 28px; line-height: 36px; font-weight: 800; }
+@utility text-headline-xl { font-size: clamp(2.25rem, 4.5vw, 3.75rem); line-height: 1.08; font-weight: 800; letter-spacing: -0.025em; }
+@utility text-headline-xl-mobile { font-size: 34px; line-height: 1.12; font-weight: 800; }
+@utility text-body-lg { font-size: 17px; line-height: 1.65; font-weight: 400; }
+@utility text-headline-md { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
+@utility text-label-md { font-size: 13px; line-height: 18px; font-weight: 600; }
+@utility text-headline-lg { font-size: clamp(1.85rem, 3.2vw, 2.65rem); line-height: 1.14; font-weight: 800; letter-spacing: -0.022em; }
+@utility text-body-md { font-size: 15px; line-height: 1.65; font-weight: 400; }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
   html, body {
     margin: 0;
     padding: 0;
   }
   body {
     overscroll-behavior: none;
+    background-color: var(--sys-background);
+    color: var(--sys-on-surface);
     transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
   main > :first-child {
     margin-top: 0 !important;
@@ -237,13 +234,13 @@
   main > :last-child {
     margin-bottom: 0 !important;
   }
+  :focus-visible {
+    outline: 2px solid var(--sys-primary);
+    outline-offset: 2px;
+  }
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Custom animations */
+/* Custom subtle animations (compositor-safe) */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -254,73 +251,28 @@
   to { stroke-dashoffset: 0; }
 }
 
-@keyframes radarSweep {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulseRadar {
-  0% { r: 6px; opacity: 0.9; stroke-width: 2px; }
-  50% { opacity: 0.5; }
-  100% { r: 48px; opacity: 0; stroke-width: 0.5px; }
-}
-
 @keyframes floatGentle {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-}
-
-@keyframes scanline {
-  0% { transform: translateY(-100%); opacity: 0; }
-  50% { opacity: 0.6; }
-  100% { transform: translateY(1000%); opacity: 0; }
-}
-
-@keyframes shimmerSlide {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-
-@keyframes livePulseBeacon {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7);
-  }
-  50% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 8px rgba(0, 240, 255, 0);
-  }
+  50% { transform: translateY(-4px); }
 }
 
 @utility animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: marquee 32s linear infinite;
 }
 
 @utility animate-signal-flow {
-  animation: signalFlow 1.8s linear infinite;
-}
-
-@utility animate-radar {
-  animation: radarSweep 6s linear infinite;
+  animation: signalFlow 2s linear infinite;
 }
 
 @utility animate-float {
-  animation: floatGentle 4s ease-in-out infinite;
+  animation: floatGentle 4.5s ease-in-out infinite;
 }
 
-@utility animate-scanline {
-  animation: scanline 8s ease-in-out infinite;
-}
-
-@utility animate-live-beacon {
-  animation: livePulseBeacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Ultra-Crisp Architectural Visual FX */
+/* Architectural Surface & Visual Depth Utilities */
 .bg-tech-grid {
   background-image: linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background-size: 36px 36px;
 }
 
 :root[data-theme="light"] .bg-tech-grid,
@@ -336,115 +288,75 @@
 
 :root[data-theme="light"] .bg-tech-dots,
 :root:not(.dark) .bg-tech-dots {
-  background-image: radial-gradient(rgba(2, 132, 199, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(3, 105, 161, 0.1) 1px, transparent 1px);
 }
 
 .glass-panel {
-  background: rgba(8, 11, 20, 0.75);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(9, 14, 26, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
 }
 
 :root[data-theme="light"] .glass-panel,
 :root:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 2px 16px -4px rgba(15, 23, 42, 0.04);
 }
 
-.glow-card {
-  position: relative;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+.surface-card {
+  background-color: var(--sys-surface-container-lowest);
+  border: 1px solid var(--sys-outline);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
-:root[data-theme="light"] .glow-card,
-:root:not(.dark) .glow-card {
-  box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(226, 232, 240, 0.7);
+.surface-card:hover {
+  border-color: var(--sys-primary);
+  box-shadow: 0 12px 28px -10px rgba(29, 78, 216, 0.12);
 }
 
-:root[data-theme="light"] .glow-card:hover,
-:root:not(.dark) .glow-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px -8px rgba(29, 78, 216, 0.09), 0 0 0 1px rgba(29, 78, 216, 0.25);
+:root.dark .surface-card:hover,
+:root[data-theme="cyber"] .surface-card:hover {
+  box-shadow: 0 14px 32px -10px rgba(59, 130, 246, 0.18);
 }
 
-:root.dark .glow-card,
-:root[data-theme="cyber"] .glow-card {
-  box-shadow: 0 2px 16px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-:root.dark .glow-card:hover,
-:root[data-theme="cyber"] .glow-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px -10px rgba(59, 130, 246, 0.22), 0 0 0 1px rgba(59, 130, 246, 0.35);
-}
-
-.luxury-card {
-  background: var(--color-surface-container-lowest);
-  border: 1px solid var(--color-outline);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.luxury-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px -8px rgba(37, 99, 235, 0.12);
-}
-
-.neon-border {
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
-}
-
-:root[data-theme="light"] .neon-border,
-:root:not(.dark) .neon-border {
-  border: 1px solid rgba(29, 78, 216, 0.22);
-  box-shadow: 0 4px 20px rgba(29, 78, 216, 0.08);
-}
-
-/* SVG animated dash line utility */
 .flow-line {
   stroke-dasharray: 6, 6;
-  animation: signalFlow 1.4s linear infinite;
+  animation: signalFlow 1.6s linear infinite;
 }
 
 .flow-line-reverse {
   stroke-dasharray: 6, 6;
-  animation: signalFlow 1.4s linear infinite reverse;
+  animation: signalFlow 1.6s linear infinite reverse;
 }
 
-/* Sovereign Luxury Gradient Button Utility */
 .btn-primary-gradient {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 65%, #0284c7 100%);
   color: #ffffff;
-  box-shadow: 0 4px 18px -2px rgba(37, 99, 235, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-primary-gradient::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    transparent 20%,
-    rgba(255, 255, 255, 0.22) 50%,
-    transparent 80%
-  );
-  transform: translateX(-100%);
-  animation: shimmerSlide 4.5s infinite;
+  box-shadow: 0 4px 14px -2px rgba(29, 78, 216, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .btn-primary-gradient:hover {
-  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #0284c7 100%);
-  box-shadow: 0 8px 26px -2px rgba(37, 99, 235, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 8px 22px -2px rgba(29, 78, 216, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Respect accessibility preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

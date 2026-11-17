@@ -143,7 +143,7 @@ export function SubseaCableExplorer() {
             >
               {simulatedSubseaCut ? (
                 <>
-                  <AlertOctagon size={16} className="text-amber-500 animate-pulse" />
+                  <AlertOctagon size={16} className="text-amber-500" />
                   <span>RESTORE NORMAL DUAL TRANSIT</span>
                 </>
               ) : (
@@ -160,7 +160,7 @@ export function SubseaCableExplorer() {
         {simulatedSubseaCut && (
           <div className="p-space-sm bg-amber-500/10 border border-amber-500/30 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm font-mono text-xs">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-amber-500 animate-ping"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
               <div>
                 <span className="text-amber-600 dark:text-amber-400 font-bold uppercase">
                   SIMULATION ACTIVE: RED SEA / SUEZ MARITIME TRUNKS SEVERED.
@@ -287,7 +287,7 @@ export function SubseaCableExplorer() {
           {/* Landing Stations / Optical Waypoints */}
           <div className="space-y-2">
             <div className="font-mono text-xs text-outline font-bold uppercase">
-              // KEY INTERCONNECT HUBS &amp; CABLE LANDING STATIONS:
+              Key Interconnect Hubs &amp; Cable Landing Stations
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
               {activeRoute.landingStations.map((station, i) => (

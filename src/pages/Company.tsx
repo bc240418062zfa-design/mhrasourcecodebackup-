@@ -1,227 +1,277 @@
-import React from 'react';
-import { Building, Globe, Users, Target, ShieldCheck, Zap, Award, Terminal, Compass, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  Building, Globe, Users, Target, ShieldCheck, Zap, Award, ArrowRight
+} from 'lucide-react';
 import { BrandLogo } from '../components/BrandLogo';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { VISUAL_ASSETS } from '../assets/visuals';
+import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
 
 export default function Company() {
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section */}
-      <section id="about" className="relative w-full bg-surface-container-lowest overflow-hidden px-margin-mobile lg:px-margin py-space-xl lg:py-24 scroll-mt-24">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary-container/10 blur-[120px] pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-space-lg items-center">
-          <div className="space-y-space-md">
-            <div className="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high rounded-DEFAULT text-secondary shadow-sm">
-              <Building size={14} />
-              <span className="font-label-sm text-label-sm tracking-widest uppercase">COMPANY OVERVIEW</span>
-            </div>
-            <h1 className="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight leading-none">
-              A NEW CLASS OF <span className="text-secondary-container">ENGINEERING ENTERPRISE.</span>
-            </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-              Operating dual engineering hubs across the United Kingdom and Pakistan, delivering globally. MIHORA.TECH is built on a simple thesis: the most complex problems require mastery of both code and the physical world.
-            </p>
-            <div className="pt-2 flex items-center gap-3">
-              <div className="h-11 px-2.5 rounded-lg bg-surface-container border border-outline/30 flex items-center justify-center">
-                <BrandLogo className="h-6 w-auto aspect-[368/236]" />
+      {/* Hero */}
+      <section id="about" className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8 scroll-mt-20">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <Breadcrumbs items={[{ label: 'Company & Founders' }]} />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                  <Building size={14} />
+                  <span>About MIHORA.TECH (Private) Limited</span>
+                </div>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+                  One Engineering Organization From Optical Fiber to Cloud Software
+                </h1>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                  Operating synchronized command hubs in London (United Kingdom) and Islamabad (Pakistan), MIHORA.TECH was founded on a straightforward premise: critical systems only remain sovereign and reliable when software architecture and physical infrastructure are engineered together.
+                </p>
+              </Reveal>
+              <div className="pt-1 flex items-center gap-3">
+                <div className="h-11 px-3 rounded-lg bg-surface-container border border-outline/25 flex items-center justify-center">
+                  <BrandLogo className="h-6 w-auto aspect-[368/236]" />
+                </div>
+                <div>
+                  <p className="font-mono text-xs text-primary font-bold uppercase tracking-wider">
+                    Founded by M. Matti ul Hasnain &amp; Omema Iqbal
+                  </p>
+                  <p className="font-mono text-[11px] text-on-surface-variant">
+                    Sovereign Systems Architecture · Global Delivery Operations
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-mono text-xs text-secondary font-bold tracking-wider uppercase">Founded by M. Matti ul Hasnain &amp; Omema Iqbal</p>
-                <p className="font-mono text-[11px] text-on-surface-variant">Sovereign Systems Architecture &bull; Global Operations</p>
-              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-2 gap-space-md">
-            <div className="bg-surface-container-low p-space-md rounded-DEFAULT space-y-2 border border-outline/20">
-              <Globe className="text-secondary-container" size={24} />
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">Global Reach</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">Operating dual UK/PK hubs with field teams across EMEA, APAC, and North America.</p>
-            </div>
-            <div className="bg-surface-container-low p-space-md rounded-DEFAULT space-y-2 border border-outline/20">
-              <Users className="text-secondary-container" size={24} />
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">Multi-Discipline</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">Cloud architects working side-by-side with low-voltage technicians.</p>
+
+            <div className="lg:col-span-5">
+              <Reveal direction="left">
+                <div className="rounded-2xl overflow-hidden border border-outline/25 bg-surface-container-low shadow-lg">
+                  <img
+                    src={VISUAL_ASSETS.sovereignCommandHub}
+                    alt="MIHORA.TECH engineering operations studio across London and Islamabad"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                </div>
+              </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOUNDERS & EXECUTIVE LEADERSHIP SECTION (HIGH SEO VALUE) */}
-      <section id="leadership" className="w-full bg-surface-container-low px-margin-mobile lg:px-margin py-space-xl scroll-mt-24 border-y border-outline/20">
-        <div className="max-w-7xl mx-auto space-y-space-xl">
-          <div className="text-center space-y-space-xs max-w-3xl mx-auto">
-            <div className="font-label-sm text-label-sm text-secondary tracking-widest uppercase font-mono font-bold">// FOUNDERS &amp; EXECUTIVE STEWARDSHIP</div>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface uppercase font-extrabold tracking-tight">
-              Founded by M. Matti ul Hasnain &amp; Omema Iqbal
-            </h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              MIHORA.TECH was founded by <strong className="text-on-surface font-bold">M. Matti ul Hasnain</strong> and <strong className="text-on-surface font-bold">Omema Iqbal</strong> to pioneer sovereign systems engineering, high-availability physical datacenter architecture, and relentless 24/7 global telemetry operations.
-            </p>
-          </div>
+      {/* Founders & Executive Leadership */}
+      <section id="leadership" className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20 scroll-mt-20">
+        <div className="max-w-7xl mx-auto space-y-10">
+          <Reveal>
+            <div className="text-center space-y-2 max-w-3xl mx-auto">
+              <div className="font-mono text-xs text-primary uppercase tracking-widest font-semibold">
+                Founders &amp; Executive Accountability
+              </div>
+              <h2 className="font-headline text-3xl sm:text-4xl text-on-surface font-extrabold tracking-tight">
+                Founded by M. Matti ul Hasnain &amp; Omema Iqbal
+              </h2>
+              <p className="text-base text-on-surface-variant">
+                MIHORA.TECH was established by <strong className="text-on-surface">M. Matti ul Hasnain</strong> and{' '}
+                <strong className="text-on-surface">Omema Iqbal</strong> to combine deep systems engineering with structured international delivery.
+              </p>
+            </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-space-lg max-w-5xl mx-auto">
-            {/* Founder 1: M. Matti ul Hasnain */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-xl border border-secondary/30 shadow-xl relative overflow-hidden group hover:border-secondary/60 transition-all">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
-              <div className="relative z-10 space-y-space-md">
-                <div className="flex items-center justify-between">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-secondary/40 shadow-[0_0_15px_rgba(0,210,255,0.2)] shrink-0">
-                    <img src="/founder-matti.jpg" alt="M. Matti ul Hasnain (Matti ul Hasnain) - Co-Founder & Principal Systems Architect of MIHORA.TECH" title="M. Matti ul Hasnain - MIHORA.TECH Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <StaggerItem>
+              <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-5 h-full">
+                <div className="flex items-center justify-between gap-4">
+                  <img
+                    src="/founder-matti.jpg"
+                    alt="M. Matti ul Hasnain, Co-Founder and Principal Systems Architect of MIHORA.TECH"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    className="w-18 h-18 rounded-2xl object-cover border border-outline/25 shrink-0"
+                  />
+                  <div className="text-right font-mono text-xs">
+                    <div className="text-primary font-bold">Co-Founder · Principal Architect</div>
+                    <div className="text-on-surface-variant mt-0.5">UK &amp; Pakistan Hubs</div>
                   </div>
-                  <span className="font-mono text-xs px-3 py-1 bg-secondary/10 text-secondary border border-secondary/30 rounded-full font-bold uppercase tracking-wider">
-                    Co-Founder &bull; Principal Architect
-                  </span>
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-headline-md text-on-surface font-bold uppercase tracking-tight">
+                  <h3 className="font-headline text-2xl text-on-surface font-extrabold">
                     M. Matti ul Hasnain
                   </h3>
-                  <p className="font-mono text-xs text-secondary-container font-semibold mt-0.5">
-                    FOUNDER // SYSTEMS &amp; INFRASTRUCTURE ARCHITECTURE
+                  <p className="font-mono text-xs text-primary font-semibold mt-0.5">
+                    Systems &amp; Physical Infrastructure Architecture
                   </p>
                 </div>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  <strong>M. Matti ul Hasnain</strong> (also known as <em>Matti ul Hasnain</em> or <em>Muhammad Matti ul Hasnain</em>) leads MIHORA.TECH&apos;s global engineering doctrine, sovereign systems infrastructure, datacenter hardware topologies, and low-latency cloud architectures across Pakistan, the UK, and international operational theatres.
+                <p className="text-sm text-on-surface-variant leading-relaxed">
+                  <strong>M. Matti ul Hasnain</strong> leads MIHORA.TECH&apos;s systems engineering doctrine, sovereign datacenter hardware design, OTDR-verified fiber builds, and low-latency software architecture across the UK, EMEA, and Pakistan.
                 </p>
-                <div className="pt-2 border-t border-outline/15 flex flex-wrap items-center gap-2">
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Sovereign Systems</span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Datacenter Hardware</span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Distributed SRE</span>
+                <div className="pt-3 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
+                  Sovereign Systems · Datacenter Hardware · Distributed SRE
                 </div>
               </div>
-            </div>
+            </StaggerItem>
 
-            {/* Founder 2: Omema Iqbal */}
-            <div className="bg-surface-container-lowest p-space-lg rounded-xl border border-primary/30 shadow-xl relative overflow-hidden group hover:border-primary/60 transition-all">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
-              <div className="relative z-10 space-y-space-md">
-                <div className="flex items-center justify-between">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-primary/40 shadow-[0_0_15px_rgba(0,102,255,0.2)] shrink-0">
-                    <img src="/founder-omema.jpg" alt="Omema Iqbal (Omema) - Co-Founder & Operations Director of MIHORA.TECH" title="Omema Iqbal - MIHORA.TECH Founder" width="64" height="64" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+            <StaggerItem>
+              <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-5 h-full">
+                <div className="flex items-center justify-between gap-4">
+                  <img
+                    src="/founder-omema.jpg"
+                    alt="Omema Iqbal, Co-Founder and Operations Director of MIHORA.TECH"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                    className="w-18 h-18 rounded-2xl object-cover border border-outline/25 shrink-0"
+                  />
+                  <div className="text-right font-mono text-xs">
+                    <div className="text-primary font-bold">Co-Founder · Operations Director</div>
+                    <div className="text-on-surface-variant mt-0.5">Enterprise Governance</div>
                   </div>
-                  <span className="font-mono text-xs px-3 py-1 bg-primary/10 text-primary border border-primary/30 rounded-full font-bold uppercase tracking-wider">
-                    Co-Founder &bull; Operations Director
-                  </span>
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-headline-md text-on-surface font-bold uppercase tracking-tight">
+                  <h3 className="font-headline text-2xl text-on-surface font-extrabold">
                     Omema Iqbal
                   </h3>
                   <p className="font-mono text-xs text-primary font-semibold mt-0.5">
-                    FOUNDER // ENTERPRISE STRATEGY &amp; GLOBAL OPERATIONS
+                    Enterprise Strategy &amp; Global Operations
                   </p>
                 </div>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  <strong>Omema Iqbal</strong> (also known as <em>Omema</em>) directs MIHORA.TECH&apos;s dual-hub operational governance, enterprise project alignment, multi-jurisdiction compliance, international client delivery, and strategic organizational logistics.
+                <p className="text-sm text-on-surface-variant leading-relaxed">
+                  <strong>Omema Iqbal</strong> directs MIHORA.TECH&apos;s dual-hub operational governance, multi-jurisdiction SLA alignment, strategic partner coordination, and cross-border engineering workforce logistics.
                 </p>
-                <div className="pt-2 border-t border-outline/15 flex flex-wrap items-center gap-2">
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Global Operations</span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Dual-Hub Governance</span>
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">Client Strategy</span>
+                <div className="pt-3 border-t border-outline/15 font-mono text-xs text-on-surface-variant">
+                  Global Operations · Dual-Hub Governance · Client Delivery
                 </div>
               </div>
-            </div>
-          </div>
+            </StaggerItem>
+          </StaggerGrid>
 
-          {/* Institutional Trust Banner */}
-          <div className="bg-surface-container-high/60 border border-outline/25 rounded-xl p-space-md max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3 text-left">
-              <Award className="text-secondary shrink-0" size={28} />
+          <div className="bg-surface-container-low border border-outline/25 rounded-2xl p-6 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5 text-left">
+              <Award className="text-primary shrink-0" size={26} />
               <div>
-                <h3 className="font-headline-xs text-headline-xs font-bold text-on-surface uppercase">
-                  Founded with Deterministic Governance
+                <h3 className="font-headline text-base font-bold text-on-surface">
+                  Deterministic Governance &amp; Direct Founder Engagement
                 </h3>
-                <p className="font-body-xs text-body-xs text-on-surface-variant">
-                  Registered private enterprise delivering mission-critical technology solutions globally.
+                <p className="text-sm text-on-surface-variant">
+                  Registered private engineering enterprise serving regulated organizations worldwide.
                 </p>
               </div>
             </div>
-            <Link 
-              to="/contact" 
-              className="px-5 py-2.5 bg-secondary text-on-secondary font-mono text-xs font-bold rounded-lg uppercase tracking-wider hover:opacity-90 transition-all shrink-0"
+            <Link
+              to="/contact"
+              className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-lg transition-all shrink-0 inline-flex items-center gap-1.5"
             >
-              Direct Executive Inquiry
+              <span>Executive Consultation</span>
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Engineering Philosophy */}
-      <section id="philosophy" className="w-full bg-surface px-margin-mobile lg:px-margin py-space-xl scroll-mt-24">
-        <div className="max-w-7xl mx-auto space-y-space-xl">
-          <div className="space-y-space-xs max-w-3xl">
-            <div className="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase font-mono font-bold">// CORE DOCTRINE</div>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">Engineering Philosophy</h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant">We build resilient, deterministic systems that do not rely on fragile external states. We do not do &quot;agile prototypes&quot; for production hardware; we do mathematically validated deployments.</p>
+      {/* Philosophy */}
+      <section id="philosophy" className="w-full bg-surface-container-low py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20 scroll-mt-20">
+        <div className="max-w-7xl mx-auto space-y-10">
+          <div className="space-y-2 max-w-3xl">
+            <div className="font-mono text-xs text-primary uppercase tracking-widest font-semibold">
+              Core Engineering Doctrine
+            </div>
+            <h2 className="font-headline text-3xl text-on-surface font-extrabold">Engineering Philosophy</h2>
+            <p className="text-base text-on-surface-variant">
+              We build deterministic systems free of fragile external lock-in—verified mathematically across silicon, fiber, and code.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-            <div className="bg-surface-container-lowest p-space-lg rounded-DEFAULT border-l-4 border-primary">
-              <Target className="text-primary mb-space-sm" size={32} />
-              <h3 className="font-headline-md text-headline-md text-on-surface uppercase font-bold mb-2">Precision over Speed</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">We prefer taking the time to architect robust edge clusters rather than rushing a flawed mesh network. Reliability is our primary metric.</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <Target className="text-primary" size={26} />
+              <h3 className="font-headline text-xl text-on-surface font-bold">Precision Over Shortcuts</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Taking the time to model power, thermal margin, and database quorum prevents cascading 3:00 AM production failures.
+              </p>
             </div>
-            <div className="bg-surface-container-lowest p-space-lg rounded-DEFAULT border-l-4 border-secondary-container">
-              <ShieldCheck className="text-secondary-container mb-space-sm" size={32} />
-              <h3 className="font-headline-md text-headline-md text-on-surface uppercase font-bold mb-2">Zero-Trust by Default</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">Every API, every switch port, and every user session is treated as hostile. Security is woven into the base layer, not added as an afterthought.</p>
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <ShieldCheck className="text-primary" size={26} />
+              <h3 className="font-headline text-xl text-on-surface font-bold">Zero-Trust by Default</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Every microservice socket, management VLAN, and physical rack cabinet is authenticated and encrypted at the foundation layer.
+              </p>
             </div>
-            <div className="bg-surface-container-lowest p-space-lg rounded-DEFAULT border-l-4 border-error">
-              <Zap className="text-error mb-space-sm" size={32} />
-              <h3 className="font-headline-md text-headline-md text-on-surface uppercase font-bold mb-2">Hardware is Hard</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">Code can be patched over the air, but a burned-out PLC requires a truck roll. We engineer hardware layers with extreme redundancies.</p>
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <Zap className="text-primary" size={26} />
+              <h3 className="font-headline text-xl text-on-surface font-bold">Hardware Accountability</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Software patches ship remotely, but failed optics require on-site discipline. We engineer physical layers with true 2N redundancy.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Global Operating Model */}
-      <section id="global-operating-model" className="w-full bg-surface-container-lowest px-margin-mobile lg:px-margin py-space-xl scroll-mt-24">
-        <div className="max-w-7xl mx-auto space-y-space-xl">
-          <div className="text-center space-y-space-xs max-w-3xl mx-auto">
-            <div className="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest font-mono">// THE ENGINE</div>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface font-bold uppercase">Global Operating Model</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">Our dual-hub structure across the United Kingdom and Pakistan powers 24/7 engineering velocity, robust governance, and global physical field execution.</p>
+      {/* Dual-Hub Operating Model */}
+      <section id="global-operating-model" className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 scroll-mt-20">
+        <div className="max-w-7xl mx-auto space-y-10">
+          <div className="text-center space-y-2 max-w-3xl mx-auto">
+            <div className="font-mono text-xs text-primary uppercase font-semibold tracking-widest">
+              Synchronized Footprint
+            </div>
+            <h2 className="font-headline text-3xl text-on-surface font-extrabold">Global Operating Model</h2>
+            <p className="text-base text-on-surface-variant">
+              Two primary command centers in London and Islamabad coordinate engineering design, continuous monitoring, and global field dispatch.
+            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
-            <div className="bg-surface-container p-space-lg rounded-DEFAULT shadow-lg flex flex-col items-start gap-space-md border-t-2 border-primary">
-              <div className="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
-                <span className="font-bold text-lg">UK</span>
-              </div>
-              <div>
-                <div className="font-mono text-label-sm text-secondary-container">DUAL HUB // EMEA HEADQUARTERS</div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold uppercase mt-1">United Kingdom Hub (London)</h3>
-              </div>
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                Strategic client governance, enterprise architecture alignment, ISO/IEC standards compliance, and European operational command.
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <div className="font-mono text-xs text-primary font-bold uppercase">UK · EMEA Headquarters</div>
+              <h3 className="font-headline text-xl text-on-surface font-bold">London Hub (UTC+0)</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                128 City Road, London EC2A 2NX. Strategic architecture alignment, UK-GDPR compliance governance, and European enterprise delivery.
               </p>
             </div>
 
-            <div className="bg-surface-container p-space-lg rounded-DEFAULT shadow-lg flex flex-col items-start gap-space-md border-t-2 border-secondary-container">
-              <div className="w-12 h-12 bg-secondary-container text-on-secondary-container flex items-center justify-center rounded-full">
-                <span className="font-bold text-lg">PK</span>
-              </div>
-              <div>
-                <div className="font-mono text-label-sm text-secondary-container">DUAL HUB // SYSTEMS &amp; R&amp;D CENTER</div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold uppercase mt-1">Pakistan Systems Labs (Islamabad)</h3>
-              </div>
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                Core systems algorithms, distributed data processing, automated continuous integration pipelines, and full hardware rig simulations.
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <div className="font-mono text-xs text-primary font-bold uppercase">PK · Systems &amp; R&amp;D Labs</div>
+              <h3 className="font-headline text-xl text-on-surface font-bold">Islamabad Hub (UTC+5)</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Blue Area, Islamabad 44000. Core systems R&amp;D, distributed backend engineering, hardware burn-in testing, and 24/7 watchdesk operations.
               </p>
             </div>
 
-            <div className="bg-surface-container p-space-lg rounded-DEFAULT shadow-lg flex flex-col items-start gap-space-md border-t-2 border-outline">
-              <div className="w-12 h-12 bg-surface-container-high text-on-surface flex items-center justify-center rounded-full">
-                <span className="font-bold text-lg">FD</span>
-              </div>
-              <div>
-                <div className="font-mono text-label-sm text-on-surface-variant">WORLDWIDE INFRASTRUCTURE</div>
-                <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold uppercase mt-1">Field Deployments (Global)</h3>
-              </div>
-              <p className="font-body-md text-body-md text-on-surface-variant">
-                Certified field engineering units active across EMEA, APAC, and North America for data center build-outs, fiber trunks, and rapid break-fix.
+            <div className="bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 space-y-3">
+              <div className="font-mono text-xs text-primary font-bold uppercase">Global Field Forces</div>
+              <h3 className="font-headline text-xl text-on-surface font-bold">Worldwide Dispatch</h3>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                BICSI-trained optical splicing engineers and datacenter technicians deploying across EMEA, APAC, and international enterprise sites.
               </p>
             </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <Link
+              to="/partnerships"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <Globe size={14} className="text-primary" />
+              <span>Strategic Partnerships</span>
+            </Link>
+            <Link
+              to="/careers"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <Users size={14} className="text-primary" />
+              <span>Open Engineering Careers</span>
+            </Link>
+            <Link
+              to="/how-it-works"
+              className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <span>How We Deliver</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

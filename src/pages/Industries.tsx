@@ -1,46 +1,219 @@
-import React from 'react';
-import { Factory, Hospital, Store, GraduationCap, Server, Building, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import {
+  Factory, Hospital, Store, GraduationCap, Server, Building, Globe, ArrowRight, CheckCircle2
+} from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
+
+const INDUSTRY_SECTORS = [
+  {
+    id: 'enterprise',
+    code: 'Sector 01 · Financial & Enterprise',
+    title: 'Banking, Clearing & Enterprise',
+    icon: Building,
+    compliance: 'FIPS 140-3 · ISO 27001 · Data Localization',
+    desc: 'Air-gapped Tier IV datacenter repatriation, hardware HSM signing modules, low-latency RTGS settlement rings, and biometric access governance.',
+    highlights: [
+      'Sub-2ms synchronous dark fiber database replication',
+      'On-premise repatriation removing foreign public-cloud risk',
+    ],
+    servicePath: '/services/physical-infrastructure',
+    serviceLabel: 'Physical Infrastructure',
+  },
+  {
+    id: 'healthcare',
+    code: 'Sector 02 · Clinical Infrastructure',
+    title: 'Healthcare & Medical Diagnostics',
+    icon: Hospital,
+    compliance: 'HIPAA · HL7/FHIR · DICOM PACS',
+    desc: 'Redundant hospital fiber backbones, zero-latency radiology PACS imaging storage arrays, VLAN-segmented biomedical sensors, and failsafe power routing.',
+    highlights: [
+      '40G multi-wing optical cores preventing workstation congestion',
+      'Isolated clinical device networks separated from guest Wi-Fi',
+    ],
+    servicePath: '/services/digital-engineering',
+    serviceLabel: 'Digital Engineering',
+  },
+  {
+    id: 'logistics',
+    code: 'Sector 03 · Supply Chain & Freight',
+    title: 'Logistics, Ports & Cold-Chain Fleet',
+    icon: Factory,
+    compliance: 'NEMA-4X · TIA-568-D · 24/7 Edge Continuity',
+    desc: 'High-density warehouse wireless surveys, ruggedized conveyor PLC bridges, solar perimeter camera telemetry, and automated dock dispatch dashboards.',
+    highlights: [
+      'LTE/5G out-of-band failover during regional ISP outages',
+      'Sub-10ms barcode scanning to ERP stock ledger updates',
+    ],
+    servicePath: '/services/field-engineering',
+    serviceLabel: 'Field Engineering',
+  },
+  {
+    id: 'technology',
+    code: 'Sector 04 · Cloud & Telecom',
+    title: 'Technology Providers & Telecom Carriers',
+    icon: Server,
+    compliance: 'EVPN-VXLAN · 800G DWDM · SRE',
+    desc: 'Coherent optical fiber re-splicing, BGP Anycast edge cores, distributed Go/Rust backend clusters, and follow-the-sun SRE custody.',
+    highlights: [
+      'Core-alignment fusion splicing <= 0.03 dB mean loss',
+      'Multi-region Kubernetes orchestration with OpenTelemetry',
+    ],
+    servicePath: '/services/managed-sre',
+    serviceLabel: '24/7 Managed SRE',
+  },
+  {
+    id: 'retail',
+    code: 'Sector 05 · Distributed Commerce',
+    title: 'Multi-Site Retail & Flagship Commerce',
+    icon: Store,
+    compliance: 'PCI-DSS Segmentation · SD-WAN',
+    desc: 'Distributed POS resilience across hundreds of retail branches, centralized NVR surveillance archiving, and real-time omnichannel inventory sync.',
+    highlights: [
+      'Zero-downtime WireGuard branch VPN provisioning',
+      'Offline-first local checkout reconciliation queues',
+    ],
+    servicePath: '/services/automation-intelligence',
+    serviceLabel: 'Automation & AI',
+  },
+  {
+    id: 'education',
+    code: 'Sector 06 · Universities & Research',
+    title: 'Higher Education & Research Campuses',
+    icon: GraduationCap,
+    compliance: 'High-Density Wi-Fi 6/7 · 100G Optical Backbones',
+    desc: 'Campus-wide optical ring topologies, localized research GPU clusters, sovereign student records custody, and automated access governance.',
+    highlights: [
+      'Multi-building single-mode OS2 conduit trunks',
+      'Air-gapped AI compute pools keeping research IP local',
+    ],
+    servicePath: '/services/physical-infrastructure',
+    serviceLabel: 'Physical Infrastructure',
+  },
+  {
+    id: 'hospitality',
+    code: 'Sector 07 · Commercial Venues',
+    title: 'Hospitality & Smart Commercial Venues',
+    icon: Globe,
+    compliance: 'NDAA Surveillance · Property PMS Bridges',
+    desc: 'Property-wide high-availability networking, keyless access integration, isolated guest captive portals, and centralized operations monitoring.',
+    highlights: [
+      'Unified multi-property uptime visibility from dual hubs',
+      '4-hour regional break-fix field maintenance coverage',
+    ],
+    servicePath: '/services/managed-sre',
+    serviceLabel: '24/7 Managed SRE',
+  },
+];
 
 export default function Industries() {
   return (
     <div className="flex flex-col w-full">
-      <section className="relative w-full bg-surface-container-lowest overflow-hidden px-margin-mobile lg:px-margin py-space-xl lg:py-24">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-primary-container/10 blur-3xl pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto relative z-10 space-y-space-md text-center">
-          <div className="inline-flex items-center gap-space-xs px-space-sm py-1 bg-surface-container-high rounded-DEFAULT text-secondary shadow-sm">
-            <Globe size={14} />
-            <span className="font-label-sm text-label-sm tracking-widest uppercase">VERTICAL IMPLEMENTATIONS</span>
+      {/* Header */}
+      <section className="w-full bg-surface-container-lowest border-b border-outline/20 py-14 lg:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <Breadcrumbs items={[{ label: 'Industries' }]} />
+          <div className="max-w-3xl space-y-4">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                <Globe size={14} />
+                <span>Mission-Critical Industry Verticals</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-on-surface tracking-tight leading-tight">
+                Engineered for Regulated, Uptime-Critical Industries
+              </h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+                From sovereign financial settlement and national energy grids to automated cold-chain warehouses, MIHORA.TECH adapts hardware containment and distributed software to strict sector rules.
+              </p>
+            </Reveal>
           </div>
-          <h1 className="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight leading-none">
-            Sectors &amp; <span className="text-secondary-container">Industries.</span>
-          </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-            Our sovereign engineering framework scales across any domain requiring absolute systemic reliability and secure hardware integration.
-          </p>
         </div>
       </section>
 
-      <section className="w-full bg-surface px-margin-mobile lg:px-margin py-space-xl">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
-          {[
-            { id: "healthcare", title: "Healthcare & Diagnostics", icon: Hospital, desc: "HIPAA-compliant hospital network backbones, patient telemetry ingestion, low-latency PACS imaging servers, and on-site biomed equipment connectivity.", tag: "REDUNDANT FAILSAFE RACKS" },
-            { id: "logistics", title: "Logistics & Fleet Rigs", icon: Factory, desc: "Automated warehouse Wi-Fi 6 meshes, RFID scanner gateways, edge barcode validation algorithms, and vehicle fleet dispatch telemetry.", tag: "RUGGEDIZED IoT SENSORS" },
-            { id: "retail", title: "Retail & Commerce", icon: Store, desc: "Distributed POS networks across hundreds of sites, surveillance CCTV security grids, guest portal captive gateways, and unified inventory synchronization.", tag: "MULTI-LOCATION SD-WAN" },
-            { id: "education", title: "Education & Research", icon: GraduationCap, desc: "High-density campus wireless infrastructures, high-performance compute clusters for academic research, and fiber trunk backbones.", tag: "10GBPS CAMPUS BACKBONES" },
-            { id: "technology", title: "Technology & SaaS", icon: Server, desc: "Autonomous CI/CD engines, distributed database partitioning, multi-region Kubernetes cloud fleets, and bespoke developer APIs.", tag: "HYBRID MULTI-CLOUD" },
-            { id: "enterprise", title: "Enterprise & Finance", icon: Building, desc: "Air-gapped server installations, zero-trust network access, encrypted inter-branch fiber rings, and physical biometric entry controllers.", tag: "ZERO-TRUST COMPLIANCE" },
-            { id: "hospitality", title: "Hospitality", icon: Globe, desc: "End-to-end guest Wi-Fi architectures, multi-site operational management software, and physical access control integrators.", tag: "MULTI-SITE OPERATIONS" }
-          ].map((ind, i) => (
-            <div key={i} id={ind.id} className="bg-surface-container-low p-space-lg rounded-DEFAULT space-y-space-sm hover:bg-surface-container transition-all shadow-md scroll-mt-24">
-              <div className="flex items-center justify-between text-secondary">
-                <ind.icon size={32} />
-                <span className="font-label-sm text-label-sm font-mono text-outline">SEC_0{i+1}</span>
-              </div>
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold uppercase">{ind.title}</h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant">{ind.desc}</p>
-              <div className="text-xs font-mono text-secondary-container pt-space-xs">DEPLOYMENT: {ind.tag}</div>
-            </div>
-          ))}
+      {/* Sectors Grid */}
+      <section className="w-full bg-surface py-16 px-4 sm:px-6 lg:px-8 border-b border-outline/20">
+        <div className="max-w-7xl mx-auto">
+          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {INDUSTRY_SECTORS.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <StaggerItem key={ind.id}>
+                  <article
+                    id={ind.id}
+                    className="scroll-mt-24 bg-surface-container-lowest p-7 rounded-2xl border border-outline/25 flex flex-col justify-between space-y-6 h-full hover:border-primary/40 transition-colors"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                          <Icon size={22} />
+                        </div>
+                        <span className="font-mono text-xs text-primary font-semibold">{ind.code}</span>
+                      </div>
+
+                      <div className="space-y-1">
+                        <h2 className="font-headline text-xl font-bold text-on-surface">{ind.title}</h2>
+                        <div className="font-mono text-[11px] text-on-surface-variant uppercase tracking-wider">
+                          {ind.compliance}
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-on-surface-variant leading-relaxed">{ind.desc}</p>
+
+                      <div className="space-y-2 pt-2 border-t border-outline/15">
+                        {ind.highlights.map((h) => (
+                          <div key={h} className="flex items-start gap-2 text-xs text-on-surface">
+                            <CheckCircle2 size={14} className="text-primary mt-0.5 shrink-0" />
+                            <span>{h}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-outline/15 flex items-center justify-between text-xs font-semibold">
+                      <Link to={ind.servicePath} className="text-primary hover:underline inline-flex items-center gap-1">
+                        <span>{ind.serviceLabel}</span>
+                        <ArrowRight size={13} />
+                      </Link>
+                      <Link to="/case-studies" className="text-on-surface-variant hover:text-on-surface">
+                        Benchmarks →
+                      </Link>
+                    </div>
+                  </article>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGrid>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="w-full bg-surface-container-low py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <h2 className="font-headline text-2xl font-extrabold text-on-surface">
+            Operating in a Specialized or Air-Gapped Environment?
+          </h2>
+          <p className="text-sm sm:text-base text-on-surface-variant">
+            Share your compliance mandates and latency constraints with our systems engineering leads.
+          </p>
+          <div className="pt-2 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/solutions#sovereign-rfp-builder"
+              className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg"
+            >
+              Configure System BOM
+            </Link>
+            <Link
+              to="/contact"
+              className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
+            >
+              <span>Request Technical Scoping</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

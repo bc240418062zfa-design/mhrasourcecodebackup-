@@ -99,12 +99,9 @@ export function LiveIndustryNews() {
         {/* Header Bar */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-sm pb-space-xs border-b border-outline/20">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-lg text-primary font-mono text-xs font-bold uppercase tracking-widest border border-outline/30">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>GOOGLE SEARCH GROUNDED DISPATCHES • LAST 30 DAYS</span>
+            <div className="inline-flex items-center gap-2 text-primary font-mono text-xs font-semibold uppercase tracking-widest">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              <span>Google Search Grounded Dispatches · Last 30 Days</span>
             </div>
             <h2 className="font-headline-lg text-headline-lg font-extrabold uppercase tracking-wide text-on-surface">
               Latest Industry News &amp; Sovereign Whitepapers
@@ -208,7 +205,7 @@ export function LiveIndustryNews() {
                   {item.keyFinding && (
                     <div className="p-2.5 bg-surface-container-low rounded-xl border border-outline/20 space-y-1">
                       <div className="font-mono text-[10px] text-primary uppercase font-bold tracking-wider">
-                        // QUANTITATIVE BENCHMARK / KEY SPEC
+                        Verified Benchmark · Key Spec
                       </div>
                       <div className="font-mono text-xs text-on-surface font-semibold">
                         {item.keyFinding}

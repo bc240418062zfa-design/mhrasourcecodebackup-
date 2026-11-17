@@ -347,7 +347,7 @@ export function SovereignRfpBuilder() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs border-b border-outline/20 pb-space-xs">
                 <div>
                   <span className="text-[11px] font-mono text-primary font-bold tracking-widest uppercase">
-                    // OFFICIAL ARCHITECTURE SPECIFICATION
+                    Official Architecture Specification
                   </span>
                   <h3 className="font-headline-md text-headline-md text-on-surface font-black">
                     Sovereign Infrastructure Bill of Materials
