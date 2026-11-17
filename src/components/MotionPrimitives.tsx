@@ -29,7 +29,7 @@ export const ScrollProgressBar: React.FC = () => {
   );
 };
 
-/* 2. Editorial Masked Display Typography Reveal */
+/* 2. Editorial Masked Display Typography Reveal (never traps h1/h2 invisible) */
 interface MaskTextRevealProps {
   children: React.ReactNode;
   className?: string;
@@ -48,23 +48,22 @@ export const MaskTextReveal: React.FC<MaskTextRevealProps> = ({
   }
 
   return (
-    <div className={`overflow-hidden ${className}`}>
-      <motion.div
-        initial={{ y: '100%', opacity: 0 }}
-        animate={{ y: '0%', opacity: 1 }}
-        transition={{
-          duration: 0.62,
-          delay: Math.min(delay, 0.15),
-          ease: [0.16, 1, 0.3, 1],
-        }}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      initial={{ y: 12, opacity: 1 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.48,
+        delay: Math.min(delay, 0.12),
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 };
 
-/* 3. Directional Architectural Entrance Reveal */
+/* 3. Directional Architectural Entrance Reveal (with deterministic visibility guarantee) */
 interface RevealProps {
   children: React.ReactNode;
   className?: string;
@@ -78,13 +77,21 @@ export const Reveal: React.FC<RevealProps> = ({
   delay = 0,
   direction = 'up',
 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isInView = useInView(ref, { once: true, amount: 'some' });
+  const [settled, setSettled] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setSettled(true), 520);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const offsets = {
-    up: { y: 18, x: 0 },
-    down: { y: -18, x: 0 },
-    left: { x: 22, y: 0 },
-    right: { x: -22, y: 0 },
+    up: { y: 16, x: 0 },
+    down: { y: -16, x: 0 },
+    left: { x: 18, y: 0 },
+    right: { x: -18, y: 0 },
     none: { x: 0, y: 0 },
   };
 
@@ -92,12 +99,14 @@ export const Reveal: React.FC<RevealProps> = ({
     return <div className={className}>{children}</div>;
   }
 
+  const visible = isInView || settled;
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.99, ...offsets[direction] }}
-      whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-      viewport={{ once: true, amount: 0.02 }}
-      transition={{ duration: 0.52, delay: Math.min(delay, 0.25), ease: [0.16, 1, 0.3, 1] }}
+      ref={ref}
+      initial={{ opacity: 0.2, scale: 0.99, ...offsets[direction] }}
+      animate={visible ? { opacity: 1, scale: 1, x: 0, y: 0 } : undefined}
+      transition={{ duration: 0.45, delay: Math.min(delay, 0.2), ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -105,7 +114,7 @@ export const Reveal: React.FC<RevealProps> = ({
   );
 };
 
-/* 4. Staggered Grid Choreography */
+/* 4. Staggered Grid Choreography (guaranteed visible above or below fold) */
 interface StaggerGridProps {
   children: React.ReactNode;
   className?: string;
@@ -115,9 +124,17 @@ interface StaggerGridProps {
 export const StaggerGrid: React.FC<StaggerGridProps> = ({
   children,
   className = '',
-  staggerDelay = 0.065,
+  staggerDelay = 0.055,
 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
+  const isInView = useInView(ref, { once: true, amount: 'some' });
+  const [settled, setSettled] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setSettled(true), 560);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>;
@@ -125,9 +142,9 @@ export const StaggerGrid: React.FC<StaggerGridProps> = ({
 
   return (
     <motion.div
+      ref={ref}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.08 }}
+      animate={isInView || settled ? 'visible' : 'hidden'}
       variants={{
         hidden: {},
         visible: {
@@ -158,12 +175,12 @@ export const StaggerItem: React.FC<StaggerItemProps> = ({ children, className = 
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20, scale: 0.98 },
+        hidden: { opacity: 0.2, y: 16, scale: 0.985 },
         visible: {
           opacity: 1,
           y: 0,
           scale: 1,
-          transition: { duration: 0.52, ease: [0.16, 1, 0.3, 1] },
+          transition: { duration: 0.46, ease: [0.16, 1, 0.3, 1] },
         },
       }}
       className={className}
@@ -188,11 +205,11 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   decimals = 0,
   prefix = '',
   suffix = '',
-  durationMs = 1150,
+  durationMs = 1050,
   className = '',
 }) => {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.35 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const shouldReduceMotion = useReducedMotion();
   const [displayValue, setDisplayValue] = useState<number>(target);
 
@@ -237,7 +254,7 @@ export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   );
 };
 
-/* 6. Scroll-Scrubbed Parallax & Scale Bloom Frame */
+/* 6. Scroll-Scrubbed Parallax & Scale Bloom Frame (geometry-locked so images never collapse) */
 interface ParallaxFrameProps {
   children: React.ReactNode;
   className?: string;
@@ -248,8 +265,8 @@ interface ParallaxFrameProps {
 export const ParallaxFrame: React.FC<ParallaxFrameProps> = ({
   children,
   className = '',
-  offset = 24,
-  scaleRange = [1.04, 1],
+  offset = 14,
+  scaleRange = [1.07, 1.01],
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -261,12 +278,15 @@ export const ParallaxFrame: React.FC<ParallaxFrameProps> = ({
   const scale = useTransform(scrollYProgress, [0, 1], scaleRange);
 
   if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
+    return <div className={`relative overflow-hidden ${className}`}>{children}</div>;
   }
 
   return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
-      <motion.div style={{ y, scale }} className="w-full h-full will-change-transform">
+    <div ref={ref} className={`relative overflow-hidden ${className}`}>
+      <motion.div
+        style={{ y, scale }}
+        className="absolute inset-0 w-full h-full will-change-transform"
+      >
         {children}
       </motion.div>
     </div>

@@ -334,18 +334,33 @@ Source: https://mihora.tech/services`;
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 bg-white/[0.04] p-5 rounded-2xl border border-white/15 space-y-2.5 text-xs font-mono backdrop-blur-md">
-              <div className="flex justify-between">
-                <span className="text-slate-400">Registered Capabilities</span>
-                <span className="font-bold text-white">29 Verified Specs</span>
+            <div className="lg:col-span-4 space-y-3">
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/15 bg-[#080d18]">
+                <img
+                  src={VISUAL_ASSETS.opticalLabSplicing}
+                  alt="MIHORA.TECH OS2 core-alignment optical splicing verification bench"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/85 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-3.5 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                    TIA-568-D &middot; &le; 0.03 dB Labs
+                  </span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Operating Hubs</span>
-                <span className="font-bold text-white">London + Islamabad</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Service Objective</span>
-                <span className="font-bold text-amber-400">99.999% Availability</span>
+              <div className="bg-white/[0.04] p-5 rounded-2xl border border-white/15 space-y-2.5 text-xs font-mono backdrop-blur-md">
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Registered Capabilities</span>
+                  <span className="font-bold text-white">29 Verified Specs</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Operating Hubs</span>
+                  <span className="font-bold text-white">London + Islamabad</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Service Objective</span>
+                  <span className="font-bold text-amber-400">99.999% Availability</span>
+                </div>
               </div>
             </div>
           </div>
@@ -620,7 +635,6 @@ Source: https://mihora.tech/services`;
                 className="w-full h-80 lg:h-96 object-cover"
                 alt="Optical switch rack termination certified by MIHORA.TECH"
                 src={VISUAL_ASSETS.fiberOpticsHardware}
-                loading="lazy"
               />
               <div className="p-4 flex items-center justify-between text-xs border-t border-outline/20">
                 <div>

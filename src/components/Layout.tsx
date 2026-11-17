@@ -239,11 +239,10 @@ export default function Layout() {
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'cyber' : 'light';
-    setTheme(newTheme);
-    localStorage.setItem('mihora-theme', newTheme);
-    if (newTheme === 'cyber') {
+  const applyTheme = (targetTheme: 'cyber' | 'light') => {
+    setTheme(targetTheme);
+    localStorage.setItem('mihora-theme', targetTheme);
+    if (targetTheme === 'cyber') {
       document.documentElement.setAttribute('data-theme', 'cyber');
       document.documentElement.classList.add('dark');
       document.documentElement.classList.remove('light');
@@ -432,20 +431,44 @@ export default function Layout() {
                 </kbd>
               </button>
 
-              <button
-                id="theme-toggle-header-btn"
-                onClick={toggleTheme}
-                className="p-2 bg-surface-container/75 hover:bg-surface-container border border-outline/25 text-on-surface-variant hover:text-on-surface rounded-lg transition-all cursor-pointer shrink-0"
-                type="button"
-                aria-label={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} mode`}
-                title={`Theme: ${theme === 'light' ? 'Daylight' : 'Obsidian'}`}
+              <div
+                role="group"
+                aria-label="Color theme switcher"
+                className="inline-flex items-center p-0.5 rounded-full bg-surface-container border border-outline/30 shrink-0"
               >
-                {theme === 'light' ? (
-                  <Moon size={15} className="text-primary shrink-0" />
-                ) : (
-                  <Sun size={15} className="text-amber-400 shrink-0" />
-                )}
-              </button>
+                <button
+                  id="theme-toggle-light-btn"
+                  type="button"
+                  onClick={() => applyTheme('light')}
+                  aria-pressed={theme === 'light'}
+                  aria-label="Activate Light theme"
+                  className={clsx(
+                    'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap',
+                    theme === 'light'
+                      ? 'bg-surface-container-lowest text-primary shadow-sm'
+                      : 'text-on-surface-variant hover:text-on-surface'
+                  )}
+                >
+                  <Sun size={13} className="shrink-0" />
+                  <span className="hidden xl:inline">Light</span>
+                </button>
+                <button
+                  id="theme-toggle-header-btn"
+                  type="button"
+                  onClick={() => applyTheme('cyber')}
+                  aria-pressed={theme === 'cyber'}
+                  aria-label="Activate Dark Obsidian theme"
+                  className={clsx(
+                    'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap',
+                    theme === 'cyber'
+                      ? 'bg-surface-container-lowest text-amber-400 shadow-sm'
+                      : 'text-on-surface-variant hover:text-on-surface'
+                  )}
+                >
+                  <Moon size={13} className="shrink-0" />
+                  <span className="hidden xl:inline">Dark</span>
+                </button>
+              </div>
 
               <Link
                 to="/contact"
@@ -819,20 +842,11 @@ export default function Layout() {
         )}
       </AnimatePresence>
 
-      {/* Main Content Landmark */}
-      <main id="main-content" className="w-full pt-16 bg-surface min-h-screen flex-1 overflow-x-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full"
-          >
-            <Outlet />
-          </motion.div>
-        </AnimatePresence>
+      {/* Main Content Landmark (overflow-x-clip preserves position:sticky across all pages) */}
+      <main id="main-content" className="w-full pt-16 bg-surface min-h-screen flex-1 overflow-x-clip">
+        <div key={location.pathname} className="w-full">
+          <Outlet />
+        </div>
       </main>
 
       {/* Authoritative 5-Column Obsidian Atelier Footer */}

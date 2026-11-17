@@ -7,6 +7,7 @@ import {
   Mail, ShieldCheck, Layers, ArrowRight, CheckCircle2, ChevronRight
 } from 'lucide-react';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 import { SovereignRfpBuilder } from '../components/SovereignRfpBuilder';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Reveal, StaggerGrid, StaggerItem, AnimatedCounter, MaskTextReveal, SpotlightSurface } from '../components/MotionPrimitives';
@@ -286,10 +287,19 @@ Contact: hr@mihora.tech`;
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 bg-white/[0.04] p-6 rounded-2xl border border-white/15 space-y-4 backdrop-blur-md">
-              <div className="flex items-center justify-between border-b border-white/15 pb-3">
-                <span className="font-mono text-xs font-bold uppercase text-amber-400">Delivery Profile</span>
-                <Network className="text-amber-400" size={18} />
+            <div className="lg:col-span-4 bg-white/[0.04] p-5 rounded-2xl border border-white/15 space-y-4 backdrop-blur-md">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-white/15">
+                <img
+                  src={VISUAL_ASSETS.sovereignCommandHub}
+                  alt="MIHORA.TECH Dual-Hub Architecture Operations Console"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/80 via-transparent to-transparent" />
+                  <span className="absolute bottom-2 left-3 font-mono text-[11px] font-bold uppercase text-amber-400">
+                    Delivery Profile · Active Custody
+                  </span>
+                </div>
               </div>
               <div className="grid grid-cols-2 divide-x divide-white/15 border border-white/15 bg-black/30 rounded-xl font-mono overflow-hidden">
                 <div className="p-3.5">

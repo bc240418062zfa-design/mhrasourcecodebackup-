@@ -161,7 +161,6 @@ export default function OurStory() {
                     src={VISUAL_ASSETS.londonCommandStudio}
                     alt="London City Road architecture command hub"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    loading="lazy"
                   />
                 </div>
                 <div className="p-7 space-y-4 flex-1 flex flex-col justify-between">
@@ -196,7 +195,6 @@ export default function OurStory() {
                     src={VISUAL_ASSETS.islamabadEngineeringHub}
                     alt="Islamabad Blue Area systems engineering and optical calibration studio"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    loading="lazy"
                   />
                 </div>
                 <div className="p-7 space-y-4 flex-1 flex flex-col justify-between">

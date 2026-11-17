@@ -5,6 +5,7 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 import { Reveal, MaskTextReveal } from '../components/MotionPrimitives';
 
 interface SystemNode {
@@ -196,16 +197,35 @@ export default function Status() {
               <div className="text-[10px] text-slate-400">Cold Aisle Contained</div>
             </div>
 
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">Edge Throughput</div>
-              <div className="text-lg font-extrabold text-on-surface">{telemetryValues.activeThroughput} Tbps</div>
-              <div className="text-[10px] text-on-surface-variant">Line-Rate BGP Anycast</div>
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">Edge Throughput</div>
+              <div className="text-lg font-extrabold text-white tabular-nums">{telemetryValues.activeThroughput} Tbps</div>
+              <div className="text-[10px] text-slate-400">Line-Rate BGP Anycast</div>
             </div>
 
-            <div className="p-3.5 bg-surface-container rounded-xl border border-outline/20 space-y-1">
-              <div className="text-[10px] text-on-surface-variant uppercase font-semibold">SRE Watchdesk</div>
-              <div className="text-lg font-extrabold text-primary">Active</div>
-              <div className="text-[10px] text-on-surface-variant">Dual 24/7 Command</div>
+            <div className="p-3.5 bg-black/45 rounded-xl border border-white/15 space-y-1">
+              <div className="text-[10px] text-slate-400 uppercase font-semibold">SRE Watchdesk</div>
+              <div className="text-lg font-extrabold text-emerald-400">Active</div>
+              <div className="text-[10px] text-slate-400">Dual 24/7 Command</div>
+            </div>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden border border-white/15 aspect-[16/5] sm:aspect-[21/5] bg-[#080d18]">
+            <img
+              src={VISUAL_ASSETS.sovereignCommandHub}
+              alt="MIHORA.TECH Dual-Hub Network Operations Command Desk in London and Islamabad"
+              className="w-full h-full object-cover"
+            />
+            <div data-photo-overlay="true" className="contents">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#060a14]/90 via-[#060a14]/55 to-transparent" />
+              <div className="absolute inset-y-0 left-5 sm:left-7 flex flex-col justify-center space-y-1 max-w-lg">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
+                  Watchdesk Visual Telemetry · UK-LON-01 ↔ PK-ISB-01
+                </span>
+                <span className="font-headline text-base sm:text-xl font-bold text-white">
+                  Continuous 24/7/365 NOC &amp; Physical OTDR Monitoring
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -272,7 +292,7 @@ export default function Status() {
                     <span>Today</span>
                   </div>
 
-                  <div className="grid grid-cols-45 gap-1 h-7">
+                  <div className="grid gap-1 h-7" style={{ gridTemplateColumns: 'repeat(45, minmax(0, 1fr))' }}>
                     {Array.from({ length: 45 }).map((_, idx) => (
                       <div
                         key={idx}

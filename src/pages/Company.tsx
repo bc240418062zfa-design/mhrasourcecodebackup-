@@ -130,7 +130,6 @@ export default function Company() {
                         alt="M. Matti ul Hasnain, Co-Founder and Principal Systems Architect of MIHORA.TECH"
                         width={80}
                         height={80}
-                        loading="lazy"
                         className="w-20 h-20 rounded-2xl object-cover border border-outline/25 shrink-0 shadow-md"
                       />
                       <div className="text-right font-mono text-xs">
@@ -170,7 +169,6 @@ export default function Company() {
                         alt="Omema Iqbal, Co-Founder and Operations Director of MIHORA.TECH"
                         width={80}
                         height={80}
-                        loading="lazy"
                         className="w-20 h-20 rounded-2xl object-cover border border-outline/25 shrink-0 shadow-md"
                       />
                       <div className="text-right font-mono text-xs">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Globe, Plane, Home, Send, CheckCircle2, X, Briefcase, ArrowRight } from 'lucide-react';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { SEOHead } from '../components/SEOHead';
 import {
@@ -85,10 +86,24 @@ export default function Careers() {
               </Reveal>
             </div>
 
-            <div className="lg:col-span-5 bg-white/[0.04] backdrop-blur-md p-6 sm:p-7 rounded-2xl space-y-4 border border-white/15">
-              <div className="text-amber-400 font-mono font-semibold uppercase text-xs tracking-wider">
-                Open Engineering Roles (Select to Apply)
+            <div className="lg:col-span-5 space-y-4">
+              <div className="relative aspect-[16/8] rounded-2xl overflow-hidden border border-white/15 bg-[#080d18]">
+                <img
+                  src={VISUAL_ASSETS.islamabadEngineeringHub}
+                  alt="MIHORA.TECH Engineering Labs and Systems Architecture Studio"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/85 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-4 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                    London City Road &middot; Islamabad Blue Area
+                  </span>
+                </div>
               </div>
+              <div className="bg-white/[0.04] backdrop-blur-md p-6 sm:p-7 rounded-2xl space-y-4 border border-white/15">
+                <div className="text-amber-400 font-mono font-semibold uppercase text-xs tracking-wider">
+                  Open Engineering Roles (Select to Apply)
+                </div>
               <div className="space-y-2.5">
                 {OPEN_CADRES.map((cadre) => (
                   <button
@@ -113,6 +128,7 @@ export default function Careers() {
                     </div>
                   </button>
                 ))}
+              </div>
               </div>
             </div>
           </div>

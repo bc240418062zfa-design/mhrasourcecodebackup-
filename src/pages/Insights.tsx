@@ -10,6 +10,7 @@ import { SEOHead } from '../components/SEOHead';
 import { Reveal, StaggerGrid, StaggerItem } from '../components/MotionPrimitives';
 import { LiveIndustryNews } from '../components/LiveIndustryNews';
 import { CaseStudiesSection } from '../components/CaseStudiesSection';
+import { VISUAL_ASSETS } from '../assets/visuals';
 
 interface InsightArticle {
   id: string;
@@ -370,25 +371,38 @@ Summary: ${article.summary}`;
             {/* Featured Paper Hero Card */}
             <div
               onClick={() => handleOpenArticle('featured')}
-              className="lg:col-span-7 bg-surface-container-low p-7 sm:p-8 rounded-2xl space-y-6 flex flex-col justify-between border border-outline/25 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer group"
+              className="lg:col-span-7 bg-surface-container-low rounded-2xl overflow-hidden flex flex-col justify-between border border-outline/25 hover:border-primary/50 hover:shadow-lg transition-all cursor-pointer group"
             >
-              <div className="space-y-3">
-                <div className="flex items-center gap-3 flex-wrap text-xs font-mono">
-                  <span className="px-2.5 py-0.5 bg-primary text-white font-semibold rounded-md uppercase tracking-wider">
-                    Featured Research
+              <div className="relative aspect-[21/9] w-full overflow-hidden border-b border-outline/15">
+                <img
+                  src={VISUAL_ASSETS.fiberOpticsHardware}
+                  alt="High-density ClearCurve optical fiber raceway telemetry instrumentation"
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                    PUB ID: ARCH-2025-09 &middot; Empirical Fiber &amp; Jitter Telemetry
                   </span>
-                  <span className="text-on-surface-variant">PUB ID: ARCH-2025-09</span>
-                  <span className="text-secondary font-semibold">· 14 min read</span>
                 </div>
-                <h2 className="font-headline text-2xl sm:text-3xl text-on-surface font-extrabold group-hover:text-primary transition-colors leading-snug">
-                  Physical Layer Determinism in Distributed Micro-Datacenters
-                </h2>
-                <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">
-                  An exhaustive architectural evaluation of how thermal harmonic variances and structured optical cable bending radii degrade packet jitter in real-world high-frequency trading and algorithmic routing systems.
-                </p>
               </div>
+              <div className="p-7 sm:p-8 space-y-5 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 flex-wrap text-xs font-mono">
+                    <span className="px-2.5 py-0.5 bg-primary text-white font-semibold rounded-md uppercase tracking-wider">
+                      Featured Research
+                    </span>
+                    <span className="text-secondary font-semibold">· 14 min read</span>
+                  </div>
+                  <h2 className="font-headline text-2xl sm:text-3xl text-on-surface font-extrabold group-hover:text-primary transition-colors leading-snug">
+                    Physical Layer Determinism in Distributed Micro-Datacenters
+                  </h2>
+                  <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+                    An exhaustive architectural evaluation of how thermal harmonic variances and structured optical cable bending radii degrade packet jitter in real-world high-frequency trading and algorithmic routing systems.
+                  </p>
+                </div>
 
-              <div className="pt-5 border-t border-outline/15 flex items-center justify-between gap-4 font-mono text-xs">
+                <div className="pt-5 border-t border-outline/15 flex items-center justify-between gap-4 font-mono text-xs">
                 <span className="text-on-surface-variant font-semibold">MIHORA R&amp;D Labs · London Hub</span>
                 <button
                   type="button"
@@ -401,6 +415,7 @@ Summary: ${article.summary}`;
                   <span>Read Dissertation</span>
                   <ArrowUpRight size={14} />
                 </button>
+              </div>
               </div>
             </div>
 

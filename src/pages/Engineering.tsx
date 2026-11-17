@@ -379,7 +379,6 @@ export default function Engineering() {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         alt={item.alt}
                         src={item.img}
-                        loading="lazy"
                       />
                     </div>
                     <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">

@@ -3,6 +3,7 @@ import {
   Factory, Hospital, Store, GraduationCap, Server, Building, Globe, ArrowRight, CheckCircle2
 } from 'lucide-react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { VISUAL_ASSETS } from '../assets/visuals';
 import { Reveal, StaggerGrid, StaggerItem, MaskTextReveal, SpotlightSurface } from '../components/MotionPrimitives';
 
 const INDUSTRY_SECTORS = [
@@ -113,23 +114,41 @@ export default function Industries() {
       <section className="w-full obsidian-band obsidian-grid border-b border-white/10 py-14 lg:py-22 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-6">
           <Breadcrumbs items={[{ label: 'Industries' }]} />
-          <div className="max-w-3xl space-y-4">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
-                <Globe size={14} />
-                <span>Mission-Critical Industry Verticals</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
+                  <Globe size={14} />
+                  <span>Mission-Critical Industry Verticals</span>
+                </div>
+              </Reveal>
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+                  Engineered for Regulated, Uptime-Critical Industries
+                </h1>
+              </MaskTextReveal>
+              <Reveal delay={0.1}>
+                <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+                  From sovereign financial settlement and national energy grids to automated cold-chain warehouses, MIHORA.TECH adapts hardware containment and distributed software to strict sector rules.
+                </p>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
+                <img
+                  src={VISUAL_ASSETS.fieldEngineeringEdge}
+                  alt="Hardened industrial NEMA-4X SCADA and optical edge containment unit"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between font-mono text-[11px]">
+                    <span className="text-amber-400 font-bold uppercase">7 Vertical Architectures</span>
+                    <span className="text-slate-200">ISO 27001 / FIPS 140-3</span>
+                  </div>
+                </div>
               </div>
-            </Reveal>
-            <MaskTextReveal delay={0.05}>
-              <h1 className="font-headline font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-                Engineered for Regulated, Uptime-Critical Industries
-              </h1>
-            </MaskTextReveal>
-            <Reveal delay={0.1}>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-                From sovereign financial settlement and national energy grids to automated cold-chain warehouses, MIHORA.TECH adapts hardware containment and distributed software to strict sector rules.
-              </p>
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Building2, CheckCircle2 } from 'lucide-react';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 
 interface CaseStudy {
   id: string;
   tag: string;
   title: string;
   clientSector: string;
+  image: string;
+  imageAlt: string;
   summary: string;
   challenge: string;
   solution: string;
@@ -20,6 +23,8 @@ const CASE_STUDIES: CaseStudy[] = [
     tag: 'Banking & Financial Infrastructure',
     title: 'National Interbank Real-Time Gross Settlement (RTGS) Sovereign Transition',
     clientSector: 'Central Banking Consortium & Tier-1 Financial Institution',
+    image: VISUAL_ASSETS.securityHsmVault,
+    imageAlt: 'Hardened cryptographic HSM server cage housing active-active RTGS clusters',
     summary:
       'Complete repatriation of core clearing transactions from offshore public cloud back into an air-gapped, high-availability on-premise datacenter ring.',
     challenge:
@@ -43,6 +48,8 @@ const CASE_STUDIES: CaseStudy[] = [
     tag: 'Physical Datacenter & Optical Fiber',
     title: '1,400 km Trans-Continental 800G DWDM Coherent Optical Backbone',
     clientSector: 'National Telecommunications Carrier & Enterprise Carrier Transport',
+    image: VISUAL_ASSETS.opticalLabSplicing,
+    imageAlt: 'Core-alignment single-mode fusion splicing bench achieving sub-0.03 dB attenuation',
     summary:
       'Physical restoration and core-alignment re-splicing of national long-haul dark fiber routes to enable coherent 800G PAM4 wave division multiplexing.',
     challenge:
@@ -66,6 +73,8 @@ const CASE_STUDIES: CaseStudy[] = [
     tag: 'Energy Grid & Industrial SCADA',
     title: 'Sovereign Electrical Grid SCADA Telemetry & EMP-Resistant Command Bus',
     clientSector: 'National Energy Grid & Critical Industrial Infrastructure Authority',
+    image: VISUAL_ASSETS.fieldEngineeringEdge,
+    imageAlt: 'Industrial edge NEMA-4X optical diode enclosure for electrical substations',
     summary:
       'Hardware-level cyber-hardening, physical air-gap containment, and unidirectional data diode engineering for high-voltage power substations.',
     challenge:
@@ -145,19 +154,36 @@ export function CaseStudiesSection() {
         </div>
 
         <div className="p-6 sm:p-8 bg-surface-container-lowest rounded-2xl border border-outline/25 space-y-6 shadow-sm">
-          <div className="space-y-2 border-b border-outline/15 pb-5">
-            <div className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
-              {activeCase.tag}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center border-b border-outline/15 pb-6">
+            <div className="lg:col-span-7 space-y-2">
+              <div className="font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                {activeCase.tag}
+              </div>
+              <h3 className="font-headline text-xl sm:text-2xl text-on-surface font-extrabold">
+                {activeCase.title}
+              </h3>
+              <p className="font-mono text-xs text-on-surface-variant font-medium">
+                Engagement Sector: {activeCase.clientSector}
+              </p>
+              <p className="text-sm sm:text-base text-on-surface-variant pt-1 leading-relaxed">
+                {activeCase.summary}
+              </p>
             </div>
-            <h3 className="font-headline text-xl sm:text-2xl text-on-surface font-extrabold">
-              {activeCase.title}
-            </h3>
-            <p className="font-mono text-xs text-on-surface-variant font-medium">
-              Engagement Sector: {activeCase.clientSector}
-            </p>
-            <p className="text-sm sm:text-base text-on-surface-variant pt-1 leading-relaxed">
-              {activeCase.summary}
-            </p>
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-outline/20 shadow-md">
+                <img
+                  src={activeCase.image}
+                  alt={activeCase.imageAlt}
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-2.5 left-3.5 right-3.5 font-mono text-[11px] text-amber-400 font-semibold truncate">
+                    {activeCase.tag}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-on-surface-variant">

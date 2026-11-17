@@ -9,6 +9,7 @@ import {
   MagneticWrapper,
 } from '../components/MotionPrimitives';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 
 interface ContactFormData {
   fullName: string;
@@ -109,39 +110,69 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5 space-y-4">
-              <SpotlightSurface className="surface-card p-6 rounded-2xl flex gap-4 items-start">
-                <MapPin className="text-primary mt-0.5 shrink-0" size={22} />
-                <div className="space-y-1">
-                  <div className="font-mono text-[11px] text-primary uppercase tracking-wider font-semibold">
-                    EMEA Headquarters · UTC+0
+              <SpotlightSurface className="surface-card rounded-2xl overflow-hidden">
+                <div className="relative h-28 w-full overflow-hidden border-b border-outline/15">
+                  <img
+                    src={VISUAL_ASSETS.londonCommandStudio}
+                    alt="MIHORA.TECH London City Road EMEA headquarters"
+                    className="w-full h-full object-cover"
+                  />
+                  <div data-photo-overlay="true" className="contents">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                    <span className="absolute bottom-2 left-5 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                      UK-LON-01 &middot; EMEA Headquarters
+                    </span>
                   </div>
-                  <h2 className="font-headline text-base text-on-surface font-bold">
-                    United Kingdom Hub (London)
-                  </h2>
-                  <p className="text-sm text-on-surface-variant">
-                    128 City Road, London EC2A 4NE — Strategic Delivery, Enterprise Architecture &amp; EMEA Operations
-                  </p>
-                  <p className="font-mono text-[11px] text-on-surface-variant pt-0.5 tabular-nums">
-                    51.5074° N · 0.1278° W
-                  </p>
+                </div>
+                <div className="p-6 flex gap-4 items-start">
+                  <MapPin className="text-primary mt-0.5 shrink-0" size={22} />
+                  <div className="space-y-1">
+                    <div className="font-mono text-[11px] text-primary uppercase tracking-wider font-semibold">
+                      EMEA Headquarters · UTC+0
+                    </div>
+                    <h2 className="font-headline text-base text-on-surface font-bold">
+                      United Kingdom Hub (London)
+                    </h2>
+                    <p className="text-sm text-on-surface-variant">
+                      128 City Road, London EC2A 4NE — Strategic Delivery, Enterprise Architecture &amp; EMEA Operations
+                    </p>
+                    <p className="font-mono text-[11px] text-on-surface-variant pt-0.5 tabular-nums">
+                      51.5074° N · 0.1278° W
+                    </p>
+                  </div>
                 </div>
               </SpotlightSurface>
 
-              <SpotlightSurface className="surface-card p-6 rounded-2xl flex gap-4 items-start">
-                <MapPin className="text-primary mt-0.5 shrink-0" size={22} />
-                <div className="space-y-1">
-                  <div className="font-mono text-[11px] text-primary uppercase tracking-wider font-semibold">
-                    Systems &amp; R&amp;D Center · UTC+5
+              <SpotlightSurface className="surface-card rounded-2xl overflow-hidden">
+                <div className="relative h-28 w-full overflow-hidden border-b border-outline/15">
+                  <img
+                    src={VISUAL_ASSETS.islamabadEngineeringHub}
+                    alt="MIHORA.TECH Islamabad Blue Area Systems Architecture and Optical Hub"
+                    className="w-full h-full object-cover"
+                  />
+                  <div data-photo-overlay="true" className="contents">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                    <span className="absolute bottom-2 left-5 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                      PK-ISB-01 &middot; Core Systems Hub
+                    </span>
                   </div>
-                  <h2 className="font-headline text-base text-on-surface font-bold">
-                    Pakistan Systems Hub (Islamabad)
-                  </h2>
-                  <p className="text-sm text-on-surface-variant">
-                    Blue Area, Islamabad 44000 — Core Systems Architecture, Simulation Labs &amp; 24/7 SRE Telemetry
-                  </p>
-                  <p className="font-mono text-[11px] text-on-surface-variant pt-0.5 tabular-nums">
-                    33.6844° N · 73.0479° E
-                  </p>
+                </div>
+                <div className="p-6 flex gap-4 items-start">
+                  <MapPin className="text-primary mt-0.5 shrink-0" size={22} />
+                  <div className="space-y-1">
+                    <div className="font-mono text-[11px] text-primary uppercase tracking-wider font-semibold">
+                      Systems &amp; R&amp;D Center · UTC+5
+                    </div>
+                    <h2 className="font-headline text-base text-on-surface font-bold">
+                      Pakistan Systems Hub (Islamabad)
+                    </h2>
+                    <p className="text-sm text-on-surface-variant">
+                      Blue Area, Islamabad 44000 — Core Systems Architecture, Simulation Labs &amp; 24/7 SRE Telemetry
+                    </p>
+                    <p className="font-mono text-[11px] text-on-surface-variant pt-0.5 tabular-nums">
+                      33.6844° N · 73.0479° E
+                    </p>
+                  </div>
                 </div>
               </SpotlightSurface>
 

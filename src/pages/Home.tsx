@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useReducedMotion } from 'motion/react';
 import {
   ArrowRight,
   Terminal,
@@ -286,6 +286,18 @@ export default function Home() {
 
   const [activeScrollStage, setActiveScrollStage] = useState(0);
   const [expandedStack, setExpandedStack] = useState<number | null>(9);
+  const prefersReducedMotion = useReducedMotion();
+  const scrollyContainerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress: spineProgress } = useScroll({
+    target: scrollyContainerRef,
+    offset: ['start 62%', 'end 42%'],
+  });
+
+  useMotionValueEvent(spineProgress, 'change', (latest) => {
+    const idx = Math.min(SCROLL_STAGES.length - 1, Math.max(0, Math.floor(latest * SCROLL_STAGES.length)));
+    setActiveScrollStage((prev) => (prev === idx ? prev : idx));
+  });
 
   const [activeHubView, setActiveHubView] = useState<'LON' | 'ISB'>('LON');
   const corridorRtt = activeHubView === 'LON' ? '17.8' : '18.2';
@@ -419,14 +431,16 @@ export default function Home() {
                         alt="MIHORA.TECH sovereign enterprise server hall and optical fiber rack infrastructure"
                         className="w-full h-full object-cover brightness-110 contrast-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#080d18] via-[#080d18]/20 to-transparent" />
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2 font-mono text-[11px]">
-                        <span className="text-amber-400 font-semibold uppercase tracking-wider">
-                          UK-LON-01 &harr; PK-ISB-01
-                        </span>
-                        <span className="text-slate-200 font-semibold tabular-nums">
-                          18.2 ms Optical Backbone
-                        </span>
+                      <div data-photo-overlay="true" className="contents">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/92 via-[#080d18]/25 to-transparent" />
+                        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between gap-2 font-mono text-[11px]">
+                          <span className="text-amber-400 font-semibold uppercase tracking-wider">
+                            UK-LON-01 &harr; PK-ISB-01
+                          </span>
+                          <span className="text-slate-200 font-semibold tabular-nums">
+                            18.2 ms Optical Backbone
+                          </span>
+                        </div>
                       </div>
                     </div>
 
@@ -641,89 +655,153 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left Interactive Hairline Chapters */}
-            <div className="lg:col-span-6 divide-y divide-white/12 border-y border-white/12">
-              {SCROLL_STAGES.map((stage, idx) => {
-                const isActive = activeScrollStage === idx;
-                return (
-                  <motion.div
-                    key={stage.id}
-                    onViewportEnter={() => setActiveScrollStage(idx)}
-                    viewport={{ amount: 0.55 }}
-                    onClick={() => {
-                      setActiveScrollStage(idx);
-                      playUiChime('click');
-                    }}
-                    className={clsx(
-                      'py-7 px-6 transition-all cursor-pointer space-y-3 rounded-xl border',
-                      isActive
-                        ? 'bg-white/[0.06] border-amber-400/40 opacity-100 shadow-lg'
-                        : 'border-transparent opacity-60 hover:opacity-90'
-                    )}
-                  >
-                    <div className="flex items-center justify-between font-mono text-xs">
-                      <span className={clsx('font-bold', isActive ? 'text-amber-400' : 'text-blue-400')}>
-                        {stage.kicker}
-                      </span>
-                      <span
-                        className={clsx(
-                          'w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold border transition-colors',
-                          isActive
-                            ? 'border-amber-400 bg-amber-400/15 text-amber-300'
-                            : 'border-white/15 text-slate-400'
-                        )}
-                      >
-                        0{idx + 1}
-                      </span>
-                    </div>
-                    <h3 className="font-headline text-xl sm:text-2xl font-bold text-white leading-snug">
-                      {stage.title}
-                    </h3>
-                    <p className="text-sm text-slate-300 leading-relaxed">{stage.body}</p>
-                    <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-white/10">
-                      <span className="font-mono text-[11px] font-semibold text-slate-300">
-                        {stage.spec}
-                      </span>
-                      <Link
-                        to={stage.link}
-                        className="text-xs font-semibold text-amber-400 hover:underline inline-flex items-center gap-1"
-                      >
-                        <span>{stage.linkLabel}</span>
-                        <ArrowRight size={12} />
-                      </Link>
-                    </div>
-                  </motion.div>
-                );
-              })}
+          <div ref={scrollyContainerRef} className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative">
+            {/* Left Interactive Hairline Chapters + Continuous Scroll Progress Track */}
+            <div className="lg:col-span-6 relative sm:pl-6">
+              <div
+                aria-hidden="true"
+                className="hidden sm:block absolute left-0 top-4 bottom-4 w-1 rounded-full bg-white/10 overflow-hidden"
+              >
+                <motion.div
+                  className="w-full h-full bg-gradient-to-b from-amber-400 via-blue-400 to-emerald-400"
+                  style={{
+                    scaleY: prefersReducedMotion ? (activeScrollStage + 1) / SCROLL_STAGES.length : spineProgress,
+                    transformOrigin: 'top',
+                  }}
+                />
+              </div>
+
+              <div className="space-y-4">
+                {SCROLL_STAGES.map((stage, idx) => {
+                  const isActive = activeScrollStage === idx;
+                  return (
+                    <motion.div
+                      key={stage.id}
+                      onViewportEnter={() => setActiveScrollStage(idx)}
+                      viewport={{ amount: 0.45 }}
+                      onClick={() => {
+                        setActiveScrollStage(idx);
+                        playUiChime('click');
+                      }}
+                      className={clsx(
+                        'py-8 lg:py-10 px-6 transition-all cursor-pointer space-y-3 rounded-xl border min-h-[210px] flex flex-col justify-between',
+                        isActive
+                          ? 'bg-white/[0.06] border-amber-400/50 opacity-100 shadow-lg'
+                          : 'border-white/10 opacity-75 hover:opacity-95'
+                      )}
+                    >
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between font-mono text-xs">
+                          <span className={clsx('font-bold', isActive ? 'text-amber-400' : 'text-blue-400')}>
+                            {stage.kicker}
+                          </span>
+                          <span
+                            className={clsx(
+                              'w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-bold border transition-colors',
+                              isActive
+                                ? 'border-amber-400 bg-amber-400/15 text-amber-300'
+                                : 'border-white/15 text-slate-400'
+                            )}
+                          >
+                            0{idx + 1}
+                          </span>
+                        </div>
+                        <h3 className="font-headline text-xl sm:text-2xl font-bold text-white leading-snug">
+                          {stage.title}
+                        </h3>
+                        <p className="text-sm text-slate-300 leading-relaxed">{stage.body}</p>
+                      </div>
+                      <div className="pt-3 flex flex-wrap items-center justify-between gap-2 border-t border-white/10">
+                        <span className="font-mono text-[11px] font-semibold text-slate-300">
+                          {stage.spec}
+                        </span>
+                        <Link
+                          to={stage.link}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-xs font-semibold text-amber-400 hover:underline inline-flex items-center gap-1"
+                        >
+                          <span>{stage.linkLabel}</span>
+                          <ArrowRight size={12} />
+                        </Link>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Right Sticky Obsidian Photographic Viewport */}
+            {/* Right Sticky Photographic Viewport (Stacked Zero-Flicker Crossfade) */}
             <div className="lg:col-span-6 lg:sticky lg:top-24">
               <div className="rounded-2xl overflow-hidden border border-white/15 bg-[#090d18] shadow-2xl">
-                <div className="relative aspect-[16/11] w-full overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={SCROLL_STAGES[activeScrollStage].image}
-                      src={SCROLL_STAGES[activeScrollStage].image}
-                      alt={SCROLL_STAGES[activeScrollStage].alt}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
-                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090d18] to-transparent" />
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#060913]">
+                  {SCROLL_STAGES.map((stage, idx) => {
+                    const isVisible = activeScrollStage === idx;
+                    return (
+                      <motion.img
+                        key={stage.id}
+                        src={stage.image}
+                        alt={stage.alt}
+                        initial={false}
+                        animate={{
+                          opacity: isVisible ? 1 : 0,
+                          scale: isVisible ? 1 : 1.03,
+                        }}
+                        transition={{
+                          duration: prefersReducedMotion ? 0 : 0.45,
+                          ease: [0.16, 1, 0.3, 1],
+                        }}
+                        className={clsx(
+                          'absolute inset-0 w-full h-full object-cover',
+                          isVisible ? 'z-10' : 'z-0 pointer-events-none'
+                        )}
+                      />
+                    );
+                  })}
+                  <div data-photo-overlay="true" className="contents">
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#090d18]/90 via-[#090d18]/35 to-transparent z-20 pointer-events-none" />
+                    <div className="absolute bottom-3 left-5 right-5 z-20 flex items-center justify-between font-mono text-[11px] text-slate-200 pointer-events-none">
+                      <span className="text-amber-400 font-bold uppercase tracking-wider">
+                        Stage {SCROLL_STAGES[activeScrollStage].num} / 04
+                      </span>
+                      <span className="truncate max-w-[65%] text-right text-slate-200">
+                        {SCROLL_STAGES[activeScrollStage].spec}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="p-6 space-y-2 border-t border-white/10 bg-[#090d18]">
-                  <div className="flex items-center justify-between font-mono text-xs text-amber-400 font-bold">
+                <div className="p-6 space-y-2.5 border-t border-white/10 bg-[#090d18]">
+                  <div className="flex items-center justify-between gap-2 font-mono text-xs text-amber-400 font-bold">
                     <span>{SCROLL_STAGES[activeScrollStage].kicker}</span>
-                    <span>Stage {SCROLL_STAGES[activeScrollStage].num} / 04</span>
+                    <div className="flex items-center gap-1.5">
+                      {SCROLL_STAGES.map((st, idx) => (
+                        <button
+                          key={st.id}
+                          type="button"
+                          onClick={() => {
+                            setActiveScrollStage(idx);
+                            playUiChime('click');
+                          }}
+                          aria-label={`Jump to stage ${st.num}`}
+                          className={clsx(
+                            'h-1.5 rounded-full transition-all cursor-pointer',
+                            activeScrollStage === idx ? 'w-6 bg-amber-400' : 'w-2 bg-white/25 hover:bg-white/45'
+                          )}
+                        />
+                      ))}
+                    </div>
                   </div>
                   <div className="font-headline text-lg font-bold text-white">
                     {SCROLL_STAGES[activeScrollStage].title}
+                  </div>
+                  <div className="pt-1">
+                    <Link
+                      to={SCROLL_STAGES[activeScrollStage].link}
+                      className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-amber-400 hover:underline"
+                    >
+                      <span>Open {SCROLL_STAGES[activeScrollStage].linkLabel}</span>
+                      <ArrowRight size={13} />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -733,7 +811,7 @@ export default function Home() {
       </section>
 
       {/* 05. UPGRADED GLOBAL OPTICAL MESH WITH CURVED BEZIER ARCS (OBSIDIAN BAND) */}
-      <section className="w-full bg-[#04070e] text-slate-100 py-20 lg:py-28 border-b border-white/10">
+      <section className="w-full obsidian-band obsidian-grid py-20 lg:py-28 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
@@ -775,7 +853,10 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <div className="relative w-full h-[400px] md:h-[490px] bg-[#080d1a] obsidian-grid rounded-2xl overflow-hidden flex items-center justify-center border border-white/15 shadow-2xl">
+            <div
+              data-keep-dark="true"
+              className="relative w-full h-[400px] md:h-[490px] bg-[#080d1a] obsidian-grid rounded-2xl overflow-hidden flex items-center justify-center border border-white/15 shadow-2xl"
+            >
               <svg className="w-full h-full relative z-10" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 500">
                 <defs>
                   <linearGradient id="arcPrimaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1008,11 +1089,12 @@ export default function Home() {
                     src={VISUAL_ASSETS.islamabadEngineeringHub}
                     alt="MIHORA Islamabad Blue Area core architecture hub"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-                  <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
-                    PK-ISB-01 · Core Systems Authority
+                  <div data-photo-overlay="true" className="contents">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
+                      PK-ISB-01 · Core Systems Authority
+                    </div>
                   </div>
                 </div>
 
@@ -1024,7 +1106,6 @@ export default function Home() {
                         alt="M. Matti ul Hasnain, Co-Founder and Principal Systems Architect at MIHORA.TECH"
                         width={84}
                         height={84}
-                        loading="lazy"
                         className="w-20 h-20 rounded-xl object-cover border border-outline/25 shrink-0"
                       />
                       <div>
@@ -1068,11 +1149,12 @@ export default function Home() {
                     src={VISUAL_ASSETS.londonCommandStudio}
                     alt="MIHORA London EMEA headquarters on City Road"
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-                  <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
-                    UK-LON-01 · EMEA Executive Governance
+                  <div data-photo-overlay="true" className="contents">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <div className="absolute bottom-3 left-6 font-mono text-[11px] uppercase tracking-widest text-amber-400 font-bold">
+                      UK-LON-01 · EMEA Executive Governance
+                    </div>
                   </div>
                 </div>
 
@@ -1084,7 +1166,6 @@ export default function Home() {
                         alt="Omema Iqbal, Co-Founder and Operations Director at MIHORA.TECH"
                         width={84}
                         height={84}
-                        loading="lazy"
                         className="w-20 h-20 rounded-xl object-cover border border-outline/25 shrink-0"
                       />
                       <div>
@@ -1540,7 +1621,6 @@ export default function Home() {
                     src={VISUAL_ASSETS.fiberOpticsHardware}
                     alt="Certified high-density optical fiber patch array and QSFP transceivers"
                     className="w-full aspect-[4/3] object-cover"
-                    loading="lazy"
                   />
                   <div className="p-6 space-y-3">
                     <div className="font-mono text-xs uppercase tracking-wider text-gold font-bold">

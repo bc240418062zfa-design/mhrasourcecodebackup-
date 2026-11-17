@@ -84,22 +84,22 @@
 :root[data-theme="light"],
 :root[data-theme="titanium"],
 :root[data-theme="desert"] {
-  /* Sovereign Editorial Ivory & Architectural Cobalt-Gold */
-  --sys-background: #faf9f6;
+  /* Crisp Architectural Pearl & Royal Cobalt-Bronze */
+  --sys-background: #f8fafc;
   --sys-surface-container-lowest: #ffffff;
-  --sys-surface: #faf9f6;
-  --sys-surface-container-low: #f3f2ed;
-  --sys-surface-container: #eae8e1;
+  --sys-surface: #f8fafc;
+  --sys-surface-container-low: #f1f5f9;
+  --sys-surface-container: #e2e8f0;
   --sys-surface-container-high: #ffffff;
-  --sys-surface-container-highest: #dfdcd3;
-  --sys-surface-dim: #e5e2d9;
+  --sys-surface-container-highest: #cbd5e1;
+  --sys-surface-dim: #e2e8f0;
   --sys-surface-bright: #ffffff;
-  --sys-surface-variant: #e5e2d9;
+  --sys-surface-variant: #e2e8f0;
 
-  --sys-on-background: #090d16;
-  --sys-on-surface: #090d16;
+  --sys-on-background: #0f172a;
+  --sys-on-surface: #0f172a;
   --sys-on-surface-variant: #475569;
-  --sys-inverse-surface: #070b14;
+  --sys-inverse-surface: #0b1120;
   --sys-inverse-on-surface: #f8fafc;
 
   --sys-primary: #1d4ed8;
@@ -131,7 +131,7 @@
   --sys-on-tertiary-fixed-variant: #065f46;
 
   --sys-gold: #b45309;
-  --sys-outline: rgba(15, 23, 42, 0.12);
+  --sys-outline: rgba(15, 23, 42, 0.14);
   --sys-outline-variant: rgba(15, 23, 42, 0.08);
   --sys-surface-tint: #1d4ed8;
 
@@ -144,23 +144,23 @@
 :root[data-theme="cyber"],
 :root[data-theme="dark"],
 :root.dark {
-  /* Obsidian Command Carbon: Deep architectural obsidian + sapphire & optical gold signal */
-  --sys-background: #05070c;
-  --sys-surface-container-lowest: #04060a;
-  --sys-surface: #070a12;
-  --sys-surface-container-low: #0c111d;
-  --sys-surface-container: #111828;
-  --sys-surface-container-high: #172036;
-  --sys-surface-container-highest: #1d2945;
-  --sys-surface-dim: #04060a;
-  --sys-surface-bright: #243356;
-  --sys-surface-variant: #121a2d;
+  /* Obsidian Command Carbon: Properly stepped surface elevation + luminous sapphire & amber signal */
+  --sys-background: #060913;
+  --sys-surface-container-lowest: #0e1629;
+  --sys-surface: #080d1a;
+  --sys-surface-container-low: #111b31;
+  --sys-surface-container: #16233f;
+  --sys-surface-container-high: #1d2d50;
+  --sys-surface-container-highest: #253861;
+  --sys-surface-dim: #050811;
+  --sys-surface-bright: #2b406e;
+  --sys-surface-variant: #141e35;
 
   --sys-on-background: #f8fafc;
   --sys-on-surface: #f8fafc;
   --sys-on-surface-variant: #94a3b8;
-  --sys-inverse-surface: #faf9f6;
-  --sys-inverse-on-surface: #070a12;
+  --sys-inverse-surface: #f8fafc;
+  --sys-inverse-on-surface: #0b1120;
 
   --sys-primary: #3b82f6;
   --sys-primary-container: #2563eb;
@@ -191,8 +191,8 @@
   --sys-on-tertiary-fixed-variant: #047857;
 
   --sys-gold: #f59e0b;
-  --sys-outline: rgba(255, 255, 255, 0.11);
-  --sys-outline-variant: rgba(56, 189, 248, 0.14);
+  --sys-outline: rgba(148, 163, 184, 0.22);
+  --sys-outline-variant: rgba(56, 189, 248, 0.16);
   --sys-surface-tint: #3b82f6;
 
   --sys-error: #f87171;
@@ -247,15 +247,63 @@
   }
 }
 
-/* Signature Obsidian Atelier Band for Contrast Rhythm Even in Light Mode */
+/* Dual-Mode Architectural Hero & Command Surface */
 .obsidian-band {
-  background-color: #060911;
+  background-color: #060913;
   color: #f8fafc;
   --sys-on-surface: #f8fafc;
   --sys-on-surface-variant: #94a3b8;
   --sys-primary: #3b82f6;
   --sys-gold: #f59e0b;
-  --sys-outline: rgba(255, 255, 255, 0.14);
+  --sys-outline: rgba(148, 163, 184, 0.22);
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) {
+  background: linear-gradient(180deg, #eff4fc 0%, #f8fafc 100%);
+  color: #0f172a;
+  --sys-on-surface: #0f172a;
+  --sys-on-surface-variant: #475569;
+  --sys-primary: #1d4ed8;
+  --sys-gold: #b45309;
+  --sys-outline: rgba(15, 23, 42, 0.14);
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-white):not(.btn-primary-gradient):not(.btn-primary-gradient *):not([data-photo-overlay] *):not([data-keep-dark="true"]):not([data-keep-dark="true"] *) {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-slate-100, .text-slate-200, .text-slate-300):not(.btn-primary-gradient *):not([data-photo-overlay] *):not([data-keep-dark="true"] *) {
+  color: #334155;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-slate-400, .text-slate-500):not([data-photo-overlay] *):not([data-keep-dark="true"] *) {
+  color: #475569;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-amber-300, .text-amber-400):not([data-photo-overlay] *):not([data-keep-dark="true"] *) {
+  color: #b45309;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-emerald-400):not([data-photo-overlay] *):not([data-keep-dark="true"] *) {
+  color: #047857;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.text-blue-400, .text-sky-400):not([data-photo-overlay] *):not([data-keep-dark="true"] *) {
+  color: #1d4ed8;
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.border-white\/10, .border-white\/12, .border-white\/15, .border-white\/20, .divide-white\/10, .divide-white\/12, .divide-white\/15) {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) :is(.bg-black\/30, .bg-black\/35, .bg-black\/40, .bg-black\/45, .bg-black\/50, .bg-black\/60, .bg-white\/\[0\.03\], .bg-white\/\[0\.04\], .bg-white\/\[0\.06\], .bg-white\/\[0\.07\], .bg-\[\#080d18\], .bg-\[\#090d18\], .bg-\[\#04060c\]\/85):not([data-keep-dark="true"]) {
+  background-color: #ffffff;
+  box-shadow: 0 10px 28px -12px rgba(15, 23, 42, 0.10);
+}
+
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) .bg-white\/\[0\.06\]:hover,
+:root[data-theme="light"] .obsidian-band:not([data-keep-dark="true"]) .bg-white\/\[0\.07\]:hover {
+  background-color: #e2e8f0;
 }
 
 .obsidian-grid {
@@ -265,10 +313,22 @@
   background-size: 48px 48px;
 }
 
+:root[data-theme="light"] .obsidian-grid:not([data-keep-dark="true"]) {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+}
+
 .hero-ambient-mesh {
   background-image:
-    radial-gradient(65% 55% at 78% 18%, rgba(37, 99, 235, 0.16) 0%, rgba(37, 99, 235, 0.03) 48%, transparent 72%),
+    radial-gradient(65% 55% at 78% 18%, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.03) 48%, transparent 72%),
     radial-gradient(45% 45% at 15% 82%, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+}
+
+:root[data-theme="light"] .hero-ambient-mesh {
+  background-image:
+    radial-gradient(65% 55% at 78% 18%, rgba(37, 99, 235, 0.09) 0%, rgba(37, 99, 235, 0.02) 48%, transparent 72%),
+    radial-gradient(45% 45% at 15% 82%, rgba(180, 83, 9, 0.05) 0%, transparent 70%);
 }
 
 .luxury-bezel {
@@ -276,6 +336,11 @@
   box-shadow:
     0 32px 72px -20px rgba(2, 6, 23, 0.92),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="light"] .luxury-bezel {
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  box-shadow: 0 24px 54px -18px rgba(15, 23, 42, 0.14);
 }
 
 /* Editorial underline link hover effect */

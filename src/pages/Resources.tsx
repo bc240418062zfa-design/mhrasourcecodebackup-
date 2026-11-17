@@ -13,6 +13,7 @@ import {
   AnimatedCounter,
 } from '../components/MotionPrimitives';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 
 const FIBER_STANDARDS = [
   {
@@ -84,17 +85,32 @@ export default function Resources() {
               </Reveal>
             </div>
 
-            <div className="lg:col-span-4 grid grid-cols-2 divide-x divide-white/15 border border-white/15 bg-black/35 rounded-xl overflow-hidden">
-              <div className="p-4">
-                <div className="text-[11px] font-mono uppercase text-slate-400">OS2 Target</div>
-                <div className="font-headline text-2xl font-extrabold text-amber-400 mt-1 tabular-nums">
-                  &le; 0.03 dB
+            <div className="lg:col-span-4 space-y-3">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-white/15 bg-[#080d18]">
+                <img
+                  src={VISUAL_ASSETS.opticalLabSplicing}
+                  alt="MIHORA.TECH R&D single-mode optical fiber calibration workbench"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080d18]/80 via-transparent to-transparent" />
+                  <span className="absolute bottom-2.5 left-3.5 font-mono text-[11px] uppercase text-amber-400 font-bold">
+                    TIA-568-D Verification Labs
+                  </span>
                 </div>
               </div>
-              <div className="p-4">
-                <div className="text-[11px] font-mono uppercase text-slate-400">Quorum Target</div>
-                <div className="font-headline text-2xl font-extrabold text-white mt-1">
-                  <AnimatedCounter target={99.999} decimals={3} suffix="%" />
+              <div className="grid grid-cols-2 divide-x divide-white/15 border border-white/15 bg-black/35 rounded-xl overflow-hidden">
+                <div className="p-4">
+                  <div className="text-[11px] font-mono uppercase text-slate-400">OS2 Target</div>
+                  <div className="font-headline text-2xl font-extrabold text-amber-400 mt-1 tabular-nums">
+                    &le; 0.03 dB
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="text-[11px] font-mono uppercase text-slate-400">Quorum Target</div>
+                  <div className="font-headline text-2xl font-extrabold text-white mt-1">
+                    <AnimatedCounter target={99.999} decimals={3} suffix="%" />
+                  </div>
                 </div>
               </div>
             </div>

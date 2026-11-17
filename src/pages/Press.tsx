@@ -4,6 +4,7 @@ import { Newspaper, Copy, Check, ArrowRight, Download } from 'lucide-react';
 import { SEOHead } from '../components/SEOHead';
 import { MaskTextReveal, Reveal } from '../components/MotionPrimitives';
 import { playUiChime } from '../utils/audio';
+import { VISUAL_ASSETS } from '../assets/visuals';
 
 const OFFICIAL_CITATIONS = [
   {
@@ -37,27 +38,46 @@ export default function Press() {
       />
 
       <section className="w-full bg-surface-container-lowest py-14 lg:py-20 border-b border-outline/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <Reveal>
-            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
-              <Newspaper size={14} />
-              <span>Press, Media &amp; Directory Reference</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-6">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary font-semibold">
+                  <Newspaper size={14} />
+                  <span>Press, Media &amp; Directory Reference</span>
+                </div>
+              </Reveal>
+
+              <MaskTextReveal delay={0.05}>
+                <h1 className="font-headline font-extrabold text-4xl sm:text-5xl text-on-surface tracking-tight leading-[1.08]">
+                  Verified Entity Factsheet, Brand Assets &amp; Reference Citations
+                </h1>
+              </MaskTextReveal>
+
+              <Reveal delay={0.12}>
+                <p className="text-base sm:text-lg text-on-surface-variant leading-relaxed">
+                  Canonical corporate profile, leadership portraits, SVG vector marks, and citable open
+                  standards documentation for journalists, engineering researchers, and enterprise
+                  procurement registries.
+                </p>
+              </Reveal>
             </div>
-          </Reveal>
-
-          <MaskTextReveal delay={0.05}>
-            <h1 className="font-headline font-extrabold text-4xl sm:text-5xl text-on-surface tracking-tight leading-[1.08] max-w-4xl">
-              Verified Entity Factsheet, Brand Assets &amp; Reference Citations
-            </h1>
-          </MaskTextReveal>
-
-          <Reveal delay={0.12}>
-            <p className="text-base sm:text-lg text-on-surface-variant max-w-3xl leading-relaxed">
-              Canonical corporate profile, leadership portraits, SVG vector marks, and citable open
-              standards documentation for journalists, engineering researchers, and enterprise
-              procurement registries.
-            </p>
-          </Reveal>
+            <div className="lg:col-span-5">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden border border-outline/25 shadow-lg">
+                <img
+                  src={VISUAL_ASSETS.londonCommandStudio}
+                  alt="MIHORA.TECH London City Road Engineering Headquarters"
+                  className="w-full h-full object-cover"
+                />
+                <div data-photo-overlay="true" className="contents">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 font-mono text-[11px] uppercase tracking-wider text-amber-400 font-bold">
+                    Official Brand &amp; Entity Press Kit
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
