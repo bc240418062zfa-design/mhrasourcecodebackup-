@@ -24,7 +24,7 @@ export default function ServiceDetail() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   if (!service) {
-    return <Navigate to="/services" replace />;
+    return <Navigate to="/services/" replace />;
   }
 
   const DivisionIcon = ICON_MAP[service.iconKey];
@@ -127,7 +127,7 @@ export default function ServiceDetail() {
               <Reveal delay={0.2}>
                 <div className="flex flex-wrap items-center gap-4 pt-1">
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -135,7 +135,7 @@ export default function ServiceDetail() {
                     <ArrowRight size={16} />
                   </Link>
                   <Link
-                    to="/how-it-works"
+                    to="/how-it-works/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -333,7 +333,7 @@ export default function ServiceDetail() {
                 Related Engineering Capabilities &amp; Resources
               </h2>
             </div>
-            <Link to="/services" className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1">
+            <Link to="/services/" className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1">
               <span>View all 5 divisions</span>
               <ArrowUpRight size={15} />
             </Link>
@@ -367,7 +367,7 @@ export default function ServiceDetail() {
             })}
 
             <Link
-              to="/case-studies"
+              to="/case-studies/"
               className="surface-card p-6 rounded-2xl transition-all group space-y-3 cursor-pointer flex flex-col justify-between"
             >
               <div className="space-y-3">

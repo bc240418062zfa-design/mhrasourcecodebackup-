@@ -600,7 +600,7 @@ export default function Tools() {
               )}
 
               <Link
-                to="/contact"
+                to="/contact/"
                 onClick={() => playUiChime('click')}
                 className="w-full py-3.5 px-4 btn-primary-gradient rounded-xl font-semibold text-xs text-center flex items-center justify-center gap-2 cursor-pointer"
               >
@@ -616,13 +616,13 @@ export default function Tools() {
       <section className="w-full bg-surface-container-lowest py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4 text-sm">
           <div className="flex flex-wrap gap-5">
-            <Link to="/resources" className="text-primary font-semibold hover:underline">
+            <Link to="/resources/" className="text-primary font-semibold hover:underline">
               Standards &amp; TIA-568 Reference Tables →
             </Link>
-            <Link to="/solutions#sovereign-rfp-builder" className="text-primary font-semibold hover:underline">
+            <Link to="/solutions/#sovereign-rfp-builder" className="text-primary font-semibold hover:underline">
               Sovereign RFP Specifier →
             </Link>
-            <Link to="/compare" className="text-primary font-semibold hover:underline">
+            <Link to="/compare/" className="text-primary font-semibold hover:underline">
               Compare Sovereign vs. Cloud Lock-In →
             </Link>
           </div>

@@ -2,11 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- MIHORA.TECH — Founded by M. Matti ul Hasnain & Omema Iqbal -->
+  <!-- MIHORA.TECH Official Sovereign Systems Sitemap — Updated 2026-11-24 -->
 
+  <!-- Tier 1: Core Landing & Strategic Conversion Hub -->
   <url>
     <loc>https://mihora.tech/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,12 +16,12 @@
     </image:image>
     <image:image>
       <image:loc>https://mihora.tech/founder-matti.jpg</image:loc>
-      <image:title>M. Matti ul Hasnain — Co-Founder &amp; Principal Systems Architect of MIHORA.TECH</image:title>
+      <image:title>M. Matti ul Hasnain — Co-Founder &amp; Principal Systems Architect</image:title>
       <image:caption>M. Matti ul Hasnain leads sovereign systems architecture and physical datacenter engineering at MIHORA.TECH</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://mihora.tech/founder-omema.jpg</image:loc>
-      <image:title>Omema Iqbal — Co-Founder &amp; Operations Director of MIHORA.TECH</image:title>
+      <image:title>Omema Iqbal (Omaima Hasnain) — Co-Founder &amp; Operations Director</image:title>
       <image:caption>Omema Iqbal directs global dual-hub operations and enterprise delivery at MIHORA.TECH</image:caption>
     </image:image>
     <image:image>
@@ -29,192 +30,201 @@
     </image:image>
   </url>
 
+  <!-- Tier 2: High-Value Commercial & Technical Money Pages (0.92–0.95) -->
+  <url>
+    <loc>https://mihora.tech/services/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
   <url>
     <loc>https://mihora.tech/company/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.98</priority>
+    <priority>0.95</priority>
     <image:image>
       <image:loc>https://mihora.tech/founder-matti.jpg</image:loc>
-      <image:title>M. Matti ul Hasnain (Matti ul Hasnain) — Co-Founder of MIHORA.TECH</image:title>
+      <image:title>M. Matti ul Hasnain — Co-Founder of MIHORA.TECH</image:title>
     </image:image>
     <image:image>
       <image:loc>https://mihora.tech/founder-omema.jpg</image:loc>
-      <image:title>Omema Iqbal (Omema) — Co-Founder of MIHORA.TECH</image:title>
+      <image:title>Omema Iqbal (Omaima Hasnain) — Co-Founder of MIHORA.TECH</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://mihora.tech/our-story/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <loc>https://mihora.tech/engineering/</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.94</priority>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/solutions/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/case-studies/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/insights/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/faq/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/how-it-works/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/contact/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Tier 3: Individual Service Division Offerings (0.88) -->
+  <url>
+    <loc>https://mihora.tech/services/digital-engineering/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/services/automation-intelligence/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/services/physical-infrastructure/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/services/field-engineering/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/services/managed-sre/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <!-- Tier 4: Architectural Reference & Trust Foundations (0.80–0.85) -->
+  <url>
+    <loc>https://mihora.tech/our-story/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mihora.tech/security/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.93</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/resources/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/industries/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/docs/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://mihora.tech/tools/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.93</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://mihora.tech/glossary/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://mihora.tech/compare/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Tier 5: Institutional & Ecosystem (0.70) -->
+  <url>
+    <loc>https://mihora.tech/partnerships/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://mihora.tech/careers/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://mihora.tech/press/</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.70</priority>
   </url>
-  <url>
-    <loc>https://mihora.tech/faq/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/docs/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/engineering/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.92</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.94</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/digital-engineering/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/automation-intelligence/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/physical-infrastructure/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/field-engineering/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/services/managed-sre/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/how-it-works/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/case-studies/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/resources/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/partnerships/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/solutions/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/industries/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/insights/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/careers/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mihora.tech/contact/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.88</priority>
-  </url>
+
+  <!-- Tier 6: Utility & Legal Compliance (Prioritized Down to Prevent Crawl Dilution: 0.20–0.40) -->
   <url>
     <loc>https://mihora.tech/status/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.82</priority>
+    <priority>0.40</priority>
   </url>
   <url>
     <loc>https://mihora.tech/legal/</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
+    <priority>0.30</priority>
   </url>
   <url>
     <loc>https://mihora.tech/privacy/</loc>
     <lastmod>2026-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
   </url>
   <url>
     <loc>https://mihora.tech/terms/</loc>
     <lastmod>2026-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
   </url>
   <url>
     <loc>https://mihora.tech/disclaimer/</loc>
     <lastmod>2026-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
   </url>
 </urlset>

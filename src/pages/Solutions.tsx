@@ -277,7 +277,7 @@ Contact: hr@mihora.tech`;
                     <ArrowDown size={15} />
                   </a>
                   <Link
-                    to="/how-it-works"
+                    to="/how-it-works/"
                     className="text-sm font-semibold text-amber-400 hover:underline inline-flex items-center gap-1"
                   >
                     <span>See 5-Phase Process</span>
@@ -562,7 +562,7 @@ Contact: hr@mihora.tech`;
                 </button>
 
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   onClick={() => setSelectedBottleneck(null)}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold text-xs rounded-lg shadow-sm"
                 >
@@ -648,11 +648,11 @@ Contact: hr@mihora.tech`;
               </div>
 
               <div className="pt-2 flex items-center justify-between border-t border-outline/20">
-                <Link to="/case-studies" className="text-xs font-semibold text-primary hover:underline">
+                <Link to="/case-studies/" className="text-xs font-semibold text-primary hover:underline">
                   See field case studies →
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   onClick={() => setSelectedPillar(null)}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold text-xs rounded-lg shadow-sm"
                 >

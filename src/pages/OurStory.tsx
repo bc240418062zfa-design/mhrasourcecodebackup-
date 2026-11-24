@@ -144,7 +144,7 @@ export default function OurStory() {
               </h2>
             </div>
             <Link
-              to="/company"
+              to="/company/"
               onClick={() => playUiChime('click')}
               className="text-sm font-semibold text-primary hover:underline inline-flex items-center gap-1.5"
             >
@@ -180,7 +180,7 @@ export default function OurStory() {
                   </div>
                   <div className="pt-4 border-t border-outline/15 flex items-center justify-between text-xs font-mono text-on-surface-variant">
                     <span>Jurisdiction: United Kingdom</span>
-                    <Link to="/security" className="text-primary font-semibold hover:underline">
+                    <Link to="/security/" className="text-primary font-semibold hover:underline">
                       Security Governance →
                     </Link>
                   </div>
@@ -214,7 +214,7 @@ export default function OurStory() {
                   </div>
                   <div className="pt-4 border-t border-outline/15 flex items-center justify-between text-xs font-mono text-on-surface-variant">
                     <span>Jurisdiction: Pakistan</span>
-                    <Link to="/services/field-engineering" className="text-primary font-semibold hover:underline">
+                    <Link to="/services/field-engineering/" className="text-primary font-semibold hover:underline">
                       Field Dispatch Rig Spec →
                     </Link>
                   </div>
@@ -324,7 +324,7 @@ export default function OurStory() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
-              to="/company"
+              to="/company/"
               onClick={() => playUiChime('click')}
               className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient rounded-lg text-sm font-semibold"
             >
@@ -332,7 +332,7 @@ export default function OurStory() {
               <span>Meet M. Matti ul Hasnain &amp; Omema Iqbal</span>
             </Link>
             <Link
-              to="/tools"
+              to="/tools/"
               onClick={() => playUiChime('click')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-surface-container-lowest border border-outline/30 hover:border-primary text-on-surface rounded-lg text-sm font-semibold transition-colors"
             >
@@ -340,7 +340,7 @@ export default function OurStory() {
               <span>Open Optical &amp; SLA Calculators</span>
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               onClick={() => playUiChime('click')}
               className="inline-flex items-center gap-2 px-6 py-3 bg-surface-container-lowest border border-outline/30 hover:border-primary text-on-surface rounded-lg text-sm font-semibold transition-colors"
             >

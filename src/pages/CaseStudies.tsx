@@ -153,7 +153,7 @@ export default function CaseStudies() {
                     <span>Explore {dep.serviceLabel}</span>
                     <ArrowRight size={13} />
                   </Link>
-                  <Link to="/industries" className="text-xs text-on-surface-variant hover:text-on-surface">
+                  <Link to="/industries/" className="text-xs text-on-surface-variant hover:text-on-surface">
                     Industry specs →
                   </Link>
                 </div>
@@ -180,14 +180,14 @@ export default function CaseStudies() {
           </div>
           <div className="flex flex-wrap gap-3 shrink-0">
             <Link
-              to="/solutions#sovereign-rfp-builder"
+              to="/solutions/#sovereign-rfp-builder"
               className="px-5 py-2.5 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
               <Layers size={14} />
               <span>RFP Builder</span>
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               className="px-5 py-2.5 btn-primary-gradient text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
               <span>Schedule Consultation</span>

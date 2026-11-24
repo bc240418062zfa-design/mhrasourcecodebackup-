@@ -96,7 +96,7 @@ export default function Partnerships() {
               <Reveal delay={0.15}>
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -104,7 +104,7 @@ export default function Partnerships() {
                     <ArrowRight size={16} />
                   </Link>
                   <Link
-                    to="/company"
+                    to="/company/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -193,7 +193,7 @@ export default function Partnerships() {
           </Reveal>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link
-              to="/contact"
+              to="/contact/"
               onClick={() => playUiChime('click')}
               className="px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm inline-flex items-center gap-2"
             >
@@ -201,7 +201,7 @@ export default function Partnerships() {
               <ArrowRight size={16} />
             </Link>
             <Link
-              to="/engineering#subsea-cable-explorer"
+              to="/engineering/#subsea-cable-explorer"
               onClick={() => playUiChime('click')}
               className="px-6 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-colors"
             >

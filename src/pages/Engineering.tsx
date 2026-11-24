@@ -320,7 +320,7 @@ export default function Engineering() {
 
               <div className="pt-6 mt-6 border-t border-outline/15 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
                 <span className="text-on-surface-variant">Standards: TIA-568-D &amp; ISO/IEC 27001</span>
-                <Link to="/docs" className="text-primary hover:underline font-semibold inline-flex items-center gap-1">
+                <Link to="/docs/" className="text-primary hover:underline font-semibold inline-flex items-center gap-1">
                   <span>Open Full Docs Codex</span>
                   <ArrowRight size={13} />
                 </Link>
@@ -478,14 +478,14 @@ export default function Engineering() {
           </h2>
           <div className="flex flex-wrap justify-center gap-4 pt-2">
             <Link
-              to="/resources"
+              to="/resources/"
               className="px-6 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-sm font-semibold rounded-lg inline-flex items-center gap-2"
             >
               <Globe size={16} className="text-primary" />
               <span>Knowledge Hub &amp; Standards</span>
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               className="px-6 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-lg inline-flex items-center gap-2"
             >
               <span>Engage Engineering Desk</span>

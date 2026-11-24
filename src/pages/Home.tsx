@@ -399,7 +399,7 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <MagneticWrapper>
                     <Link
-                      to="/contact"
+                      to="/contact/"
                       onClick={() => playUiChime('click')}
                       className="inline-flex items-center gap-2.5 px-7 py-3.5 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
                     >
@@ -409,7 +409,7 @@ export default function Home() {
                   </MagneticWrapper>
 
                   <Link
-                    to="/engineering"
+                    to="/engineering/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/[0.06] hover:bg-white/[0.12] border border-white/20 text-white font-semibold rounded-xl text-sm backdrop-blur-md transition-all cursor-pointer"
                   >
@@ -450,7 +450,7 @@ export default function Home() {
                           Single-Contract Span
                         </span>
                         <Link
-                          to="/our-story"
+                          to="/our-story/"
                           className="font-mono text-xs text-blue-400 hover:text-white inline-flex items-center gap-1 transition-colors"
                         >
                           <span>Our Story</span>
@@ -505,7 +505,7 @@ export default function Home() {
               </div>
             </div>
 
-            <Link to="/status" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/status/" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Quorum Availability
               </div>
@@ -515,7 +515,7 @@ export default function Home() {
               <div className="font-mono text-xs text-emerald-400">Synchronized Dual-Hub SRE</div>
             </Link>
 
-            <Link to="/case-studies" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/case-studies/" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Certified Fiber Span
               </div>
@@ -525,7 +525,7 @@ export default function Home() {
               <div className="font-mono text-xs text-slate-400">EXFO Bidirectional OTDR</div>
             </Link>
 
-            <Link to="/tools" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
+            <Link to="/tools/" className="px-6 py-4 flex flex-col justify-between gap-1.5 hover:bg-white/[0.04] transition-colors cursor-pointer">
               <div className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                 Mean Splice Loss
               </div>
@@ -625,7 +625,7 @@ export default function Home() {
                   <span className="text-on-surface font-bold">1,200+ Production Racks</span> · 4h Regional Field SLA
                 </div>
                 <Link
-                  to="/services"
+                  to="/services/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-primary hover:underline"
                 >
@@ -1057,7 +1057,7 @@ export default function Home() {
 
             <div className="flex items-center gap-5 shrink-0 font-mono text-xs">
               <Link
-                to="/company"
+                to="/company/"
                 onClick={() => playUiChime('click')}
                 className="font-bold text-primary hover:underline inline-flex items-center gap-1.5"
               >
@@ -1065,14 +1065,14 @@ export default function Home() {
                 <ArrowRight size={14} />
               </Link>
               <Link
-                to="/our-story"
+                to="/our-story/"
                 onClick={() => playUiChime('click')}
                 className="font-bold text-on-surface-variant hover:text-on-surface"
               >
                 Our Story →
               </Link>
               <Link
-                to="/press"
+                to="/press/"
                 onClick={() => playUiChime('click')}
                 className="font-bold text-on-surface-variant hover:text-on-surface"
               >
@@ -1218,7 +1218,7 @@ export default function Home() {
               </h2>
             </div>
             <Link
-              to="/services"
+              to="/services/"
               onClick={() => playUiChime('click')}
               className="text-sm text-primary hover:underline font-semibold inline-flex items-center gap-1.5"
             >
@@ -1634,14 +1634,14 @@ export default function Home() {
                     </p>
                     <div className="pt-2 flex flex-wrap gap-4">
                       <Link
-                        to="/engineering"
+                        to="/engineering/"
                         className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
                       >
                         <span>Explore 9-Layer Stack</span>
                         <ArrowRight size={13} />
                       </Link>
                       <Link
-                        to="/tools"
+                        to="/tools/"
                         className="text-xs font-semibold text-on-surface-variant hover:text-on-surface"
                       >
                         Optical Link Loss Calculator →
@@ -1656,7 +1656,7 @@ export default function Home() {
           {/* Open Engineering Workbench Hairline Trio */}
           <div className="grid grid-cols-1 md:grid-cols-3 border border-outline/20 divide-y md:divide-y-0 md:divide-x divide-outline/20 rounded-2xl overflow-hidden bg-surface-container-low/40">
             <Link
-              to="/tools"
+              to="/tools/"
               onClick={() => playUiChime('click')}
               className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
@@ -1673,7 +1673,7 @@ export default function Home() {
             </Link>
 
             <Link
-              to="/compare"
+              to="/compare/"
               onClick={() => playUiChime('click')}
               className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
@@ -1690,7 +1690,7 @@ export default function Home() {
             </Link>
 
             <Link
-              to="/glossary"
+              to="/glossary/"
               onClick={() => playUiChime('click')}
               className="p-7 space-y-2 group hover:bg-surface-container-lowest transition-colors cursor-pointer"
             >
@@ -1723,7 +1723,7 @@ export default function Home() {
                 </h2>
               </div>
               <Link
-                to="/compare"
+                to="/compare/"
                 className="font-mono text-xs font-bold text-primary hover:underline inline-flex items-center gap-1.5 shrink-0"
               >
                 <span>Open Detailed Trade-Off Matrix</span>
@@ -1808,7 +1808,7 @@ export default function Home() {
               </h3>
               <p className="text-sm text-on-surface-variant leading-relaxed">
                 Every engagement starts with Phase 01 Discovery &amp; Threat Modeling, followed by a transparent fixed-scope blueprint.{' '}
-                <Link to="/how-it-works" className="text-primary font-semibold hover:underline">
+                <Link to="/how-it-works/" className="text-primary font-semibold hover:underline">
                   Read 5-phase methodology →
                 </Link>
               </p>
@@ -1828,7 +1828,7 @@ export default function Home() {
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
               <MagneticWrapper>
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   onClick={() => playUiChime('click')}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 btn-primary-gradient font-semibold rounded-xl text-sm cursor-pointer"
                 >

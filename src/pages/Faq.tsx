@@ -289,14 +289,14 @@ export default function Faq() {
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link
-              to="/docs"
+              to="/docs/"
               className="px-4 py-2.5 rounded-lg border border-outline/30 hover:bg-surface-container text-xs font-semibold text-on-surface transition-all flex items-center gap-1.5"
             >
               <span>View Technical Docs</span>
               <ArrowRight size={14} />
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               className="px-4 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-white text-xs font-semibold transition-all flex items-center gap-1.5"
             >
               <span>Contact Command Hubs</span>

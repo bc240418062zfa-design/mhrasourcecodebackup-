@@ -187,7 +187,7 @@ export default function Legal() {
               MIHORA.TECH (PRIVATE) LIMITED · GOVERNED ACROSS UK &amp; PAKISTAN
             </span>
             <Link
-              to="/contact"
+              to="/contact/"
               className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
             >
               <span>Compliance Inquiries</span>

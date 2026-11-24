@@ -279,7 +279,7 @@ export default function Docs() {
                 Need bespoke hardware specs, datacenter build-outs, or sovereign RFPs?
               </p>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-3 bg-surface-container hover:bg-surface-container-high border border-outline/25 rounded-lg text-xs font-semibold text-primary transition-all"
               >
                 <span>Request Architectural Consultation</span>
@@ -355,7 +355,7 @@ export default function Docs() {
                 <strong className="text-on-surface">M. Matti ul Hasnain &amp; Omema Iqbal</strong>
               </div>
               <div className="flex items-center gap-3">
-                <Link to="/faq" className="text-primary hover:underline flex items-center gap-1">
+                <Link to="/faq/" className="text-primary hover:underline flex items-center gap-1">
                   <span>View Entity FAQ</span>
                   <ChevronRight size={12} />
                 </Link>

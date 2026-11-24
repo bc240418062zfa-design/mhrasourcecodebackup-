@@ -157,7 +157,7 @@ export default function Compare() {
                   platforms escaping punitive cloud bandwidth fees.
                 </p>
                 <Link
-                  to="/tools"
+                  to="/tools/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline pt-1"
                 >
@@ -181,7 +181,7 @@ export default function Compare() {
                   without sacrificing primary key custody.
                 </p>
                 <Link
-                  to="/services/digital-engineering"
+                  to="/services/digital-engineering/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline pt-1"
                 >

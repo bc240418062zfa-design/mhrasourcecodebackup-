@@ -586,7 +586,7 @@ Source: https://mihora.tech/services`;
                 </button>
 
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   onClick={() => setSelectedNodeSpec(null)}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold text-xs rounded-lg shadow-sm"
                 >
@@ -641,7 +641,7 @@ Source: https://mihora.tech/services`;
                   <div className="font-semibold text-on-surface">TIA-568-D &amp; Bidirectional OTDR Certified</div>
                   <div className="text-on-surface-variant font-mono mt-0.5">48U Hot-Aisle Containment · 100G/400G Uplinks</div>
                 </div>
-                <Link to="/case-studies" className="font-semibold text-primary hover:underline">
+                <Link to="/case-studies/" className="font-semibold text-primary hover:underline">
                   Case studies →
                 </Link>
               </div>

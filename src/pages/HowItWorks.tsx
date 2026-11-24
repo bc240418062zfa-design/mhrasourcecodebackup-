@@ -148,7 +148,7 @@ export default function HowItWorks() {
               <Reveal delay={0.15}>
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link
-                    to="/solutions#sovereign-rfp-builder"
+                    to="/solutions/#sovereign-rfp-builder"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -156,7 +156,7 @@ export default function HowItWorks() {
                     <ArrowRight size={16} />
                   </Link>
                   <Link
-                    to="/case-studies"
+                    to="/case-studies/"
                     onClick={() => playUiChime('click')}
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.06] border border-white/20 hover:bg-white/[0.12] text-white font-semibold rounded-lg text-sm transition-all cursor-pointer"
                   >
@@ -289,7 +289,7 @@ export default function HowItWorks() {
                       <div className="text-sm font-bold text-on-surface">{current.verificationGate}</div>
                     </div>
                     <Link
-                      to="/contact"
+                      to="/contact/"
                       onClick={() => playUiChime('click')}
                       className="inline-flex items-center gap-2 px-5 py-2.5 btn-primary-gradient text-xs font-semibold rounded-lg transition-all cursor-pointer shrink-0"
                     >

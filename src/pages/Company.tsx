@@ -151,7 +151,7 @@ export default function Company() {
                   </div>
                   <div className="pt-4 border-t border-outline/15 flex items-center justify-between font-mono text-xs text-on-surface-variant">
                     <span>Sovereign Systems · Datacenter Hardware · Distributed SRE</span>
-                    <Link to="/our-story" onClick={() => playUiChime('click')} className="text-primary font-semibold hover:underline shrink-0 ml-2">
+                    <Link to="/our-story/" onClick={() => playUiChime('click')} className="text-primary font-semibold hover:underline shrink-0 ml-2">
                       Origin →
                     </Link>
                   </div>
@@ -190,7 +190,7 @@ export default function Company() {
                   </div>
                   <div className="pt-4 border-t border-outline/15 flex items-center justify-between font-mono text-xs text-on-surface-variant">
                     <span>Global Operations · Dual-Hub Governance · Client Delivery</span>
-                    <Link to="/partnerships" onClick={() => playUiChime('click')} className="text-primary font-semibold hover:underline shrink-0 ml-2">
+                    <Link to="/partnerships/" onClick={() => playUiChime('click')} className="text-primary font-semibold hover:underline shrink-0 ml-2">
                       Alliances →
                     </Link>
                   </div>
@@ -215,7 +215,7 @@ export default function Company() {
                 </div>
               </div>
               <Link
-                to="/contact"
+                to="/contact/"
                 onClick={() => playUiChime('click')}
                 className="px-6 py-3 btn-primary-gradient text-xs font-semibold rounded-lg transition-all shrink-0 inline-flex items-center gap-2 whitespace-nowrap"
               >
@@ -336,40 +336,40 @@ export default function Company() {
 
           <div className="flex flex-wrap justify-center gap-3 pt-4">
             <Link
-              to="/our-story"
+              to="/our-story/"
               className="px-5 py-2.5 bg-surface-container-lowest border border-outline/25 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5 transition-colors"
             >
               <span>Read Our Founding Story</span>
             </Link>
             <Link
-              to="/security"
+              to="/security/"
               className="px-5 py-2.5 bg-surface-container-lowest border border-outline/25 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5 transition-colors"
             >
               <ShieldCheck size={14} className="text-primary" />
               <span>Zero-Trust Security Center</span>
             </Link>
             <Link
-              to="/press"
+              to="/press/"
               className="px-5 py-2.5 bg-surface-container-lowest border border-outline/25 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5 transition-colors"
             >
               <span>Press Kit &amp; Citations</span>
             </Link>
             <Link
-              to="/partnerships"
+              to="/partnerships/"
               className="px-5 py-2.5 bg-surface-container-lowest border border-outline/25 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5 transition-colors"
             >
               <Globe size={14} className="text-primary" />
               <span>Strategic Partnerships</span>
             </Link>
             <Link
-              to="/careers"
+              to="/careers/"
               className="px-5 py-2.5 bg-surface-container-lowest border border-outline/25 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg inline-flex items-center gap-1.5 transition-colors"
             >
               <Users size={14} className="text-primary" />
               <span>Open Engineering Careers</span>
             </Link>
             <Link
-              to="/how-it-works"
+              to="/how-it-works/"
               className="px-5 py-2.5 btn-primary-gradient text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
               <span>How We Deliver</span>

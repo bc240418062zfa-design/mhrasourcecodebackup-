@@ -124,7 +124,7 @@ export default function Security() {
             <Reveal delay={0.2}>
               <div className="flex flex-wrap gap-4 pt-1">
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-2 px-6 py-3 btn-primary-gradient rounded-lg text-sm font-semibold"
                 >
@@ -132,7 +132,7 @@ export default function Security() {
                   <ArrowRight size={15} />
                 </Link>
                 <Link
-                  to="/legal"
+                  to="/legal/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary text-on-surface rounded-lg text-sm font-semibold transition-colors"
                 >
@@ -287,16 +287,16 @@ export default function Security() {
           <div className="pt-6 border-t border-outline/15 flex flex-wrap items-center justify-between gap-4 text-sm">
             <div className="text-on-surface-variant">
               Related Technical Documentation:{' '}
-              <Link to="/docs" className="text-primary font-semibold hover:underline">
+              <Link to="/docs/" className="text-primary font-semibold hover:underline">
                 Systems Architecture Codex
               </Link>{' '}
               ·{' '}
-              <Link to="/glossary" className="text-primary font-semibold hover:underline">
+              <Link to="/glossary/" className="text-primary font-semibold hover:underline">
                 Security &amp; Optical Glossary
               </Link>
             </div>
             <Link
-              to="/services/managed-sre"
+              to="/services/managed-sre/"
               onClick={() => playUiChime('click')}
               className="inline-flex items-center gap-1.5 text-primary font-semibold hover:underline"
             >

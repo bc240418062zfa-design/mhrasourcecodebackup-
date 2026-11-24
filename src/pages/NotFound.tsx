@@ -34,14 +34,14 @@ export default function NotFound() {
             <span>Return to Home</span>
           </Link>
           <Link
-            to="/services"
+            to="/services/"
             className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-sm font-semibold rounded-lg transition-all"
           >
             <span>Explore Services</span>
             <ArrowRight size={15} />
           </Link>
           <Link
-            to="/contact"
+            to="/contact/"
             className="inline-flex items-center gap-2 px-5 py-3 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-sm font-semibold rounded-lg transition-all"
           >
             <span>Contact Hubs</span>

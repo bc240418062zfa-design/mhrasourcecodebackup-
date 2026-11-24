@@ -125,7 +125,7 @@ export default function Resources() {
             <StaggerItem>
               <SpotlightSurface className="surface-card rounded-2xl h-full">
                 <Link
-                  to="/docs"
+                  to="/docs/"
                   onClick={() => playUiChime('click')}
                   className="p-6 h-full flex flex-col justify-between space-y-4 group cursor-pointer"
                 >
@@ -149,7 +149,7 @@ export default function Resources() {
             <StaggerItem>
               <SpotlightSurface className="surface-card rounded-2xl h-full">
                 <Link
-                  to="/insights"
+                  to="/insights/"
                   onClick={() => playUiChime('click')}
                   className="p-6 h-full flex flex-col justify-between space-y-4 group cursor-pointer"
                 >
@@ -173,7 +173,7 @@ export default function Resources() {
             <StaggerItem>
               <SpotlightSurface className="surface-card rounded-2xl h-full">
                 <Link
-                  to="/solutions#sovereign-rfp-builder"
+                  to="/solutions/#sovereign-rfp-builder"
                   onClick={() => playUiChime('click')}
                   className="p-6 h-full flex flex-col justify-between space-y-4 group cursor-pointer"
                 >
@@ -197,7 +197,7 @@ export default function Resources() {
             <StaggerItem>
               <SpotlightSurface className="surface-card rounded-2xl h-full">
                 <Link
-                  to="/engineering#subsea-cable-explorer"
+                  to="/engineering/#subsea-cable-explorer"
                   onClick={() => playUiChime('click')}
                   className="p-6 h-full flex flex-col justify-between space-y-4 group cursor-pointer"
                 >
@@ -346,25 +346,25 @@ export default function Resources() {
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">
               <Link
-                to="/tools"
+                to="/tools/"
                 className="px-4 py-2.5 rounded-lg bg-white/[0.07] border border-white/20 text-xs font-semibold text-white hover:bg-white/[0.14] transition-colors"
               >
                 SLA &amp; Fiber Calculators
               </Link>
               <Link
-                to="/glossary"
+                to="/glossary/"
                 className="px-4 py-2.5 rounded-lg bg-white/[0.07] border border-white/20 text-xs font-semibold text-white hover:bg-white/[0.14] transition-colors"
               >
                 Engineering Glossary
               </Link>
               <Link
-                to="/compare"
+                to="/compare/"
                 className="px-4 py-2.5 rounded-lg bg-white/[0.07] border border-white/20 text-xs font-semibold text-white hover:bg-white/[0.14] transition-colors"
               >
                 Custody Comparison
               </Link>
               <Link
-                to="/contact"
+                to="/contact/"
                 className="px-5 py-2.5 rounded-lg btn-primary-gradient text-xs font-semibold inline-flex items-center gap-1.5"
               >
                 <span>Consult Engineering</span>

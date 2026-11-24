@@ -116,7 +116,7 @@ export default function Press() {
                   <span>Download Vector Mark (.SVG)</span>
                 </a>
                 <Link
-                  to="/company"
+                  to="/company/"
                   onClick={() => playUiChime('click')}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline px-2 py-2.5"
                 >

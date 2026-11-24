@@ -198,7 +198,7 @@ export default function Industries() {
                           <span>{ind.serviceLabel}</span>
                           <ArrowRight size={13} />
                         </Link>
-                        <Link to="/case-studies" className="text-on-surface-variant hover:text-on-surface">
+                        <Link to="/case-studies/" className="text-on-surface-variant hover:text-on-surface">
                           Benchmarks →
                         </Link>
                       </div>
@@ -222,13 +222,13 @@ export default function Industries() {
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-3">
             <Link
-              to="/solutions#sovereign-rfp-builder"
+              to="/solutions/#sovereign-rfp-builder"
               className="px-5 py-2.5 bg-surface-container border border-outline/30 hover:border-primary/50 text-on-surface text-xs font-semibold rounded-lg"
             >
               Configure System BOM
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               className="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-lg inline-flex items-center gap-1.5"
             >
               <span>Request Technical Scoping</span>
